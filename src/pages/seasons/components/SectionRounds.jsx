@@ -60,7 +60,7 @@ const SectionRounds = ({ season }) => {
           ? <ModalRounds round={round} season={season} modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
           : <ModalRounds round={round} season={season} modalShow={modalShow} handleClose={handleClose} action={mutationUpdate} type={'Edit'} setUpdate={setUpdate} /> }
 
-       <h4 className='h4'>Seasons</h4>
+       <h4 className='h4'>Rounds</h4>
        {(roundsbySeason?.length > 0)
          ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table variant='light my-2' responsive striped hover>
            <thead>
@@ -81,8 +81,8 @@ const SectionRounds = ({ season }) => {
                        <td>{round?.league?.league}</td>
                        <td>{round?.sport?.sport}</td>
                        <td>{(round?.status)
-                         ? <span>Open</span>
-                         : <span>Close</span>}</td>
+                         ? <span className='text-success'>Open!</span>
+                         : <span className='text-danger'>Closed!</span>}</td>
                        <td>
                        <ButtonGroup>
                        <Link className='btn btn-info btn-sm mx-1 rounded ' to={`../rounds/${round?._id}`}>Details</Link>

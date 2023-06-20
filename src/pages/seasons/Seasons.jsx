@@ -1,9 +1,9 @@
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import Navigate from '../../ui/Navigate'
 import { getSeason } from '../../services/seasons'
-import { Container, Row, Col, Alert, Spinner } from 'react-bootstrap'
+import { Container, Row, Col, Breadcrumb, Spinner } from 'react-bootstrap'
 import toast, { Toaster } from 'react-hot-toast'
 import SectionRounds from './components/SectionRounds'
 
@@ -21,7 +21,11 @@ const Seasons = () => {
         <Toaster position="top-center" reverseOrder={false}></Toaster>
          <Container >
          <Row>
-          <Alert variant='info  mx-auto'><Alert.Heading>{`${season?.league?.league} / ${season?.season}`}</Alert.Heading></Alert>
+         <Breadcrumb>
+         <div className='breadcrumb-item'><Link to={`../sports/${season?.sport?._id}`}>{season?.sport?.sport}</Link></div>
+         <div className='breadcrumb-item'><Link to={`../leagues/${season?.league?._id}`}>{season?.league?.league}</Link></div>
+          <Breadcrumb.Item active>{season?.season}</Breadcrumb.Item>
+          </Breadcrumb>
             <Col >
             <SectionRounds season={season}/>
             </Col>

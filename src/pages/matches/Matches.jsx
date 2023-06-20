@@ -1,8 +1,8 @@
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast'
-import { Spinner, Container, Row, Col, Alert } from 'react-bootstrap'
+import { Spinner, Container, Row, Col, Breadcrumb } from 'react-bootstrap'
 import Navigate from '../../ui/Navigate'
 import { getMatch } from '../../services/matches'
 import MatchContent from './components/MatchContent'
@@ -20,8 +20,14 @@ const Matches = () => {
         <Toaster position="top-center" reverseOrder={false}></Toaster>
          <Container >
          <Row >
-          <Alert variant='info  mx-auto'><Alert.Heading>{`${match?.league?.league} / ${match?.season?.season} / ${match?.round?.round} / ${match?.local?.name} vs ${match?.away.name}`}</Alert.Heading></Alert>
+         <Breadcrumb>
+         <div className='breadcrumb-item'><Link to={`../leagues/${match?.league?._id}`}>{match?.league?.league}</Link></div>
+         <div className='breadcrumb-item'><Link to={`../seasons/${match?.season?._id}`}>{match?.season?.season}</Link></div>
+         <div className='breadcrumb-item'><Link to={`../rounds/${match?.round?._id}`}>{match?.round?.round}</Link></div>
+          <Breadcrumb.Item active>{match?.local?.name} vs {match?.away?.name}</Breadcrumb.Item>
+          </Breadcrumb>
             <Col >
+
                 <MatchContent match={match} />
             </Col>
           </Row>

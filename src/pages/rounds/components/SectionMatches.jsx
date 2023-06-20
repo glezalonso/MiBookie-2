@@ -84,11 +84,11 @@ const SectionMatches = ({ round }) => {
                         <td>{match?.round?.round}</td>
                         <td>{match?.season?.season}</td>
                         <td>{match?.league?.league}</td>
-                        <td>{`${match?.local?.name} ${match?.score?.map(score => score?.local)}`}</td>
-                        <td>{`${match?.away?.name} ${match?.score?.map(score => score?.away)}`}</td>
+                        <td>{match?.local?.name} <strong> {match?.score?.map(score => score?.local)}</strong></td>
+                        <td>{match?.away?.name} <strong> {match?.score?.map(score => score?.away)}</strong></td>
                         <td>{(match?.status)
-                          ? <span>Open</span>
-                          : <span>Close</span>}</td>
+                          ? <span className='text-success'>Open!</span>
+                          : <span className='text-danger'>Closed!</span>}</td>
                         <td>
                         <ButtonGroup>
                         <Link className='btn btn-info btn-sm mx-1 rounded ' to={`../matches/${match?._id}`}>Details</Link>

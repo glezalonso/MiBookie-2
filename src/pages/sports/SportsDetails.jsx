@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
-import { Spinner, Container, Row, Col, Alert } from 'react-bootstrap'
+import { Spinner, Container, Row, Col, Breadcrumb } from 'react-bootstrap'
 import Navigate from '../../ui/Navigate'
 import { getSport } from '../../services/sports'
 import toast, { Toaster } from 'react-hot-toast'
@@ -21,7 +21,9 @@ const SportDetails = () => {
         <Toaster position="top-center" reverseOrder={false}></Toaster>
          <Container >
           <Row >
-          <Alert variant='info  mx-auto'><Alert.Heading>{sport?.sport}</Alert.Heading></Alert>
+          <Breadcrumb>
+          <Breadcrumb.Item active>{sport?.sport}</Breadcrumb.Item>
+          </Breadcrumb>
             <Col >
             <SectionLeagues sport={sport} />
             </Col>

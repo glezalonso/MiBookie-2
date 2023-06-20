@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button, Table, Alert } from 'react-bootstrap'
 const Roaster = ({ match, roster, handleAddLineUp, type }) => {
-  console.log(roster)
   return (
         <>
          {(roster?.length > 0)

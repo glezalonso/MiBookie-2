@@ -34,8 +34,8 @@ const SectionMatches = ({ team }) => {
              <td>{match?.season?.season}</td>
              <td>{match?.round?.round}</td>
              <td>{(match?.status)
-               ? <span>Open</span>
-               : <span>Close</span>}</td>
+               ? <span className='text-success'>Open!</span>
+               : <span className='text-danger'>Closed!</span>}</td>
              <td>{match?.local?.name} <strong> {match?.score?.map(score => score.local)}</strong></td>
              <td>{match?.away?.name} <strong> {match?.score?.map(score => score.away)}</strong></td>
             <td><Link className="btn btn-info" to={`/matches/${match?._id}`}>Details</Link></td>

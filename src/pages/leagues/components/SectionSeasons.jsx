@@ -80,8 +80,8 @@ const SectionSeasons = ({ league }) => {
                         <td>{season?.league?.league}</td>
                         <td>{season?.sport?.sport}</td>
                         <td>{(season?.status)
-                          ? <span>Open</span>
-                          : <span>Close</span>}</td>
+                          ? <span className='text-success'>Open!</span>
+                          : <span className='text-danger'>Closed!</span>}</td>
                         <td>
                         <ButtonGroup>
                         <Link className='btn btn-info btn-sm mx-1 rounded ' to={`../seasons/${season?._id}`}>Details</Link>
