@@ -1,5 +1,5 @@
 #body {
-    background:rgb(11, 11, 11);
+    background:rgb(36, 36, 36);
     color: white;
     }
     
@@ -10,7 +10,7 @@
   .container {
     position: relative;
     padding: 15px;
-    background-color:rgb(11, 11, 11);
+    background-color:rgb(36, 36, 36);
   }
   
   .row{
