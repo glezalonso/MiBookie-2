@@ -62,7 +62,7 @@ const SectionRounds = ({ season }) => {
 
        <h4 className='h4'>Seasons</h4>
        {(roundsbySeason?.length > 0)
-         ? <Table variant='dark my-2' responsive striped hover>
+         ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table variant='light my-2' responsive striped hover>
            <thead>
                <tr>
                     <th>Round</th>
@@ -94,6 +94,7 @@ const SectionRounds = ({ season }) => {
                ))}
            </tbody>
          </Table>
+         </div>
          : <Alert variant='warning'>There is no information to show!</Alert>}
 
         </>

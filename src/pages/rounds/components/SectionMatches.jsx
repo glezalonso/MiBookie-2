@@ -64,7 +64,7 @@ const SectionMatches = ({ round }) => {
 
         <h4 className='h4'>Matches</h4>
         {(matchByRound?.length > 0)
-          ? <Table variant='dark my-2' responsive striped hover>
+          ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table variant='light my-2' responsive striped hover>
             <thead>
                 <tr>
                     <th>Date</th>
@@ -101,6 +101,7 @@ const SectionMatches = ({ round }) => {
             </tbody>
 
           </Table>
+          </div>
           : <Alert variant='warning'>There is no information to show!</Alert>}
         </>
   )

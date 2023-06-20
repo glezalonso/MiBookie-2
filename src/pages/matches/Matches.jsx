@@ -18,8 +18,8 @@ const Matches = () => {
         <>
         <Navigate />
         <Toaster position="top-center" reverseOrder={false}></Toaster>
-         <Container fluid>
-         <Row className='p-2 bg-dark m-3 rounded'>
+         <Container >
+         <Row >
           <Alert variant='info  mx-auto'><Alert.Heading>{`${match?.league?.league} / ${match?.season?.season} / ${match?.round?.round} / ${match?.local?.name} vs ${match?.away.name}`}</Alert.Heading></Alert>
             <Col >
                 <MatchContent match={match} />

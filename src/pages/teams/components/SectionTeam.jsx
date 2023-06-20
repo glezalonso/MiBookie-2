@@ -5,7 +5,7 @@ import avatar from '../../../assets/avatar.png'
 const SectionTeam = ({ team }) => {
   return (
         <>
-      <Card className=" bg-dark text-white text-center">
+      <Card className=" bg-light text-dark text-center">
       <center><Card.Img variant="top" style={{ width: '100px', height: '100px' }} src={team?.poster || avatar } /></center>
       <Card.Body>
         <Card.Title>{team?.name}</Card.Title>

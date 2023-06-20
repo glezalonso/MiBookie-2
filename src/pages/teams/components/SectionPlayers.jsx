@@ -43,7 +43,7 @@ const SectionPlayers = ({ team }) => {
             <h1 className="h4 static">All players</h1>
             <FormControl placeholder='Search Player...' id='player' name='player' value={dataFilter} onChange={(event) => handleOnChange(event)} />
             {(filter?.length > 0)
-              ? <Table responsive variant="dark mt-3" hover striped>
+              ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table responsive variant="light mt-3" hover striped>
                 <thead>
                     <tr>
                         <th>Player</th>
@@ -56,6 +56,7 @@ const SectionPlayers = ({ team }) => {
           ))}
             </tbody>
            </Table>
+           </div>
               : <Alert variant='warning'>There is no information to show!</Alert>}
         </>
   )

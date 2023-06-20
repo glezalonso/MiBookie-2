@@ -15,14 +15,14 @@ const Navigate = () => {
 
   return (
         <>
-    <Navbar expand="sm">
+    <Navbar expand="md">
       <Container fluid>
         <Navbar.Brand className='text-light'>Mi Bookie Panel</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
             className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
+            style={{ maxHeight: '150px' }}
             navbarScroll
           >
             <Nav.Item ><Link to={'../home'} className='nav-link text-secondary'>Home</Link></Nav.Item>

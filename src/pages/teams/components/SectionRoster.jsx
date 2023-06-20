@@ -22,7 +22,7 @@ const SectionRoster = ({ team }) => {
         <>
             <h4 className="h4">Roster</h4>
            { (team?.players?.length > 0)
-             ? <Table responsive variant="dark" hover striped>
+             ? <div className='table-wrapper-scroll-y my-custom-scrollbar'> <Table responsive variant="light" hover striped>
                 <thead>
                     <tr>
                     <th>Player</th>
@@ -37,6 +37,7 @@ const SectionRoster = ({ team }) => {
 
              </tbody>
              </Table>
+             </div>
              : <Alert variant='warning'>There is no information to show!</Alert>}
         </>
   )

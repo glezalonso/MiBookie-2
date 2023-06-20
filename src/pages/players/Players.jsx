@@ -16,8 +16,8 @@ const Players = () => {
         <>
         <Navigate />
         <Toaster position="top-center" reverseOrder={false}></Toaster>
-         <Container fluid>
-          <Row className='p-1 m-2 bg-dark rounded' >
+         <Container className='container'>
+          <Row>
             <Col >
             <TablePlayers players={players}/>
             </Col>

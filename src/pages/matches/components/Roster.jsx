@@ -1,10 +1,11 @@
 import React from 'react'
 import { Button, Table, Alert } from 'react-bootstrap'
 const Roaster = ({ match, roster, handleAddLineUp, type }) => {
+  console.log(roster)
   return (
         <>
          {(roster?.length > 0)
-           ? <Table responsive variant="dark" striped>
+           ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table responsive variant="light" striped>
             <thead>
              <tr>
                 <th>Player</th>
@@ -18,6 +19,7 @@ const Roaster = ({ match, roster, handleAddLineUp, type }) => {
 
          </tbody>
         </Table>
+        </div>
            : <Alert variant='warning'>There is no information to show!</Alert>}
         </>
   )

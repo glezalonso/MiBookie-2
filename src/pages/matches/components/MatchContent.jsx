@@ -41,13 +41,13 @@ const MatchContent = ({ match }) => {
         <>
 
           <h3 className='h3 mt-2'>Match Details</h3>
-           <Table responsive variant="dark " hover striped >
+           <Table responsive variant="light " hover striped >
             <tbody>
             <tr><td>Date</td><td>{match?.date}</td></tr>
             <tr><td>League </td><td>{match?.league?.league}</td></tr>
             <tr><td>Season</td><td>{match?.season?.season}</td></tr>
             <tr><td>Round</td><td>{match?.round?.round}</td></tr>
-            <tr><td>Status</td><td>{(match?.status) ? <Alert variant="success p-2 mx-1">Abierto</Alert> : <Alert variant="danger ">Cerrado</Alert>}</td></tr>
+            <tr><td>Status</td><td>{(match?.status.toString()) ? <Alert variant="success p-2 mx-1">Abierto</Alert> : <Alert variant="danger ">Cerrado</Alert>}</td></tr>
             <tr><td>Stadium</td><td>{match?.local?.stadium}</td></tr>
             <tr>
                 <td><strong>Local </strong>{match?.local?.name}</td><td><strong>{match?.score?.map(score => score?.local)}</strong></td>

@@ -6,7 +6,7 @@ const TeamSettings = ({ match, handleRemoveLineUp, type }) => {
         <>
         {(type === 'local')
           ? (match?.lineup?.length > 0)
-              ? <Table responsive variant="dark" striped>
+              ? <Table responsive variant="light" striped>
                 <thead>
                     <tr>
                         <th>Player</th>
@@ -23,7 +23,7 @@ const TeamSettings = ({ match, handleRemoveLineUp, type }) => {
               : <Alert variant='warning'>There is no information to show!</Alert>
 
           : (match?.lineup?.length > 0)
-              ? <Table responsive variant="dark" striped>
+              ? <Table responsive variant="light" striped>
                 <thead>
                     <tr>
                         <th>Player</th>

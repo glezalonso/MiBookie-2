@@ -21,7 +21,7 @@ const TeamDetail = () => {
         <>
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
-        <Container className='w-100 mt-3'>
+        <Container >
           <Row>
             <Col>
              <SectionTeam team={team} />

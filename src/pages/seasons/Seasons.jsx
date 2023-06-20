@@ -19,8 +19,8 @@ const Seasons = () => {
          <>
         <Navigate />
         <Toaster position="top-center" reverseOrder={false}></Toaster>
-         <Container fluid>
-         <Row className='p-2 bg-dark m-3 rounded'>
+         <Container >
+         <Row>
           <Alert variant='info  mx-auto'><Alert.Heading>{`${season?.league?.league} / ${season?.season}`}</Alert.Heading></Alert>
             <Col >
             <SectionRounds season={season}/>

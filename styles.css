@@ -1,0 +1,37 @@
+#body {
+    background:rgb(11, 11, 11);
+    color: white;
+    }
+    
+.navbar {
+    background-color:black;
+
+  }
+  .container {
+    position: relative;
+    padding: 15px;
+    background-color:rgb(11, 11, 11);
+  }
+  
+  .row{
+    position: relative;
+    padding: 10px;
+    padding-left: 5px;
+    margin: 5px;
+    background-color: white;
+    color: black;
+    border-radius: 15px;
+
+  }
+  .col {
+   margin-right: 1px;
+
+  }
+  .my-custom-scrollbar {
+    position: relative;
+    max-height: 500px;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }

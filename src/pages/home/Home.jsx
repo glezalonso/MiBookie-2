@@ -14,12 +14,12 @@ const Home = () => {
   return (
         <>
         <Navigate />
-        <Container className='w-100 mt-3' >
-          <Row>
+        <Container >
+          <Row >
             <Col>
         <h3 className="h3 m-2">Matches Today</h3>
           {(matchesToday?.length > 0)
-            ? <Table responsive variant="dark" hover striped>
+            ? <div className='table-wrapper-scroll-y my-custom-scrollbar'> <Table responsive variant="light" hover striped>
             <thead>
               <tr>
                 <th>Date</th>
@@ -47,6 +47,7 @@ const Home = () => {
               ))}
             </tbody>
           </Table>
+          </div>
             : <Alert variant="info">There is no information to show!</Alert>}
             </Col>
             </Row>

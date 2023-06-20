@@ -42,7 +42,7 @@ const Login = () => {
   return (
         <>
         <Toaster position="top-center" reverseOrder={false}></Toaster>
-            <Container className=' bg-dark w-75 h-75 mt-5'>
+            <Container className=' bg-light text-dark w-75 h-75 mt-5 rounded'>
               <Row >
               <h1 className="h1 pt-3 text-center">Mi Bookie Panel</h1>
                 <Col className="col-lg-12 col-xs-12 p-3">

@@ -12,7 +12,7 @@ const SectionMatches = ({ team }) => {
         <>
         <h4>Matches</h4>
         {(filterMatches?.length > 0)
-          ? <Table responsive variant="dark" hoc striped >
+          ? <div className='table-wrapper-scroll-y my-custom-scrollbar'> <Table responsive variant="light" hoc striped >
             <thead>
                 <tr>
                     <th>Date</th>
@@ -20,7 +20,8 @@ const SectionMatches = ({ team }) => {
                     <th>Season</th>
                     <th>Round</th>
                     <th>Status</th>
-                    <th>Teams</th>
+                    <th>Local</th>
+                    <th>Away</th>
                     <th>Options</th>
 
                 </tr>
@@ -32,13 +33,17 @@ const SectionMatches = ({ team }) => {
              <td>{match?.league?.league}</td>
              <td>{match?.season?.season}</td>
              <td>{match?.round?.round}</td>
-             <td>{(match?.status) ? 'Open' : 'Close'}</td>
-             <td>{match?.local?.name} <strong> {match?.score?.map(score => score.local)}</strong> vs {match.away.name} <strong> {match?.score?.map(score => score.local)}</strong></td>
+             <td>{(match?.status)
+               ? <span>Open</span>
+               : <span>Close</span>}</td>
+             <td>{match?.local?.name} <strong> {match?.score?.map(score => score.local)}</strong></td>
+             <td>{match?.away?.name} <strong> {match?.score?.map(score => score.away)}</strong></td>
             <td><Link className="btn btn-info" to={`/matches/${match?._id}`}>Details</Link></td>
             </tr>
             ))}
               </tbody>
             </Table>
+            </div>
           : <Alert variant='warning'>There is no information to show!</Alert>}
 
         </>

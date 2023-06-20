@@ -62,15 +62,15 @@ const TableSport = ({ players }) => {
 
   return (
         <>
-          <div className='mx-2'>
+        <div className='mx-2 my-3'>
         <Button className="btn btn-warning mb-2" onClick={handleShow} >Create player</Button>
-        <FormControl className="mb-3"placeholder='Search player...' id='player' name='player' value={dataFilter} onChange={(event) => handleOnChange(event)} />
+        <FormControl placeholder='Search player...' id='player' name='player' value={dataFilter} onChange={(event) => handleOnChange(event)} />
         </div>
         {(!update)
           ? <ModalPlayers player={player} modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
           : <ModalPlayers player={player} modalShow={modalShow} handleClose={handleClose} action={mutationUpdate} type={'Edit'} setUpdate={setUpdate} /> }
         {(filter?.length > 0)
-          ? <Table variant='dark my-2' responsive striped hover>
+          ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table className='table-light table-wrapper-scroll-y' responsive striped hover>
             <thead>
                 <tr>
                     <th>
@@ -112,6 +112,7 @@ const TableSport = ({ players }) => {
                 ))}
             </tbody>
         </Table>
+        </div>
           : <Alert variant='warning'>There is no information to show!</Alert>}
 
         </>

@@ -58,7 +58,7 @@ const TableSport = ({ sports }) => {
           ? <ModalSports sport={sport} modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
           : <ModalSports sport={sport} modalShow={modalShow} handleClose={handleClose} action={mutationUpdate} type={'Edit'} setUpdate={setUpdate} /> }
         {(sports?.length > 0)
-          ? <Table variant='dark my-2' responsive striped hover>
+          ? <Table variant='light my-2' responsive striped hover>
             <thead>
                 <tr>
                     <th>

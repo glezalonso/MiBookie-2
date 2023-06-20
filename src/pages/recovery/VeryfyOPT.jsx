@@ -3,7 +3,7 @@ import { Toaster, toast } from 'react-hot-toast'
 import { useFormik } from 'formik'
 import { verifyOTP } from '../../services/users'
 import { useNavigate } from 'react-router-dom'
-import { Container, Form, Button } from 'react-bootstrap'
+import { Container, Form, Button, Col, Row } from 'react-bootstrap'
 import { validateOTP } from '../../helpers/validations'
 import { useMutation } from '@tanstack/react-query'
 import { useRecovery } from '../../store/recovery'
@@ -38,15 +38,19 @@ const VerifyOTP = () => {
   return (
         <>
     <Toaster position="top-center" reverseOrder={false}></Toaster>
-       <Container className="mt-5 w-50 h-50 bg-dark text-light rounded p-4" >
-            <h1 className='text-center'>Verify Code</h1>
-            <Form className=" m-1 w-100" onSubmit={formik.handleSubmit}>
-            <Form.Group>
-            <Form.Label className='mt-1' htmlFor="OTP">Code OTP</Form.Label>
-            <Form.Control {...formik.getFieldProps('OTP')} type="text" name="OTP" id="OTP" placeholder='Code OTP'/>
-            </Form.Group>
-            <Button variant="warning mt-2 float-right" type='submit'>Check code</Button>
-            </Form>
+       <Container className="bg-light w-75 h-75 mt-5 text-dark rounded" >
+        <Row>
+          <Col className='col-lg-12 col-xs-12 p-3'>
+              <h1 className='pt-3 text-center'>Verify Code</h1>
+                <Form className=" m-1 w-100" onSubmit={formik.handleSubmit}>
+                <Form.Group>
+                <Form.Label className='mt-1' htmlFor="OTP">Code OTP</Form.Label>
+                <Form.Control {...formik.getFieldProps('OTP')} type="text" name="OTP" id="OTP" placeholder='Code OTP'/>
+                </Form.Group>
+                <Button variant="warning mt-2" type='submit'>Check code</Button>
+                </Form>
+          </Col>
+        </Row>
         </Container>
        </>
   )
