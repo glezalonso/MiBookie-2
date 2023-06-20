@@ -24,6 +24,8 @@ import PlayerDetails from './pages/players/PlayerDetails'
 import Teams from './pages/teams/Teams'
 import TeamDetails from './pages/teams/TeamDetails'
 import Matches from './pages/matches/Matches'
+import Users from './pages/users/Users'
+import UserDetails from './pages/users/UserDetails'
 
 // Store
 import { useAuthStore } from './store/auth'
@@ -45,6 +47,8 @@ const App = () => {
 
               <Route element={<Protected isLogged={isLogged} />}>
                     <Route path='/home' element={<Home/>} />
+                    <Route path='/users' element={<Users />} />
+                    <Route path='/users/:id' element={<UserDetails/>} />
                     <Route path='/sports' element={<Sports />} />
                     <Route path='/sports/:id' element={<SportDetails />} />
                     <Route path='/players' element={<Players />} />

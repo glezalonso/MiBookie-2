@@ -99,7 +99,7 @@ const TableSport = ({ players }) => {
                         <td>{player?.fullName}</td>
                         <td>{player?.position}</td>
                         <td>{player?.sport?.sport}</td>
-                        <td>{(player) ? <span>Active</span> : <span>Desactive</span>}</td>
+                        <td>{(player?.status) ? <span>Active</span> : <span>Desactive</span>}</td>
                         <td>{player?.team?.name}</td>
                         <td>
                             <ButtonGroup>
