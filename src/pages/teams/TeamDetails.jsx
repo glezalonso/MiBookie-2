@@ -23,15 +23,13 @@ const TeamDetail = () => {
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
         <Container >
-          <Row>
-            <Col>
              <SectionTeam team={team} />
-            </Col>
-          </Row>
           <Row>
             <Col className='m-1'>
               <SectionNextMatches team={team} />
             </Col>
+            </Row>
+            <Row>
             <Col className='m-1'>
               <SectionMatches team={team} />
             </Col >

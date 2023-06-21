@@ -28,9 +28,9 @@ const SectionPlayers = ({ team }) => {
   }
 
   const playerBySport = players?.filter(player => player?.sport?._id === team?.sport?._id)
-  const playerWithoutTeam = playerBySport?.filter(player => player?.team?._id !== team?._id)
+  const playerFilter = playerBySport?.filter(player => player?.team === undefined || player?.team === null)
 
-  const filter = playerWithoutTeam?.filter(player => {
+  const filter = playerFilter?.filter(player => {
     if (dataFilter) return player?.fullName?.toLowerCase().includes(dataFilter?.toLowerCase())
     else return player
   })
