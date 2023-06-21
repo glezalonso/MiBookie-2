@@ -9,6 +9,7 @@ import SectionTeam from './components/SectionTeam'
 import SectionMatches from './components/SectionMatches'
 import SectionRoster from './components/SectionRoster'
 import SectionPlayers from './components/SectionPlayers'
+import SectionNextMatches from './components/SectionNextMatches'
 
 const TeamDetail = () => {
   const { id } = useParams()
@@ -28,9 +29,12 @@ const TeamDetail = () => {
             </Col>
           </Row>
           <Row>
-            <Col>
-              <SectionMatches team={team} />
+            <Col className='m-1'>
+              <SectionNextMatches team={team} />
             </Col>
+            <Col className='m-1'>
+              <SectionMatches team={team} />
+            </Col >
           </Row>
           <Row>
             <Col className='col-xs-6'>

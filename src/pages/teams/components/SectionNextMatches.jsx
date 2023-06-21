@@ -4,14 +4,14 @@ import { Table, Alert } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 
-const SectionMatches = ({ team }) => {
+const SectionNextMatches = ({ team }) => {
   const { data: matches } = useQuery({ queryKey: ['matches'], queryFn: getMatches })
   const filterMatches = matches?.filter(match => match?.local?._id === team?._id || match?.away?._id === team?._id)
-  const lastMatches = filterMatches?.filter(match => match?.status !== true)
+  const nextMatches = filterMatches?.filter(match => match?.status !== false)
   return (
         <>
-        <h5>Last Matches</h5>
-        {(lastMatches?.length > 0)
+        <h5>Next Matches</h5>
+        {(nextMatches?.length > 0)
           ? <div className='table-wrapper-scroll-y my-custom-scrollbar'> <Table responsive variant="light" hover striped >
             <thead>
                 <tr>
@@ -27,7 +27,7 @@ const SectionMatches = ({ team }) => {
                 </tr>
             </thead>
             <tbody>
-            {lastMatches?.map(match => (
+            {nextMatches?.map(match => (
             <tr key={match._id} >
              <td>{match?.date?.split('T')[0]}</td>
              <td>{match?.league?.league}</td>
@@ -50,4 +50,4 @@ const SectionMatches = ({ team }) => {
   )
 }
 
-export default SectionMatches
+export default SectionNextMatches

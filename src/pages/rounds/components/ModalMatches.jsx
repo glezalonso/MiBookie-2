@@ -19,6 +19,7 @@ const ModalMatches = ({ round, match, modalShow, handleClose, action, type, setU
       round: round?._id,
       league: round?.league?._id,
       season: round?.season?._id,
+      sport: round?.sport?._id,
       status: match?.status || ''
     },
     validate: validateMatch,
@@ -80,6 +81,7 @@ const ModalMatches = ({ round, match, modalShow, handleClose, action, type, setU
                             ))}
                         </Form.Select>
                         </Form.Group>
+
                     <Form.Group>
                         <Form.Label>Status</Form.Label>
                         <Form.Select id="status" name="status"{...formik.getFieldProps('status')} >
