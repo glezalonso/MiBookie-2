@@ -2,9 +2,10 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { getTeam } from '../../services/teams'
 import toast, { Toaster } from 'react-hot-toast'
-import { Container, Spinner, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import { useQuery } from '@tanstack/react-query'
 import Navigate from '../../ui/Navigate'
+import Loading from '../../ui/Loading'
 import SectionTeam from './components/SectionTeam'
 import SectionMatches from './components/SectionMatches'
 import SectionRoster from './components/SectionRoster'
@@ -15,7 +16,7 @@ const TeamDetail = () => {
   const { id } = useParams()
   const { data: team, isLoading, isError } = useQuery({ queryKey: ['team', id], queryFn: () => getTeam(id) })
 
-  if (isLoading) return <Spinner animation="border" variant="warning" />
+  if (isLoading) return <Loading />
   if (isError) return toast.error('failed to load!')
 
   return (

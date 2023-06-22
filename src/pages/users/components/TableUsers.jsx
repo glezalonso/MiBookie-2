@@ -55,7 +55,7 @@ const TableUsers = ({ users }) => {
         <>
           <Button variant="warning mb-2" onClick={handleShow}> Create user</Button>
         {(!update)
-          ? <ModalUsers user={user} modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
+          ? <ModalUsers modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
           : <ModalUsers user={user} modalShow={modalShow} handleClose={handleClose} action={mutationUpdate} type={'Edit'} setUpdate={setUpdate} /> }
         {(users?.length > 0)
           ? <Table variant='light my-2' responsive striped hover>

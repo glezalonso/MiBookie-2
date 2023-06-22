@@ -51,12 +51,9 @@ const TableSport = ({ players }) => {
     setPlayer(data)
     setUpdate(true)
   }
-  const handleOnChange = (event) => {
-    setDataFilter(event.target.value)
-  }
 
   const filter = players.filter(player => {
-    if (dataFilter) return player?.fullName?.toLowerCase().includes(dataFilter.toLowerCase())
+    if (dataFilter) return player?.fullName?.toLowerCase().includes(dataFilter.toLowerCase()) || player?.sport?.sport?.toLowerCase().includes(dataFilter.toLowerCase()) || player?.team?.name?.toLowerCase().includes(dataFilter.toLowerCase())
     else return player
   })
 
@@ -64,10 +61,10 @@ const TableSport = ({ players }) => {
         <>
         <div className='mx-2 my-3'>
         <Button className="btn btn-warning mb-2" onClick={handleShow} >Create player</Button>
-        <FormControl placeholder='Search player...' id='player' name='player' value={dataFilter} onChange={(event) => handleOnChange(event)} />
+        <FormControl placeholder='Search player, team,  sport...' id='player' name='player' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
         </div>
         {(!update)
-          ? <ModalPlayers player={player} modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
+          ? <ModalPlayers modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
           : <ModalPlayers player={player} modalShow={modalShow} handleClose={handleClose} action={mutationUpdate} type={'Edit'} setUpdate={setUpdate} /> }
         {(filter?.length > 0)
           ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table className='table-light table-wrapper-scroll-y' responsive striped hover>
@@ -99,7 +96,7 @@ const TableSport = ({ players }) => {
                         <td>{player?.fullName}</td>
                         <td>{player?.position}</td>
                         <td>{player?.sport?.sport}</td>
-                        <td>{(player?.status) ? <span>Active</span> : <span>Desactive</span>}</td>
+                        <td>{(player?.status) ? <span className='text-success'>Active</span> : <span className='text-danger'>Desactive</span>}</td>
                         <td>{player?.team?.name}</td>
                         <td>
                             <ButtonGroup>

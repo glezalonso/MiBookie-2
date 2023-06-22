@@ -44,7 +44,7 @@ const ModalTeams = ({ team, modalShow, handleClose, action, type, setUpdate }) =
   return (
         <>
         <Modal className="text-dark" show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
-            <Modal.Header closeButton>
+            <Modal.Header >
                 <Modal.Title>{type} team</Modal.Title>
                 </Modal.Header>
                     <Form onSubmit={formik.handleSubmit}>

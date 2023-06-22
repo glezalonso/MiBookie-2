@@ -4,12 +4,12 @@ import { useAuthStore } from '../store/auth'
 import decode from 'jwt-decode'
 
 const Protected = ({ isLogged }) => {
-  const token = useAuthStore(state => state.token)
+  const auth = useAuthStore(state => state.auth)
   const logOut = useAuthStore(state => state.logOut)
 
   if (!isLogged) {
     return <Navigate to={'/'} />
-  } else if (token && Date.now() >= decode(token).exp * 1000) {
+  } else if (auth && Date.now() >= decode(auth).exp * 1000) {
     logOut()
   } else {
     return <Outlet />

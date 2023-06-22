@@ -43,7 +43,7 @@ const ModalLeagues = ({ league, sportId, modalShow, handleClose, action, type, s
   return (
         <>
         <Modal className ="text-dark" show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
-            <Modal.Header closeButton>
+            <Modal.Header >
                 <Modal.Title>{type} league</Modal.Title>
                 </Modal.Header>
                     <Form onSubmit={formik.handleSubmit}>
@@ -73,8 +73,8 @@ const ModalLeagues = ({ league, sportId, modalShow, handleClose, action, type, s
 
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={handleCloseUpdate}>Close</Button>
-                <Button variant="primary" type="submit">{type} league</Button>
+                <Button variant="dark" onClick={handleCloseUpdate}>Close</Button>
+                <Button variant="warning" type="submit">{type} league</Button>
             </Modal.Footer>
         </Form>
       </Modal>

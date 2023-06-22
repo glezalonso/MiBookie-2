@@ -57,7 +57,7 @@ const SectionRounds = ({ season }) => {
         <>
         <Button variant="warning mb-2" onClick={handleShow}>Create Round</Button>
         {(!update)
-          ? <ModalRounds round={round} season={season} modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
+          ? <ModalRounds season={season} modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
           : <ModalRounds round={round} season={season} modalShow={modalShow} handleClose={handleClose} action={mutationUpdate} type={'Edit'} setUpdate={setUpdate} /> }
 
        <h4 className='h4'>Rounds</h4>

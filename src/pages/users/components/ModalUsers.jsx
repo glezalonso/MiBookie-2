@@ -32,7 +32,7 @@ const ModalUsers = ({ user, modalShow, handleClose, action, type, setUpdate }) =
   return (
         <>
         <Modal className="text-dark" show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
-            <Modal.Header closeButton>
+            <Modal.Header>
                 <Modal.Title>{type} User</Modal.Title>
                 </Modal.Header>
                     <Form onSubmit={formik.handleSubmit}>
@@ -64,8 +64,8 @@ const ModalUsers = ({ user, modalShow, handleClose, action, type, setUpdate }) =
 
             </Modal.Body>
             <Modal.Footer>
-            <Button variant="secondary" onClick={() => handleCloseUpdate()}>Close</Button>
-                <Button variant="primary" type="submit">{type} user</Button>
+            <Button variant="dark" onClick={() => handleCloseUpdate()}>Close</Button>
+                <Button variant="warning" type="submit">{type} user</Button>
             </Modal.Footer>
         </Form>
       </Modal>

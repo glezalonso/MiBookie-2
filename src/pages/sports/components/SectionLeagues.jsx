@@ -58,7 +58,7 @@ const SectionLeagues = ({ sport }) => {
     <>
               <Button variant="warning mb-2" onClick={handleShow}>Create league</Button>
         {(!update)
-          ? <ModalLeagues league={league} sportId={sport?._id} modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
+          ? <ModalLeagues sportId={sport?._id} modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
           : <ModalLeagues league={league} sportId={sport?._id} modalShow={modalShow} handleClose={handleClose} action={mutationUpdate} type={'Edit'} setUpdate={setUpdate} /> }
 
     <h4 className='h4'>Leagues</h4>

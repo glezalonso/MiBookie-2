@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { Row, Button, Alert, Table } from 'react-bootstrap'
+import { Row, Button, Table } from 'react-bootstrap'
 import { addLineUp, removeLineUp } from '../../../services/matches'
 import toast from 'react-hot-toast'
 import MatchSettings from './MatchSettings'
@@ -47,7 +47,7 @@ const MatchContent = ({ match }) => {
             <tr><td>League </td><td>{match?.league?.league}</td></tr>
             <tr><td>Season</td><td>{match?.season?.season}</td></tr>
             <tr><td>Round</td><td>{match?.round?.round}</td></tr>
-            <tr><td>Status</td><td>{(match?.status.toString()) ? <Alert variant="success p-2 mx-1">Abierto</Alert> : <Alert variant="danger ">Cerrado</Alert>}</td></tr>
+            <tr><td>Status</td><td>{(match?.status) ? <span className="text-success">Abierto</span> : <span className="text-danger ">Cerrado</span>}</td></tr>
             <tr><td>Stadium</td><td>{match?.local?.stadium}</td></tr>
             <tr>
                 <td><strong>Local </strong>{match?.local?.name}</td><td><strong>{match?.score?.map(score => score?.local)}</strong></td>

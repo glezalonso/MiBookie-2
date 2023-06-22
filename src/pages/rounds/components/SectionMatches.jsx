@@ -59,7 +59,7 @@ const SectionMatches = ({ round }) => {
 
         <Button variant="warning mb-2" onClick={handleShow}>Create match</Button>
         {(!update)
-          ? <ModalMatches round={round} match={match} modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
+          ? <ModalMatches match={match} modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
           : <ModalMatches round={round} match={match} modalShow={modalShow} handleClose={handleClose} action={mutationUpdate} type={'Edit'} setUpdate={setUpdate} /> }
 
         <h4 className='h4'>Matches</h4>

@@ -50,8 +50,8 @@ const ModalScore = ({ match, modalShow, handleClose }) => {
                         <FormControl {...formik.getFieldProps('away')} type="number" id="away" name="away" placeholder='Score'></FormControl>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={() => handleClose()}>Close</Button>
-                <Button variant="primary" type="submit">Place score</Button>
+                <Button variant="dark" onClick={() => handleClose()}>Close</Button>
+                <Button variant="warning" type="submit">Place score</Button>
             </Modal.Footer>
         </Form>
       </Modal>

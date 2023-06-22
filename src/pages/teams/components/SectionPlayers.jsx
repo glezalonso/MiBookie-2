@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { getPlayers } from '../../../services/players'
 import { addPlayer } from '../../../services/teams'
 import toast from 'react-hot-toast'
-import { Button, Table, Alert, FormControl, Spinner } from 'react-bootstrap'
+import { Button, Table, Alert, FormControl } from 'react-bootstrap'
 import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query'
+import Loading from '../../../ui/Loading'
 
 const SectionPlayers = ({ team }) => {
   const { data: players, isLoading, isError } = useQuery({ queryKey: ['players'], queryFn: getPlayers })
@@ -23,10 +24,6 @@ const SectionPlayers = ({ team }) => {
     mutationCreate.mutate({ id, body: { playerId, player } })
   }
 
-  const handleOnChange = (event) => {
-    setDataFilter(event.target.value)
-  }
-
   const playerBySport = players?.filter(player => player?.sport?._id === team?.sport?._id)
   const playerFilter = playerBySport?.filter(player => player?.team === undefined || player?.team === null)
 
@@ -35,13 +32,13 @@ const SectionPlayers = ({ team }) => {
     else return player
   })
 
-  if (isLoading) return <Spinner animation="border" variant="warning" />
+  if (isLoading) return <Loading />
   if (isError) return toast.error('failed to load!')
 
   return (
         <>
             <h1 className="h4 static">All players</h1>
-            <FormControl placeholder='Search Player...' id='player' name='player' value={dataFilter} onChange={(event) => handleOnChange(event)} />
+            <FormControl placeholder='Search Player...' id='player' name='player' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
             {(filter?.length > 0)
               ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table responsive variant="light mt-3" hover striped>
                 <thead>

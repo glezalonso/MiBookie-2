@@ -3,8 +3,10 @@ import Navigate from '../../ui/Navigate'
 import formatedDate from '../../utils/formatedDate'
 import { getMatches } from '../../services/matches'
 import { useQuery } from '@tanstack/react-query'
-import { Container, Row, Col, Table, Alert } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Container, Row, Col } from 'react-bootstrap'
+import SectionTodayMatches from './components/SectionTodayMacthes'
+import SectionLeagues from './components/SectionLeagues'
+import SectionSeasonsOpen from './components/SectionSeasonsOpen'
 
 const Home = () => {
   const { data: matches } = useQuery({ queryKey: ['matches'], queryFn: getMatches })
@@ -17,39 +19,16 @@ const Home = () => {
         <Container >
           <Row >
             <Col>
-        <h3 className="h3 m-2">Matches Today</h3>
-          {(matchesToday?.length > 0)
-            ? <div className='table-wrapper-scroll-y my-custom-scrollbar'> <Table responsive variant="light" hover striped>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>League</th>
-                <th>Season</th>
-                <th>Round</th>
-                <th>Local</th>
-                <th>Away</th>
-                <th>Status</th>
-                <th>Options</th>
-              </tr>
-            </thead>
-            <tbody>
-              {matchesToday?.map(match => (
-                <tr key={match?._id}>
-                  <td>{match?.date}</td>
-                  <td>{match?.league?.league}</td>
-                  <td>{match?.season?.season}</td>
-                  <td>{match?.round?.round}</td>
-                  <td>{match?.local.name}<strong> {match?.score?.map(score => score?.local)}</strong></td>
-                  <td> {match?.away?.name}<strong> {match?.score?.map(score => score?.away)}</strong></td>
-                  <td>{(match?.status) ? <span className='text-success'>Abierto</span> : <span className='text-danger'>Cerrado</span>}</td>
-                  <td><Link className='btn btn-info p-2' to={`../matches/${match?._id}`}>Details</Link></td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-          </div>
-            : <Alert variant="info">There is no information to show!</Alert>}
+              <SectionTodayMatches matchesToday={matchesToday} />
             </Col>
+            </Row>
+            <Row>
+              <Col>
+             <SectionLeagues />
+              </Col>
+              <Col>
+             <SectionSeasonsOpen />
+              </Col>
             </Row>
         </Container>
         </>

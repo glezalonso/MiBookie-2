@@ -51,9 +51,6 @@ const TableTeams = ({ teams }) => {
     setTeam(data)
     setUpdate(true)
   }
-  const handleOnChange = (event) => {
-    setDataFilter(event.target.value)
-  }
 
   const filter = teams.filter(team => {
     if (dataFilter) return team?.name?.toLowerCase().includes(dataFilter.toLowerCase())
@@ -64,10 +61,10 @@ const TableTeams = ({ teams }) => {
         <>
           <div className='mx-2'>
         <Button className="btn btn-warning mb-2" onClick={handleShow} >Create team</Button>
-        <FormControl className="mb-3"placeholder='Search Team...' id='team' name='team' value={dataFilter} onChange={(event) => handleOnChange(event)} />
+        <FormControl className="mb-3"placeholder='Search Team...' id='team' name='team' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
         </div>
         {(!update)
-          ? <ModalTeams team={team} modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
+          ? <ModalTeams modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
           : <ModalTeams team={team} modalShow={modalShow} handleClose={handleClose} action={mutationUpdate} type={'Edit'} setUpdate={setUpdate} /> }
         {(filter?.length > 0)
           ? <Table variant='light my-2' responsive striped hover>
@@ -80,10 +77,10 @@ const TableTeams = ({ teams }) => {
                       Stadium
                     </th>
                     <th>
-                       Status
+                        Sport
                     </th>
                     <th>
-                        Sport
+                       Status
                     </th>
                     <th>
                         Options
@@ -96,7 +93,7 @@ const TableTeams = ({ teams }) => {
                         <td>{team?.name}</td>
                         <td>{team?.stadium}</td>
                         <td>{team?.sport?.sport}</td>
-                        <td>{(team.status) ? <span>Active</span> : <span>Desactive</span>}</td>
+                        <td>{(team.status) ? <span className='text-success'>Active</span> : <span className='text-danger'>Desactive</span>}</td>
                         <td>
                             <ButtonGroup>
                             <Link className='btn btn-info btn-sm mx-1 rounded ' to={`./${team?._id}`}>Details</Link>

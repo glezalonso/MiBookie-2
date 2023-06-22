@@ -55,7 +55,7 @@ const TableSport = ({ sports }) => {
         <>
           <Button variant="warning mb-2" onClick={handleShow}> Create sport</Button>
         {(!update)
-          ? <ModalSports sport={sport} modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
+          ? <ModalSports modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
           : <ModalSports sport={sport} modalShow={modalShow} handleClose={handleClose} action={mutationUpdate} type={'Edit'} setUpdate={setUpdate} /> }
         {(sports?.length > 0)
           ? <Table variant='light my-2' responsive striped hover>

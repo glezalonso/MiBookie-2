@@ -1,17 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { getMatches } from '../../../services/matches'
-import { Table, Alert } from 'react-bootstrap'
+import { Table, Alert, FormControl } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 
 const SectionNextMatches = ({ team }) => {
   const { data: matches } = useQuery({ queryKey: ['matches'], queryFn: getMatches })
+  const [dataFilter, setDataFilter] = useState('')
+
   const filterMatches = matches?.filter(match => match?.local?._id === team?._id || match?.away?._id === team?._id)
   const nextMatches = filterMatches?.filter(match => match?.status !== false)
+  const filter = nextMatches?.filter(match => {
+    if (dataFilter) return match?.round?.round?.toLowerCase().includes(dataFilter.toLowerCase()) || match?.season?.season?.toLowerCase().includes(dataFilter.toLowerCase())
+    else return match
+  })
+
   return (
         <>
         <h5>Next Matches</h5>
-        {(nextMatches?.length > 0)
+        <div className='mx-2 my-3'>
+        <FormControl placeholder='Search round, season..' id='player' name='player' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
+        </div>
+        {(filter?.length > 0)
           ? <div className='table-wrapper-scroll-y my-custom-scrollbar'> <Table responsive variant="light" hover striped >
             <thead>
                 <tr>
@@ -27,7 +37,7 @@ const SectionNextMatches = ({ team }) => {
                 </tr>
             </thead>
             <tbody>
-            {nextMatches?.map(match => (
+            {filter?.map(match => (
             <tr key={match._id} >
              <td>{match?.date?.split('T')[0]}</td>
              <td>{match?.league?.league}</td>

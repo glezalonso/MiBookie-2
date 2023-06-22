@@ -1,15 +1,16 @@
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import Navigate from '../../ui/Navigate'
-import { Spinner, Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import { toast, Toaster } from 'react-hot-toast'
 import { getUsers } from '../../services/users'
 import TableUsers from './components/TableUsers'
+import Loading from '../../ui/Loading'
 
 const Users = () => {
   const { data: users, isLoading, isError } = useQuery({ queryKey: ['users'], queryFn: getUsers })
 
-  if (isLoading) return <Spinner animation="border" variant="warning" />
+  if (isLoading) return <Loading />
   if (isError) return toast.error('failed to load!')
 
   return (
