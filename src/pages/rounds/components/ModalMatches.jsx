@@ -71,6 +71,15 @@ const ModalMatches = ({ round, match, modalShow, handleClose, action, type, setU
                             ))}
                         </Form.Select>
                         </Form.Group>
+
+                        <Form.Group>
+                            <Form.Label>Status</Form.Label>
+                            <Form.Select id="status" name="status"{...formik.getFieldProps('status')} >
+                                <option >Select status</option>
+                                <option value={true}>Activo</option>
+                                <option value={false}>Desactivo</option>
+                            </Form.Select>
+                        </Form.Group>
                         <Form.Group>
                         <Form.Label>Round:</Form.Label>
                         <Form.Select id="round" name="round" {...formik.getFieldProps('round')} disabled>
@@ -81,14 +90,6 @@ const ModalMatches = ({ round, match, modalShow, handleClose, action, type, setU
                         </Form.Select>
                         </Form.Group>
 
-                    <Form.Group>
-                        <Form.Label>Status</Form.Label>
-                        <Form.Select id="status" name="status"{...formik.getFieldProps('status')} >
-                            <option >Select status</option>
-                            <option value={true}>Activo</option>
-                            <option value={false}>Desactivo</option>
-                        </Form.Select>
-                    </Form.Group>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="dark" onClick={() => handleCloseUpdate()}>Close</Button>

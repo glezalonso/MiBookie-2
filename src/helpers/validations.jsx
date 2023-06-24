@@ -1,41 +1,17 @@
 import { toast } from 'react-hot-toast'
 export const verifyLogin = (values) => {
-  const err = validateUser({}, values)
-  const err2 = validatePassword({}, values)
-  if (err) {
-    return err
-  } else {
-    return err2
-  }
-}
-const validateUser = (err = {}, values) => {
-  if (!values.username) {
-    err.username = toast.error('Username is required')
-  } else if (values.username.length < 4) {
-    err.username = toast.error('Username must contain at least 4 characters')
-  } else if (values.username.includes(' ')) {
-    err.username = toast.error('Username must not include spaces')
-  }
-  return err
-}
-
-const validatePassword = (err = {}, values) => {
-  if (!values.password) {
-    err.password = toast.error('Password is required')
-  } else if (values.password.length < 8) {
-    err.password = toast.error('Password must contain at least 8 characters')
-  } else if (values.password.includes(' ')) {
-    err.password = toast.error('Password must not include spaces')
-  }
-  return err
+  if (!values.username) return toast.error('Username is required')
+  if (values.username.length < 4) return toast.error('Username must contain at least 4 characters')
+  if (values.username.includes(' ')) return toast.error('Username must not include spaces')
+  if (!values.password) return toast.error('Passowrd is required')
+  if (values.password.length < 8) return toast.error('Password must contain at least 8 characters')
+  if (values.username.includes(' ')) return toast.error('Password must not include spaces')
 }
 
 export const validateTeam = (values) => {
-  if (!values.name) {
-    return toast.error('Team is required')
-  } else if (!values.sport) {
-    return toast.error('the team must belong to a sport')
-  }
+  if (!values.name) return toast.error('Team is required')
+  if (!values.sport) return toast.error('the team must belong to a sport')
+  if (!values.status) return toast.error('the team status is required')
 }
 
 export const validateSport = (values) => {
@@ -43,21 +19,21 @@ export const validateSport = (values) => {
 }
 
 export const validateSeason = (values) => {
-  if (!values.season) {
-    return toast.error('Season is required')
-  } else if (!values.league) return toast.error(' the season must belong to a league')
+  if (!values.season) return toast.error('Season is required')
+  if (!values.league) return toast.error('The season must belong to a league')
+  if (!values.status) return toast.error('the season status is required')
 }
 
 export const validateRound = (values) => {
-  if (!values.round) {
-    return toast.error('Round is require')
-  } else if (!values.season) return toast.error('the round must belog to a season')
+  if (!values.round) return toast.error('Round is require')
+  if (!values.season) return toast.error('The round must belog to a season')
+  if (!values.status) return toast.error('The round status is required')
 }
 
 export const validatePlayer = (values) => {
-  if (!values.fullName) {
-    return toast.error('Player fullname is require')
-  } else if (!values.sport) return toast.error('the player must belog to a sport')
+  if (!values.fullName) return toast.error('Player fullname is require')
+  if (!values.sport) return toast.error('the player must belog to a sport')
+  if (!values.status) return toast.error('the player status is required')
 }
 
 export const validateMatch = (values) => {
@@ -65,6 +41,7 @@ export const validateMatch = (values) => {
   if (!values.teamHome) return toast.error('the match must have a local team')
   if (!values.teamAway) return toast.error('the match must have a away team')
   if (!values.round) return toast.error('the match must belong to a round')
+  if (!values.status) return toast.error('the match status is required')
 }
 
 export const validateLeague = (values) => {
