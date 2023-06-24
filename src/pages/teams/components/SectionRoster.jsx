@@ -1,28 +1,20 @@
 import React from 'react'
 import { Alert, Button, Table } from 'react-bootstrap'
-import { removePlayer } from '../../../services/teams'
-import toast from 'react-hot-toast'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useRemovePlayer } from '../../../features/teams.features'
 
 const SectionRoster = ({ team }) => {
-  const queryClient = useQueryClient()
-  const mutationDelete = useMutation({
-    mutationFn: removePlayer,
-    onSuccess: () => {
-      toast.success('deleted successfully!')
-      queryClient.invalidateQueries({ queryKey: ['team'] })
-    }
-  })
+  const removePlayer = useRemovePlayer(team?._id)
+
   const handleRemove = (id, playerId, player) => {
     const sure = confirm('Want to delete?')
-    if (sure) return mutationDelete.mutate({ id, data: { playerId, player } })
+    if (sure) return removePlayer.mutate({ id, data: { playerId, player } })
   }
 
   return (
         <>
-            <h4 className="h4">Roster</h4>
+            <h5 className="h5 m-3">Roster</h5>
            { (team?.players?.length > 0)
-             ? <div className='table-wrapper-scroll-y my-custom-scrollbar'> <Table responsive variant="light" hover striped>
+             ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'> <Table responsive variant='dark table-sm'>
                 <thead>
                     <tr>
                     <th>Player</th>
@@ -32,7 +24,7 @@ const SectionRoster = ({ team }) => {
                 <tbody>
 
             { team?.players?.map(player => (
-                 <tr key={player?.playerId}><td>{player?.player}</td><td><Button variant="danger" onClick={() => handleRemove(team?._id, player?.playerId, player?.player)} >Remove</Button></td></tr>
+                 <tr key={player?.playerId}><td>{player?.player}</td><td><Button variant="danger btn-sm" onClick={() => handleRemove(team?._id, player?.playerId, player?.player)} >Remove</Button></td></tr>
             ))}
 
              </tbody>

@@ -1,17 +1,15 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
 import { Container, Row, Col, Breadcrumb } from 'react-bootstrap'
 import Navigate from '../../ui/Navigate'
-import { getSport } from '../../services/sports'
 import toast, { Toaster } from 'react-hot-toast'
 import Loading from '../../ui/Loading'
-
 import SectionLeagues from './components/SectionLeagues'
+import { useGetSport } from '../../features/sports.features'
 
 const SportDetails = () => {
   const { id } = useParams()
-  const { data: sport, isLoading, isError } = useQuery({ queryKey: ['sport', id], queryFn: () => getSport(id) })
+  const { data: sport, isLoading, isError } = useGetSport(id)
 
   if (isLoading) return <Loading />
   if (isError) return toast.error('failed to load!')
@@ -20,12 +18,12 @@ const SportDetails = () => {
         <>
         <Navigate />
         <Toaster position="top-center" reverseOrder={false}></Toaster>
-         <Container >
-          <Row >
-          <Breadcrumb className='mt-3 p-2'>
-          <Breadcrumb.Item active>{sport?.sport}</Breadcrumb.Item>
+         <Container fluid >
+          <Row className='m-1 rounded' >
+          <Breadcrumb className='mx-1 mt-2'>
+          <Breadcrumb.Item className='text-secondary' active>{sport?.sport}</Breadcrumb.Item>
           </Breadcrumb>
-            <Col >
+            <Col lg={12} className='p-2' >
             <SectionLeagues sport={sport} />
             </Col>
           </Row>

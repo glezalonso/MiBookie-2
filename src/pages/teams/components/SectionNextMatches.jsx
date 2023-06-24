@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
-import { getMatches } from '../../../services/matches'
 import { Table, Alert, FormControl } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
+import { useGetMatches } from '../../../features/matches.features'
 
 const SectionNextMatches = ({ team }) => {
-  const { data: matches } = useQuery({ queryKey: ['matches'], queryFn: getMatches })
+  const { data: matches } = useGetMatches()
   const [dataFilter, setDataFilter] = useState('')
 
+  // get matches by team
   const filterMatches = matches?.filter(match => match?.local?._id === team?._id || match?.away?._id === team?._id)
+  // filter matches still open
   const nextMatches = filterMatches?.filter(match => match?.status !== false)
+  // filter by user
   const filter = nextMatches?.filter(match => {
     if (dataFilter) return match?.round?.round?.toLowerCase().includes(dataFilter.toLowerCase()) || match?.season?.season?.toLowerCase().includes(dataFilter.toLowerCase())
     else return match
@@ -17,12 +19,12 @@ const SectionNextMatches = ({ team }) => {
 
   return (
         <>
-        <h5>Next Matches</h5>
+        <h5 className="h5 m-2">Next Matches</h5>
         <div className='mx-2 my-3'>
         <FormControl placeholder='Search round, season..' id='player' name='player' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
         </div>
         {(filter?.length > 0)
-          ? <div className='table-wrapper-scroll-y my-custom-scrollbar'> <Table responsive variant="light" hover striped >
+          ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'> <Table responsive variant='dark table-sm' hover>
             <thead>
                 <tr>
                     <th>Date</th>
@@ -39,7 +41,7 @@ const SectionNextMatches = ({ team }) => {
             <tbody>
             {filter?.map(match => (
             <tr key={match._id} >
-             <td>{match?.date?.split('T')[0]}</td>
+             <td>{match?.date?.split('T')}</td>
              <td>{match?.league?.league}</td>
              <td>{match?.season?.season}</td>
              <td>{match?.round?.round}</td>
@@ -48,7 +50,7 @@ const SectionNextMatches = ({ team }) => {
                : <span className='text-danger'>Closed!</span>}</td>
              <td>{match?.local?.name} <strong> {match?.score?.map(score => score.local)}</strong></td>
              <td>{match?.away?.name} <strong> {match?.score?.map(score => score.away)}</strong></td>
-            <td><Link className="btn btn-info" to={`/matches/${match?._id}`}>Details</Link></td>
+            <td><Link className="btn btn-warning btn-sm" to={`/matches/${match?._id}`}>Details</Link></td>
             </tr>
             ))}
               </tbody>

@@ -4,10 +4,11 @@ import { Table, Alert } from 'react-bootstrap'
 const SectionTodayMatches = ({ matchesToday }) => {
   return (
             <>
-               <h3 className="h3 m-2">Matches Today</h3>
+
+               <h5 className="h5 m-2 p-1">Matches Today</h5>
           {(matchesToday?.length > 0)
             ? <div className='table-wrapper-scroll-y my-custom-scrollbar'>
-            <Table responsive variant="light" hover striped>
+            <Table responsive variant="dark table-sm">
             <thead>
               <tr>
                 <th>Date</th>
@@ -36,7 +37,7 @@ const SectionTodayMatches = ({ matchesToday }) => {
             </tbody>
           </Table>
           </div>
-            : <Alert variant="info">There is no information to show!</Alert>}
+            : <Alert variant="warning">There is no information to show!</Alert>}
             </>
   )
 }

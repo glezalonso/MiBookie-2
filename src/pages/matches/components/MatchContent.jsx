@@ -1,47 +1,31 @@
 import React, { useState } from 'react'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { Row, Button, Table } from 'react-bootstrap'
-import { addLineUp, removeLineUp } from '../../../services/matches'
-import toast from 'react-hot-toast'
 import MatchSettings from './MatchSettings'
 import ModalScore from './ModalScore'
+import { useAddLineUp, useRemoveLineUp } from '../../../features/matches.features'
 
 const MatchContent = ({ match }) => {
-  const queryClient = useQueryClient()
+  const addLineUp = useAddLineUp()
+  const removeLineUp = useRemoveLineUp()
+
   const [modalShow, setModalShow] = useState(false)
 
   const handleClose = () => setModalShow(false)
   const handleShow = () => setModalShow(true)
 
-  const mutationDelete = useMutation({
-    mutationFn: removeLineUp,
-    onSuccess: () => {
-      toast.success('Remove successfully!')
-      queryClient.invalidateQueries({ queryKey: ['match'] })
-    }
-  })
-
-  const mutationCreate = useMutation({
-    mutationFn: addLineUp,
-    onSuccess: () => {
-      toast.success('Added successfully!')
-      queryClient.invalidateQueries({ queryKey: ['match'] })
-    }
-  })
-
   const handleAddLineUp = (id, playerId, player, type) => {
-    mutationCreate.mutate({ id, body: { playerId, player, type } })
+    addLineUp.mutate({ id, body: { playerId, player, type } })
   }
 
   const handleRemoveLineUp = (id, playerId, player, lineId, type) => {
-    mutationDelete.mutate({ id, data: { playerId, player, lineId, type } })
+    removeLineUp.mutate({ id, data: { playerId, player, lineId, type } })
   }
 
   return (
         <>
 
-          <h3 className='h3 mt-2'>Match Details</h3>
-           <Table responsive variant="light " hover striped >
+          <h5 className='h5 mt-3'>Match Details</h5>
+           <Table responsive variant="dark eable-sm" hover >
             <tbody>
             <tr><td>Date</td><td>{match?.date}</td></tr>
             <tr><td>League </td><td>{match?.league?.league}</td></tr>
@@ -57,9 +41,9 @@ const MatchContent = ({ match }) => {
              </tr>
             </tbody>
              </Table>
-             {(match?.status) && <Button variant='warning mb-2' onClick={() => handleShow()}>Place score</Button> }
+             {(match?.status) && <Button variant='warning mb-2 btn-sm' onClick={() => handleShow()}>Place score</Button> }
             <ModalScore match={match} modalShow={modalShow} handleClose={handleClose} />
-            <Row>
+            <Row className='m-1 rounded'>
             {(match?.status) && <MatchSettings match={match} handleRemoveLineUp={handleRemoveLineUp} handleAddLineUp={handleAddLineUp} /> }
             </Row>
 

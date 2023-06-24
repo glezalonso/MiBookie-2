@@ -1,49 +1,25 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getLeagues, deleteLeague, updateLeague, createLeague } from '../../../services/leagues'
 import { Table, Button, Alert, ButtonGroup } from 'react-bootstrap'
-import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query'
-import { toast } from 'react-hot-toast'
 import ModalLeagues from './ModalLeagues'
+import { useCreateLeague, useDeleteLeague, useGetLeagues, useUpdateLeague } from '../../../features/leagues.features'
 
 const SectionLeagues = ({ sport }) => {
-  const queryClient = useQueryClient()
-  const { data: leagues } = useQuery({ queryKey: ['leagues'], queryFn: getLeagues })
+  const { data: leagues } = useGetLeagues()
+  const createLeague = useCreateLeague()
+  const updateLeague = useUpdateLeague()
+  const deleteLeague = useDeleteLeague()
 
   const [modalShow, setModalShow] = useState(false)
   const [league, setLeague] = useState([])
   const [update, setUpdate] = useState(false)
-
-  const mutationDelete = useMutation({
-    mutationFn: deleteLeague,
-    onSuccess: () => {
-      toast.success('deleted successfully!')
-      queryClient.invalidateQueries({ queryKey: ['leagues'] })
-    }
-  })
-
-  const mutationCreate = useMutation({
-    mutationFn: createLeague,
-    onSuccess: () => {
-      toast.success('created successfully!')
-      queryClient.invalidateQueries({ queryKey: ['leagues'] })
-    }
-  })
-
-  const mutationUpdate = useMutation({
-    mutationFn: updateLeague,
-    onSuccess: data => {
-      toast.success('updated successfully !')
-      queryClient.invalidateQueries({ queryKey: ['leagues'] })
-    }
-  })
 
   const handleClose = () => setModalShow(false)
   const handleShow = () => setModalShow(true)
 
   const handleDelete = (id) => {
     const sure = confirm('Want to delete?')
-    if (sure) return mutationDelete.mutate(id)
+    if (sure) return deleteLeague.mutate(id)
   }
 
   const handleUpdate = (data) => {
@@ -56,14 +32,14 @@ const SectionLeagues = ({ sport }) => {
 
   return (
     <>
-              <Button variant="warning mb-2" onClick={handleShow}>Create league</Button>
+              <Button variant="warning mb-2 btn-sm" onClick={handleShow}>Create league</Button>
         {(!update)
-          ? <ModalLeagues sportId={sport?._id} modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
-          : <ModalLeagues league={league} sportId={sport?._id} modalShow={modalShow} handleClose={handleClose} action={mutationUpdate} type={'Edit'} setUpdate={setUpdate} /> }
+          ? <ModalLeagues sportId={sport?._id} modalShow={modalShow} handleClose={handleClose} action={createLeague} type={'Create'} setUpdate={setUpdate} />
+          : <ModalLeagues league={league} sportId={sport?._id} modalShow={modalShow} handleClose={handleClose} action={updateLeague} type={'Edit'} setUpdate={setUpdate} /> }
 
-    <h4 className='h4'>Leagues</h4>
+    <h5 className='h5'>Leagues</h5>
     {(leaguesBySport?.length > 0)
-      ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table variant='light my-2' responsive striped hover>
+      ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'><Table variant='dark table-sm' responsive hover>
         <thead>
             <tr>
                 <th>
@@ -84,7 +60,7 @@ const SectionLeagues = ({ sport }) => {
                 <td>{league?.description}</td>
                 <td>
                 <ButtonGroup>
-                    <Link className='btn btn-info btn-sm mx-1 rounded ' to={`../leagues/${league?._id}`}>Details</Link>
+                    <Link className='btn btn-secondary btn-sm mx-1 rounded ' to={`../leagues/${league?._id}`}>Details</Link>
                     <Button className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(league)}>Edit</Button>
                     <Button className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(league?._id)}>Delete</Button>
                 </ButtonGroup>

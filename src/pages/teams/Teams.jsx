@@ -1,14 +1,13 @@
 import React from 'react'
-import { useQuery } from '@tanstack/react-query'
-import { getTeams } from '../../services/teams'
 import Navigate from '../../ui/Navigate'
 import { Container, Row, Col } from 'react-bootstrap'
 import { toast, Toaster } from 'react-hot-toast'
 import TableTeams from './components/TableTeams'
 import Loading from '../../ui/Loading'
+import { useGetTeams } from '../../features/teams.features'
 
 const Teams = () => {
-  const { data: teams, isLoading, isError } = useQuery({ queryKey: ['teams'], queryFn: getTeams })
+  const { data: teams, isLoading, isError } = useGetTeams()
 
   if (isLoading) return <Loading />
   if (isError) return toast.error('failed to load!')
@@ -17,9 +16,9 @@ const Teams = () => {
         <>
         <Navigate />
         <Toaster position="top-center" reverseOrder={false}></Toaster>
-         <Container >
-          <Row >
-            <Col >
+         <Container fluid >
+          <Row className='m-1 rounded' >
+            <Col xs={12} className='p-2' >
             <TableTeams teams={teams}/>
             </Col>
           </Row>

@@ -1,49 +1,25 @@
-import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query'
-import { toast } from 'react-hot-toast'
 import React, { useState } from 'react'
 import { Table, Button, Alert, ButtonGroup } from 'react-bootstrap'
-import { getMatches, createMatch, updateMatch, deleteMatch } from '../../../services/matches'
 import ModalMatches from './ModalMatches'
 import { Link } from 'react-router-dom'
+import { useCreateMatch, useDeleteMatch, useGetMatches, useUpdateMatch } from '../../../features/matches.features'
 
 const SectionMatches = ({ round }) => {
-  const queryClient = useQueryClient()
-  const { data: matches } = useQuery({ queryKey: ['matches'], queryFn: getMatches })
+  const { data: matches } = useGetMatches()
+  const createMatch = useCreateMatch()
+  const updateMatch = useUpdateMatch()
+  const deleteMatch = useDeleteMatch()
 
   const [modalShow, setModalShow] = useState(false)
   const [match, setMatch] = useState([])
   const [update, setUpdate] = useState(false)
-
-  const mutationDelete = useMutation({
-    mutationFn: deleteMatch,
-    onSuccess: () => {
-      toast.success('deleted successfully!')
-      queryClient.invalidateQueries({ queryKey: ['matches'] })
-    }
-  })
-
-  const mutationCreate = useMutation({
-    mutationFn: createMatch,
-    onSuccess: () => {
-      toast.success('created successfully!')
-      queryClient.invalidateQueries({ queryKey: ['matches'] })
-    }
-  })
-
-  const mutationUpdate = useMutation({
-    mutationFn: updateMatch,
-    onSuccess: data => {
-      toast.success('updated successfully !')
-      queryClient.invalidateQueries({ queryKey: ['matches'] })
-    }
-  })
 
   const handleClose = () => setModalShow(false)
   const handleShow = () => setModalShow(true)
 
   const handleDelete = (id) => {
     const sure = confirm('Want to delete?')
-    if (sure) return mutationDelete.mutate(id)
+    if (sure) return deleteMatch.mutate(id)
   }
 
   const handleUpdate = (data) => {
@@ -57,14 +33,14 @@ const SectionMatches = ({ round }) => {
   return (
         <>
 
-        <Button variant="warning mb-2" onClick={handleShow}>Create match</Button>
+        <Button variant="warning mb-2 btn-sm" onClick={handleShow}>Create match</Button>
         {(!update)
-          ? <ModalMatches match={match} modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
-          : <ModalMatches round={round} match={match} modalShow={modalShow} handleClose={handleClose} action={mutationUpdate} type={'Edit'} setUpdate={setUpdate} /> }
+          ? <ModalMatches round={round} modalShow={modalShow} handleClose={handleClose} action={createMatch} type={'Create'} setUpdate={setUpdate} />
+          : <ModalMatches round={round} match={match} modalShow={modalShow} handleClose={handleClose} action={updateMatch} type={'Edit'} setUpdate={setUpdate} /> }
 
-        <h4 className='h4'>Matches</h4>
+        <h5 className='h5'>Matches</h5>
         {(matchByRound?.length > 0)
-          ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table variant='light my-2' responsive striped hover>
+          ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table variant='dark table-sm' responsive hover >
             <thead>
                 <tr>
                     <th>Date</th>
@@ -91,7 +67,7 @@ const SectionMatches = ({ round }) => {
                           : <span className='text-danger'>Closed!</span>}</td>
                         <td>
                         <ButtonGroup>
-                        <Link className='btn btn-info btn-sm mx-1 rounded ' to={`../matches/${match?._id}`}>Details</Link>
+                        <Link className='btn btn-secondary btn-sm mx-1 rounded ' to={`../matches/${match?._id}`}>Details</Link>
                         <Button className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(match)}>Edit</Button>
                         <Button className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(match?._id)}>Delete</Button>
                         </ButtonGroup>

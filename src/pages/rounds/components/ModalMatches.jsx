@@ -1,14 +1,13 @@
 import React from 'react'
 import { Modal, Form, Button, FormControl } from 'react-bootstrap'
-import { getTeams } from '../../../services/teams'
 import { useFormik } from 'formik'
-import { useQuery } from '@tanstack/react-query'
 import { validateMatch } from '../../../helpers/validations'
-import { getRounds } from '../../../services/rounds'
+import { useGetTeams } from '../../../features/teams.features'
+import { useGetRounds } from '../../../features/rounds.features'
 
 const ModalMatches = ({ round, match, modalShow, handleClose, action, type, setUpdate }) => {
-  const { data: teams } = useQuery({ queryKey: ['teams'], queryFn: getTeams })
-  const { data: rounds } = useQuery({ queryKey: ['rounds'], queryFn: getRounds })
+  const { data: teams } = useGetTeams()
+  const { data: rounds } = useGetRounds()
 
   const formik = useFormik({
     enableReinitialize: true,

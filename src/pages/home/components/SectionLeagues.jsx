@@ -1,18 +1,17 @@
 import React from 'react'
-import { useQuery } from '@tanstack/react-query'
-import { getLeagues } from '../../../services/leagues'
+import { useGetLeagues } from '../../../features/leagues.features'
 import { Table, Alert } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const SectionLeagues = () => {
-  const { data: leagues } = useQuery({ queryKey: ['leagues'], queryFn: getLeagues })
+  const { data: leagues } = useGetLeagues()
   return (
         <>
-        <h5 className="h5">Leagues</h5>
+        <h5 className="h5 m-2">Leagues</h5>
          {(leagues?.length > 0)
-           ? <div className='table-wrapper-scroll-y my-custom-scrollbar'>
-             <Table responsive variant="light" hover striped>
-            <thead>
+           ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'>
+             <Table responsive variant="dark table-sm">
+            <thead >
                 <tr>
                     <th>
                         League
@@ -26,13 +25,13 @@ const SectionLeagues = () => {
                 {leagues?.map(league => (
                     <tr key={league?._id}>
                        <td>{league?.league}</td>
-                       <td><Link to={`../leagues/${league?._id}`} className='btn btn-sm btn-info'>Details</Link></td>
+                       <td><Link to={`../leagues/${league?._id}`} className='btn btn-sm btn-warning'>Details</Link></td>
                     </tr>
                 ))}
             </tbody>
         </Table>
         </div>
-           : <Alert variant="info">There is no information to show!</Alert>}
+           : <Alert variant="warning">There is no information to show!</Alert>}
         </>
   )
 }

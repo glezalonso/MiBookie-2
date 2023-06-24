@@ -4,8 +4,8 @@ import { Card } from 'react-bootstrap'
 const SectionTeam = ({ team }) => {
   return (
         <>
-        <div className='w-100 bt-2 mb-2'>
-      <Card bg='dark' text='white'>
+        <div className="d-flex mt-2">
+        <Card bg='dark' text='white'>
         <Card.Body>
         <Card.Title>Team: {team?.name}</Card.Title>
         <Card.Subtitle>Stadium: {team?.stadium} </Card.Subtitle>

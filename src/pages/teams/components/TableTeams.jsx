@@ -1,49 +1,26 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Table, Button, Alert, ButtonGroup, FormControl } from 'react-bootstrap'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { createTeam, updateTeam, deleteTeam } from '../../../services/teams'
-import { toast } from 'react-hot-toast'
 import ModalTeams from './ModalTeams'
+import { useDeleteTeam, useCreateTeam, useUpdateTeam } from '../../../features/teams.features'
 
 const TableTeams = ({ teams }) => {
+  const createTeam = useCreateTeam()
+  const deleteTeam = useDeleteTeam()
+  const updateTeam = useUpdateTeam()
+
   const [dataFilter, setDataFilter] = useState('')
-  const queryClient = useQueryClient()
 
   const [modalShow, setModalShow] = useState(false)
   const [team, setTeam] = useState([])
   const [update, setUpdate] = useState(false)
-
-  const mutationDelete = useMutation({
-    mutationFn: deleteTeam,
-    onSuccess: () => {
-      toast.success('deleted successfully!')
-      queryClient.invalidateQueries({ queryKey: ['teams'] })
-    }
-  })
-
-  const mutationCreate = useMutation({
-    mutationFn: createTeam,
-    onSuccess: () => {
-      toast.success('created successfully!')
-      queryClient.invalidateQueries({ queryKey: ['teams'] })
-    }
-  })
-
-  const mutationUpdate = useMutation({
-    mutationFn: updateTeam,
-    onSuccess: data => {
-      toast.success('updated successfully !')
-      queryClient.invalidateQueries({ queryKey: ['teams'] })
-    }
-  })
 
   const handleClose = () => setModalShow(false)
   const handleShow = () => setModalShow(true)
 
   const handleDelete = (id) => {
     const sure = confirm('Want to delete?')
-    if (sure) return mutationDelete.mutate(id)
+    if (sure) return deleteTeam.mutate(id)
   }
 
   const handleUpdate = (data) => {
@@ -64,10 +41,10 @@ const TableTeams = ({ teams }) => {
         <FormControl className="mb-3"placeholder='Search Team...' id='team' name='team' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
         </div>
         {(!update)
-          ? <ModalTeams modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
-          : <ModalTeams team={team} modalShow={modalShow} handleClose={handleClose} action={mutationUpdate} type={'Edit'} setUpdate={setUpdate} /> }
+          ? <ModalTeams modalShow={modalShow} handleClose={handleClose} action={createTeam} type={'Create'} setUpdate={setUpdate} />
+          : <ModalTeams team={team} modalShow={modalShow} handleClose={handleClose} action={updateTeam} type={'Edit'} setUpdate={setUpdate} /> }
         {(filter?.length > 0)
-          ? <Table variant='light my-2' responsive striped hover>
+          ? <Table responsive variant='dark table-sm' hover>
             <thead>
                 <tr>
                     <th>

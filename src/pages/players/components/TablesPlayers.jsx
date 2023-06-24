@@ -1,49 +1,25 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Table, Button, Alert, ButtonGroup, FormControl } from 'react-bootstrap'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { createPlayer, updatePlayer, deletePlayer } from '../../../services/players'
-import { toast } from 'react-hot-toast'
 import ModalPlayers from './ModalPlayers'
+import { useCreatePlayer, useDeletePlayer, useUpdatePlayer } from '../../../features/players.features'
 
 const TableSport = ({ players }) => {
   const [dataFilter, setDataFilter] = useState('')
-  const queryClient = useQueryClient()
+  const createPlayer = useCreatePlayer()
+  const updatePlayer = useUpdatePlayer()
+  const deletePlayer = useDeletePlayer()
 
   const [modalShow, setModalShow] = useState(false)
   const [player, setPlayer] = useState([])
   const [update, setUpdate] = useState(false)
-
-  const mutationDelete = useMutation({
-    mutationFn: deletePlayer,
-    onSuccess: () => {
-      toast.success('deleted successfully!')
-      queryClient.invalidateQueries({ queryKey: ['players'] })
-    }
-  })
-
-  const mutationCreate = useMutation({
-    mutationFn: createPlayer,
-    onSuccess: () => {
-      toast.success('created successfully!')
-      queryClient.invalidateQueries({ queryKey: ['players'] })
-    }
-  })
-
-  const mutationUpdate = useMutation({
-    mutationFn: updatePlayer,
-    onSuccess: data => {
-      toast.success('updated successfully !')
-      queryClient.invalidateQueries({ queryKey: ['players'] })
-    }
-  })
 
   const handleClose = () => setModalShow(false)
   const handleShow = () => setModalShow(true)
 
   const handleDelete = (id) => {
     const sure = confirm('Want to delete?')
-    if (sure) return mutationDelete.mutate(id)
+    if (sure) return deletePlayer.mutate(id)
   }
 
   const handleUpdate = (data) => {
@@ -64,10 +40,10 @@ const TableSport = ({ players }) => {
         <FormControl placeholder='Search player, team,  sport...' id='player' name='player' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
         </div>
         {(!update)
-          ? <ModalPlayers modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
-          : <ModalPlayers player={player} modalShow={modalShow} handleClose={handleClose} action={mutationUpdate} type={'Edit'} setUpdate={setUpdate} /> }
+          ? <ModalPlayers modalShow={modalShow} handleClose={handleClose} action={createPlayer} type={'Create'} setUpdate={setUpdate} />
+          : <ModalPlayers player={player} modalShow={modalShow} handleClose={handleClose} action={updatePlayer} type={'Edit'} setUpdate={setUpdate} /> }
         {(filter?.length > 0)
-          ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table className='table-light table-wrapper-scroll-y' responsive striped hover>
+          ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table responsive variant='dark table-sm'>
             <thead>
                 <tr>
                     <th>
@@ -100,7 +76,7 @@ const TableSport = ({ players }) => {
                         <td>{player?.team?.name}</td>
                         <td>
                             <ButtonGroup>
-                            <Link className='btn btn-info btn-sm mx-1 rounded ' to={`./${player?._id}`}>Details</Link>
+                            <Link className='btn btn-secondary btn-sm mx-1 rounded ' to={`./${player?._id}`}>Details</Link>
                             <Button className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(player)}>Edit</Button>
                             <Button className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(player?._id)}>Delete</Button>
                             </ButtonGroup>

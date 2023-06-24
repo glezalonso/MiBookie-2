@@ -1,5 +1,5 @@
 #body {
-    background:rgb(36, 36, 36);
+    background: #222;;
     color: white;
     }
     
@@ -7,33 +7,22 @@
     background-color:black;
 
   }
-  .container {
-    position: relative;
-    padding: 15px;
-    background-color:rgb(36, 36, 36);
-  }
-  
+
   .row{
-    position: relative;
-    padding: 5px;
-    padding-left: 5px;
-    margin: 5px;
-    background-color: white;
-    color: black;
-    border-radius: 15px;
-
+   
+    background-color: black;
+    color:white;
+   
   }
-  .col {
-   margin-right: 1px;
-   padding-top: 5px;
-   padding-bottom: 5px;
 
-  }
   .my-custom-scrollbar {
     position: relative;
     max-height: 500px;
     overflow: auto;
     }
-    .table-wrapper-scroll-y {
+
+  .table-wrapper-scroll-y {
     display: block;
     }
+
+   

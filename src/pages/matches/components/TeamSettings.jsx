@@ -6,7 +6,7 @@ const TeamSettings = ({ match, handleRemoveLineUp, type }) => {
         <>
         {(type === 'local')
           ? (match?.lineup?.length > 0)
-              ? <Table responsive variant="light" striped>
+              ? <Table responsive variant="dark table-sm" striped>
                 <thead>
                     <tr>
                         <th>Player</th>
@@ -15,7 +15,7 @@ const TeamSettings = ({ match, handleRemoveLineUp, type }) => {
                 </thead>
                 <tbody>
                 { match?.lineup?.map(local => local?.local?.map(player => (
-                <tr key={player?.playerId}><td>{player?.player}</td><td><Button variant="danger" onClick={() => handleRemoveLineUp(match?._id, player?.playerId, player?.player, player?._id, 'local')}>Remover</Button></td></tr>
+                <tr key={player?.playerId}><td>{player?.player}</td><td><Button variant="danger btn-sm" onClick={() => handleRemoveLineUp(match?._id, player?.playerId, player?.player, player?._id, 'local')}>Remover</Button></td></tr>
                 )))}
 
                </tbody>
@@ -23,7 +23,7 @@ const TeamSettings = ({ match, handleRemoveLineUp, type }) => {
               : <Alert variant='warning'>There is no information to show!</Alert>
 
           : (match?.lineup?.length > 0)
-              ? <Table responsive variant="light" striped>
+              ? <Table responsive variant="dark table-sm" striped>
                 <thead>
                     <tr>
                         <th>Player</th>
@@ -32,7 +32,7 @@ const TeamSettings = ({ match, handleRemoveLineUp, type }) => {
                 </thead>
                 <tbody>
                     { match?.lineup?.map(away => away?.away?.map(player => (
-                    <tr key={player?.playerId}><td>{player?.player}</td><td><Button variant="danger" onClick={() => handleRemoveLineUp(match?._id, player?.playerId, player?.player, player?._id, 'away')}>Remove from lineup</Button></td></tr>
+                    <tr key={player?.playerId}><td>{player?.player}</td><td><Button variant="danger btn-sm" onClick={() => handleRemoveLineUp(match?._id, player?.playerId, player?.player, player?._id, 'away')}>Remove from lineup</Button></td></tr>
 
                     )))}
               </tbody>

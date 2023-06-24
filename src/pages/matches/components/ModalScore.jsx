@@ -1,22 +1,13 @@
 import React from 'react'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { Modal, Form, Button, FormControl } from 'react-bootstrap'
 import { useFormik } from 'formik'
-import { toast } from 'react-hot-toast'
-import { closeMatch } from '../../../services/matches'
 import { useNavigate } from 'react-router-dom'
+import { useCloseMatch } from '../../../features/matches.features'
 
 const ModalScore = ({ match, modalShow, handleClose }) => {
-  const queryClient = useQueryClient()
+  const closeMatch = useCloseMatch()
   const navigate = useNavigate()
 
-  const mutationUpdate = useMutation({
-    mutationFn: closeMatch,
-    onSuccess: () => {
-      toast.success('placed successfully !')
-      queryClient.invalidateQueries({ queryKey: ['matches'] })
-    }
-  })
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -27,7 +18,7 @@ const ModalScore = ({ match, modalShow, handleClose }) => {
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: (values) => {
-      mutationUpdate.mutate({ id: match?._id, body: values })
+      closeMatch.mutate({ id: match?._id, body: values })
       formik.resetForm()
       handleClose()
       navigate(`../rounds/${match?.round?._id}`)

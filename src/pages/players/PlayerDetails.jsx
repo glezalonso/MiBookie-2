@@ -1,23 +1,24 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
-import { getPlayer } from '../../services/players'
 import toast from 'react-hot-toast'
 import Loading from '../../ui/Loading'
+import Navigate from '../../ui/Navigate'
 import { Container, Row, Col, Card } from 'react-bootstrap'
+import { useGetPlayer } from '../../features/players.features'
 
 const PlayerDetails = () => {
   const { id } = useParams()
-  const { data: player, isLoading, isError } = useQuery({ queryKey: ['player', id], queryFn: () => getPlayer(id) })
+  const { data: player, isLoading, isError } = useGetPlayer(id)
 
   if (isLoading) return <Loading />
   if (isError) return toast.error('failed to load!')
 
   return (
         <>
-        <Container>
-          <Row>
-            <Col>
+         <Navigate />
+        <Container fluid>
+          <Row className='m-1 rounded'>
+            <Col xs={12} className='p-2'>
             <Card>
               <Card.Header><Card.Title>{player?.fullName}</Card.Title></Card.Header>
               <Card.Body>

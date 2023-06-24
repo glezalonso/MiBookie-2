@@ -1,27 +1,32 @@
 import React, { useState } from 'react'
-import { getMatches } from '../../../services/matches'
 import { Table, Alert, FormControl } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
+import { useGetMatches } from '../../../features/matches.features'
 
 const SectionMatches = ({ team }) => {
-  const { data: matches } = useQuery({ queryKey: ['matches'], queryFn: getMatches })
+  const { data: matches } = useGetMatches()
+
   const [dataFilter, setDataFilter] = useState('')
 
+  // matches by team
   const filterMatches = matches?.filter(match => match?.local?._id === team?._id || match?.away?._id === team?._id)
+
+  // filter match closed
   const lastMatches = filterMatches?.filter(match => match?.status !== true)
+
+  // filter bu user
   const filter = lastMatches?.filter(match => {
     if (dataFilter) return match?.round?.round?.toLowerCase().includes(dataFilter.toLowerCase()) || match?.season?.season?.toLowerCase().includes(dataFilter.toLowerCase())
     else return match
   })
   return (
         <>
-        <h5>Last Matches</h5>
+        <h5 className='h5 m-2'>Last Matches</h5>
         <div className='mx-2 my-3'>
         <FormControl placeholder='Search round, season..' id='player' name='player' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
         </div>
         {(filter?.length > 0)
-          ? <div className='table-wrapper-scroll-y my-custom-scrollbar'> <Table responsive variant="light" hover striped >
+          ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'> <Table responsive variant='dark table-sm' hover >
             <thead>
                 <tr>
                     <th>Date</th>
@@ -47,7 +52,7 @@ const SectionMatches = ({ team }) => {
                : <span className='text-danger'>Closed!</span>}</td>
              <td>{match?.local?.name} <strong> {match?.score?.map(score => score.local)}</strong></td>
              <td>{match?.away?.name} <strong> {match?.score?.map(score => score.away)}</strong></td>
-            <td><Link className="btn btn-info" to={`/matches/${match?._id}`}>Details</Link></td>
+            <td><Link className="btn btn-warning btn-sm" to={`/matches/${match?._id}`}>Details</Link></td>
             </tr>
             ))}
               </tbody>

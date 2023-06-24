@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import { useFormik } from 'formik'
-import { getSports } from '../../../services/sports'
 import { convertToBase64 } from '../../../helpers/converters'
 import { Modal, Form, Button, FormControl } from 'react-bootstrap'
 import { validateTeam } from '../../../helpers/validations'
-import { useQuery } from '@tanstack/react-query'
+import { useGetSports } from '../../../features/sports.features'
 
 const ModalTeams = ({ team, modalShow, handleClose, action, type, setUpdate }) => {
-  const { data: sports } = useQuery({ queryKey: ['sports'], queryFn: getSports })
+  const { data: sports } = useGetSports()
   const [file, setFile] = useState()
 
   const formik = useFormik({

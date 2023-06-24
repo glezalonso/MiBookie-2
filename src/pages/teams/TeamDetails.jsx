@@ -1,9 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { getTeam } from '../../services/teams'
 import toast, { Toaster } from 'react-hot-toast'
 import { Container, Row, Col } from 'react-bootstrap'
-import { useQuery } from '@tanstack/react-query'
 import Navigate from '../../ui/Navigate'
 import Loading from '../../ui/Loading'
 import SectionTeam from './components/SectionTeam'
@@ -11,10 +9,11 @@ import SectionMatches from './components/SectionMatches'
 import SectionRoster from './components/SectionRoster'
 import SectionPlayers from './components/SectionPlayers'
 import SectionNextMatches from './components/SectionNextMatches'
+import { useGetTeam } from '../../features/teams.features'
 
 const TeamDetail = () => {
   const { id } = useParams()
-  const { data: team, isLoading, isError } = useQuery({ queryKey: ['team', id], queryFn: () => getTeam(id) })
+  const { data: team, isLoading, isError } = useGetTeam(id)
 
   if (isLoading) return <Loading />
   if (isError) return toast.error('failed to load!')
@@ -23,23 +22,22 @@ const TeamDetail = () => {
         <>
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
-        <Container >
+        <Container fluid >
              <SectionTeam team={team} />
-          <Row>
-            <Col className='m-1'>
+          <Row className='m-1 rounded'>
+            <Col lg={6} className='p-2'>
               <SectionNextMatches team={team} />
             </Col>
-            </Row>
-            <Row>
-            <Col className='m-1'>
+
+            <Col lg={6} className='p-2'>
               <SectionMatches team={team} />
             </Col >
-          </Row>
-          <Row>
-            <Col className='col-xs-6'>
+          </Row >
+          <Row className='m-1 rounded'>
+            <Col md={6} className='p-2'>
               <SectionRoster team={team} />
             </Col>
-            <Col className='col-xs-6'>
+            <Col md={6} className='p-2'>
               <SectionPlayers team={team} />
             </Col>
           </Row>

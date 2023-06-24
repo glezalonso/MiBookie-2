@@ -1,14 +1,13 @@
 import React from 'react'
 import { Modal, Form, Button, FormControl } from 'react-bootstrap'
-import { getLeagues } from '../../../services/leagues'
 import { useFormik } from 'formik'
-import { useQuery } from '@tanstack/react-query'
 import { validateSeason } from '../../../helpers/validations'
-import { getSports } from '../../../services/sports'
+import { useGetLeagues } from '../../../features/leagues.features'
+import { useGetSports } from '../../../features/sports.features'
 
 const ModalSeasons = ({ league, season, modalShow, handleClose, action, type, setUpdate }) => {
-  const { data: leagues } = useQuery({ queryKey: ['leagues'], queryFn: getLeagues })
-  const { data: sports } = useQuery({ queryKey: ['sports'], queryFn: getSports })
+  const { data: leagues } = useGetLeagues()
+  const { data: sports } = useGetSports()
 
   const formik = useFormik({
     enableReinitialize: true,

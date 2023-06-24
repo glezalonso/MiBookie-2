@@ -9,5 +9,5 @@ export const useAuthStore = create(persist((set) => ({
   setAuth: (token) => set(status => ({ auth: token, isLogged: true })),
   setProfile: (username) => set(status => ({ profile: username })),
   setIsAdmin: (isAdmin) => set(status => ({ isAdmin })),
-  logOut: () => set(status => ({ auth: '', isLogged: false }))
+  logOut: () => set(status => ({ auth: '', isLogged: false, profile: '', isAdmin: false }))
 }), { name: 'auth' }))

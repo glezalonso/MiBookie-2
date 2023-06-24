@@ -1,48 +1,24 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Table, Button, Alert, ButtonGroup } from 'react-bootstrap'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { deleteSport, createSport, updateSport } from '../../../services/sports'
-import { toast } from 'react-hot-toast'
 import ModalSports from './ModalSports'
+import { useCreateSport, useDeleteSport, useUpdateSport } from '../../../features/sports.features'
 
 const TableSport = ({ sports }) => {
-  const queryClient = useQueryClient()
+  const createSport = useCreateSport()
+  const updateSport = useUpdateSport()
+  const deleteSport = useDeleteSport()
 
   const [modalShow, setModalShow] = useState(false)
   const [sport, setSport] = useState([])
   const [update, setUpdate] = useState(false)
-
-  const mutationDelete = useMutation({
-    mutationFn: deleteSport,
-    onSuccess: () => {
-      toast.success('deleted successfully!')
-      queryClient.invalidateQueries({ queryKey: ['sports'] })
-    }
-  })
-
-  const mutationCreate = useMutation({
-    mutationFn: createSport,
-    onSuccess: () => {
-      toast.success('created successfully!')
-      queryClient.invalidateQueries({ queryKey: ['sports'] })
-    }
-  })
-
-  const mutationUpdate = useMutation({
-    mutationFn: updateSport,
-    onSuccess: data => {
-      toast.success('updated successfully !')
-      queryClient.invalidateQueries({ queryKey: ['sports'] })
-    }
-  })
 
   const handleClose = () => setModalShow(false)
   const handleShow = () => setModalShow(true)
 
   const handleDelete = (id) => {
     const sure = confirm('Want to delete?')
-    if (sure) return mutationDelete.mutate(id)
+    if (sure) return deleteSport.mutate(id)
   }
 
   const handleUpdate = (data) => {
@@ -53,12 +29,12 @@ const TableSport = ({ sports }) => {
 
   return (
         <>
-          <Button variant="warning mb-2" onClick={handleShow}> Create sport</Button>
+          <Button variant="warning m-1 btn-sm" onClick={handleShow}> Create sport</Button>
         {(!update)
-          ? <ModalSports modalShow={modalShow} handleClose={handleClose} action={mutationCreate} type={'Create'} setUpdate={setUpdate} />
-          : <ModalSports sport={sport} modalShow={modalShow} handleClose={handleClose} action={mutationUpdate} type={'Edit'} setUpdate={setUpdate} /> }
+          ? <ModalSports modalShow={modalShow} handleClose={handleClose} action={createSport} type={'Create'} setUpdate={setUpdate} />
+          : <ModalSports sport={sport} modalShow={modalShow} handleClose={handleClose} action={updateSport} type={'Edit'} setUpdate={setUpdate} /> }
         {(sports?.length > 0)
-          ? <Table variant='light my-2' responsive striped hover>
+          ? <Table variant='dark table-sm mt-2' responsive hover>
             <thead>
                 <tr>
                     <th>
@@ -79,7 +55,7 @@ const TableSport = ({ sports }) => {
                         <td>{sport?.description}</td>
                         <td>
                             <ButtonGroup>
-                            <Link className='btn btn-info btn-sm mx-1 rounded ' to={`./${sport?._id}`}>Details</Link>
+                            <Link className='btn btn-secondary btn-sm mx-1 rounded ' to={`./${sport?._id}`}>Details</Link>
                             <Button className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(sport)}>Edit</Button>
                             <Button className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(sport?._id)}>Delete</Button>
                             </ButtonGroup>
