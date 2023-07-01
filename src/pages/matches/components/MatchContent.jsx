@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Row, Button, Table } from 'react-bootstrap'
+import { Button, Table } from 'react-bootstrap'
 import MatchSettings from './MatchSettings'
 import ModalScore from './ModalScore'
 import { useAddLineUp, useRemoveLineUp } from '../../../features/matches.features'
@@ -13,12 +13,12 @@ const MatchContent = ({ match }) => {
   const handleClose = () => setModalShow(false)
   const handleShow = () => setModalShow(true)
 
-  const handleAddLineUp = (id, playerId, player, type) => {
-    addLineUp.mutate({ id, body: { playerId, player, type } })
+  const handleAddLineUp = (id, playerId, type) => {
+    addLineUp.mutate({ id, body: { playerId, type } })
   }
 
-  const handleRemoveLineUp = (id, playerId, player, lineId, type) => {
-    removeLineUp.mutate({ id, data: { playerId, player, lineId, type } })
+  const handleRemoveLineUp = (id, playerId, lineId, type) => {
+    removeLineUp.mutate({ id, data: { playerId, lineId, type } })
   }
 
   return (
@@ -43,9 +43,8 @@ const MatchContent = ({ match }) => {
              </Table>
              {(match?.status) && <Button variant='warning mb-2 btn-sm' onClick={() => handleShow()}>Place score</Button> }
             <ModalScore match={match} modalShow={modalShow} handleClose={handleClose} />
-            <Row className='m-1 rounded'>
+
             {(match?.status) && <MatchSettings match={match} handleRemoveLineUp={handleRemoveLineUp} handleAddLineUp={handleAddLineUp} /> }
-            </Row>
 
         </>
   )

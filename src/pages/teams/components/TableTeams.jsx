@@ -73,7 +73,7 @@ const TableTeams = ({ teams }) => {
                         <td>{(team.status) ? <span className='text-success'>Active</span> : <span className='text-danger'>Desactive</span>}</td>
                         <td>
                             <ButtonGroup>
-                            <Link className='btn btn-info btn-sm mx-1 rounded ' to={`./${team?._id}`}>Details</Link>
+                            <Link className='btn btn-secondary btn-sm mx-1 rounded ' to={`./${team?._id}`}>Details</Link>
                             <Button className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(team)}>Edit</Button>
                             <Button className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(team?._id)}>Delete</Button>
                             </ButtonGroup>

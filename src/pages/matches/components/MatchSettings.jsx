@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col } from 'react-bootstrap'
+import { Col, Row } from 'react-bootstrap'
 import { useGetTeams } from '../../../features/teams.features'
 import TeamSettings from './TeamSettings'
 import Roster from './Roster'
@@ -13,22 +13,27 @@ const MatchSettings = ({ match, handleRemoveLineUp, handleAddLineUp }) => {
   return (
         <>
 
-            <Col lg={6} className='p-2'>
-            <h5 className='h5 mt-1'><center><strong>Local team settings</strong></center></h5 >
-            <br />
-            <h5 className="h5">LineUp</h5>
+        <Row className='m-1 mx-auto p-2 rounded'>
+          <Col md={6}>
+          <h5 className="h5">LineUp Local</h5>
             <TeamSettings match={match} handleRemoveLineUp={handleRemoveLineUp} type={'local'}/>
+          </Col>
+          <Col md={6}>
+          <h5 className="h5">LineUp Away</h5>
+            <TeamSettings match={match} handleRemoveLineUp={handleRemoveLineUp} type={'away'}/>
+          </Col>
+            </Row>
+            <Row className='m-1 p-2 mx-auto rounded'>
+            <Col md={6} >
+
            <h5 className="h5">Roster</h5>
            <Roster match={match} roster={rostLocal} handleAddLineUp={handleAddLineUp} type={'local'}/>
             </Col>
-            <Col lg={6} className='p-2' >
-            <h5 className='h5 mt-1'><center><strong>Away team settings</strong></center></h5 >
-            <br />
-            <h5 className="h5">LineUp</h5>
-            <TeamSettings match={match} handleRemoveLineUp={handleRemoveLineUp} type={'away'}/>
+            <Col md={6} className='p-2' >
             <h5 className="h5">Roster</h5>
             <Roster match={match} roster={rostAway} handleAddLineUp={handleAddLineUp} type={'away'}/>
             </Col>
+            </Row>
 
         </>
   )

@@ -11,8 +11,8 @@ const SectionPlayers = ({ team }) => {
 
   const [dataFilter, setDataFilter] = useState('')
 
-  const handleAdd = (id, playerId, player) => {
-    addPlayer.mutate({ id, body: { playerId, player } })
+  const handleAdd = (id, playerId) => {
+    addPlayer.mutate({ id, body: { playerId } })
   }
 
   if (isLoading) return <Loading />
@@ -41,12 +41,13 @@ const SectionPlayers = ({ team }) => {
                 <thead>
                     <tr>
                         <th>Player</th>
+                        <th>Position</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
           { filter?.map(player => (
-            <tr key={player?._id}><td>{player?.fullName}</td><td> <Button variant="warning btn-sm" onClick={() => handleAdd(team?._id, player?._id, player?.fullName)}>Add</Button></td></tr>
+            <tr key={player?._id}><td>{player?.fullName}</td><td>{player?.position}</td><td> <Button variant="warning btn-sm" onClick={() => handleAdd(team?._id, player?._id)}>Add</Button></td></tr>
           ))}
             </tbody>
            </Table>

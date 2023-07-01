@@ -56,6 +56,7 @@ export const validateEmail = (values) => {
 export const validateOTP = (values) => {
   if (!values.OTP) return toast.error('OTP is required')
   if (values.OTP.length !== 6) return toast.error('OTP must have 6 characters')
+  if (values.OTP.includes(' ')) return toast.error('OTP must not include spaces')
 }
 
 export const validateResetPassword = (values) => {

@@ -1,29 +1,13 @@
 import React from 'react'
 import { useFormik } from 'formik'
-import toast, { Toaster } from 'react-hot-toast'
+import { Toaster } from 'react-hot-toast'
 import { Form, Button, Container, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { verifyLogin } from '../helpers/validations'
-import { useMutation } from '@tanstack/react-query'
-import { login } from '../services/users'
-import { useAuthStore } from '../store/auth'
+import { useLogin } from '../features/users.features'
 
 const Login = () => {
-  const auth = useAuthStore(state => state.setAuth)
-  const profile = useAuthStore(state => state.setProfile)
-  const isAdmin = useAuthStore(state => state.setIsAdmin)
-
-  const getLogin = useMutation(
-    {
-      mutationFn: login,
-      onSuccess: data => {
-        toast.success('Logged in! ')
-        auth(data.data.token)
-        profile(data.data.username)
-        isAdmin(data.data.isAdmin)
-      },
-      onError: () => toast.error('Failed to log in!')
-    })
+  const login = useLogin()
 
   const formik = useFormik({
     initialValues: {
@@ -34,7 +18,7 @@ const Login = () => {
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: (values) => {
-      getLogin.mutate(values)
+      login.mutate(values)
     }
 
   })

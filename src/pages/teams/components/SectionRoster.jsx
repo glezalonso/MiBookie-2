@@ -5,9 +5,9 @@ import { useRemovePlayer } from '../../../features/teams.features'
 const SectionRoster = ({ team }) => {
   const removePlayer = useRemovePlayer(team?._id)
 
-  const handleRemove = (id, playerId, player) => {
+  const handleRemove = (id, playerId) => {
     const sure = confirm('Want to delete?')
-    if (sure) return removePlayer.mutate({ id, data: { playerId, player } })
+    if (sure) return removePlayer.mutate({ id, data: { playerId } })
   }
 
   return (
@@ -18,13 +18,14 @@ const SectionRoster = ({ team }) => {
                 <thead>
                     <tr>
                     <th>Player</th>
+                    <th>Position</th>
                     <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
 
             { team?.players?.map(player => (
-                 <tr key={player?.playerId}><td>{player?.player}</td><td><Button variant="danger btn-sm" onClick={() => handleRemove(team?._id, player?.playerId, player?.player)} >Remove</Button></td></tr>
+                 <tr key={player?.playerId?._id}><td>{player?.playerId?.fullName}</td><td>{player?.playerId?.position}</td><td><Button variant="danger btn-sm" onClick={() => handleRemove(team?._id, player?.playerId?._id)} >Remove</Button></td></tr>
             ))}
 
              </tbody>

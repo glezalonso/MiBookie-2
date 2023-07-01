@@ -31,7 +31,7 @@ const SectionTodayMatches = ({ matchesToday }) => {
                   <td>{match?.local.name}<strong> {match?.score?.map(score => score?.local)}</strong></td>
                   <td> {match?.away?.name}<strong> {match?.score?.map(score => score?.away)}</strong></td>
                   <td>{(match?.status) ? <span className='text-success'>Abierto</span> : <span className='text-danger'>Cerrado</span>}</td>
-                  <td><Link className='btn btn-info p-2' to={`../matches/${match?._id}`}>Details</Link></td>
+                  <td><Link className='btn btn-warning p-2' to={`../matches/${match?._id}`}>Details</Link></td>
                 </tr>
               ))}
             </tbody>
