@@ -3,8 +3,13 @@ import { FormControl, Alert, Table } from 'react-bootstrap'
 
 const SectionStandings = ({ season }) => {
   const [dataFilter, setDataFilter] = useState('')
+  let i = 1
 
-  const filter = season?.standings?.filter(teams => {
+  const sort = season?.standings?.sort((a, b) => {
+    if (b.wins !== a.wins) { return b.wins - a.wins } else { return b.draws - a.draws }
+  })
+
+  const filter = sort?.filter(teams => {
     if (dataFilter) return teams?.team?.name?.toLowerCase().includes(dataFilter?.toLowerCase())
     else return teams
   })
@@ -19,19 +24,28 @@ const SectionStandings = ({ season }) => {
                 <thead>
 
                     <tr>
+                      <th>Rank</th>
                         <th>Team </th>
                         <th>Wins</th>
                         <th>Draws</th>
                         <th>Loses</th>
-
+                        {season?.sport?._id === '648f71dea4ba8860dfe3830f'
+                          ? <th>points</th>
+                          : null}
                     </tr>
                </thead>
                 <tbody>
                     {filter?.map(team => (
-                        <tr key={team?.team?._id}><td>{team?.team?.name}</td>
+                        <tr key={team?.team?._id}>
+                         <td>{i++}</td>
+                        <td>{team?.team?.name}</td>
                         <td>{team?.wins}</td>
                         <td>{team?.draws}</td>
                         <td>{team?.loses}</td>
+                        {season?.sport?._id === '648f71dea4ba8860dfe3830f'
+                          ? <td>{season?.sport?._id === '648f71dea4ba8860dfe3830f' ? team?.wins * 3 + team?.draws : null }</td>
+                          : null}
+
                         </tr>
                     ))}
                 </tbody>

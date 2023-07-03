@@ -29,10 +29,10 @@ const Seasons = () => {
          <div className='breadcrumb-item'><Link to={`../leagues/${season?.league?._id}`}>{season?.league?.league}</Link></div>
           <Breadcrumb.Item className='text-secondary'active>{season?.season}</Breadcrumb.Item>
           </Breadcrumb>
-            <Col md={8} className='p-2' >
+            <Col md={7} className='p-2' >
             <SectionRounds season={season}/>
             </Col>
-            <Col md={4} className='p-1' >
+            <Col md={5} className='p-1' >
               <SectionStandings season={season} />
             </Col>
           </Row>
