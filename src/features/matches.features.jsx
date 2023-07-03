@@ -3,11 +3,11 @@ import { toast } from 'react-hot-toast'
 import { addLineUp, closeMatch, createMatch, deleteMatch, getMatch, getMatches, removeLineUp, updateMatch } from '../services/matches'
 
 export const useGetMatches = () => {
-  const { data, isLoading, isError } = useQuery({ queryKey: ['Matches'], queryFn: getMatches })
+  const { data, isLoading, isError } = useQuery({ queryKey: ['matches'], queryFn: getMatches })
   return { data, isLoading, isError }
 }
 export const useGetMatch = (id) => {
-  const { data, isLoading, isError } = useQuery({ queryKey: ['Match', id], queryFn: () => getMatch(id) })
+  const { data, isLoading, isError } = useQuery({ queryKey: ['match', id], queryFn: () => getMatch(id) })
   return { data, isLoading, isError }
 }
 export const useDeleteMatch = () => {
@@ -16,7 +16,7 @@ export const useDeleteMatch = () => {
     mutationFn: deleteMatch,
     onSuccess: () => {
       toast.success('Match deleted successfully!')
-      queryClient.invalidateQueries({ queryKey: ['Matches'] })
+      queryClient.invalidateQueries({ queryKey: ['matches'] })
     }
   })
   return mutationDelete
@@ -28,7 +28,7 @@ export const useUpdateMatch = () => {
     mutationFn: updateMatch,
     onSuccess: () => {
       toast.success('Match updated successfully!')
-      queryClient.invalidateQueries({ queryKey: ['Matches'] })
+      queryClient.invalidateQueries({ queryKey: ['matches'] })
     }
   })
   return mutationUpdate
@@ -40,7 +40,7 @@ export const useCreateMatch = () => {
     mutationFn: createMatch,
     onSuccess: () => {
       toast.success('Match created successfully!')
-      queryClient.invalidateQueries({ queryKey: ['Matches'] })
+      queryClient.invalidateQueries({ queryKey: ['matches'] })
     }
   })
   return mutationCreate
@@ -52,7 +52,7 @@ export const useCloseMatch = () => {
     mutationFn: closeMatch,
     onSuccess: () => {
       toast.success('Score placed successfully!')
-      queryClient.invalidateQueries({ queryKey: ['Matches'] })
+      queryClient.invalidateQueries({ queryKey: ['matches'] })
     }
   })
   return mutationClose
@@ -64,7 +64,7 @@ export const useAddLineUp = () => {
     mutationFn: addLineUp,
     onSuccess: () => {
       toast.success('player added successfully!')
-      queryClient.invalidateQueries({ queryKey: ['Matches'] })
+      queryClient.invalidateQueries({ queryKey: ['match'] })
     }
   })
   return mutationAddLineUp
@@ -76,7 +76,7 @@ export const useRemoveLineUp = () => {
     mutationFn: removeLineUp,
     onSuccess: () => {
       toast.success('Player removed successfully!')
-      queryClient.invalidateQueries({ queryKey: ['Matches'] })
+      queryClient.invalidateQueries({ queryKey: ['match'] })
     }
   })
   return mutationRemoveLineUp

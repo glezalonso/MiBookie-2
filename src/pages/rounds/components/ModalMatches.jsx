@@ -2,11 +2,11 @@ import React from 'react'
 import { Modal, Form, Button, FormControl } from 'react-bootstrap'
 import { useFormik } from 'formik'
 import { validateMatch } from '../../../helpers/validations'
-import { useGetTeams } from '../../../features/teams.features'
 import { useGetRounds } from '../../../features/rounds.features'
+import { useGetSeason } from '../../../features/seasons.features'
 
 const ModalMatches = ({ round, match, modalShow, handleClose, action, type, setUpdate }) => {
-  const { data: teams } = useGetTeams()
+  const { data: season } = useGetSeason(round?.season?._id)
   const { data: rounds } = useGetRounds()
 
   const formik = useFormik({
@@ -38,8 +38,6 @@ const ModalMatches = ({ round, match, modalShow, handleClose, action, type, setU
     handleClose()
   }
 
-  const filterBySport = teams?.filter(team => team?.sport?._id === round?.sport?._id)
-
   return (
         <>
 
@@ -57,8 +55,8 @@ const ModalMatches = ({ round, match, modalShow, handleClose, action, type, setU
                         <Form.Label>Local team</Form.Label>
                         <Form.Select id="teamHome" name="teamHome" {...formik.getFieldProps('teamHome')}>
                             <option value={false} >Select the local team </option>
-                            {filterBySport?.map(team => (
-                            <option key={team?._id} value={team?._id}>{team?.name}</option>
+                            {season?.standings?.map(teams => (
+                            <option key={teams?.team?._id} value={teams?.team?._id}>{teams?.team?.name}</option>
                             ))}
                         </Form.Select>
                         </Form.Group>
@@ -66,8 +64,8 @@ const ModalMatches = ({ round, match, modalShow, handleClose, action, type, setU
                         <Form.Label>Away team:</Form.Label>
                         <Form.Select id="teamAway" name="teamAway" {...formik.getFieldProps('teamAway')}>
                             <option value={false}>Select the away team </option>
-                            {filterBySport?.map(team => (
-                            <option key={team?._id} value={team?._id}>{team?.name}</option>
+                            {season?.standings?.map(teams => (
+                            <option key={teams?.team?._id} value={teams?.team?._id}>{teams?.team?.name}</option>
                             ))}
                         </Form.Select>
                         </Form.Group>

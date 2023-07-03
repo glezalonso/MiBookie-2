@@ -16,7 +16,7 @@ const TeamSettings = ({ match, handleRemoveLineUp, type }) => {
                 </thead>
                 <tbody>
                 { match?.lineup?.map(local => local?.local?.map(player => (
-                <tr key={player?.playerId?._id}><td>{player?.playerId?.fullName}</td><td>{player?.playerId?.position}</td><td><Button variant="danger btn-sm" onClick={() => handleRemoveLineUp(match?._id, player?.playerId, player?.player, player?._id, 'local')}>Remover</Button></td></tr>
+                <tr key={player?.playerId?._id}><td>{player?.playerId?.fullName}</td><td>{player?.playerId?.position}</td><td><Button variant="danger btn-sm" onClick={() => handleRemoveLineUp(match?._id, player?.playerId, player?.player, player?._id, 'local')}>Remove from lineup</Button></td></tr>
                 )))}
 
                </tbody>
@@ -34,7 +34,7 @@ const TeamSettings = ({ match, handleRemoveLineUp, type }) => {
                 </thead>
                 <tbody>
                     { match?.lineup?.map(away => away?.away?.map(player => (
-                    <tr key={player?.playerId?._id}><td>{player?.playerId?.fullname}</td><td>{player?.playerId?.position}</td><td><Button variant="danger btn-sm" onClick={() => handleRemoveLineUp(match?._id, player?.playerId, player?.player, player?._id, 'away')}>Remove from lineup</Button></td></tr>
+                    <tr key={player?.playerId?._id}><td>{player?.playerId?.fullName}</td><td>{player?.playerId?.position}</td><td><Button variant="danger btn-sm" onClick={() => handleRemoveLineUp(match?._id, player?.playerId, player?.player, player?._id, 'away')}>Remove from lineup</Button></td></tr>
 
                     )))}
               </tbody>
