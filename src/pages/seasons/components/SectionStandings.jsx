@@ -3,7 +3,11 @@ import { FormControl, Alert, Table } from 'react-bootstrap'
 
 const SectionStandings = ({ season }) => {
   const [dataFilter, setDataFilter] = useState('')
+  // counter
   let i = 1
+
+  // SoccerID
+  const ID_SOCCER = '648f71dea4ba8860dfe3830f'
 
   const sort = season?.standings?.sort((a, b) => {
     if (b.wins !== a.wins) { return b.wins - a.wins } else { return b.draws - a.draws }
@@ -29,7 +33,7 @@ const SectionStandings = ({ season }) => {
                         <th>Wins</th>
                         <th>Draws</th>
                         <th>Loses</th>
-                        {season?.sport?._id === '648f71dea4ba8860dfe3830f'
+                        {season?.sport?._id === ID_SOCCER
                           ? <th>points</th>
                           : null}
                     </tr>
@@ -42,8 +46,8 @@ const SectionStandings = ({ season }) => {
                         <td>{team?.wins}</td>
                         <td>{team?.draws}</td>
                         <td>{team?.loses}</td>
-                        {season?.sport?._id === '648f71dea4ba8860dfe3830f'
-                          ? <td>{season?.sport?._id === '648f71dea4ba8860dfe3830f' ? team?.wins * 3 + team?.draws : null }</td>
+                        {season?.sport?._id === ID_SOCCER
+                          ? <td>{season?.sport?._id === ID_SOCCER ? team?.wins * 3 + team?.draws : null }</td>
                           : null}
 
                         </tr>
