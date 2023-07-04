@@ -27,7 +27,7 @@ const Roaster = ({ match, roster, handleAddLineUp, type }) => {
         </thead>
         <tbody>
                 {filter?.map(players => players?.map(player => (
-                    <tr key={player?._id}><td>{player?.fullName}</td><td>{player?.position}</td><td><Button variant="warning btn-sm" onClick={() => handleAddLineUp(match?._id, player?._id, type)}>Add to lineup</Button></td></tr>
+                    <tr key={player?._id}><td>{player?.fullName}</td><td>{player?.position}</td><td><Button variant="warning btn-sm" onClick={() => handleAddLineUp(match?._id, player?._id, type)}>Add</Button></td></tr>
                 )))}
 
          </tbody>

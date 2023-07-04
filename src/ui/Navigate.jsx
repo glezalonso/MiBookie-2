@@ -15,21 +15,17 @@ const Navigate = () => {
 
   return (
         <>
-    <Navbar expand="md" >
-      <Container fluid>
-        <Navbar.Brand className='text-light'>Mi Bookie Panel</Navbar.Brand>
+    <Navbar expand="lg" bg="dark" data-bs-theme="dark" >
+      <Container>
+        <Navbar.Brand >Mi Bookie Panel</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0 "
-            style={{ maxHeight: '150px' }}
-            navbarScroll
-          >
-            <Nav.Item ><Link to={'../home'} className='nav-link text-secondary'>Home</Link></Nav.Item>
-            <Nav.Item ><Link to={'../players'} className='nav-link text-secondary'>Players</Link></Nav.Item>
-            <Nav.Item ><Link to={'../teams'} className='nav-link text-secondary'>Teams</Link></Nav.Item>
-            <Nav.Item ><Link to={'../sports'} className='nav-link text-secondary'>Sports</Link></Nav.Item>
-            <Nav.Item ><Link to={'../users'} className='nav-link text-secondary'>Users</Link></Nav.Item>
+        <Nav className="me-auto">
+           <Link className='nav-link' to={'../home'} >Home</Link>
+           <Link className='nav-link' to={'../players'} >Players</Link>
+           <Link className='nav-link' to={'../teams'} >Teams</Link>
+           <Link className='nav-link' to={'../sports'} >Sports</Link>
+           <Link className='nav-link' to={'../users'} >Users</Link>
           </Nav>
             <Button variant="warning" onClick={() => handleLogOut()}>Log out</Button>
         </Navbar.Collapse>

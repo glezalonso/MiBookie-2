@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Table, Alert } from 'react-bootstrap'
+import { Table, Alert, FormControl } from 'react-bootstrap'
 const SectionTodayMatches = ({ matchesToday }) => {
+  const [dataFilter, setDataFilter] = useState('')
+
+  const filter = matchesToday?.filter(team => {
+    if (dataFilter) return team?.local?.name?.toLowerCase().includes(dataFilter.toLowerCase()) || team?.away?.name?.toLowerCase().includes(dataFilter.toLowerCase())
+    else return team
+  })
   return (
             <>
-
-               <h5 className="h5 m-2 p-1">Matches Today</h5>
-          {(matchesToday?.length > 0)
-            ? <div className='table-wrapper-scroll-y my-custom-scrollbar'>
-            <Table responsive variant="dark table-sm">
-            <thead>
+             <div className='mx-2 mt-2'>
+              <FormControl className="mb-3"placeholder='Search Team...' id='team' name='team' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
+              </div>
+               {(filter?.length > 0)
+                 ? <div className='table-wrapper-scroll-y my-custom-scrollbar'>
+              <Table responsive variant="dark table-sm">
+              <thead>
               <tr>
                 <th>Date</th>
                 <th>League</th>
@@ -22,22 +29,22 @@ const SectionTodayMatches = ({ matchesToday }) => {
               </tr>
             </thead>
             <tbody>
-              {matchesToday?.map(match => (
+              {filter?.map(match => (
                 <tr key={match?._id}>
-                  <td>{match?.date}</td>
+                  <td>{match?.date?.split('T', 3).join(' ')}</td>
                   <td>{match?.league?.league}</td>
                   <td>{match?.season?.season}</td>
                   <td>{match?.round?.round}</td>
                   <td>{match?.local.name}<strong> {match?.score?.map(score => score?.local)}</strong></td>
                   <td> {match?.away?.name}<strong> {match?.score?.map(score => score?.away)}</strong></td>
-                  <td>{(match?.status) ? <span className='text-success'>Abierto</span> : <span className='text-danger'>Cerrado</span>}</td>
-                  <td><Link className='btn btn-warning p-2' to={`../matches/${match?._id}`}>Details</Link></td>
+                  <td>{(match?.status) ? <span className='text-success'>Open!</span> : <span className='text-danger'>Closed!</span>}</td>
+                  <td><Link style={{ fontSize: '13px' }} className='btn  btn-warning btn-sm w-100 ' to={`../matches/${match?._id}`}>Details</Link></td>
                 </tr>
               ))}
             </tbody>
           </Table>
           </div>
-            : <Alert variant="warning">There is no information to show!</Alert>}
+                 : <Alert variant="warning">There is no information to show!</Alert>}
             </>
   )
 }

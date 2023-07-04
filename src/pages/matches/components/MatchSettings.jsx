@@ -13,23 +13,23 @@ const MatchSettings = ({ match, handleRemoveLineUp, handleAddLineUp }) => {
   return (
         <>
 
-        <Row className='m-1 mx-auto p-2 rounded'>
-          <Col md={6}>
+        <Row className='m-2 p-2 mx-auto'>
+          <Col md={5} className='border rounded mx-auto mt-2 p-3 fs-6'>
           <h5 className="h5">LineUp Local</h5>
             <TeamSettings match={match} handleRemoveLineUp={handleRemoveLineUp} type={'local'}/>
           </Col>
-          <Col md={6}>
+          <Col md={5} className='border rounded mx-auto mt-2 p-3 fs-6'>
           <h5 className="h5">LineUp Away</h5>
             <TeamSettings match={match} handleRemoveLineUp={handleRemoveLineUp} type={'away'}/>
           </Col>
             </Row>
-            <Row className='m-1 p-2 mx-auto rounded'>
-            <Col md={6} >
+            <Row className='m-2 p-2 mx-auto'>
+            <Col md={5} className='border rounded mx-auto mt-1 p-3 fs-6' >
 
            <h5 className="h5">Roster</h5>
            <Roster match={match} roster={rostLocal} handleAddLineUp={handleAddLineUp} type={'local'}/>
-            </Col>
-            <Col md={6} className='p-2' >
+            </Col >
+            <Col md={5}className='border rounded mx-auto mt-1 sp-3 fs-6' >
             <h5 className="h5">Roster</h5>
             <Roster match={match} roster={rostAway} handleAddLineUp={handleAddLineUp} type={'away'}/>
             </Col>

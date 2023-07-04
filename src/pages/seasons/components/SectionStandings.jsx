@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
-import { FormControl, Alert, Table } from 'react-bootstrap'
+import React from 'react'
+import { Alert, Table } from 'react-bootstrap'
 
 const SectionStandings = ({ season }) => {
-  const [dataFilter, setDataFilter] = useState('')
   // counter
   let i = 1
 
@@ -13,16 +12,9 @@ const SectionStandings = ({ season }) => {
     if (b.wins !== a.wins) { return b.wins - a.wins } else { return b.draws - a.draws }
   })
 
-  const filter = sort?.filter(teams => {
-    if (dataFilter) return teams?.team?.name?.toLowerCase().includes(dataFilter?.toLowerCase())
-    else return teams
-  })
   return (
-        <><div className='mx-2 my-3'>
-        <h5 className="h5 static">Standings</h5>
-        <FormControl placeholder='Search team...' id='team' name='team' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
-        </div>
-        {filter?.length > 0
+        <>
+        {sort?.length > 0
           ? <div className='table-wrapper-scroll-y my-custom-scrollbar'>
             <Table responsive variant="dark table-sm" hover >
                 <thead>
@@ -39,7 +31,7 @@ const SectionStandings = ({ season }) => {
                     </tr>
                </thead>
                 <tbody>
-                    {filter?.map(team => (
+                    {sort?.map(team => (
                         <tr key={team?.team?._id}>
                          <td>{i++}</td>
                         <td>{team?.team?.name}</td>

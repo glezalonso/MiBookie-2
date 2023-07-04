@@ -38,7 +38,6 @@ const SectionMatches = ({ round }) => {
           ? <ModalMatches round={round} modalShow={modalShow} handleClose={handleClose} action={createMatch} type={'Create'} setUpdate={setUpdate} />
           : <ModalMatches round={round} match={match} modalShow={modalShow} handleClose={handleClose} action={updateMatch} type={'Edit'} setUpdate={setUpdate} /> }
 
-        <h5 className='h5'>Matches</h5>
         {(matchByRound?.length > 0)
           ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table variant='dark table-sm' responsive hover >
             <thead>

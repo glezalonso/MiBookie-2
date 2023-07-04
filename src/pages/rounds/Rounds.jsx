@@ -20,14 +20,17 @@ const Rounds = () => {
         <Navigate />
         <Toaster position="top-center" reverseOrder={false}></Toaster>
          <Container fluid>
-         <Row className='mx-1 mt-2'>
+         <Row className='m-2 p-2 mx-auto' >
+            <Col xs={11} className='border rounded mx-auto  fs-6' >
          <Breadcrumb className='mx-1 mt-2'>
          <div className='breadcrumb-item'><Link to={`../sports/${round?.sport?._id}`}>{round?.sport?.sport}</Link></div>
          <div className='breadcrumb-item'><Link to={`../leagues/${round?.league?._id}`}>{round?.league?.league}</Link></div>
          <div className='breadcrumb-item'><Link to={`../seasons/${round?.season?._id}`}>{round?.season?.season}</Link></div>
           <Breadcrumb.Item className='text-secondary' active>{round?.round}</Breadcrumb.Item>
           </Breadcrumb>
-            <Col lg={12} className='p-2' >
+          </Col>
+            <Col xs={11} className='border rounded mx-auto mt-2 p-3 fs-6' >
+            <h5 className="h7 ">Matches</h5>
             <SectionMatches round={round}/>
             </Col>
           </Row>

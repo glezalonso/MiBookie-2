@@ -34,7 +34,7 @@ const TeamSettings = ({ match, handleRemoveLineUp, type }) => {
                 </thead>
                 <tbody>
                     { match?.lineup?.map(away => away?.away?.map(player => (
-                    <tr key={player?.playerId?._id}><td>{player?.playerId?.fullName}</td><td>{player?.playerId?.position}</td><td><Button variant="danger btn-sm" onClick={() => handleRemoveLineUp(match?._id, player?.playerId, player?._id, 'away')}>Remove from lineup</Button></td></tr>
+                    <tr key={player?.playerId?._id}><td>{player?.playerId?.fullName}</td><td>{player?.playerId?.position}</td><td><Button variant="danger btn-sm" onClick={() => handleRemoveLineUp(match?._id, player?.playerId, player?._id, 'away')}>Remove</Button></td></tr>
 
                     )))}
               </tbody>

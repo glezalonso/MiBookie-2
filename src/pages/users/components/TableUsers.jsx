@@ -30,7 +30,7 @@ const TableUsers = ({ users }) => {
 
   return (
         <>
-          <Button variant="warning m-2 btn-sm" onClick={handleShow}> Create user</Button>
+          <Button variant="warning m-1 btn-sm" onClick={handleShow}> Create user</Button>
         {(!update)
           ? <ModalUsers modalShow={modalShow} handleClose={handleClose} action={createUser} type={'Create'} setUpdate={setUpdate} />
           : <ModalUsers user={user} modalShow={modalShow} handleClose={handleClose} action={updateUser} type={'Edit'} setUpdate={setUpdate} /> }

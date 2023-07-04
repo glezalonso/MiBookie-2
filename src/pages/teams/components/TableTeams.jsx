@@ -37,8 +37,8 @@ const TableTeams = ({ teams }) => {
   return (
         <>
           <div className='mx-2'>
-        <Button className="btn btn-warning mb-2" onClick={handleShow} >Create team</Button>
-        <FormControl className="mb-3"placeholder='Search Team...' id='team' name='team' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
+        <Button className="btn btn-warning btn-sm mb-2" onClick={handleShow} >Create team</Button>
+        <FormControl className="mb-3" style={{ fontSize: '13px' }} placeholder='Search Team...' id='team' name='team' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
         </div>
         {(!update)
           ? <ModalTeams modalShow={modalShow} handleClose={handleClose} action={createTeam} type={'Create'} setUpdate={setUpdate} />

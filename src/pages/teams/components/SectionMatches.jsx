@@ -21,9 +21,8 @@ const SectionMatches = ({ team }) => {
   })
   return (
         <>
-        <h5 className='h5 m-2'>Last Matches</h5>
         <div className='mx-2 my-3'>
-        <FormControl placeholder='Search round, season..' id='player' name='player' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
+        <FormControl placeholder='Search round, season..' style={{ fontSize: '13px' }} id='player' name='player' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
         </div>
         {(filter?.length > 0)
           ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'> <Table responsive variant='dark table-sm' hover >
@@ -33,9 +32,9 @@ const SectionMatches = ({ team }) => {
                     <th>League</th>
                     <th>Season</th>
                     <th>Round</th>
-                    <th>Status</th>
                     <th>Local</th>
                     <th>Away</th>
+                    <th>Status</th>
                     <th>Options</th>
 
                 </tr>
@@ -47,11 +46,11 @@ const SectionMatches = ({ team }) => {
              <td>{match?.league?.league}</td>
              <td>{match?.season?.season}</td>
              <td>{match?.round?.round}</td>
+             <td>{match?.local?.name} <strong> {match?.score?.map(score => score.local)}</strong></td>
+             <td>{match?.away?.name} <strong> {match?.score?.map(score => score.away)}</strong></td>
              <td>{(match?.status)
                ? <span className='text-success'>Open!</span>
                : <span className='text-danger'>Closed!</span>}</td>
-             <td>{match?.local?.name} <strong> {match?.score?.map(score => score.local)}</strong></td>
-             <td>{match?.away?.name} <strong> {match?.score?.map(score => score.away)}</strong></td>
             <td><Link className="btn btn-warning btn-sm" to={`/matches/${match?._id}`}>Details</Link></td>
             </tr>
             ))}

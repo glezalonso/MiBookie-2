@@ -27,7 +27,6 @@ const SectionTeams = ({ season }) => {
   return (
         <>
          <div className='mx-2 my-3'>
-            <h5 className="h5 static">All Teams</h5>
             <FormControl placeholder='Search Teams...' id='filter' name='filter' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
             </div>
             {filter?.length > 0

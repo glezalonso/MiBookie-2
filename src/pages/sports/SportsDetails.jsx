@@ -19,11 +19,14 @@ const SportDetails = () => {
         <Navigate />
         <Toaster position="top-center" reverseOrder={false}></Toaster>
          <Container fluid >
-          <Row className='m-1 rounded' >
-          <Breadcrumb className='mx-1 mt-2'>
-          <Breadcrumb.Item className='text-secondary' active>{sport?.sport}</Breadcrumb.Item>
-          </Breadcrumb>
-            <Col lg={12} className='p-2' >
+          <Row className='m-2 p-2 mx-auto' >
+            <Col xs={11} className='border rounded mx-auto  fs-6' >
+            <Breadcrumb className='mx-1 mt-1  p-2 rounded'>
+             <Breadcrumb.Item className='text-secondary' active>{sport?.sport}</Breadcrumb.Item>
+              </Breadcrumb>
+              </Col >
+              <Col xs={11} className='border rounded mx-auto mt-2 p-3 fs-6'>
+              <h5 className="h7 ">Leagues</h5>
             <SectionLeagues sport={sport} />
             </Col>
           </Row>

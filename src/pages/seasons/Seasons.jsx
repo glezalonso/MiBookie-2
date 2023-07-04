@@ -23,24 +23,30 @@ const Seasons = () => {
         <Navigate />
         <Toaster position="top-center" reverseOrder={false}></Toaster>
          <Container fluid >
-         <Row className='mx-1 mt-2 rounded'>
+         <Row className='m-2 p-2 mx-auto' >
+            <Col xs={11} className='border rounded mx-auto  fs-6' >
          <Breadcrumb className='mx-1 mt-2 p-3'>
          <div className='breadcrumb-item'><Link to={`../sports/${season?.sport?._id}`}>{season?.sport?.sport}</Link></div>
          <div className='breadcrumb-item'><Link to={`../leagues/${season?.league?._id}`}>{season?.league?.league}</Link></div>
           <Breadcrumb.Item className='text-secondary'active>{season?.season}</Breadcrumb.Item>
           </Breadcrumb>
-            <Col md={7} className='p-2' >
+          </Col>
+            <Col md={7} className='border rounded mx-auto mt-2 p-3  fs-6' >
+            <h5 className="h7 ">Rounds</h5>
             <SectionRounds season={season}/>
             </Col>
-            <Col md={5} className='p-1' >
+            <Col md={5} className='border rounded mx-auto mt-2 p-3  fs-6' >
+            <h5 className="h7 ">Standings</h5>
               <SectionStandings season={season} />
             </Col>
           </Row>
-          <Row className='mx-1 mt-2'>
-            <Col md={6} className=' p-1'>
+          <Row className='m-2 p-2 mx-auto'>
+            <Col md={5} className='border rounded mx-auto mt-2  p-3  fs-6'>
+            <h5 className="h7">Participants</h5>
               <SectionParticipants season={season} />
             </Col>
-            <Col md={6} className='p-1'>
+            <Col md={5} className='border rounded mx-auto mt-2  p-3  fs-6'>
+            <h5 className="h7">All teams</h5>
               <SectionTeams season={season} />
             </Col>
           </Row>

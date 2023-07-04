@@ -17,8 +17,9 @@ const Users = () => {
          <Navigate />
         <Toaster position="top-center" reverseOrder={false}></Toaster>
          <Container fluid >
-          <Row className='m-1 rounded' >
-            <Col xs={12} className='p-2'>
+          <Row className='m-2 p-2 mx-auto' >
+            <Col xs={12}className='border rounded mx-auto p-4 fs-4'>
+            <h5 className="h7 ">Users</h5>
               <TableUsers users={users} />
             </Col>
           </Row>

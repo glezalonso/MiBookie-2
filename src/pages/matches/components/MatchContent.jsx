@@ -23,8 +23,6 @@ const MatchContent = ({ match }) => {
 
   return (
         <>
-
-          <h5 className='h5 mt-3'>Match Details</h5>
            <Table responsive variant="dark eable-sm" hover >
             <tbody>
             <tr><td>Date</td><td>{match?.date}</td></tr>

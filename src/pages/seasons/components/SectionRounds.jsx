@@ -35,8 +35,6 @@ const SectionRounds = ({ season }) => {
         {(!update)
           ? <ModalRounds season={season} modalShow={modalShow} handleClose={handleClose} action={createRound} type={'Create'} setUpdate={setUpdate} />
           : <ModalRounds round={round} season={season} modalShow={modalShow} handleClose={handleClose} action={updateRound} type={'Edit'} setUpdate={setUpdate} /> }
-
-       <h5 className='h5'>Rounds</h5>
        {(roundsbySeason?.length > 0)
          ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table variant='dark table-sm' responsive hover>
            <thead>
