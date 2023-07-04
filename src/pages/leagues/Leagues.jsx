@@ -20,13 +20,13 @@ const Leagues = () => {
         <Toaster position="top-center" reverseOrder={false}></Toaster>
          <Container fluid >
          <Row className='m-2 p-2 mx-auto' >
-            <Col xs={11} className='border rounded mx-auto  fs-6' >
+            <Col xs={12} className='border rounded mx-auto  fs-6' >
          <Breadcrumb className='mx-1 mt-2'>
          <div className='breadcrumb-item'><Link to={`../sports/${league?.sport?._id}`}>{league?.sport?.sport}</Link></div>
           <Breadcrumb.Item className='text-secondary' active>{league?.league}</Breadcrumb.Item>
           </Breadcrumb>
           </Col>
-            <Col xs={11} className='border rounded mt-2 p-3 mx-auto  fs-6'>
+            <Col xs={12} className='border rounded mt-2 p-3 mx-auto  fs-6'>
             <h5 className="h7 ">Seasons</h5>
             <SectionSeasons league={league} />
             </Col>

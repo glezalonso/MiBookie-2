@@ -29,22 +29,22 @@ const TeamDetail = () => {
             </Col>
           </Row>
           <Row className='m-1 rounded'>
-            <Col lg={6} className='p-2'>
+            <Col lg={6} xs={12} className='p-2'>
             <h5 className="h7 ">Next matches</h5>
               <SectionNextMatches team={team} />
             </Col>
 
-            <Col lg={6} className='p-2'>
+            <Col lg={6} xs={12} className='p-2'>
             <h5 className="h7 ">Last matches</h5>
               <SectionMatches team={team} />
             </Col >
           </Row >
           <Row className='m-1 rounded'>
-            <Col md={5} className='p-2 mx-auto'>
+            <Col md={5} xs={12} className='p-2 mx-auto'>
             <h5 className="h7 ">Roster</h5>
               <SectionRoster team={team} />
             </Col>
-            <Col md={5} className='p-2 mx-auto'>
+            <Col md={5} xs={12} className='p-2 mx-auto'>
             <h5 className="h7 ">All players</h5>
               <SectionPlayers team={team} />
             </Col>

@@ -24,7 +24,7 @@ const Seasons = () => {
         <Toaster position="top-center" reverseOrder={false}></Toaster>
          <Container fluid >
          <Row className='m-2 p-2 mx-auto' >
-            <Col xs={11} className='border rounded mx-auto  fs-6' >
+            <Col xs={12} className='border rounded mx-auto  fs-6' >
          <Breadcrumb className='mx-1 mt-2 p-3'>
          <div className='breadcrumb-item'><Link to={`../sports/${season?.sport?._id}`}>{season?.sport?.sport}</Link></div>
          <div className='breadcrumb-item'><Link to={`../leagues/${season?.league?._id}`}>{season?.league?.league}</Link></div>

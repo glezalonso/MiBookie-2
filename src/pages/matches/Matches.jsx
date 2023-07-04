@@ -20,7 +20,7 @@ const Matches = () => {
         <Toaster position="top-center" reverseOrder={false}></Toaster>
          <Container fluid >
          <Row className='m-2 p-2 mx-auto' >
-            <Col xs={11} className='border rounded mx-auto  fs-6' >
+            <Col xs={12} className='border rounded mx-auto  fs-6' >
          <Breadcrumb className='mx-1 mt-2'>
          <div className='breadcrumb-item'><Link to={`../leagues/${match?.league?._id}`}>{match?.league?.league}</Link></div>
          <div className='breadcrumb-item'><Link to={`../seasons/${match?.season?._id}`}>{match?.season?.season}</Link></div>
@@ -28,7 +28,7 @@ const Matches = () => {
           <Breadcrumb.Item className='text-secondary' active>{match?.local?.name} vs {match?.away?.name}</Breadcrumb.Item>
           </Breadcrumb>
           </Col>
-            <Col xs={11} className='border rounded mx-auto mt-2 p-3 fs-6' >
+            <Col xs={12} className='border rounded mx-auto mt-2 p-3 fs-6' >
             <h5 className="h7 ">Match</h5>
                 <MatchContent match={match} />
             </Col>
