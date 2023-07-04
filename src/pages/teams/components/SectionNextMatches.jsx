@@ -13,7 +13,7 @@ const SectionNextMatches = ({ team }) => {
   const nextMatches = filterMatches?.filter(match => match?.status !== false)
   // filter by user
   const filter = nextMatches?.filter(match => {
-    if (dataFilter) return match?.round?.round?.toLowerCase().includes(dataFilter.toLowerCase()) || match?.season?.season?.toLowerCase().includes(dataFilter.toLowerCase())
+    if (dataFilter) return match?.round?.round?.toLowerCase().includes(dataFilter.toLowerCase()) || match?.season?.season?.toLowerCase().includes(dataFilter.toLowerCase()) || match?.away?.name?.toLowerCase().includes(dataFilter.toLowerCase())
     else return match
   })
 
@@ -21,7 +21,7 @@ const SectionNextMatches = ({ team }) => {
         <>
 
         <div className='mx-2 my-3'>
-        <FormControl placeholder='Search round, season..' style={{ fontSize: '13px' }} id='player' name='player' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
+        <FormControl placeholder='Search round, season, team..' style={{ fontSize: '13px' }} id='player' name='player' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
         </div>
         {(filter?.length > 0)
           ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'> <Table responsive variant='dark table-sm' hover>

@@ -55,7 +55,7 @@ const SectionMatches = ({ round }) => {
             <tbody>
                 {matchByRound?.map(match => (
                     <tr key={match?._id}>
-                        <td>{match?.date}</td>
+                        <td>{match?.date?.split('T', 3).reverse().join(' ')}</td>
                         <td>{match?.round?.round}</td>
                         <td>{match?.season?.season}</td>
                         <td>{match?.league?.league}</td>
