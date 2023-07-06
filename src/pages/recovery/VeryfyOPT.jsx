@@ -9,16 +9,21 @@ import { useMutation } from '@tanstack/react-query'
 import { useRecovery } from '../../store/recovery'
 
 const VerifyOTP = () => {
-  const { email } = useRecovery(state => state.email)
-  const OTP = useRecovery(state => state.setOTP)
+  const { email } = useRecovery(state => state)
+  const setOTP = useRecovery(state => state.setOTP)
   const navigate = useNavigate()
+
+  if (!email) return navigate('/')
 
   const mutationOTP = useMutation({
     mutationFn: verifyOTP,
     onSuccess: (data) => {
       toast.success('Code Correct!!')
-      OTP(data.data)
-      navigate('../reset')
+      console.log(data.data)
+      setOTP(data.data)
+      setTimeout(() => {
+        navigate('../reset')
+      }, 3000)
     },
     onError: () => toast.error('Incorrect code!')
   })
@@ -38,9 +43,9 @@ const VerifyOTP = () => {
   return (
         <>
     <Toaster position="top-center" reverseOrder={false}></Toaster>
-       <Container className="bg-light w-75 h-75 mt-5 text-dark rounded" >
+       <Container className=' w-75 h-75 mt-5 rounded' >
         <Row>
-          <Col className='col-lg-12 col-xs-12 p-3'>
+          <Col className="col-lg-6 col-xs-12 bg-dark text-light  mx-auto p-4 border rounded">
               <h1 className='pt-3 text-center'>Verify Code</h1>
                 <Form className=" m-1 w-100" onSubmit={formik.handleSubmit}>
                 <Form.Group>

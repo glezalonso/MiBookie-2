@@ -16,7 +16,7 @@ const SectionStandings = ({ season }) => {
         <>
         {sort?.length > 0
           ? <div className='table-wrapper-scroll-y my-custom-scrollbar'>
-            <Table responsive variant="dark table-sm" hover >
+            <Table responsive variant="dark table-sm table-borderless" hover >
                 <thead>
 
                     <tr>

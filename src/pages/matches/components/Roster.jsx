@@ -17,7 +17,7 @@ const Roaster = ({ match, roster, handleAddLineUp, type }) => {
             <FormControl placeholder='Search players...' id='filter' name='filter' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
             </div>
          {(filter?.length > 0)
-           ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'><Table responsive variant="dark table-sm" hover>
+           ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'><Table responsive variant="dark table-sm table-borderless" hover>
             <thead>
              <tr>
                 <th>Player</th>

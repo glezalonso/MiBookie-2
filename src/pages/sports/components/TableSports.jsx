@@ -34,7 +34,7 @@ const TableSport = ({ sports }) => {
           ? <ModalSports modalShow={modalShow} handleClose={handleClose} action={createSport} type={'Create'} setUpdate={setUpdate} />
           : <ModalSports sport={sport} modalShow={modalShow} handleClose={handleClose} action={updateSport} type={'Edit'} setUpdate={setUpdate} /> }
         {(sports?.length > 0)
-          ? <Table variant='dark table-sm mt-2' responsive hover>
+          ? <Table variant='dark table-sm mt-2 table-borderless' responsive hover>
             <thead>
                 <tr>
                     <th>

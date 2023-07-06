@@ -38,7 +38,7 @@ const SectionSeasons = ({ league }) => {
           : <ModalSeasons league={league} season={season} modalShow={modalShow} handleClose={handleClose} action={updateSeason} type={'Edit'} setUpdate={setUpdate} /> }
 
         {(seasonByLeague?.length > 0)
-          ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'><Table variant='dark table-sm' responsive hover>
+          ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'><Table variant='dark table-sm table-borderless' responsive hover>
             <thead>
                 <tr>
                     <th>Season</th>

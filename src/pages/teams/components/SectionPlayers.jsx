@@ -37,7 +37,7 @@ const SectionPlayers = ({ team }) => {
             <FormControl placeholder='Search Player...' id='player' name='player' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
             </div>
             {(filter?.length > 0)
-              ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table responsive variant="dark table-sm" hover >
+              ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table responsive variant="dark table-sm table-borderless" hover >
                 <thead>
                     <tr>
                         <th>Player</th>

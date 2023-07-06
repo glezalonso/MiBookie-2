@@ -23,7 +23,7 @@ const MatchContent = ({ match }) => {
 
   return (
         <>
-           <Table responsive variant="dark eable-sm" hover >
+           <Table responsive variant="dark table-sm table-borderless" hover >
             <tbody>
             <tr><td>Date</td><td>{match?.date}</td></tr>
             <tr><td>League </td><td>{match?.league?.league}</td></tr>

@@ -11,7 +11,7 @@ const SectionSeasonsOpen = () => {
         <h5 className="h5 m-2 ">Seasons Open</h5>
          {(SeasonsOpen?.length > 0)
            ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'>
-             <Table responsive variant="dark table-sm" >
+             <Table responsive variant="dark table-sm table-borderless" >
             <thead>
                 <tr>
                     <th>

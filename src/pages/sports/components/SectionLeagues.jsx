@@ -38,7 +38,7 @@ const SectionLeagues = ({ sport }) => {
           : <ModalLeagues league={league} sportId={sport?._id} modalShow={modalShow} handleClose={handleClose} action={updateLeague} type={'Edit'} setUpdate={setUpdate} /> }
 
     {(leaguesBySport?.length > 0)
-      ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'><Table variant='dark table-sm' responsive hover>
+      ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded table-borderless'><Table variant='dark table-sm' responsive hover>
         <thead>
             <tr>
                 <th>

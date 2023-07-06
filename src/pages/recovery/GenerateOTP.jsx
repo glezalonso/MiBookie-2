@@ -16,7 +16,9 @@ const GenerateOTP = () => {
     mutationFn: generateOTP,
     onSuccess: () => {
       toast.success('Email sended!')
-      navigate('../verify')
+      setTimeout(() => {
+        navigate('../verify')
+      }, 3000)
     },
     onError: () => toast.error('Email not valid!')
   })
@@ -28,7 +30,7 @@ const GenerateOTP = () => {
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: (values) => {
-      email(values)
+      email(values.email)
       mutationOTP.mutate(values)
     }
   })
@@ -38,7 +40,7 @@ const GenerateOTP = () => {
     <Toaster position="top-center" reverseOrder={false}></Toaster>
        <Container className="bg-light w-75 h-75 mt-5 text-dark rounded" >
         <Row>
-          <Col className='col-lg-12 col-xs-12 p-3'>
+          <Col className="col-lg-6 col-xs-12 bg-dark text-light  mx-auto p-4 border rounded">
           <h1 className='h1 pt-3 text-center'>Reset Password</h1>
             <Form className=" m-1 w-100" onSubmit={formik.handleSubmit}>
             <Form.Group>

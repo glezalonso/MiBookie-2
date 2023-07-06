@@ -9,18 +9,22 @@ import { validateResetPassword } from '../../helpers/validations'
 import { useRecovery } from '../../store/recovery'
 
 const ResetPassword = () => {
-  const { OTP } = useRecovery(state => state.OTP)
-  const { email } = useRecovery(state => state.email)
+  const { OTP } = useRecovery(state => state)
+  const { email } = useRecovery(state => state)
   const empty = useRecovery(state => state.setEmpty)
 
   const navigate = useNavigate()
+
+  if (!email && !OTP) return navigate('/')
 
   const mutationOTP = useMutation({
     mutationFn: resetPassword,
     onSuccess: () => {
       toast.success('Reseted successfully')
       empty()
-      navigate('/')
+      setTimeout(() => {
+        navigate('/')
+      }, 3000)
     },
     onError: () => toast.error('Failed to reset password!')
   })
@@ -42,9 +46,9 @@ const ResetPassword = () => {
   return (
         <>
     <Toaster position="top-center" reverseOrder={false}></Toaster>
-       <Container className=" bg-light text-dark w-75 h-75 mt-5 rounded" >
+       <Container className=' w-75 h-75 mt-5 rounded' >
         <Row>
-              <Col className='col-lg-12 col-xs-12 p-3'>
+              <Col className="col-lg-6 col-xs-12 bg-dark text-light  mx-auto p-4 border rounded">
               <h1 className=' h1 pt-3 text-center'>Reset password</h1>
                     <Form className="p-3" onSubmit={formik.handleSubmit}>
                     <Form.Group>

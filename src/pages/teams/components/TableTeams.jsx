@@ -44,7 +44,7 @@ const TableTeams = ({ teams }) => {
           ? <ModalTeams modalShow={modalShow} handleClose={handleClose} action={createTeam} type={'Create'} setUpdate={setUpdate} />
           : <ModalTeams team={team} modalShow={modalShow} handleClose={handleClose} action={updateTeam} type={'Edit'} setUpdate={setUpdate} /> }
         {(filter?.length > 0)
-          ? <Table responsive variant='dark table-sm' hover>
+          ? <Table responsive variant='dark table-sm table-borderless' hover>
             <thead>
                 <tr>
                     <th>

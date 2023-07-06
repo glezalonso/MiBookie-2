@@ -8,14 +8,16 @@ const SectionTodayMatches = ({ matchesToday }) => {
     if (dataFilter) return team?.local?.name?.toLowerCase().includes(dataFilter.toLowerCase()) || team?.away?.name?.toLowerCase().includes(dataFilter.toLowerCase())
     else return team
   })
+  filter?.sort((a, b) => b.status - a.status)
   return (
             <>
              <div className='mx-2 mt-2'>
               <FormControl className="mb-3"placeholder='Search Team...' id='team' name='team' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
               </div>
                {(filter?.length > 0)
-                 ? <div className='table-wrapper-scroll-y my-custom-scrollbar'>
-              <Table responsive variant="dark table-sm">
+                 ? <div className='table-wrapper-scroll-y my-custom-scrollbar p-1'>
+              <Table responsive variant="dark table-sm table-borderless ">
+              <caption className='m-1'>Total: {filter?.length} matches</caption>
               <thead>
               <tr>
                 <th>Date</th>

@@ -17,13 +17,13 @@ const Home = () => {
         <Navigate />
         <Container fluid >
           <Row className='m-2 p-2 mx-auto' >
-            <Col xs={12} className='border rounded mx-auto p-4 fs-4' >
+            <Col xs={12} md={11} className='border rounded mx-auto p-4 fs-4' >
             <h5 className="h7 ">Matches Today</h5>
               <SectionTodayMatches matchesToday={matchesToday} />
             </Col>
             </Row>
             <Row className='m-2 p-2 mx-auto' >
-            <Col lg={8}className='border rounded mx-auto p-2 fs-4'>
+            <Col lg={7} className='border rounded mx-auto  p-2 fs-4'>
              <SectionSeasonsOpen />
               </Col>
               <Col lg={4} className='border rounded mx-auto p-2 fs-4' >

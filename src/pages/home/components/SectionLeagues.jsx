@@ -10,7 +10,7 @@ const SectionLeagues = () => {
         <h5 className="h5 m-2">Leagues</h5>
          {(leagues?.length > 0)
            ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'>
-             <Table responsive variant="dark table-sm">
+             <Table responsive variant="dark table-sm table-borderless" hover>
             <thead >
                 <tr>
                     <th>

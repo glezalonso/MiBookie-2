@@ -24,7 +24,7 @@ const SectionNextMatches = ({ team }) => {
         <FormControl placeholder='Search round, season, team..' style={{ fontSize: '13px' }} id='player' name='player' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
         </div>
         {(filter?.length > 0)
-          ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'> <Table responsive variant='dark table-sm' hover>
+          ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'> <Table responsive variant='dark table-sm table-borderless' hover>
             <thead>
                 <tr>
                     <th>Date</th>

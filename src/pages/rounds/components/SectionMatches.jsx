@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { Table, Button, Alert, ButtonGroup } from 'react-bootstrap'
+import { Table, Button, Alert, ButtonGroup, FormControl } from 'react-bootstrap'
 import ModalMatches from './ModalMatches'
 import { Link } from 'react-router-dom'
 import { useCreateMatch, useDeleteMatch, useGetMatches, useUpdateMatch } from '../../../features/matches.features'
 
 const SectionMatches = ({ round }) => {
   const { data: matches } = useGetMatches()
+  const [dataFilter, setDataFilter] = useState('')
   const createMatch = useCreateMatch()
   const updateMatch = useUpdateMatch()
   const deleteMatch = useDeleteMatch()
@@ -30,6 +31,11 @@ const SectionMatches = ({ round }) => {
 
   const matchByRound = matches?.filter(match => match?.round?._id === round?._id)
 
+  const filter = matchByRound?.filter(team => {
+    if (dataFilter) return team?.local?.name?.toLowerCase().includes(dataFilter.toLowerCase()) || team?.away?.name?.toLowerCase().includes(dataFilter.toLowerCase())
+    else return team
+  })
+
   return (
         <>
 
@@ -37,9 +43,12 @@ const SectionMatches = ({ round }) => {
         {(!update)
           ? <ModalMatches round={round} modalShow={modalShow} handleClose={handleClose} action={createMatch} type={'Create'} setUpdate={setUpdate} />
           : <ModalMatches round={round} match={match} modalShow={modalShow} handleClose={handleClose} action={updateMatch} type={'Edit'} setUpdate={setUpdate} /> }
-
-        {(matchByRound?.length > 0)
-          ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table variant='dark table-sm' responsive hover >
+          <div className='mx-2 mt-2'>
+              <FormControl className="mb-3"placeholder='Search Team...' id='team' name='team' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
+         </div>
+        {(filter?.length > 0)
+          ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table variant='dark table-sm table-borderless' responsive hover >
+            <caption className='m-1'>Total: {filter?.length} matches</caption>
             <thead>
                 <tr>
                     <th>Date</th>
@@ -53,7 +62,7 @@ const SectionMatches = ({ round }) => {
                 </tr>
             </thead>
             <tbody>
-                {matchByRound?.map(match => (
+                {filter?.map(match => (
                     <tr key={match?._id}>
                         <td>{match?.date?.split('T', 3).reverse().join(' ')}</td>
                         <td>{match?.round?.round}</td>

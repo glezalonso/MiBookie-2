@@ -35,7 +35,7 @@ const TableUsers = ({ users }) => {
           ? <ModalUsers modalShow={modalShow} handleClose={handleClose} action={createUser} type={'Create'} setUpdate={setUpdate} />
           : <ModalUsers user={user} modalShow={modalShow} handleClose={handleClose} action={updateUser} type={'Edit'} setUpdate={setUpdate} /> }
         {(users?.length > 0)
-          ? <Table variant='dark table-sm' responsive hover>
+          ? <Table variant='dark table-sm table-borderless' responsive hover>
             <thead>
                 <tr>
                     <th>

@@ -66,5 +66,5 @@ export const validateResetPassword = (values) => {
   if (values.confirmPassword.length < 8) return toast.error('confirm password must contain at least 8 characters')
   if (values.password.includes(' ')) return toast.error('Password must not include spaces')
   if (values.confirmPassword.includes(' '))toast.error('Password must not include spaces')
-  if (values.password === values.confirmPassword) toast.error('Passwods must be equals')
+  if (values.password !== values.confirmPassword) toast.error('Passwods must be equals')
 }

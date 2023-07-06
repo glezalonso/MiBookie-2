@@ -6,7 +6,7 @@ const TeamSettings = ({ match, handleRemoveLineUp, type }) => {
         <>
         {(type === 'local')
           ? (match?.lineup?.length > 0)
-              ? <Table responsive variant="dark table-sm" striped>
+              ? <Table responsive variant="dark table-sm table-borderless" striped>
                 <thead>
                     <tr>
                         <th>Player</th>
@@ -16,7 +16,7 @@ const TeamSettings = ({ match, handleRemoveLineUp, type }) => {
                 </thead>
                 <tbody>
                 { match?.lineup?.map(local => local?.local?.map(player => (
-                <tr key={player?.playerId?._id}><td>{player?.playerId?.fullName}</td><td>{player?.playerId?.position}</td><td><Button variant="danger btn-sm" onClick={() => handleRemoveLineUp(match?._id, player?.playerId, player?._id, 'local')}>Remove from lineup</Button></td></tr>
+                <tr key={player?.playerId?._id}><td>{player?.playerId?.fullName}</td><td>{player?.playerId?.position}</td><td><Button variant="danger btn-sm" onClick={() => handleRemoveLineUp(match?._id, player?.playerId, player?._id, 'local')}>Remove</Button></td></tr>
                 )))}
 
                </tbody>
@@ -24,7 +24,7 @@ const TeamSettings = ({ match, handleRemoveLineUp, type }) => {
               : <Alert variant='warning'>There is no information to show!</Alert>
 
           : (match?.lineup?.length > 0)
-              ? <Table responsive variant="dark table-sm" striped>
+              ? <Table responsive variant="dark table-sm table-borderless" striped>
                 <thead>
                     <tr>
                         <th>Player</th>

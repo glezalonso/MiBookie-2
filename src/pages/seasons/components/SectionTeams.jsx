@@ -31,7 +31,7 @@ const SectionTeams = ({ season }) => {
             </div>
             {filter?.length > 0
               ? <div className='table-wrapper-scroll-y my-custom-scrollbar'>
-                <Table responsive variant="dark table-sm" hover >
+                <Table responsive variant="dark table-sm table-borderless" hover >
                     <thead>
                         <tr>
                         <th>Team</th>
