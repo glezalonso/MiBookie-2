@@ -29,7 +29,7 @@ const SectionNews = ({ news }) => {
   }
 
   const filter = news?.filter(news => {
-    if (dataFilter) return news?.sport?.toLowerCase().includes(dataFilter.toLowerCase()) || news?.content?.toLowerCase().includes(dataFilter.toLowerCase())
+    if (dataFilter) return news?.sport?.sport?.toLowerCase().includes(dataFilter.toLowerCase()) || news?.title?.toLowerCase().includes(dataFilter.toLowerCase())
     else return news
   })
 
@@ -39,7 +39,7 @@ const SectionNews = ({ news }) => {
         <h5 className="h7 ">News</h5>
         <div className='mx-2'>
         <Button className="btn btn-warning btn-sm mb-2" onClick={handleShow} >Create New</Button>
-        <FormControl className="mb-3" style={{ fontSize: '13px' }} placeholder='Search sport, Team...' id='team' name='team' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
+        <FormControl className="mb-3" style={{ fontSize: '13px' }} placeholder='Search sport, title..' id='team' name='team' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
         </div>
         {(!update)
           ? <ModalNews modalShow={modalShow} handleClose={handleClose} action={createNew} type={'Create'} setUpdate={setUpdate} />
