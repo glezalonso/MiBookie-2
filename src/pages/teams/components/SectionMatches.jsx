@@ -21,6 +21,8 @@ const SectionMatches = ({ team }) => {
   })
   return (
         <>
+        <section>
+        <h5 className="h7 ">Last matches</h5>
         <div className='mx-2 my-3'>
         <FormControl placeholder='Search round, season, team..' style={{ fontSize: '13px' }} id='player' name='player' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
         </div>
@@ -58,7 +60,7 @@ const SectionMatches = ({ team }) => {
             </Table>
             </div>
           : <Alert variant='warning'>There is no information to show!</Alert>}
-
+          </section>
         </>
   )
 }

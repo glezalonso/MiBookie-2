@@ -31,7 +31,8 @@ const SectionSeasons = ({ league }) => {
   const seasonByLeague = seasons?.filter(season => season?.league?._id === league?._id)
   return (
         <>
-
+        <section>
+            <h5 className="h7 ">Seasons</h5>
         <Button variant="warning mb-2 btn-sm" onClick={handleShow}>Create Season</Button>
         {(!update)
           ? <ModalSeasons league={league} modalShow={modalShow} handleClose={handleClose} action={createSeason} type={'Create'} setUpdate={setUpdate} />
@@ -71,6 +72,7 @@ const SectionSeasons = ({ league }) => {
           </Table>
           </div>
           : <Alert variant='warning'>There is no information to show!</Alert>}
+        </section>
         </>
   )
 }

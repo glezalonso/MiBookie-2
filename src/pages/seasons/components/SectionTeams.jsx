@@ -26,6 +26,8 @@ const SectionTeams = ({ season }) => {
 
   return (
         <>
+        <section>
+        <h5 className="h7">All teams</h5>
          <div className='mx-2 my-3'>
             <FormControl placeholder='Search Teams...' id='filter' name='filter' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
             </div>
@@ -49,6 +51,7 @@ const SectionTeams = ({ season }) => {
                 </Table>
                 </div>
               : <Alert variant='warning'>There is no information to show!</Alert>}
+        </section>
         </>
   )
 }

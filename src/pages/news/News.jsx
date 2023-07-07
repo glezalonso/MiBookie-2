@@ -1,13 +1,13 @@
 import React from 'react'
+import { useGetNews } from '../../features/news.features'
+import { toast, Toaster } from 'react-hot-toast'
 import Navigate from '../../ui/Navigate'
 import { Container, Row, Col } from 'react-bootstrap'
-import { toast, Toaster } from 'react-hot-toast'
-import TableTeams from './components/TableTeams'
 import Loading from '../../ui/Loading'
-import { useGetTeams } from '../../features/teams.features'
+import SectionNews from './components/SectionNews'
 
-const Teams = () => {
-  const { data: teams, isLoading, isError } = useGetTeams()
+const News = () => {
+  const { data: news, isLoading, isError } = useGetNews()
 
   if (isLoading) return <Loading />
   if (isError) return toast.error('failed to load!')
@@ -17,14 +17,15 @@ const Teams = () => {
         <Navigate />
         <Toaster position="top-center" reverseOrder={false}></Toaster>
          <Container fluid >
-          <Row className='my-2  mx-auto' >
-            <Col xs={12} lg={11} className='border rounded mx-auto fs-6' >
-            <TableTeams teams={teams}/>
+          <Row className='m-2 p-2 mx-auto' >
+            <Col xs={12} md={11} className='border rounded mx-auto  fs-4'>
+              <SectionNews news={news} />
             </Col>
           </Row>
         </Container>
+
         </>
   )
 }
 
-export default Teams
+export default News

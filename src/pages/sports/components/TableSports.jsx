@@ -29,6 +29,8 @@ const TableSport = ({ sports }) => {
 
   return (
         <>
+        <section>
+        <h5 className="h7 ">Sports</h5>
           <Button variant="warning m-1 btn-sm" onClick={handleShow}> Create sport</Button>
         {(!update)
           ? <ModalSports modalShow={modalShow} handleClose={handleClose} action={createSport} type={'Create'} setUpdate={setUpdate} />
@@ -65,7 +67,7 @@ const TableSport = ({ sports }) => {
             </tbody>
         </Table>
           : <Alert variant='warning'>There is no information to show!</Alert>}
-
+           </section>
         </>
   )
 }

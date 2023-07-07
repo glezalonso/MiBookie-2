@@ -30,6 +30,9 @@ const TableUsers = ({ users }) => {
 
   return (
         <>
+        <section>
+        <h5 className="h7 ">Users</h5>
+
           <Button variant="warning m-1 btn-sm" onClick={handleShow}> Create user</Button>
         {(!update)
           ? <ModalUsers modalShow={modalShow} handleClose={handleClose} action={createUser} type={'Create'} setUpdate={setUpdate} />
@@ -74,6 +77,7 @@ const TableUsers = ({ users }) => {
             </tbody>
         </Table>
           : <Alert variant='warning'>There is no information to show!</Alert>}
+           </section>
         </>
   )
 }

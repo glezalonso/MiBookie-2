@@ -23,6 +23,8 @@ const MatchContent = ({ match }) => {
 
   return (
         <>
+        <section>
+           <h5 className="h7 ">Match</h5>
            <Table responsive variant="dark table-sm table-borderless" hover >
             <tbody>
             <tr><td>Date</td><td>{match?.date}</td></tr>
@@ -43,7 +45,7 @@ const MatchContent = ({ match }) => {
             <ModalScore match={match} modalShow={modalShow} handleClose={handleClose} />
 
             {(match?.status) && <MatchSettings match={match} handleRemoveLineUp={handleRemoveLineUp} handleAddLineUp={handleAddLineUp} /> }
-
+        </section>
         </>
   )
 }

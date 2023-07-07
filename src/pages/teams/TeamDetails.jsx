@@ -23,29 +23,24 @@ const TeamDetail = () => {
         <Navigate />
         <Toaster position="botton-center" reverseOrder={false} />
         <Container fluid >
-          <Row className='m-1 rounded'>
-            <Col lg={6} className='p-2'>
+          <Row className='my-2 mx-auto rounded'>
+            <Col lg={6} >
             <SectionTeam team={team} />
             </Col>
           </Row>
-          <Row className='m-1 rounded'>
-            <Col lg={6} xs={12} className='p-2'>
-            <h5 className="h7 ">Next matches</h5>
+          <Row className='my-2 mx-auto rounded'>
+            <Col lg={6} xs={12} >
               <SectionNextMatches team={team} />
             </Col>
-
-            <Col lg={6} xs={12} className='p-2'>
-            <h5 className="h7 ">Last matches</h5>
+            <Col lg={6} xs={12}>
               <SectionMatches team={team} />
             </Col >
           </Row >
-          <Row className='m-1 rounded'>
-            <Col md={5} xs={12} className='p-2 mx-auto'>
-            <h5 className="h7 ">Roster</h5>
+          <Row className='my-3 mx-auto rounded'>
+            <Col md={5} xs={12} className='mx-auto'>
               <SectionRoster team={team} />
             </Col>
-            <Col md={5} xs={12} className='p-2 mx-auto'>
-            <h5 className="h7 ">All players</h5>
+            <Col md={5} xs={12} className='mx-auto'>
               <SectionPlayers team={team} />
             </Col>
           </Row>

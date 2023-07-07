@@ -15,8 +15,6 @@ const ResetPassword = () => {
 
   const navigate = useNavigate()
 
-  if (!email && !OTP) return navigate('/')
-
   const mutationOTP = useMutation({
     mutationFn: resetPassword,
     onSuccess: () => {

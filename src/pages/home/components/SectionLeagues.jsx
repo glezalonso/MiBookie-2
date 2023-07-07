@@ -7,6 +7,7 @@ const SectionLeagues = () => {
   const { data: leagues } = useGetLeagues()
   return (
         <>
+        <section>
         <h5 className="h5 m-2">Leagues</h5>
          {(leagues?.length > 0)
            ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'>
@@ -32,6 +33,7 @@ const SectionLeagues = () => {
         </Table>
         </div>
            : <Alert variant="warning">There is no information to show!</Alert>}
+           </section>
         </>
   )
 }

@@ -38,6 +38,8 @@ const SectionMatches = ({ round }) => {
 
   return (
         <>
+        <section>
+        <h5 className="h7 ">Matches</h5>
 
         <Button variant="warning mb-2 btn-sm" onClick={handleShow}>Create match</Button>
         {(!update)
@@ -87,6 +89,7 @@ const SectionMatches = ({ round }) => {
           </Table>
           </div>
           : <Alert variant='warning'>There is no information to show!</Alert>}
+           </section>
         </>
   )
 }

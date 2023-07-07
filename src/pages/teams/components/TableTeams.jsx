@@ -36,6 +36,9 @@ const TableTeams = ({ teams }) => {
 
   return (
         <>
+        <section>
+        <h5 className="h7 ">All teams</h5>
+
           <div className='mx-2'>
         <Button className="btn btn-warning btn-sm mb-2" onClick={handleShow} >Create team</Button>
         <FormControl className="mb-3" style={{ fontSize: '13px' }} placeholder='Search Team...' id='team' name='team' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
@@ -83,7 +86,7 @@ const TableTeams = ({ teams }) => {
             </tbody>
         </Table>
           : <Alert variant='warning'>There is no information to show!</Alert>}
-
+           </section>
         </>
   )
 }

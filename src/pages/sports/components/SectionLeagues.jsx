@@ -32,7 +32,9 @@ const SectionLeagues = ({ sport }) => {
 
   return (
     <>
-              <Button variant="warning mb-2 btn-sm" onClick={handleShow}>Create league</Button>
+    <section>
+    <h5 className="h7 ">Leagues</h5>
+        <Button variant="warning mb-2 btn-sm" onClick={handleShow}>Create league</Button>
         {(!update)
           ? <ModalLeagues sportId={sport?._id} modalShow={modalShow} handleClose={handleClose} action={createLeague} type={'Create'} setUpdate={setUpdate} />
           : <ModalLeagues league={league} sportId={sport?._id} modalShow={modalShow} handleClose={handleClose} action={updateLeague} type={'Edit'} setUpdate={setUpdate} /> }
@@ -71,6 +73,7 @@ const SectionLeagues = ({ sport }) => {
     </Table>
     </div>
       : <Alert variant='warning'>There is no information to show!</Alert>}
+      </section>
     </>
   )
 }

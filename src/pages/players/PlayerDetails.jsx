@@ -17,9 +17,10 @@ const PlayerDetails = () => {
         <>
          <Navigate />
         <Container fluid>
-        <Row className='m-2 p-2 mx-auto' >
-            <Col xs={12} md={11} className=' mx-auto  fs-6' >
-            <Card>
+        <Row className='my-2 mx-auto' >
+            <Col xs={12} md={11} className=' mx-auto fs-6' >
+            <section>
+              <Card>
               <Card.Header><Card.Title>{player?.fullName}</Card.Title></Card.Header>
               <Card.Body>
                 <Card.Text>Position: {player?.position}</Card.Text>
@@ -27,8 +28,8 @@ const PlayerDetails = () => {
                 <Card.Text>Sport: {player?.sport?.sport}</Card.Text>
                 <Card.Text>Status: {(player?.status) ? <strong>Active</strong> : <strong>Inactive</strong>}</Card.Text>
               </Card.Body>
-
             </Card>
+            </section>
             </Col>
           </Row>
         </Container>

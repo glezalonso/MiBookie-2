@@ -11,7 +11,10 @@ const SectionTodayMatches = ({ matchesToday }) => {
   filter?.sort((a, b) => b.status - a.status)
   return (
             <>
-             <div className='mx-2 mt-2'>
+            <section>
+            <h5 className="h7 ">Matches Today</h5>
+
+             <div className='mx-auto mt-2'>
               <FormControl className="mb-3"placeholder='Search Team...' id='team' name='team' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
               </div>
                {(filter?.length > 0)
@@ -47,6 +50,7 @@ const SectionTodayMatches = ({ matchesToday }) => {
           </Table>
           </div>
                  : <Alert variant="warning">There is no information to show!</Alert>}
+             </section>
             </>
   )
 }

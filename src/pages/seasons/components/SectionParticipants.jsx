@@ -18,10 +18,11 @@ const SectionParticipants = ({ season }) => {
 
   return (
         <>
+        <section>
+        <h5 className="h7">Participants</h5>
         <div className='mx-2 my-3'>
-
             <FormControl placeholder='Search team...' id='team' name='team' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
-            </div>
+        </div>
             {filter?.length > 0
               ? <div className='table-wrapper-scroll-y my-custom-scrollbar'>
                 <Table responsive variant="dark table-sm table-borderless" hover >
@@ -42,6 +43,7 @@ const SectionParticipants = ({ season }) => {
                 </Table>
             </div>
               : <Alert variant='warning'>There is no information to show!</Alert>}
+              </section>
         </>
   )
 }

@@ -26,7 +26,10 @@ import TeamDetails from './pages/teams/TeamDetails'
 import Matches from './pages/matches/Matches'
 import Users from './pages/users/Users'
 import UserDetails from './pages/users/UserDetails'
-
+import Bookies from './pages/bookies/bookies'
+import BookieDetails from './pages/bookies/bookieDetails'
+import News from './pages/news/news'
+import NewDetails from './pages/news/NewDetails'
 // Store
 import { useAuthStore } from './store/auth'
 
@@ -59,6 +62,10 @@ const App = () => {
                     <Route path='/seasons/:id' element={<Seasons />} />
                     <Route path='/rounds/:id' element={<Rounds />} />
                     <Route path='/matches/:id' element={<Matches />} />
+                    <Route path='/news' element={<News />} />
+                    <Route path='/news/:id' element={<NewDetails />} />
+                    <Route path='/bookies' element={<Bookies />} />
+                    <Route path='/bookies/:id' element={<BookieDetails />} />
                     <Route path="*" element={<h1>Not Found!</h1>} />
               </Route>
 

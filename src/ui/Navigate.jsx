@@ -25,6 +25,8 @@ const Navigate = () => {
            <Link className='nav-link' to={'../players'} >Players</Link>
            <Link className='nav-link' to={'../teams'} >Teams</Link>
            <Link className='nav-link' to={'../sports'} >Sports</Link>
+           <Link className='nav-link' to={'../news'} >News</Link>
+           <Link className='nav-link' to={'../bookies'} >Bookies</Link>
            <Link className='nav-link' to={'../users'} >Users</Link>
           </Nav>
             <Button variant="warning" onClick={() => handleLogOut()}>Log out</Button>

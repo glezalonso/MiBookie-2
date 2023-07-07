@@ -13,8 +13,6 @@ const VerifyOTP = () => {
   const setOTP = useRecovery(state => state.setOTP)
   const navigate = useNavigate()
 
-  if (!email) return navigate('/')
-
   const mutationOTP = useMutation({
     mutationFn: verifyOTP,
     onSuccess: (data) => {

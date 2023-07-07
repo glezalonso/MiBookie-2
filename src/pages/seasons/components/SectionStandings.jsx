@@ -14,6 +14,9 @@ const SectionStandings = ({ season }) => {
 
   return (
         <>
+        <section>
+        <h5 className="h7 ">Standings</h5>
+
         {sort?.length > 0
           ? <div className='table-wrapper-scroll-y my-custom-scrollbar'>
             <Table responsive variant="dark table-sm table-borderless" hover >
@@ -48,6 +51,7 @@ const SectionStandings = ({ season }) => {
             </Table>
         </div>
           : <Alert variant='warning'>There is no information to show!</Alert>}
+          </section>
     </>
   )
 }
