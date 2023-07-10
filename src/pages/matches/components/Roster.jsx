@@ -13,7 +13,7 @@ const Roaster = ({ match, roster, handleAddLineUp, type }) => {
   return (
         <>
          <div className='mx-2 my-3'>
-            <FormControl placeholder='Search players...' id='filter' name='filter' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
+            <FormControl placeholder='Search players...' name='filter' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
             </div>
          {(filter?.length > 0)
            ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'><Table responsive variant="dark table-sm table-borderless" hover>

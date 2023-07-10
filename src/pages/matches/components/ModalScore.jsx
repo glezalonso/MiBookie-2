@@ -34,10 +34,10 @@ const ModalScore = ({ match, modalShow, handleClose }) => {
                     <Form onSubmit={formik.handleSubmit}>
                 <Modal.Body>
                 <Form.Group>
-                        <Form.Label>{match?.local?.name} :</Form.Label>
+                        <Form.Label htmlFor='local'>{match?.local?.name} :</Form.Label>
                         <FormControl {...formik.getFieldProps('local')} type="number" id="local" name="local" placeholder='Score'></FormControl>
                         </Form.Group>
-                        <Form.Label>{match?.away?.name} :</Form.Label>
+                        <Form.Label htmlFor='away'>{match?.away?.name} :</Form.Label>
                         <FormControl {...formik.getFieldProps('away')} type="number" id="away" name="away" placeholder='Score'></FormControl>
             </Modal.Body>
             <Modal.Footer>

@@ -2,7 +2,7 @@ import React from 'react'
 import { useFormik } from 'formik'
 import { Toaster } from 'react-hot-toast'
 import { Form, Button, Container, Row, Col } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { verifyLogin } from '../helpers/validations'
 import { useLogin } from '../features/users.features'
 
@@ -39,9 +39,8 @@ const Login = () => {
                       <Form.Label htmlFor="password" >Password: </Form.Label>
                       <Form.Control {...formik.getFieldProps('password')} type="password" name="password" id="password" placeholder='Enter password' />
                       </Form.Group>
-                      <Form.Label />
-                      <Form.Label className='mt-1' ><Link to={'recovery'}>Forget your password?</Link></Form.Label>
-                      <Button type='submit' variant='warning d-flex '>Log In</Button>
+                      {/* <Form.Label className='mt-1' ><Link to={'recovery'}>Forget your password?</Link></Form.Label> */}
+                      <Button type='submit' variant='warning d-flex mt-2 '>Log In</Button>
                        </Form>
                 </Col>
               </Row>

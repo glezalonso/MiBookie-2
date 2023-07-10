@@ -6,6 +6,7 @@ import { useAuthStore } from '../store/auth'
 
 const Navigate = () => {
   const logOut = useAuthStore(state => state.logOut)
+  const isAdmin = useAuthStore(state => state.isAdmin)
   const navigate = useNavigate()
   const handleLogOut = () => {
     logOut()
@@ -26,8 +27,13 @@ const Navigate = () => {
            <Link className='nav-link' to={'../teams'} >Teams</Link>
            <Link className='nav-link' to={'../sports'} >Sports</Link>
            <Link className='nav-link' to={'../news'} >News</Link>
+           {isAdmin
+             ? <>
            <Link className='nav-link' to={'../bookies'} >Bookies</Link>
            <Link className='nav-link' to={'../users'} >Users</Link>
+           </>
+             : null}
+
           </Nav>
             <Button variant="warning" onClick={() => handleLogOut()}>Log out</Button>
         </Navbar.Collapse>
