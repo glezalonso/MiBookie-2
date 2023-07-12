@@ -1,10 +1,10 @@
 import React from 'react'
 import { useGetUsers } from '../../features/users.features'
-import { toast, Toaster } from 'react-hot-toast'
 import Navigate from '../../ui/Navigate'
 import { Container, Row, Col } from 'react-bootstrap'
 import TableUsers from './components/TableUsers'
 import Loading from '../../ui/Loading'
+import { toast } from 'react-hot-toast'
 
 const Users = () => {
   const { data: users, isLoading, isError } = useGetUsers()
@@ -15,10 +15,9 @@ const Users = () => {
   return (
         <>
          <Navigate />
-        <Toaster position="top-center" reverseOrder={false}></Toaster>
          <Container fluid >
           <Row className='my-2 mx-auto' >
-            <Col xs={12} md={11} className='border rounded mx-auto fs-4'>
+            <Col xs={12} md={11} className='bg-dark text-light rounded mx-auto my-2 fs-4'>
               <TableUsers users={users} />
             </Col>
           </Row>

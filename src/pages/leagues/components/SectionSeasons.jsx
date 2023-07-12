@@ -18,7 +18,7 @@ const SectionSeasons = ({ league }) => {
   const handleShow = () => setModalShow(true)
 
   const handleDelete = (id) => {
-    const sure = confirm('Want to delete?')
+    const sure = confirm('Esta seguro que desea borrar?')
     if (sure) return deleteSeason.mutate(id)
   }
 
@@ -29,24 +29,25 @@ const SectionSeasons = ({ league }) => {
   }
 
   const seasonByLeague = seasons?.filter(season => season?.league?._id === league?._id)
+  seasonByLeague?.sort((a, b) => b.status - a.status)
   return (
         <>
         <section>
-            <h5 className="h7 ">Seasons</h5>
-        <Button variant="warning mb-2 btn-sm" onClick={handleShow}>Create Season</Button>
+            <h5 className="h7 ">Temporadas  <Button variant="warning mx-1 btn-sm" onClick={handleShow}>Crear temporada</Button></h5>
         {(!update)
-          ? <ModalSeasons league={league} modalShow={modalShow} handleClose={handleClose} action={createSeason} type={'Create'} setUpdate={setUpdate} />
-          : <ModalSeasons league={league} season={season} modalShow={modalShow} handleClose={handleClose} action={updateSeason} type={'Edit'} setUpdate={setUpdate} /> }
+          ? <ModalSeasons league={league} modalShow={modalShow} handleClose={handleClose} action={createSeason} type={'Crear'} setUpdate={setUpdate} />
+          : <ModalSeasons league={league} season={season} modalShow={modalShow} handleClose={handleClose} action={updateSeason} type={'Editar'} setUpdate={setUpdate} /> }
 
         {(seasonByLeague?.length > 0)
-          ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'><Table variant='dark table-sm table-borderless' responsive hover>
-            <thead>
+          ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded '>
+            <Table variant='dark table-sm table-borderless my-1' responsive hover>
+            <thead className='border-bottom'>
                 <tr>
-                    <th>Season</th>
-                    <th>League</th>
-                    <th>Sport</th>
-                    <th>Status</th>
-                    <th>Options</th>
+                    <th>Temporada</th>
+                    <th>Liga</th>
+                    <th>Deporte</th>
+                    <th>Estatus</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -56,13 +57,13 @@ const SectionSeasons = ({ league }) => {
                         <td>{season?.league?.league}</td>
                         <td>{season?.sport?.sport}</td>
                         <td>{(season?.status)
-                          ? <span className='text-success'>Open!</span>
-                          : <span className='text-danger'>Closed!</span>}</td>
+                          ? <span className='text-success'>Activo!</span>
+                          : <span className='text-danger'>Inactivo!</span>}</td>
                         <td>
                         <ButtonGroup>
-                        <Link className='btn btn-secondary btn-sm mx-1 rounded ' to={`../seasons/${season?._id}`}>Details</Link>
-                        <Button className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(season)}>Edit</Button>
-                        <Button className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(season?._id)}>Delete</Button>
+                        <Link className='btn btn-secondary btn-sm mx-1 rounded ' to={`../seasons/${season?._id}`}>Detalles</Link>
+                        <Button className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(season)}>Editar</Button>
+                        <Button className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(season?._id)}>Borrar</Button>
                         </ButtonGroup>
                         </td>
                     </tr>
@@ -71,7 +72,7 @@ const SectionSeasons = ({ league }) => {
 
           </Table>
           </div>
-          : <Alert variant='warning'>There is no information to show!</Alert>}
+          : <Alert variant='warning'>No hay temporadas para mostrar!</Alert>}
         </section>
         </>
   )

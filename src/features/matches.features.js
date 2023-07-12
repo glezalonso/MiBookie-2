@@ -1,6 +1,11 @@
 import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query'
 import { toast } from 'react-hot-toast'
-import { addLineUp, closeMatch, createMatch, deleteMatch, getMatch, getMatches, removeLineUp, updateMatch } from '../services/matches'
+import {
+  addLineUp, closeMatch, createMatch, deleteMatch,
+  getMatch, getMatches, removeLineUp, updateMatch,
+  getMatchesByLeague, getMatchesByRound, getMatchesBySeason,
+  getMatchesByTeam, getMatchesClosed, getMatchesOpen, getMatchesToday
+} from '../services/matches'
 
 export const useGetMatches = () => {
   const { data, isLoading, isError } = useQuery({ queryKey: ['matches'], queryFn: getMatches })
@@ -15,7 +20,7 @@ export const useDeleteMatch = () => {
   const mutationDelete = useMutation({
     mutationFn: deleteMatch,
     onSuccess: () => {
-      toast.success('Match deleted successfully!')
+      toast.success('Partido Borrado exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['matches'] })
     }
   })
@@ -27,7 +32,7 @@ export const useUpdateMatch = () => {
   const mutationUpdate = useMutation({
     mutationFn: updateMatch,
     onSuccess: () => {
-      toast.success('Match updated successfully!')
+      toast.success('Partido actualizado exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['matches'] })
     }
   })
@@ -39,7 +44,7 @@ export const useCreateMatch = () => {
   const mutationCreate = useMutation({
     mutationFn: createMatch,
     onSuccess: () => {
-      toast.success('Match created successfully!')
+      toast.success('Partido creado exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['matches'] })
     }
   })
@@ -51,7 +56,7 @@ export const useCloseMatch = () => {
   const mutationClose = useMutation({
     mutationFn: closeMatch,
     onSuccess: () => {
-      toast.success('Score placed successfully!')
+      toast.success('Marcador colocado exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['matches'] })
     }
   })
@@ -63,7 +68,7 @@ export const useAddLineUp = () => {
   const mutationAddLineUp = useMutation({
     mutationFn: addLineUp,
     onSuccess: () => {
-      toast.success('player added successfully!')
+      toast.success('Jugador agregado a la alineación!')
       queryClient.invalidateQueries({ queryKey: ['match'] })
     }
   })
@@ -75,9 +80,38 @@ export const useRemoveLineUp = () => {
   const mutationRemoveLineUp = useMutation({
     mutationFn: removeLineUp,
     onSuccess: () => {
-      toast.success('Player removed successfully!')
+      toast.success('Jugador removido de la alineación!')
       queryClient.invalidateQueries({ queryKey: ['match'] })
     }
   })
   return mutationRemoveLineUp
+}
+
+export const useGetMatchesToday = (date) => {
+  const { data, isLoading, isError } = useQuery({ queryKey: ['matchestoday', date], queryFn: () => getMatchesToday(date) })
+  return { data, isLoading, isError }
+}
+export const useGetMatchesByTeam = (team) => {
+  const { data, isLoading, isError } = useQuery({ queryKey: ['matches', team], queryFn: () => getMatchesByTeam(team) })
+  return { data, isLoading, isError }
+}
+export const useGetMatchesByLeague = (league) => {
+  const { data, isLoading, isError } = useQuery({ queryKey: ['matches', league], queryFn: () => getMatchesByLeague(league) })
+  return { data, isLoading, isError }
+}
+export const useGetMatchesByRound = (round) => {
+  const { data, isLoading, isError } = useQuery({ queryKey: ['matches', round], queryFn: () => getMatchesByRound(round) })
+  return { data, isLoading, isError }
+}
+export const useGetMatchesBySeason = (season) => {
+  const { data, isLoading, isError } = useQuery({ queryKey: ['matches', season], queryFn: () => getMatchesBySeason(season) })
+  return { data, isLoading, isError }
+}
+export const useGetMatchesOpen = () => {
+  const { data, isLoading, isError } = useQuery({ queryKey: ['matches'], queryFn: getMatchesOpen })
+  return { data, isLoading, isError }
+}
+export const useGetMatchesClosed = () => {
+  const { data, isLoading, isError } = useQuery({ queryKey: ['matches'], queryFn: getMatchesClosed })
+  return { data, isLoading, isError }
 }

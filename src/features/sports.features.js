@@ -15,7 +15,7 @@ export const useDeleteSport = () => {
   const mutationDelete = useMutation({
     mutationFn: deleteSport,
     onSuccess: () => {
-      toast.success('Sport deleted successfully!')
+      toast.success('Deporte borrado exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['Sports'] })
     }
   })
@@ -27,7 +27,7 @@ export const useUpdateSport = () => {
   const mutationUpdate = useMutation({
     mutationFn: updateSport,
     onSuccess: () => {
-      toast.success('Sport updated successfully!')
+      toast.success('Deporte actualizado exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['Sports'] })
     }
   })
@@ -39,7 +39,7 @@ export const useCreateSport = () => {
   const mutationCreate = useMutation({
     mutationFn: createSport,
     onSuccess: () => {
-      toast.success('Sport created successfully!')
+      toast.success('Deporte creado exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['Sports'] })
     }
   })

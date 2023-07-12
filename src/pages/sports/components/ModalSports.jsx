@@ -39,16 +39,16 @@ const ModalSports = ({ sport, modalShow, handleClose, action, type, setUpdate })
         <>
         <Modal className="text-dark" show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
             <Modal.Header >
-                <Modal.Title>{type} sport</Modal.Title>
+                <Modal.Title>{type} deporte</Modal.Title>
                 </Modal.Header>
                     <Form onSubmit={formik.handleSubmit}>
                 <Modal.Body>
                     <Form.Group>
-                        <Form.Label>Sport</Form.Label>
+                        <Form.Label>Deporte</Form.Label>
                         <Form.Control {...formik.getFieldProps('sport')} type="text" id="sport" name="sport" ></Form.Control>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Description</Form.Label>
+                        <Form.Label>Descripción</Form.Label>
                             <Form.Control {...formik.getFieldProps('description')} type="text" id="description" name="description"></Form.Control>
                     </Form.Group>
                     <Form.Group>
@@ -58,8 +58,8 @@ const ModalSports = ({ sport, modalShow, handleClose, action, type, setUpdate })
 
             </Modal.Body>
             <Modal.Footer>
-            <Button variant="dark" onClick={handleCloseUpdate}>Close</Button>
-                <Button variant="warning" type="submit">{type} sport</Button>
+            <Button variant="dark" onClick={handleCloseUpdate}>Cerrar</Button>
+                <Button variant="warning" type="submit">{type} deporte</Button>
             </Modal.Footer>
         </Form>
       </Modal>

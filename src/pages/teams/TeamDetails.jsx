@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import toast, { Toaster } from 'react-hot-toast'
+import { toast } from 'react-hot-toast'
 import { Container, Row, Col } from 'react-bootstrap'
 import Navigate from '../../ui/Navigate'
 import Loading from '../../ui/Loading'
@@ -21,7 +21,6 @@ const TeamDetail = () => {
   return (
         <>
         <Navigate />
-        <Toaster position="botton-center" reverseOrder={false} />
         <Container fluid >
           <Row className='my-2 mx-auto rounded'>
             <Col lg={6} >
@@ -29,18 +28,18 @@ const TeamDetail = () => {
             </Col>
           </Row>
           <Row className='my-2 mx-auto rounded'>
-            <Col lg={6} xs={12} >
-              <SectionNextMatches team={team} />
+            <Col md={6} className='bg-dark text-light rounded mx-auto' >
+            <SectionMatches team={team} />
             </Col>
-            <Col lg={6} xs={12}>
-              <SectionMatches team={team} />
+            <Col md={5} className='bg-dark text-light rounded mx-auto'>
+            <SectionNextMatches team={team} />
             </Col >
           </Row >
           <Row className='my-3 mx-auto rounded'>
-            <Col md={5} xs={12} className='mx-auto'>
+            <Col md={5} className='bg-dark text-light rounded mx-auto'>
               <SectionRoster team={team} />
             </Col>
-            <Col md={5} xs={12} className='mx-auto'>
+            <Col md={5} className='bg-dark text-light rounded mx-auto'>
               <SectionPlayers team={team} />
             </Col>
           </Row>

@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useCreatePlayer, useDeletePlayer, useUpdatePlayer, useGetPlayers } from '../../../features/players.features'
 import { Table, Button, Alert, ButtonGroup, FormControl } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import ModalPlayers from './ModalPlayers'
-import { useCreatePlayer, useDeletePlayer, useUpdatePlayer } from '../../../features/players.features'
+import { toast } from 'react-hot-toast'
+import Loading from '../../../ui/Loading'
 
-const TableSport = ({ players }) => {
+const TableSport = () => {
+  const { data: players, isLoading, isError } = useGetPlayers()
   const [dataFilter, setDataFilter] = useState('')
   const createPlayer = useCreatePlayer()
   const updatePlayer = useUpdatePlayer()
@@ -18,7 +21,7 @@ const TableSport = ({ players }) => {
   const handleShow = () => setModalShow(true)
 
   const handleDelete = (id) => {
-    const sure = confirm('Want to delete?')
+    const sure = confirm('Estas seguro que deses que deseas borrar?')
     if (sure) return deletePlayer.mutate(id)
   }
 
@@ -28,6 +31,9 @@ const TableSport = ({ players }) => {
     setUpdate(true)
   }
 
+  if (isLoading) return <Loading />
+  if (isError) return toast.error('Hubo un error al cargar los jugadores!')
+
   const filter = players.filter(player => {
     if (dataFilter) return player?.fullName?.toLowerCase().includes(dataFilter.toLowerCase()) || player?.sport?.sport?.toLowerCase().includes(dataFilter.toLowerCase()) || player?.team?.name?.toLowerCase().includes(dataFilter.toLowerCase())
     else return player
@@ -36,36 +42,35 @@ const TableSport = ({ players }) => {
   return (
         <>
         <section>
-        <h5 className="h7 ">All players</h5>
-
+        <h5 className="h7 ">Jugadores <Button className="btn btn-warning btn-sm mb-2 mx-1" onClick={handleShow} >Crear jugador</Button></h5>
         <div className='mx-2 my-3'>
-        <Button className="btn btn-warning mb-2" onClick={handleShow} >Create player</Button>
-        <FormControl placeholder='Search player, team,  sport...' id='filter' name='filter' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
+        <FormControl style={{ fontSize: '13px' }} placeholder='Bucar por nombre, equipo, deporte...' id='filter' name='filter' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
         </div>
         {(!update)
-          ? <ModalPlayers modalShow={modalShow} handleClose={handleClose} action={createPlayer} type={'Create'} setUpdate={setUpdate} />
-          : <ModalPlayers player={player} modalShow={modalShow} handleClose={handleClose} action={updatePlayer} type={'Edit'} setUpdate={setUpdate} /> }
+          ? <ModalPlayers modalShow={modalShow} handleClose={handleClose} action={createPlayer} type={'Crear'} setUpdate={setUpdate} />
+          : <ModalPlayers player={player} modalShow={modalShow} handleClose={handleClose} action={updatePlayer} type={'Editar'} setUpdate={setUpdate} /> }
         {(filter?.length > 0)
-          ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table responsive variant='dark table-sm table-borderless'>
-            <thead>
+          ? <div className='table-wrapper-scroll-y my-custom-scrollbar'>
+            <Table responsive variant='dark table-sm table-borderless' hover>
+            <thead className='border-bottom'>
                 <tr>
                     <th>
-                       Fullname
+                       Nombre
                     </th>
                     <th>
-                       Position
+                       Posición
                     </th>
                     <th>
-                       Sport
+                       Deporte
                     </th>
                     <th>
-                        Status
+                        Equipo
                     </th>
                     <th>
-                        Team
+                        Estatus
                     </th>
                     <th>
-                        Options
+                        Opciones
                     </th>
                 </tr>
             </thead>
@@ -75,13 +80,13 @@ const TableSport = ({ players }) => {
                         <td>{player?.fullName}</td>
                         <td>{player?.position}</td>
                         <td>{player?.sport?.sport}</td>
-                        <td>{(player?.status) ? <span className='text-success'>Active</span> : <span className='text-danger'>Desactive</span>}</td>
                         <td>{player?.team?.name}</td>
+                        <td>{(player?.status) ? <span className='text-success'>Activo</span> : <span className='text-danger'>Inactivo</span>}</td>
                         <td>
                             <ButtonGroup>
-                            <Link className='btn btn-secondary btn-sm mx-1 rounded ' to={`./${player?._id}`}>Details</Link>
-                            <Button className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(player)}>Edit</Button>
-                            <Button className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(player?._id)}>Delete</Button>
+                            <Link className='btn btn-secondary btn-sm mx-1 rounded ' to={`./${player?._id}`}>Detalles</Link>
+                            <Button className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(player)}>Editar</Button>
+                            <Button className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(player?._id)}>Borrar</Button>
                             </ButtonGroup>
                         </td>
                         </tr>
@@ -89,7 +94,7 @@ const TableSport = ({ players }) => {
             </tbody>
         </Table>
         </div>
-          : <Alert variant='warning'>There is no information to show!</Alert>}
+          : <Alert variant='warning'>No hay jugadores para mostrar!</Alert>}
         </section>
 
         </>

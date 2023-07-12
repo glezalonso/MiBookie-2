@@ -18,7 +18,7 @@ const SectionLeagues = ({ sport }) => {
   const handleShow = () => setModalShow(true)
 
   const handleDelete = (id) => {
-    const sure = confirm('Want to delete?')
+    const sure = confirm('Esta seguro que desea borrar?')
     if (sure) return deleteLeague.mutate(id)
   }
 
@@ -33,24 +33,24 @@ const SectionLeagues = ({ sport }) => {
   return (
     <>
     <section>
-    <h5 className="h7 ">Leagues</h5>
-        <Button variant="warning mb-2 btn-sm" onClick={handleShow}>Create league</Button>
+    <h5 className="h7 ">Ligas <Button variant="warning mx-2 btn-sm" onClick={handleShow}>Crear liga</Button></h5>
         {(!update)
-          ? <ModalLeagues sportId={sport?._id} modalShow={modalShow} handleClose={handleClose} action={createLeague} type={'Create'} setUpdate={setUpdate} />
-          : <ModalLeagues league={league} sportId={sport?._id} modalShow={modalShow} handleClose={handleClose} action={updateLeague} type={'Edit'} setUpdate={setUpdate} /> }
+          ? <ModalLeagues sportId={sport?._id} modalShow={modalShow} handleClose={handleClose} action={createLeague} type={'Crear'} setUpdate={setUpdate} />
+          : <ModalLeagues league={league} sportId={sport?._id} modalShow={modalShow} handleClose={handleClose} action={updateLeague} type={'Editar'} setUpdate={setUpdate} /> }
 
     {(leaguesBySport?.length > 0)
-      ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded table-borderless'><Table variant='dark table-sm' responsive hover>
-        <thead>
+      ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded my-1'>
+        <Table variant='dark table-sm table-borderless' responsive hover>
+        <thead className='border-bottom'>
             <tr>
                 <th>
-                    League
+                   Liga
                 </th>
                 <th>
-                    Description
+                   Descripción
                 </th>
                 <th>
-                    Options
+                    Opciones
                 </th>
             </tr>
         </thead>
@@ -61,9 +61,9 @@ const SectionLeagues = ({ sport }) => {
                 <td>{league?.description}</td>
                 <td>
                 <ButtonGroup>
-                    <Link className='btn btn-secondary btn-sm mx-1 rounded ' to={`../leagues/${league?._id}`}>Details</Link>
-                    <Button className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(league)}>Edit</Button>
-                    <Button className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(league?._id)}>Delete</Button>
+                    <Link className='btn btn-secondary btn-sm mx-1 rounded ' to={`../leagues/${league?._id}`}>Detalles</Link>
+                    <Button className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(league)}>Edita</Button>
+                    <Button className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(league?._id)}>Borrar</Button>
                 </ButtonGroup>
                 </td>
             </tr>

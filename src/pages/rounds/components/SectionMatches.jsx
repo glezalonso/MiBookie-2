@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
+import { useCreateMatch, useDeleteMatch, useUpdateMatch, useGetMatchesByRound } from '../../../features/matches.features'
 import { Table, Button, Alert, ButtonGroup, FormControl } from 'react-bootstrap'
 import ModalMatches from './ModalMatches'
 import { Link } from 'react-router-dom'
-import { useCreateMatch, useDeleteMatch, useGetMatches, useUpdateMatch } from '../../../features/matches.features'
+import Loading from '../../../ui/Loading'
+import { toast } from 'react-hot-toast'
 
 const SectionMatches = ({ round }) => {
-  const { data: matches } = useGetMatches()
+  const { data: matches, isLoading, isError } = useGetMatchesByRound(round?._id)
   const [dataFilter, setDataFilter] = useState('')
   const createMatch = useCreateMatch()
   const updateMatch = useUpdateMatch()
@@ -19,7 +21,7 @@ const SectionMatches = ({ round }) => {
   const handleShow = () => setModalShow(true)
 
   const handleDelete = (id) => {
-    const sure = confirm('Want to delete?')
+    const sure = confirm('Esta seguro que desea borrar?')
     if (sure) return deleteMatch.mutate(id)
   }
 
@@ -29,9 +31,10 @@ const SectionMatches = ({ round }) => {
     setUpdate(true)
   }
 
-  const matchByRound = matches?.filter(match => match?.round?._id === round?._id)
+  if (isLoading) return <Loading />
+  if (isError) return toast.error('Hubo un error al cargar los partidos!')
 
-  const filter = matchByRound?.filter(team => {
+  const filter = matches?.filter(team => {
     if (dataFilter) return team?.local?.name?.toLowerCase().includes(dataFilter.toLowerCase()) || team?.away?.name?.toLowerCase().includes(dataFilter.toLowerCase())
     else return team
   })
@@ -39,47 +42,42 @@ const SectionMatches = ({ round }) => {
   return (
         <>
         <section>
-        <h5 className="h7 ">Matches</h5>
-
-        <Button variant="warning mb-2 btn-sm" onClick={handleShow}>Create match</Button>
+        <h5 className="h7 ">Partidos  <Button variant="warning mx-2 btn-sm" onClick={handleShow}>Crear partido</Button></h5>
         {(!update)
-          ? <ModalMatches round={round} modalShow={modalShow} handleClose={handleClose} action={createMatch} type={'Create'} setUpdate={setUpdate} />
-          : <ModalMatches round={round} match={match} modalShow={modalShow} handleClose={handleClose} action={updateMatch} type={'Edit'} setUpdate={setUpdate} /> }
+          ? <ModalMatches round={round} modalShow={modalShow} handleClose={handleClose} action={createMatch} type={'Crear'} setUpdate={setUpdate} />
+          : <ModalMatches round={round} match={match} modalShow={modalShow} handleClose={handleClose} action={updateMatch} type={'Editar'} setUpdate={setUpdate} /> }
           <div className='mx-2 mt-2'>
-              <FormControl className="mb-3"placeholder='Search Team...' id='team' name='team' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
+           <FormControl style={{ fontSize: '13px' }} className="mb-3" placeholder='Buscar equipo...' name='team' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
          </div>
         {(filter?.length > 0)
-          ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table variant='dark table-sm table-borderless' responsive hover >
-            <caption className='m-1'>Total: {filter?.length} matches</caption>
-            <thead>
+          ? <div className='table-wrapper-scroll-y my-custom-scrollbar'
+          ><Table style={{ fontSize: '13px' }} variant='dark table-sm table-borderless my-1' responsive hover >
+            <caption className='m-1 text-light'>Total: {filter?.length} patidos</caption>
+            <thead className='border-bottom'>
                 <tr>
-                    <th>Date</th>
-                    <th>Round</th>
-                    <th>Season</th>
-                    <th>League</th>
+                    <th>Fecha</th>
                     <th>Local</th>
-                    <th>Away</th>
-                    <th>Status</th>
-                    <th>Options</th>
+                    <th>Visitante</th>
+                    <th>Marcador</th>
+                    <th>Estatus</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
             <tbody>
                 {filter?.map(match => (
                     <tr key={match?._id}>
                         <td>{match?.date?.split('T', 3).reverse().join(' ')}</td>
-                        <td>{match?.round?.round}</td>
-                        <td>{match?.season?.season}</td>
-                        <td>{match?.league?.league}</td>
-                        <td>{match?.local?.name} <strong> {match?.score?.map(score => score?.local)}</strong></td>
-                        <td>{match?.away?.name} <strong> {match?.score?.map(score => score?.away)}</strong></td>
+                        <td>{match?.local?.name}</td>
+                        <td>{match?.away?.name}</td>
+                        <td><strong> {match?.score?.map(score => score?.local)}</strong>-<strong> {match?.score?.map(score => score?.away)}</strong></td>
                         <td>{(match?.status)
-                          ? <span className='text-success'>Open!</span>
-                          : <span className='text-danger'>Closed!</span>}</td>
+                          ? <span className='text-success'>Activo!</span>
+                          : <span className='text-danger'>Inactivo!</span>}</td>
                         <td>
                         <ButtonGroup>
-                        <Link className='btn btn-secondary btn-sm mx-1 rounded ' to={`../matches/${match?._id}`}>Details</Link>
-                        <Button className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(match)}>Edit</Button>
-                        <Button className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(match?._id)}>Delete</Button>
+                        <Link style={{ fontSize: '13px' }}className='btn btn-secondary btn-sm mx-1 rounded ' to={`../matches/${match?._id}`}>Detalles</Link>
+                        <Button style={{ fontSize: '13px' }} className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(match)}>Editar</Button>
+                        <Button style={{ fontSize: '13px' }} className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(match?._id)}>Borrar</Button>
                         </ButtonGroup>
                         </td>
                     </tr>

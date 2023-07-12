@@ -8,7 +8,7 @@ const SectionParticipants = ({ season }) => {
   const removeTeam = useRemoveTeam(season?._id)
 
   const handleRemove = (id, team) => {
-    const sure = confirm('Want to delete?')
+    const sure = confirm('Estas seguro que quieres remover el equipo?')
     if (sure) return removeTeam.mutate({ id, data: { team } })
   }
   const filter = season?.standings?.filter(teams => {
@@ -19,30 +19,29 @@ const SectionParticipants = ({ season }) => {
   return (
         <>
         <section>
-        <h5 className="h7">Participants</h5>
+        <h5 className="h7">Participantes</h5>
         <div className='mx-2 my-3'>
-            <FormControl placeholder='Search team...' id='team' name='team' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
+            <FormControl style={{ fontSize: '13px' }} placeholder='Buscar equipo...' name='team' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
         </div>
             {filter?.length > 0
               ? <div className='table-wrapper-scroll-y my-custom-scrollbar'>
-                <Table responsive variant="dark table-sm table-borderless" hover >
-                    <thead>
-
+                <Table style={{ fontSize: '13px' }} responsive variant="dark table-sm table-borderless my-1" hover >
+                    <thead className='border-bottom'>
                         <tr>
-                            <th>Team participant</th>
-                            <th>Actions</th>
+                            <th>Equipos</th>
+                            <th>Opciones</th>
                         </tr>
                    </thead>
                     <tbody>
                         {filter?.map(team => (
                             <tr key={team?.team?._id}><td>{team?.team?.name}</td>
-                            <td> <Button variant="danger btn-sm" onClick={() => handleRemove(season?._id, team?._id)}>Remove</Button></td>
+                            <td> <Button style={{ fontSize: '13px' }} variant="danger btn-sm" onClick={() => handleRemove(season?._id, team?._id)}>Remover</Button></td>
                             </tr>
                         ))}
                     </tbody>
                 </Table>
             </div>
-              : <Alert variant='warning'>There is no information to show!</Alert>}
+              : <Alert variant='warning'>No hay equipos participantes!</Alert>}
               </section>
         </>
   )

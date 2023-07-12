@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { useGetTeams } from '../../../features/teams.features'
+import { useGetTeamsBySport } from '../../../features/teams.features'
 import Loading from '../../../ui/Loading'
 import toast from 'react-hot-toast'
 import { FormControl, Table, Alert, Button } from 'react-bootstrap'
 import { useAddTeam } from '../../../features/seasons.features'
 
 const SectionTeams = ({ season }) => {
-  const { data: teams, isLoading, isError } = useGetTeams()
+  const { data: teams, isLoading, isError } = useGetTeamsBySport(season?.sport?._id)
   const addTeam = useAddTeam()
   const [dataFilter, setDataFilter] = useState('')
 
@@ -15,11 +15,9 @@ const SectionTeams = ({ season }) => {
   }
 
   if (isLoading) return <Loading />
-  if (isError) return toast.error('failed to load!')
+  if (isError) return toast.error('Hubo un error al cargar los equipos!')
 
-  const teamBySport = teams?.filter(team => team?.sport?._id === season?.sport?._id)
-
-  const filter = teamBySport?.filter(team => {
+  const filter = teams?.filter(team => {
     if (dataFilter) return team?.name?.toLowerCase().includes(dataFilter?.toLowerCase())
     else return team
   })
@@ -27,30 +25,30 @@ const SectionTeams = ({ season }) => {
   return (
         <>
         <section>
-        <h5 className="h7">All teams</h5>
+        <h5 className="h7">Equipos {season?.sport?.sport}</h5>
          <div className='mx-2 my-3'>
-            <FormControl placeholder='Search Teams...' id='filter' name='filter' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
+            <FormControl style={{ fontSize: '13px' }} placeholder='Buscar equipo...' name='team' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
             </div>
             {filter?.length > 0
               ? <div className='table-wrapper-scroll-y my-custom-scrollbar'>
-                <Table responsive variant="dark table-sm table-borderless" hover >
-                    <thead>
+                <Table style={{ fontSize: '13px' }} responsive variant="dark table-sm table-borderless my-1" hover >
+                    <thead className='border-bottom'>
                         <tr>
-                        <th>Team</th>
-                        <th>Actions</th>
+                        <th>Equipo</th>
+                        <th>Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
                      {filter?.map(team => (
                         <tr key={team?._id}>
                         <td>{team?.name}</td>
-                        <td> <Button variant="warning btn-sm" onClick={() => handleAdd(season?._id, team?._id)}>Add</Button></td>
+                        <td> <Button style={{ fontSize: '13px' }} variant="warning btn-sm" onClick={() => handleAdd(season?._id, team?._id)}>Agregar</Button></td>
                         </tr>
                      ))}
                     </tbody>
                 </Table>
                 </div>
-              : <Alert variant='warning'>There is no information to show!</Alert>}
+              : <Alert variant='warning'>No hay equipos para mostrar!</Alert>}
         </section>
         </>
   )

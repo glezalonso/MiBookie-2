@@ -19,12 +19,12 @@ export const useLogin = () => {
   const mutationLogin = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
-      toast.success('Logged in successfully! ')
+      toast.success('Inicio de sesión exitoso! ')
       auth(data.data.token)
       profile(data.data.username)
       isAdmin(data.data.isAdmin)
     },
-    onError: () => toast.error('Failed to log in!')
+    onError: () => toast.error('Error al iniciar sesión!')
   })
   return mutationLogin
 }
@@ -34,7 +34,7 @@ export const useDeleteUser = () => {
   const mutationDelete = useMutation({
     mutationFn: deleteUser,
     onSuccess: () => {
-      toast.success('User deleted successfully!')
+      toast.success('Usuario borrado exitosamnete!')
       queryClient.invalidateQueries({ queryKey: ['users'] })
     }
   })
@@ -46,7 +46,7 @@ export const useUpdateUser = () => {
   const mutationUpdate = useMutation({
     mutationFn: updateUser,
     onSuccess: () => {
-      toast.success('User updated successfully!')
+      toast.success('Usuario actualizado exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['users'] })
     }
   })
@@ -58,7 +58,7 @@ export const useCreateUser = () => {
   const mutationCreate = useMutation({
     mutationFn: register,
     onSuccess: () => {
-      toast.success('User created successfully!')
+      toast.success('Usuario creado exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['users'] })
     }
   })

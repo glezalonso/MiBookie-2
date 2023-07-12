@@ -1,20 +1,19 @@
 import React, { useState } from 'react'
 import { Table, Alert, FormControl } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { useGetMatches } from '../../../features/matches.features'
+import { useGetMatchesByTeam } from '../../../features/matches.features'
+import Loading from '../../../ui/Loading'
+import { toast } from 'react-hot-toast'
 
 const SectionMatches = ({ team }) => {
-  const { data: matches } = useGetMatches()
-
+  const { data: matches, isLoading, isError } = useGetMatchesByTeam(team?._id)
   const [dataFilter, setDataFilter] = useState('')
 
-  // matches by team
-  const filterMatches = matches?.filter(match => match?.local?._id === team?._id || match?.away?._id === team?._id)
+  const lastMatches = matches?.filter(match => match?.status === false)
 
-  // filter match closed
-  const lastMatches = filterMatches?.filter(match => match?.status !== true)
-
-  // filter bu user
+  if (isLoading) return <Loading />
+  if (isError) return toast.error('Hubo un error al cargar los juegos del día')
+  // filter by user
   const filter = lastMatches?.filter(match => {
     if (dataFilter) return match?.round?.round?.toLowerCase().includes(dataFilter.toLowerCase()) || match?.season?.season?.toLowerCase().includes(dataFilter.toLowerCase()) || match?.away?.name?.toLowerCase().includes(dataFilter.toLowerCase())
     else return match
@@ -22,22 +21,23 @@ const SectionMatches = ({ team }) => {
   return (
         <>
         <section>
-        <h5 className="h7 ">Last matches</h5>
+        <h5 className="h7 ">Juegos previos</h5>
         <div className='mx-2 my-3'>
-        <FormControl placeholder='Search round, season, team..' style={{ fontSize: '13px' }} id='player' name='player' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
+        <FormControl placeholder='Busca por equipo, temporada, jornada..' style={{ fontSize: '12px' }} name='filter' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
         </div>
         {(filter?.length > 0)
-          ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'> <Table responsive variant='dark table-sm table-borderless' hover >
-            <thead>
+          ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'>
+            <Table style={{ fontSize: '11px' }} responsive variant='dark table-sm table-borderless ' hover >
+            <thead className='border-bottom'>
                 <tr>
-                    <th>Date</th>
-                    <th>League</th>
-                    <th>Season</th>
-                    <th>Round</th>
+                    <th>Fecha</th>
+                    <th>Liga</th>
+                    <th>Temporada</th>
+                    <th>Jornada</th>
                     <th>Local</th>
-                    <th>Away</th>
-                    <th>Status</th>
-                    <th>Options</th>
+                    <th>Visitante</th>
+                    <th>Marcador</th>
+                    <th>Opciones</th>
 
                 </tr>
             </thead>
@@ -48,18 +48,16 @@ const SectionMatches = ({ team }) => {
              <td>{match?.league?.league}</td>
              <td>{match?.season?.season}</td>
              <td>{match?.round?.round}</td>
-             <td>{match?.local?.name} <strong> {match?.score?.map(score => score.local)}</strong></td>
-             <td>{match?.away?.name} <strong> {match?.score?.map(score => score.away)}</strong></td>
-             <td>{(match?.status)
-               ? <span className='text-success'>Open!</span>
-               : <span className='text-danger'>Closed!</span>}</td>
-            <td><Link className="btn btn-warning btn-sm" to={`/matches/${match?._id}`}>Details</Link></td>
+             <td>{match?.local?.name}</td>
+             <td>{match?.away?.name}</td>
+             <td>{match?.score?.map(score => score.local)}- {match?.score?.map(score => score.away)}</td>
+            <td><Link style={{ fontSize: '11px' }} className="btn btn-warning btn-sm p-1" to={`/matches/${match?._id}`}>Detalles</Link></td>
             </tr>
             ))}
               </tbody>
             </Table>
             </div>
-          : <Alert variant='warning'>There is no information to show!</Alert>}
+          : <Alert variant='warning'>No hay partidos para mostrar!</Alert>}
           </section>
         </>
   )

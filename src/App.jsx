@@ -32,12 +32,14 @@ import News from './pages/news/News'
 import NewDetails from './pages/news/NewDetails'
 // Store
 import { useAuthStore } from './store/auth'
+import { Toaster } from 'react-hot-toast'
 
 const App = () => {
   const isLogged = useAuthStore(state => state.isLogged)
 
   return (
     <>
+      <Toaster position="top-center" reverseOrder={false} />
     <BrowserRouter>
      <Routes>
               <Route element={<Unprotected isLogged={isLogged}></Unprotected>}>

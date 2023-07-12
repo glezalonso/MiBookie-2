@@ -29,41 +29,36 @@ const SectionRounds = ({ season }) => {
   }
 
   const roundsbySeason = rounds?.filter(round => round?.season?._id === season._id)
+  roundsbySeason?.sort((a, b) => b.status - a.status)
   return (
         <>
         <section>
-          <h5 className="h7 ">Rounds</h5>
-        <Button variant="warning mb-2 btn-sm" onClick={handleShow}>Create Round</Button>
+          <h5 className="h7 ">Jornadas <Button variant="warning mx-1 btn-sm" onClick={handleShow}>Crear jornada</Button></h5>
         {(!update)
-          ? <ModalRounds season={season} modalShow={modalShow} handleClose={handleClose} action={createRound} type={'Create'} setUpdate={setUpdate} />
-          : <ModalRounds round={round} season={season} modalShow={modalShow} handleClose={handleClose} action={updateRound} type={'Edit'} setUpdate={setUpdate} /> }
+          ? <ModalRounds season={season} modalShow={modalShow} handleClose={handleClose} action={createRound} type={'Crear'} setUpdate={setUpdate} />
+          : <ModalRounds round={round} season={season} modalShow={modalShow} handleClose={handleClose} action={updateRound} type={'Editar'} setUpdate={setUpdate} /> }
        {(roundsbySeason?.length > 0)
-         ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table variant='dark table-sm table-borderless' responsive hover>
-           <thead>
+         ? <div className='table-wrapper-scroll-y my-custom-scrollbar'>
+          <Table variant='dark table-sm table-borderless my-1' responsive hover>
+           <thead className='border-bottom'>
                <tr>
-                    <th>Round</th>
-                   <th>Season</th>
-                   <th>League</th>
-                   <th>Sport</th>
-                   <th>Status</th>
-                   <th>Options</th>
+                  <th>Jornada</th>
+                   <th>Estatus</th>
+                   <th>Opciones</th>
                </tr>
            </thead>
            <tbody>
                {roundsbySeason?.map(round => (
                    <tr key={round?._id}>
                        <td>{round?.round}</td>
-                       <td>{round?.season?.season}</td>
-                       <td>{round?.league?.league}</td>
-                       <td>{round?.sport?.sport}</td>
                        <td>{(round?.status)
-                         ? <span className='text-success'>Open!</span>
-                         : <span className='text-danger'>Closed!</span>}</td>
+                         ? <span className='text-success'>Activo!</span>
+                         : <span className='text-danger'>Inactivo!</span>}</td>
                        <td>
                        <ButtonGroup>
-                       <Link className='btn btn-secondary btn-sm mx-1 rounded ' to={`../rounds/${round?._id}`}>Details</Link>
-                       <Button className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(round)}>Edit</Button>
-                       <Button className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(round?._id)}>Delete</Button>
+                       <Link className='btn btn-secondary btn-sm mx-1 rounded ' to={`../rounds/${round?._id}`}>Detalles</Link>
+                       <Button className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(round)}>Editar</Button>
+                       <Button className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(round?._id)}>Borrar</Button>
                        </ButtonGroup>
                        </td>
                    </tr>
@@ -71,7 +66,7 @@ const SectionRounds = ({ season }) => {
            </tbody>
          </Table>
          </div>
-         : <Alert variant='warning'>There is no information to show!</Alert>}
+         : <Alert variant='warning'>No hay jornadas para mostar!</Alert>}
              </section>
         </>
   )

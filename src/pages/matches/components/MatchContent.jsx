@@ -24,24 +24,23 @@ const MatchContent = ({ match }) => {
   return (
         <>
         <section>
-           <h5 className="h7 ">Match</h5>
-           <Table responsive variant="dark table-sm table-borderless" hover >
+           <h5 className="h7 ">Datos del partido</h5>
+           <div className='bg-light rounded p-1'>
+           <Table responsive variant="light table-sm table-borderless" hover >
             <tbody>
-            <tr><td>Date</td><td>{match?.date}</td></tr>
-            <tr><td>League </td><td>{match?.league?.league}</td></tr>
-            <tr><td>Season</td><td>{match?.season?.season}</td></tr>
-            <tr><td>Round</td><td>{match?.round?.round}</td></tr>
-            <tr><td>Status</td><td>{(match?.status) ? <span className="text-success">Abierto</span> : <span className="text-danger ">Cerrado</span>}</td></tr>
-            <tr><td>Stadium</td><td>{match?.local?.stadium}</td></tr>
+            <tr><td>Fecha</td><td>{match?.date?.split('T', 3).reverse().join(' ')}</td></tr>
+            <tr><td>Estatus</td><td>{(match?.status) ? <span className="text-success">Activo</span> : <span className="text-danger ">Inactivo</span>}</td></tr>
+            <tr><td>Estadio</td><td>{match?.local?.stadium}</td></tr>
             <tr>
-                <td><strong>Local </strong>{match?.local?.name}</td><td><strong>{match?.score?.map(score => score?.local)}</strong></td>
+              <td><strong>Local </strong>{match?.local?.name}</td><td><strong>{match?.score?.map(score => score?.local)}</strong></td>
              </tr>
              <tr>
-                <td><strong>Away </strong>{match?.away?.name}</td><td><strong>{match?.score?.map(score => score?.away)}</strong></td>
+                <td><strong>Visitante </strong>{match?.away?.name}</td><td><strong>{match?.score?.map(score => score?.away)}</strong></td>
              </tr>
             </tbody>
              </Table>
-             {(match?.status) && <Button variant='warning mb-2 btn-sm' onClick={() => handleShow()}>Place score</Button> }
+             </div>
+             {(match?.status) && <Button variant='warning my-2 btn-sm' onClick={() => handleShow()}>Colocar marcador</Button> }
             <ModalScore match={match} modalShow={modalShow} handleClose={handleClose} />
 
             {(match?.status) && <MatchSettings match={match} handleRemoveLineUp={handleRemoveLineUp} handleAddLineUp={handleAddLineUp} /> }

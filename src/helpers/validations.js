@@ -1,52 +1,52 @@
 import { toast } from 'react-hot-toast'
 export const verifyLogin = (values) => {
-  if (!values.username) return toast.error('Username is required')
-  if (values.username.length < 4) return toast.error('Username must contain at least 4 characters')
-  if (values.username.includes(' ')) return toast.error('Username must not include spaces')
-  if (!values.password) return toast.error('Passowrd is required')
-  if (values.password.length < 8) return toast.error('Password must contain at least 8 characters')
-  if (values.username.includes(' ')) return toast.error('Password must not include spaces')
+  if (!values.username) return toast.error('El usuario es equerido')
+  if (values.username.length < 4) return toast.error('El usuario debe contener al menos 5 caractéres')
+  if (values.username.includes(' ')) return toast.error('El usuario no debe incluir espacios')
+  if (!values.password) return toast.error('El password es requerido')
+  if (values.password.length < 8) return toast.error('El password debe contener al menos 8 caractéres')
+  if (values.username.includes(' ')) return toast.error('El password no debe incluir espacios')
 }
 
 export const validateTeam = (values) => {
-  if (!values.name) return toast.error('Team is required')
-  if (!values.sport) return toast.error('the team must belong to a sport')
-  if (!values.status) return toast.error('the team status is required')
+  if (!values.name) return toast.error('El equipo es requerido')
+  if (!values.sport) return toast.error('El equipo debe pertenecer a un deporte')
+  if (!values.status) return toast.error('El estatus es requerido')
 }
 
 export const validateSport = (values) => {
-  if (!values.sport) return toast.error('Sport is required')
+  if (!values.sport) return toast.error('El deporte es requerido')
 }
 
 export const validateSeason = (values) => {
-  if (!values.season) return toast.error('Season is required')
-  if (!values.league) return toast.error('The season must belong to a league')
-  if (!values.status) return toast.error('the season status is required')
+  if (!values.season) return toast.error('La temporada es requerida')
+  if (!values.league) return toast.error('La temporada debe pertenecera una liga')
+  if (!values.status) return toast.error('El estatus es requerido')
 }
 
 export const validateRound = (values) => {
-  if (!values.round) return toast.error('Round is require')
-  if (!values.season) return toast.error('The round must belog to a season')
-  if (!values.status) return toast.error('The round status is required')
+  if (!values.round) return toast.error('La jornada es requerida')
+  if (!values.season) return toast.error('La jornada debe pertenecer a una tmporada')
+  if (!values.status) return toast.error('El estatus es requerido')
 }
 
 export const validatePlayer = (values) => {
-  if (!values.fullName) return toast.error('Player fullname is require')
-  if (!values.sport) return toast.error('the player must belog to a sport')
-  if (!values.status) return toast.error('the player status is required')
+  if (!values.fullName) return toast.error('El nombre del jugador es requerido')
+  if (!values.sport) return toast.error('El jugador debe pertenecer a un deporte')
+  if (!values.status) return toast.error('El estatus es requerido')
 }
 
 export const validateMatch = (values) => {
-  if (!values.date) return toast.error('the match must have a date')
-  if (!values.teamHome) return toast.error('the match must have a local team')
-  if (!values.teamAway) return toast.error('the match must have a away team')
-  if (!values.round) return toast.error('the match must belong to a round')
-  if (!values.status) return toast.error('the match status is required')
+  if (!values.date) return toast.error('El partido debe tener fecha')
+  if (!values.teamHome) return toast.error('El partido debe tener equipo local')
+  if (!values.teamAway) return toast.error('El partido debe tener equipo visitante')
+  if (!values.round) return toast.error('El partido debe pertenecer a una jornada')
+  if (!values.status) return toast.error('El estatus es requerido')
 }
 
 export const validateLeague = (values) => {
-  if (!values.league) return toast.error('League is required')
-  if (!values.sport) return toast.error('the league must belong to a sport')
+  if (!values.league) return toast.error('La liga es requerida')
+  if (!values.sport) return toast.error('La liga debe pertenecer a un deporte')
 }
 
 export const validateEmail = (values) => {

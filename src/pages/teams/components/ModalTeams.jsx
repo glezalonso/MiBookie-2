@@ -44,26 +44,26 @@ const ModalTeams = ({ team, modalShow, handleClose, action, type, setUpdate }) =
         <>
         <Modal className="text-dark" show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
             <Modal.Header >
-                <Modal.Title>{type} team</Modal.Title>
+                <Modal.Title>{type} equipo</Modal.Title>
                 </Modal.Header>
                     <Form onSubmit={formik.handleSubmit}>
                 <Modal.Body>
                 <Form.Group>
-                        <Form.Label>Team</Form.Label>
+                        <Form.Label>Nombre</Form.Label>
                         <FormControl {...formik.getFieldProps('name')} type="text" id="name" name="name"></FormControl>
                         </Form.Group>
                     <Form.Group>
-                        <Form.Label>Stadium</Form.Label>
+                        <Form.Label>Estadio</Form.Label>
                         <FormControl {...formik.getFieldProps('stadium')} type="text" id="stadium" name="stadium"></FormControl>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Poster</Form.Label>
+                        <Form.Label>Escudo</Form.Label>
                         <FormControl type="file" id="poster" name="poster" onChange={onUpload}></FormControl>
                         </Form.Group>
                     <Form.Group>
-                        <Form.Label>Sport:</Form.Label>
+                        <Form.Label>Deporte:</Form.Label>
                         <Form.Select id="sport" name="sport" {...formik.getFieldProps('sport')}>
-                            <option value={false} >Select the sport his belong to</option>
+                            <option value={false} >Selecciona el deporte al que pertenece</option>
                         {sports?.map(sport => (
                             <option key={sport?._id} value={sport?._id}>{sport?.sport}</option>
 
@@ -71,18 +71,18 @@ const ModalTeams = ({ team, modalShow, handleClose, action, type, setUpdate }) =
                         </Form.Select>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Status</Form.Label>
+                        <Form.Label>Estatus</Form.Label>
                         <Form.Select id="status" name="status"{...formik.getFieldProps('status')} >
-                            <option >Select status</option>
-                            <option value={true}>Active</option>
-                            <option value={false}>Desactivate</option>
+                            <option >Selecciona el estatus</option>
+                            <option value={true}>Activo</option>
+                            <option value={false}>Inactivo</option>
                         </Form.Select>
                     </Form.Group>
 
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="warning" onClick={() => handleCloseUpdate()}>Close</Button>
-                <Button variant="dark" type="submit">{type} team</Button>
+                <Button variant="warning" onClick={() => handleCloseUpdate()}>Cerrar</Button>
+                <Button variant="dark" type="submit">{type} equipo</Button>
             </Modal.Footer>
         </Form>
       </Modal>

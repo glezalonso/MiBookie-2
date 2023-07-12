@@ -15,21 +15,19 @@ const SectionStandings = ({ season }) => {
   return (
         <>
         <section>
-        <h5 className="h7 ">Standings</h5>
-
+        <h5 className="h7 ">Posiciones</h5>
         {sort?.length > 0
           ? <div className='table-wrapper-scroll-y my-custom-scrollbar'>
-            <Table responsive variant="dark table-sm table-borderless" hover >
-                <thead>
-
+            <Table responsive variant="dark table-sm table-borderless my-1" hover >
+                <thead className='border-bottom'>
                     <tr>
-                      <th>Rank</th>
-                        <th>Team </th>
-                        <th>Wins</th>
-                        <th>Draws</th>
-                        <th>Loses</th>
+                      <th>No.</th>
+                        <th>Equipo </th>
+                        <th>Victorias</th>
+                        <th>Empates</th>
+                        <th>Derrotas</th>
                         {season?.sport?._id === ID_SOCCER
-                          ? <th>points</th>
+                          ? <th>Puntos</th>
                           : null}
                     </tr>
                </thead>
@@ -50,7 +48,7 @@ const SectionStandings = ({ season }) => {
                 </tbody>
             </Table>
         </div>
-          : <Alert variant='warning'>There is no information to show!</Alert>}
+          : <Alert variant='warning'>No hay participantes!</Alert>}
           </section>
     </>
   )

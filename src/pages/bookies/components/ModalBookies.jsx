@@ -25,16 +25,16 @@ const ModalBookies = ({ bookie, modalShow, handleClose, action }) => {
         <>
         <Modal className="text-dark" show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
             <Modal.Header>
-                <Modal.Title>Update bookie</Modal.Title>
+                <Modal.Title>Editar bookie</Modal.Title>
                 </Modal.Header>
                     <Form onSubmit={formik.handleSubmit}>
                 <Modal.Body>
                     <Form.Group>
-                        <Form.Label>Username</Form.Label>
+                        <Form.Label>Usuario</Form.Label>
                         <Form.Control {...formik.getFieldProps('username')} type="text" id="username" name="username" ></Form.Control>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label>COntraseña</Form.Label>
                             <Form.Control {...formik.getFieldProps('password')} type="password" id="password" name="password"></Form.Control>
                     </Form.Group>
                     <Form.Group>
@@ -42,13 +42,13 @@ const ModalBookies = ({ bookie, modalShow, handleClose, action }) => {
                             <Form.Control {...formik.getFieldProps('email')} type="email" id="email" name="email"></Form.Control>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>FullName</Form.Label>
+                        <Form.Label>Nombre completo</Form.Label>
                             <Form.Control {...formik.getFieldProps('fullName')} type="text" id="fullName" name="fullName"></Form.Control>
                     </Form.Group>
             </Modal.Body>
             <Modal.Footer>
-            <Button variant="dark" onClick={() => handleClose()}>Close</Button>
-                <Button variant="warning" type="submit">Update bookie</Button>
+            <Button variant="dark" onClick={() => handleClose()}>Cerrar</Button>
+                <Button variant="warning" type="submit">Editar bookie</Button>
             </Modal.Footer>
         </Form>
       </Modal>

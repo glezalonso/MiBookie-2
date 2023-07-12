@@ -15,7 +15,7 @@ export const useDeleteRound = () => {
   const mutationDelete = useMutation({
     mutationFn: deleteRound,
     onSuccess: () => {
-      toast.success('Round deleted successfully!')
+      toast.success('Jornada borrada exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['Rounds'] })
     }
   })
@@ -27,7 +27,7 @@ export const useUpdateRound = () => {
   const mutationUpdate = useMutation({
     mutationFn: updateRound,
     onSuccess: () => {
-      toast.success('Round updated successfully!')
+      toast.success('Jornada actualizada exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['Rounds'] })
     }
   })
@@ -39,7 +39,7 @@ export const useCreateRound = () => {
   const mutationCreate = useMutation({
     mutationFn: createRound,
     onSuccess: () => {
-      toast.success('Round created successfully!')
+      toast.success('Jornada creada exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['Rounds'] })
     }
   })

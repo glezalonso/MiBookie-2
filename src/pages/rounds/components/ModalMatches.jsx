@@ -43,55 +43,53 @@ const ModalMatches = ({ round, match, modalShow, handleClose, action, type, setU
 
         <Modal className="text-dark" show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
             <Modal.Header >
-                <Modal.Title>{type} match</Modal.Title>
+                <Modal.Title>{type} partido</Modal.Title>
                 </Modal.Header>
                     <Form onSubmit={formik.handleSubmit}>
                 <Modal.Body>
                 <Form.Group>
-                        <Form.Label>Date :</Form.Label>
+                        <Form.Label>Fecha</Form.Label>
                         <FormControl {...formik.getFieldProps('date')} type="datetime-local" id="date" name="date"></FormControl>
                         </Form.Group>
                         <Form.Group>
-                        <Form.Label>Local team</Form.Label>
+                        <Form.Label>Equipo local</Form.Label>
                         <Form.Select id="teamHome" name="teamHome" {...formik.getFieldProps('teamHome')}>
-                            <option value={false} >Select the local team </option>
+                            <option value={false} >Selecciona el equipo local</option>
                             {season?.standings?.map(teams => (
                             <option key={teams?.team?._id} value={teams?.team?._id}>{teams?.team?.name}</option>
                             ))}
                         </Form.Select>
                         </Form.Group>
                         <Form.Group>
-                        <Form.Label>Away team:</Form.Label>
+                        <Form.Label>Equipo visitante</Form.Label>
                         <Form.Select id="teamAway" name="teamAway" {...formik.getFieldProps('teamAway')}>
-                            <option value={false}>Select the away team </option>
+                            <option value={false}>Selecciona el equipo visitante</option>
                             {season?.standings?.map(teams => (
                             <option key={teams?.team?._id} value={teams?.team?._id}>{teams?.team?.name}</option>
                             ))}
                         </Form.Select>
                         </Form.Group>
-
                         <Form.Group>
-                            <Form.Label>Status</Form.Label>
-                            <Form.Select id="status" name="status"{...formik.getFieldProps('status')} >
-                                <option >Select status</option>
-                                <option value={true}>Activo</option>
-                                <option value={false}>Desactivo</option>
-                            </Form.Select>
-                        </Form.Group>
-                        <Form.Group>
-                        <Form.Label>Round:</Form.Label>
+                        <Form.Label>Jornada:</Form.Label>
                         <Form.Select id="round" name="round" {...formik.getFieldProps('round')} disabled>
-                            <option value={false}>Select the away team </option>
+                            <option value={false}>Selecciona la jornada </option>
                             {rounds?.map(round => (
                             <option key={round?._id} value={round?._id}>{round?.round}</option>
                             ))}
                         </Form.Select>
                         </Form.Group>
-
+                        <Form.Group>
+                            <Form.Label>Estatus</Form.Label>
+                            <Form.Select id="status" name="status"{...formik.getFieldProps('status')} >
+                                <option >Selecciona el estatus</option>
+                                <option value={true}>Activo</option>
+                                <option value={false}>Inactivo</option>
+                            </Form.Select>
+                        </Form.Group>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="dark" onClick={() => handleCloseUpdate()}>Close</Button>
-                <Button variant="warning" type="submit">{type} match</Button>
+                <Button variant="dark" onClick={() => handleCloseUpdate()}>Cerrar</Button>
+                <Button variant="warning" type="submit">{type} partido</Button>
             </Modal.Footer>
         </Form>
       </Modal>

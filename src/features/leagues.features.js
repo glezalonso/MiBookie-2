@@ -15,7 +15,7 @@ export const useDeleteLeague = () => {
   const mutationDelete = useMutation({
     mutationFn: deleteLeague,
     onSuccess: () => {
-      toast.success('League deleted successfully!')
+      toast.success('Liga borrada exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['Leagues'] })
     }
   })
@@ -27,7 +27,7 @@ export const useUpdateLeague = () => {
   const mutationUpdate = useMutation({
     mutationFn: updateLeague,
     onSuccess: () => {
-      toast.success('League updated successfully!')
+      toast.success('Liga actualizada exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['Leagues'] })
     }
   })
@@ -39,7 +39,7 @@ export const useCreateLeague = () => {
   const mutationCreate = useMutation({
     mutationFn: createLeague,
     onSuccess: () => {
-      toast.success('League created successfully!')
+      toast.success('Liga creada exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['Leagues'] })
     }
   })

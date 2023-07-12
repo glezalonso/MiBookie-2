@@ -2,30 +2,36 @@ import React from 'react'
 import { Table, Alert } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useGetSeasons } from '../../../features/seasons.features'
+import Loading from '../../../ui/Loading'
+import { toast } from 'react-hot-toast'
 
 const SectionSeasonsOpen = () => {
-  const { data: seasons } = useGetSeasons()
+  const { data: seasons, isLoading, isError } = useGetSeasons()
   const SeasonsOpen = seasons?.filter(season => season?.status === true)
+
+  if (isLoading) return <Loading />
+  if (isError) return toast.error('Hubo un error al cargar los juegos del día')
+
   return (
         <>
         <section>
-        <h5 className="h5 m-2 ">Seasons Open</h5>
+        <h5 className="h7">Temporadas abiertas</h5>
          {(SeasonsOpen?.length > 0)
-           ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded'>
-             <Table responsive variant="dark table-sm table-borderless" >
-            <thead>
+           ? <div className='table-wrapper-scroll-y my-custom-scrollbar rounded my-3'>
+             <Table responsive variant="dark table-sm table-borderless" hover >
+            <thead className='border-bottom'>
                 <tr>
                     <th>
-                       Season
+                       Temporada
                     </th>
                     <th>
-                        League
+                        Liga
                     </th>
                         <th>
-                        Sport
+                       Deporte
                         </th>
                     <th>
-                        Options
+                        Opciones
                     </th>
                 </tr>
             </thead>
@@ -35,13 +41,13 @@ const SectionSeasonsOpen = () => {
                        <td>{season?.season}</td>
                        <td>{season?.league?.league}</td>
                        <td>{season?.sport?.sport}</td>
-                       <td><Link to={`../seasons/${season?._id}`} className='btn btn-sm btn-warning'>Details</Link></td>
+                       <td><Link to={`../seasons/${season?._id}`} className='btn btn-sm btn-warning'>Detalles</Link></td>
                     </tr>
                 ))}
             </tbody>
         </Table>
         </div>
-           : <Alert variant="warning">There is no information to show!</Alert>}
+           : <Alert variant="warning">No hay temporadas para mostrar!</Alert>}
         </section>
         </>
   )

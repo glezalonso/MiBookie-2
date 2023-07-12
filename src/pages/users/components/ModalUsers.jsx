@@ -33,16 +33,16 @@ const ModalUsers = ({ user, modalShow, handleClose, action, type, setUpdate }) =
         <>
         <Modal className="text-dark" show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
             <Modal.Header>
-                <Modal.Title>{type} User</Modal.Title>
+                <Modal.Title>{type} Usuario</Modal.Title>
                 </Modal.Header>
                     <Form onSubmit={formik.handleSubmit}>
                 <Modal.Body>
                     <Form.Group>
-                        <Form.Label>Username</Form.Label>
+                        <Form.Label>Usuario</Form.Label>
                         <Form.Control {...formik.getFieldProps('username')} type="text" id="username" name="username" ></Form.Control>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label>Contraseña</Form.Label>
                             <Form.Control {...formik.getFieldProps('password')} type="password" id="password" name="password"></Form.Control>
                     </Form.Group>
                     <Form.Group>
@@ -50,22 +50,22 @@ const ModalUsers = ({ user, modalShow, handleClose, action, type, setUpdate }) =
                             <Form.Control {...formik.getFieldProps('email')} type="email" id="email" name="email"></Form.Control>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>FullName</Form.Label>
+                        <Form.Label>Nombre completo</Form.Label>
                             <Form.Control {...formik.getFieldProps('fullName')} type="text" id="fullName" name="fullName"></Form.Control>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>is Admin?</Form.Label>
+                        <Form.Label>Rol</Form.Label>
                         <Form.Select id="isAdmin" name="isAdmin"{...formik.getFieldProps('isAdmin')} >
-                            <option >is admin?</option>
-                            <option value={true}>Yes</option>
+                            <option >es administrador?</option>
+                            <option value={true}>Si</option>
                             <option value={false}>No</option>
                         </Form.Select>
                     </Form.Group>
 
             </Modal.Body>
             <Modal.Footer>
-            <Button variant="dark" onClick={() => handleCloseUpdate()}>Close</Button>
-                <Button variant="warning" type="submit">{type} user</Button>
+            <Button variant="dark" onClick={() => handleCloseUpdate()}>Cerrar</Button>
+                <Button variant="warning" type="submit">{type} usuario</Button>
             </Modal.Footer>
         </Form>
       </Modal>

@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useCreateSport, useDeleteSport, useUpdateSport, useGetSports } from '../../../features/sports.features'
 import { Table, Button, Alert, ButtonGroup } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
 import ModalSports from './ModalSports'
-import { useCreateSport, useDeleteSport, useUpdateSport } from '../../../features/sports.features'
+import Loading from '../../../ui/Loading'
 
-const TableSport = ({ sports }) => {
+const TableSport = () => {
+  const { data: sports, isLoading, isError } = useGetSports()
   const createSport = useCreateSport()
   const updateSport = useUpdateSport()
   const deleteSport = useDeleteSport()
@@ -17,7 +20,7 @@ const TableSport = ({ sports }) => {
   const handleShow = () => setModalShow(true)
 
   const handleDelete = (id) => {
-    const sure = confirm('Want to delete?')
+    const sure = confirm('Esta seguro que desea borrar?')
     if (sure) return deleteSport.mutate(id)
   }
 
@@ -26,21 +29,22 @@ const TableSport = ({ sports }) => {
     setSport(data)
     setUpdate(true)
   }
+  if (isLoading) return <Loading />
+  if (isError) return toast.error('Hubo un error al cargar los deportes!')
 
   return (
         <>
         <section>
-        <h5 className="h7 ">Sports</h5>
-          <Button variant="warning m-1 btn-sm" onClick={handleShow}> Create sport</Button>
+        <h5 className="h7 ">Deportes <Button variant="warning mx-1 btn-sm" onClick={handleShow}> Crear deporte</Button></h5>
         {(!update)
-          ? <ModalSports modalShow={modalShow} handleClose={handleClose} action={createSport} type={'Create'} setUpdate={setUpdate} />
-          : <ModalSports sport={sport} modalShow={modalShow} handleClose={handleClose} action={updateSport} type={'Edit'} setUpdate={setUpdate} /> }
+          ? <ModalSports modalShow={modalShow} handleClose={handleClose} action={createSport} type={'Crear'} setUpdate={setUpdate} />
+          : <ModalSports sport={sport} modalShow={modalShow} handleClose={handleClose} action={updateSport} type={'Editar'} setUpdate={setUpdate} /> }
         {(sports?.length > 0)
-          ? <Table variant='dark table-sm mt-2 table-borderless' responsive hover>
-            <thead>
+          ? <Table variant='dark table-sm my-2 mx-auto table-borderless' responsive hover>
+            <thead className='border-bottom'>
                 <tr>
                     <th>
-                       Sports
+                       Deporte
                     </th>
                     <th>
                        Description
@@ -57,16 +61,16 @@ const TableSport = ({ sports }) => {
                         <td>{sport?.description}</td>
                         <td>
                             <ButtonGroup>
-                            <Link className='btn btn-secondary btn-sm mx-1 rounded ' to={`./${sport?._id}`}>Details</Link>
-                            <Button className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(sport)}>Edit</Button>
-                            <Button className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(sport?._id)}>Delete</Button>
+                            <Link className='btn btn-secondary btn-sm mx-1 rounded ' to={`./${sport?._id}`}>Detalles</Link>
+                            <Button className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(sport)}>Editar</Button>
+                            <Button className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(sport?._id)}>Borrar</Button>
                             </ButtonGroup>
                         </td>
                         </tr>
                 ))}
             </tbody>
         </Table>
-          : <Alert variant='warning'>There is no information to show!</Alert>}
+          : <Alert variant='warning'>No hay deportes para mostrar!</Alert>}
            </section>
         </>
   )

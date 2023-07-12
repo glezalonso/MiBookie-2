@@ -14,31 +14,30 @@ const MatchSettings = ({ match, handleRemoveLineUp, handleAddLineUp }) => {
         <>
 
           <Row className='m-2 mx-auto'>
-
-          <Col md={5} className='border rounded mx-auto my-1 fs-6' >
+          <Col md={5} className='bg-dark text-light rounded mx-auto my-1 fs-6' >
           <section>
-           <h5 className="h5">{match?.local?.name} roster</h5>
+           <h5 className="h5">{match?.local?.name} plantilla</h5>
            <Roster match={match} roster={rostLocal} handleAddLineUp={handleAddLineUp} type={'local'}/>
            </section>
             </Col >
 
-          <Col md={5} className='border rounded mx-auto my-1  fs-6'>
+          <Col md={5} className='bg-dark text-light rounded mx-auto my-1  fs-6'>
           <section>
-              <h5 className="h5">{match?.local?.name} LineUp</h5>
+              <h5 className="h5">{match?.local?.name} alineación</h5>
             <TeamSettings match={match} handleRemoveLineUp={handleRemoveLineUp} type={'local'}/>
             </section>
           </Col>
             </Row>
             <Row className='m-2  mx-auto'>
-            <Col md={5}className='border rounded mx-auto my-1 fs-6' >
+            <Col md={5}className='bg-dark text-light rounded mx-auto my-1 fs-6' >
               <section>
-            <h5 className="h5">{match?.away.name} roster</h5>
+            <h5 className="h5">{match?.away.name} plantilla</h5>
             <Roster match={match} roster={rostAway} handleAddLineUp={handleAddLineUp} type={'away'}/>
             </section>
             </Col>
-            <Col md={5}className='border rounded mx-auto my-1 fs-6' >
+            <Col md={5}className='bg-dark text-light rounded mx-auto my-1 fs-6' >
             <section>
-              <h5 className="h5">{match?.away.name} LineUp </h5>
+              <h5 className="h5">{match?.away.name} alineación </h5>
             <TeamSettings match={match} handleRemoveLineUp={handleRemoveLineUp} type={'away'}/>
             </section>
 

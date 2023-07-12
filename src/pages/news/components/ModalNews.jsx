@@ -38,14 +38,14 @@ const ModalNews = ({ content, modalShow, handleClose, action, type, setUpdate })
         <>
         <Modal className="text-dark" show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
             <Modal.Header >
-                <Modal.Title>{type} new</Modal.Title>
+                <Modal.Title>{type} noticia</Modal.Title>
                 </Modal.Header>
                     <Form onSubmit={formik.handleSubmit}>
                 <Modal.Body>
                     <Form.Group>
-                        <Form.Label>Sport:</Form.Label>
+                        <Form.Label>Deporte:</Form.Label>
                         <Form.Select id="sport" name="sport" {...formik.getFieldProps('sport')}>
-                            <option value={false} >Select the sport</option>
+                            <option value={false} >Selecciona el deporte</option>
                         {sports?.map(sport => (
                             <option key={sport?._id} value={sport?._id}>{sport?.sport}</option>
 
@@ -53,25 +53,25 @@ const ModalNews = ({ content, modalShow, handleClose, action, type, setUpdate })
                         </Form.Select>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Date</Form.Label>
+                        <Form.Label>Fecha</Form.Label>
                         <FormControl {...formik.getFieldProps('date')} type="datetime-local" id="date" name="date"></FormControl>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Title</Form.Label>
+                        <Form.Label>Título</Form.Label>
                         <FormControl {...formik.getFieldProps('title')} type="text" id="title" name="title"></FormControl>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Content</Form.Label>
+                        <Form.Label>Contenido</Form.Label>
                         <FormControl {...formik.getFieldProps('content')} as="textarea" rows={3} id="content" name="content"></FormControl>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Author</Form.Label>
+                        <Form.Label>Autor</Form.Label>
                         <FormControl {...formik.getFieldProps('author')} type="text" id="author" name="author" disabled></FormControl>
                     </Form.Group>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="warning" onClick={() => handleCloseUpdate()}>Close</Button>
-                <Button variant="dark" type="submit">{type} new</Button>
+                <Button variant="warning" onClick={() => handleCloseUpdate()}>Cerrar</Button>
+                <Button variant="dark" type="submit">{type} noticia</Button>
             </Modal.Footer>
         </Form>
       </Modal>

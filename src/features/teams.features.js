@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query'
 import { toast } from 'react-hot-toast'
-import { getTeams, getTeam, createTeam, updateTeam, removePlayer, deleteTeam, addPlayer } from '../services/teams'
+import { getTeams, getTeam, createTeam, updateTeam, removePlayer, deleteTeam, addPlayer, getTeamsBySport } from '../services/teams'
 
 export const useGetTeams = () => {
   const { data, isLoading, isError } = useQuery({ queryKey: ['Teams'], queryFn: getTeams })
@@ -15,7 +15,7 @@ export const useDeleteTeam = () => {
   const mutationDelete = useMutation({
     mutationFn: deleteTeam,
     onSuccess: () => {
-      toast.success('Team deleted successfully!')
+      toast.success('Equipo borrado exitosamnente!')
       queryClient.invalidateQueries({ queryKey: ['Teams'] })
     }
   })
@@ -27,7 +27,7 @@ export const useUpdateTeam = () => {
   const mutationUpdate = useMutation({
     mutationFn: updateTeam,
     onSuccess: () => {
-      toast.success('Team updated successfully!')
+      toast.success('Equipo actualizado exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['Teams'] })
     }
   })
@@ -39,7 +39,7 @@ export const useCreateTeam = () => {
   const mutationCreate = useMutation({
     mutationFn: createTeam,
     onSuccess: () => {
-      toast.success('Team created successfully!')
+      toast.success('Equipo creado exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['Teams'] })
     }
   })
@@ -51,7 +51,7 @@ export const useAddPlayer = (id) => {
   const mutationAdd = useMutation({
     mutationFn: addPlayer,
     onSuccess: () => {
-      toast.success('Player added successfully!')
+      toast.success('Jugador agregado!')
       queryClient.invalidateQueries({ queryKey: ['Team', id] })
       queryClient.invalidateQueries({ queryKey: ['Players'] })
     }
@@ -64,10 +64,15 @@ export const useRemovePlayer = (id) => {
   const mutationRemove = useMutation({
     mutationFn: removePlayer,
     onSuccess: () => {
-      toast.success('Player removed successfully!')
+      toast.success('Jugador removido!')
       queryClient.invalidateQueries({ queryKey: ['Team', id] })
       queryClient.invalidateQueries({ queryKey: ['Players'] })
     }
   })
   return mutationRemove
+}
+
+export const useGetTeamsBySport = (sport) => {
+  const { data, isLoading, isError } = useQuery({ queryKey: ['teams', sport], queryFn: () => getTeamsBySport(sport) })
+  return { data, isLoading, isError }
 }

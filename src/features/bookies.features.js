@@ -15,7 +15,7 @@ export const useDeleteBookie = () => {
   const mutationDelete = useMutation({
     mutationFn: deleteBookie,
     onSuccess: () => {
-      toast.success('Bookie deleted successfully!')
+      toast.success('Bookie borrado exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['bookies'] })
     }
   })
@@ -27,7 +27,7 @@ export const useUpdateBookie = () => {
   const mutationUpdate = useMutation({
     mutationFn: updateBookie,
     onSuccess: () => {
-      toast.success('Bookie updated successfully!')
+      toast.success('Bookie actualizado exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['bookie'] })
     }
   })

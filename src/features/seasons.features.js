@@ -15,7 +15,7 @@ export const useDeleteSeason = () => {
   const mutationDelete = useMutation({
     mutationFn: deleteSeason,
     onSuccess: () => {
-      toast.success('Season deleted successfully!')
+      toast.success('Temporada borrada exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['seasons'] })
     }
   })
@@ -27,7 +27,7 @@ export const useUpdateSeason = () => {
   const mutationUpdate = useMutation({
     mutationFn: updateSeason,
     onSuccess: () => {
-      toast.success('Season updated successfully!')
+      toast.success('Temporada actualizada exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['seasons'] })
     }
   })
@@ -39,7 +39,7 @@ export const useCreateSeason = () => {
   const mutationCreate = useMutation({
     mutationFn: createSeason,
     onSuccess: () => {
-      toast.success('Season created successfully!')
+      toast.success('Temporada creada exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['seasons'] })
     }
   })
@@ -50,7 +50,7 @@ export const useAddTeam = () => {
   const mutationAdd = useMutation({
     mutationFn: addTeam,
     onSuccess: () => {
-      toast.success('Team added successfully!')
+      toast.success('Equipo agregado!')
       queryClient.invalidateQueries({ queryKey: ['season'] })
     }
   })
@@ -62,7 +62,7 @@ export const useRemoveTeam = () => {
   const mutationRemove = useMutation({
     mutationFn: removeTeam,
     onSuccess: () => {
-      toast.success('Team removed successfully!')
+      toast.success('Equipo removido!')
       queryClient.invalidateQueries({ queryKey: ['season'] })
     }
   })

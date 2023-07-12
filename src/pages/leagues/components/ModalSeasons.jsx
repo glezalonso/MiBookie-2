@@ -41,30 +41,22 @@ const ModalSeasons = ({ league, season, modalShow, handleClose, action, type, se
         <>
         <Modal className="text-dark" show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
             <Modal.Header >
-                <Modal.Title>{type} season</Modal.Title>
+                <Modal.Title>{type} temporada</Modal.Title>
                 </Modal.Header>
                     <Form onSubmit={formik.handleSubmit}>
                 <Modal.Body>
                 <Form.Group>
-                        <Form.Label>Season name</Form.Label>
+                        <Form.Label>Nombre de temporada</Form.Label>
                         <FormControl {...formik.getFieldProps('season')} type="text" id="season" name="season"></FormControl>
                         </Form.Group>
                     <Form.Group>
-                        <Form.Label>Description</Form.Label>
+                        <Form.Label>Descripción</Form.Label>
                         <FormControl {...formik.getFieldProps('description')} type="text" id="description" name="description"></FormControl>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Status</Form.Label>
-                        <Form.Select id="status" name="status"{...formik.getFieldProps('status')} >
-                            <option >Select status</option>
-                            <option value={true}>Active</option>
-                            <option value={false}>Desactivate</option>
-                        </Form.Select>
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>League:</Form.Label>
+                        <Form.Label>Liga:</Form.Label>
                         <Form.Select id="league" name="league" {...formik.getFieldProps('league')} disabled>
-                            <option value={false}>Select the league</option>
+                            <option value={false}>Liga</option>
                         {leagueBySport?.map(league => (
                             <option key={league?._id} value={league?._id}>{league?.league}</option>
 
@@ -72,19 +64,27 @@ const ModalSeasons = ({ league, season, modalShow, handleClose, action, type, se
                         </Form.Select>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Sport:</Form.Label>
+                        <Form.Label>Deporte:</Form.Label>
                         <Form.Select id="sport" name="sport" {...formik.getFieldProps('sport')} disabled>
-                            <option value={false}>Select the league</option>
+                            <option value={false}>Deporte</option>
                         {sports?.map(sport => (
                             <option key={sport?._id} value={sport?._id}>{sport?.sport}</option>
 
                         ))}
                         </Form.Select>
                     </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Estatus</Form.Label>
+                        <Form.Select id="status" name="status"{...formik.getFieldProps('status')} >
+                            <option >Selecciona el estatus</option>
+                            <option value={true}>Activo</option>
+                            <option value={false}>Inactivo</option>
+                        </Form.Select>
+                    </Form.Group>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="dark" onClick={handleCloseUpdate}>Close</Button>
-                <Button variant="warning" type="submit">{type} league</Button>
+                <Button variant="dark" onClick={handleCloseUpdate}>Cerrar</Button>
+                <Button variant="warning" type="submit">{type} temporada</Button>
             </Modal.Footer>
         </Form>
       </Modal>

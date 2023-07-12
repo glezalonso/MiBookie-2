@@ -15,7 +15,7 @@ export const useDeleteNew = () => {
   const mutationDelete = useMutation({
     mutationFn: deleteNew,
     onSuccess: () => {
-      toast.success('New deleted successfully!')
+      toast.success('Noticia borrada exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['News'] })
     }
   })
@@ -27,7 +27,7 @@ export const useUpdateNew = () => {
   const mutationUpdate = useMutation({
     mutationFn: updateNew,
     onSuccess: () => {
-      toast.success('New updated successfully!')
+      toast.success('Noticia actualizada exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['News'] })
     }
   })
@@ -39,7 +39,7 @@ export const useCreateNew = () => {
   const mutationCreate = useMutation({
     mutationFn: createNew,
     onSuccess: () => {
-      toast.success('New created successfully!')
+      toast.success('Noticia creada exitosamente!')
       queryClient.invalidateQueries({ queryKey: ['News'] })
     }
   })

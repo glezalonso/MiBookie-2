@@ -24,25 +24,25 @@ const Seasons = () => {
         <Toaster position="top-center" reverseOrder={false}></Toaster>
          <Container fluid >
          <Row className='my-2  mx-auto' >
-          <Col xs={12} className='border rounded mx-auto  fs-6' >
+          <Col xs={8} className='bg-dark rounded mx-auto  fs-6' >
          <Breadcrumb className='mx-1 mt-2 p-3'>
          <div className='breadcrumb-item'><Link to={`../sports/${season?.sport?._id}`}>{season?.sport?.sport}</Link></div>
          <div className='breadcrumb-item'><Link to={`../leagues/${season?.league?._id}`}>{season?.league?.league}</Link></div>
-          <Breadcrumb.Item className='text-secondary'active>{season?.season}</Breadcrumb.Item>
+          <Breadcrumb.Item className='text-light'active>{season?.season}</Breadcrumb.Item>
           </Breadcrumb>
           </Col>
-            <Col md={7} className='border rounded mx-auto my-2 fs-6' >
+            <Col md={6} className='bg-dark text-light rounded mx-auto my-2 fs-6' >
             <SectionRounds season={season}/>
             </Col>
-            <Col md={5} className='border rounded mx-auto my-2 fs-6' >
+            <Col md={5} className='bg-dark rounded text-light mx-auto my-2 fs-6' >
               <SectionStandings season={season} />
             </Col>
           </Row>
           <Row className='my-2 mx-auto'>
-            <Col md={5} className='border rounded mx-auto my-2 fs-6'>
+            <Col md={5} className='bg-dark rounded text-light mx-auto my-2 fs-6'>
               <SectionParticipants season={season} />
             </Col>
-            <Col md={5} className='border rounded mx-auto my-2 fs-6'>
+            <Col md={5} className='bg-dark rounded text-light mx-auto my-2 fs-6'>
               <SectionTeams season={season} />
             </Col>
           </Row>

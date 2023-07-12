@@ -18,7 +18,7 @@ const TableUsers = ({ users }) => {
   const handleShow = () => setModalShow(true)
 
   const handleDelete = (id) => {
-    const sure = confirm('Want to delete?')
+    const sure = confirm('Está seguro que desea borrar?')
     if (sure) return deleteUser.mutate(id)
   }
 
@@ -31,30 +31,28 @@ const TableUsers = ({ users }) => {
   return (
         <>
         <section>
-        <h5 className="h7 ">Users</h5>
-
-          <Button variant="warning m-1 btn-sm" onClick={handleShow}> Create user</Button>
+        <h5 className="h7 ">Usuarios  <Button variant="warning mx-1 btn-sm" onClick={handleShow}> Crear usuario</Button></h5>
         {(!update)
-          ? <ModalUsers modalShow={modalShow} handleClose={handleClose} action={createUser} type={'Create'} setUpdate={setUpdate} />
-          : <ModalUsers user={user} modalShow={modalShow} handleClose={handleClose} action={updateUser} type={'Edit'} setUpdate={setUpdate} /> }
+          ? <ModalUsers modalShow={modalShow} handleClose={handleClose} action={createUser} type={'Crear'} setUpdate={setUpdate} />
+          : <ModalUsers user={user} modalShow={modalShow} handleClose={handleClose} action={updateUser} type={'Editar'} setUpdate={setUpdate} /> }
         {(users?.length > 0)
-          ? <Table variant='dark table-sm table-borderless' responsive hover>
-            <thead>
+          ? <Table variant='dark table-sm table-borderless my-2' responsive hover>
+            <thead className='border-bottom'>
                 <tr>
                     <th>
-                      Full name
+                      Nombre completo
                     </th>
                     <th>
-                      email
+                      Email
                     </th>
                     <th>
-                      username
+                      Usuario
                     </th>
                     <th>
-                      Permissions
+                      Rol
                     </th>
                     <th>
-                        Options
+                      Opciones
                     </th>
                 </tr>
             </thead>
@@ -67,16 +65,17 @@ const TableUsers = ({ users }) => {
                         <td>{(user.isAdmin) ? <span>User</span> : <span>Admin</span>}</td>
                         <td>
                             <ButtonGroup>
-                            <Link className='btn btn-secondary btn-sm mx-1 rounded ' to={`./${user?._id}`}>Details</Link>
-                            <Button className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(user)}>Edit</Button>
-                            <Button className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(user?._id)}>Delete</Button>
+                            <Link className='btn btn-secondary btn-sm mx-1 rounded ' to={`./${user?._id}`}>Detalles</Link>
+                            <Button className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(user)}>Editar</Button>
+                            <Button className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(user?._id)}>Borrar</Button>
                             </ButtonGroup>
                         </td>
                         </tr>
                 ))}
             </tbody>
+            <caption className='text-light'>Total de usuarios {users?.length}</caption>
         </Table>
-          : <Alert variant='warning'>There is no information to show!</Alert>}
+          : <Alert variant='warning'>No hay usuarios para mostrar!</Alert>}
            </section>
         </>
   )

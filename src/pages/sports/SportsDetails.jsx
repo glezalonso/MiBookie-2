@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { Container, Row, Col, Breadcrumb } from 'react-bootstrap'
 import Navigate from '../../ui/Navigate'
-import toast, { Toaster } from 'react-hot-toast'
+import { toast } from 'react-hot-toast'
 import Loading from '../../ui/Loading'
 import SectionLeagues from './components/SectionLeagues'
 import { useGetSport } from '../../features/sports.features'
@@ -12,20 +12,17 @@ const SportDetails = () => {
   const { data: sport, isLoading, isError } = useGetSport(id)
 
   if (isLoading) return <Loading />
-  if (isError) return toast.error('failed to load!')
+  if (isError) return toast.error('Hubo un error al cargar el deporte!')
 
   return (
         <>
         <Navigate />
-        <Toaster position="top-center" reverseOrder={false}></Toaster>
          <Container fluid >
           <Row className='my-2 mx-auto' >
-            <Col xs={12} className='border rounded mx-auto  fs-6' >
-            <Breadcrumb className='mx-1 mt-1  p-2 rounded'>
-             <Breadcrumb.Item className='text-secondary' active>{sport?.sport}</Breadcrumb.Item>
+            <Col md={8} className='bg-dark text-light rounded my-2 mx-auto fs-6'>
+            <Breadcrumb className='mx-auto rounded p-2 '>
+             <Breadcrumb.Item className='text-light' active>{sport?.sport}</Breadcrumb.Item>
               </Breadcrumb>
-              </Col >
-              <Col xs={12} className='border rounded my-2 fs-6'>
             <SectionLeagues sport={sport} />
             </Col>
           </Row>

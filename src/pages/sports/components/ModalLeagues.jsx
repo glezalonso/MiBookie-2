@@ -43,16 +43,16 @@ const ModalLeagues = ({ league, sportId, modalShow, handleClose, action, type, s
         <>
         <Modal className ="text-dark" show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
             <Modal.Header >
-                <Modal.Title>{type} league</Modal.Title>
+                <Modal.Title>{type} liga</Modal.Title>
                 </Modal.Header>
                     <Form onSubmit={formik.handleSubmit}>
                 <Modal.Body>
                 <Form.Group>
-                        <Form.Label>League</Form.Label>
+                        <Form.Label>Liga</Form.Label>
                         <FormControl {...formik.getFieldProps('league')} type="text" id="league" name="league"></FormControl>
                         </Form.Group>
                     <Form.Group>
-                        <Form.Label>Description</Form.Label>
+                        <Form.Label>Descripción</Form.Label>
                         <FormControl {...formik.getFieldProps('description')} type="text" id="description" name="description"></FormControl>
                     </Form.Group>
                     <Form.Group>
@@ -60,9 +60,9 @@ const ModalLeagues = ({ league, sportId, modalShow, handleClose, action, type, s
                         <FormControl type="file" id="poster" name="poster" onChange={onUpload}></FormControl>
                         </Form.Group>
                     <Form.Group>
-                        <Form.Label>Sport:</Form.Label>
+                        <Form.Label>Deporte:</Form.Label>
                         <Form.Select id="sport" name="sport" {...formik.getFieldProps('sport')}>
-                            <option value={false} >Select sport</option>
+                            <option value={false} >Selecciona el deporte al que pertenece</option>
                         {sports?.map(sport => (
                             <option key={sport?._id} value={sport?._id}>{sport?.sport}</option>
 
@@ -72,8 +72,8 @@ const ModalLeagues = ({ league, sportId, modalShow, handleClose, action, type, s
 
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="dark" onClick={handleCloseUpdate}>Close</Button>
-                <Button variant="warning" type="submit">{type} league</Button>
+                <Button variant="dark" onClick={handleCloseUpdate}>Cerrar</Button>
+                <Button variant="warning" type="submit">{type} liga</Button>
             </Modal.Footer>
         </Form>
       </Modal>

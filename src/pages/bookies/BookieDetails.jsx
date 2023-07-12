@@ -11,21 +11,21 @@ const BookieDetails = () => {
   const { data: bookie, isLoading, isError } = useGetBookie(id)
 
   if (isLoading) return <Loading />
-  if (isError) return toast.error('failed to load!')
+  if (isError) return toast.error('Hubo un error al cargar los bookies!')
 
   return (
         <>
          <Navigate />
         <Toaster position="top-center" reverseOrder={false}></Toaster>
          <Container fluid >
-          <Row className='m-2 p-2 mx-auto' >
-            <Col xs={12} md={11} className='border rounded mx-auto p-4 fs-4'>
+          <Row className='my-2 p-1  mx-auto' >
+            <Col xs={12} md={11} className='bg-dark text-light rounded mx-auto p-1 fs-4'>
             <Card bg='light'>
               <Card.Header>
               <Card.Title >{bookie?.fullName}</Card.Title>
               </Card.Header>
                 <Card.Body>
-                <Card.Subtitle>Username: {bookie?.username}</Card.Subtitle>
+                <Card.Subtitle>Usuario: {bookie?.username}</Card.Subtitle>
                 <Card.Text >Email: {bookie?.email}</Card.Text>
               </Card.Body>
             </Card>

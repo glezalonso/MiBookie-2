@@ -29,20 +29,20 @@ const ModalScore = ({ match, modalShow, handleClose }) => {
         <>
         <Modal className="text-dark" show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
             <Modal.Header closeButton>
-                <Modal.Title>Place score</Modal.Title>
+                <Modal.Title>Colocar marcador</Modal.Title>
                 </Modal.Header>
                     <Form onSubmit={formik.handleSubmit}>
                 <Modal.Body>
                 <Form.Group>
-                        <Form.Label htmlFor='local'>{match?.local?.name} :</Form.Label>
-                        <FormControl {...formik.getFieldProps('local')} type="number" id="local" name="local" placeholder='Score'></FormControl>
+                        <Form.Label htmlFor='local'> {match?.local?.name} :</Form.Label>
+                        <FormControl {...formik.getFieldProps('local')} type="number" id="local" name="local" placeholder='Marcador equipo local'></FormControl>
                         </Form.Group>
                         <Form.Label htmlFor='away'>{match?.away?.name} :</Form.Label>
-                        <FormControl {...formik.getFieldProps('away')} type="number" id="away" name="away" placeholder='Score'></FormControl>
+                        <FormControl {...formik.getFieldProps('away')} type="number" id="away" name="away" placeholder='Marcador equipo visitante'></FormControl>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="dark" onClick={() => handleClose()}>Close</Button>
-                <Button variant="warning" type="submit">Place score</Button>
+                <Button variant="dark" onClick={() => handleClose()}>Cerrar</Button>
+                <Button variant="warning" type="submit">Colocar marcador</Button>
             </Modal.Footer>
         </Form>
       </Modal>

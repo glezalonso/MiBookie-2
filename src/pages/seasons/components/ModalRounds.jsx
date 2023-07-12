@@ -40,31 +40,22 @@ const ModalRounds = ({ round, season, modalShow, handleClose, action, type, setU
         <>
         <Modal className="text-dark" show={modalShow} onHide={handleClose} backdrop="static" keyboard={false}>
             <Modal.Header >
-                <Modal.Title>{type} round</Modal.Title>
+                <Modal.Title>{type} jornada</Modal.Title>
                 </Modal.Header>
                     <Form onSubmit={formik.handleSubmit}>
                 <Modal.Body>
                 <Form.Group>
-                        <Form.Label>Round name</Form.Label>
+                        <Form.Label>Jornada</Form.Label>
                         <FormControl {...formik.getFieldProps('round')} type="text" id="round" name="round"></FormControl>
                         </Form.Group>
                     <Form.Group>
-                        <Form.Label>Round number</Form.Label>
+                        <Form.Label>Número de jornada</Form.Label>
                         <FormControl {...formik.getFieldProps('roundNumber')} type="number" id="roundNumber" name="roundNumber"></FormControl>
                     </Form.Group>
-
                     <Form.Group>
-                        <Form.Label>Status</Form.Label>
-                        <Form.Select id="status" name="status"{...formik.getFieldProps('status')} >
-                            <option >Select status</option>
-                            <option value={true}>Active</option>
-                            <option value={false}>Desactivate</option>
-                        </Form.Select>
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Season:</Form.Label>
+                        <Form.Label>Temporada</Form.Label>
                         <Form.Select id="season" name="season" {...formik.getFieldProps('season')} disabled>
-                            <option value={false}>Select the season</option>
+                            <option value={false}>Selecciona la temporada</option>
                         {seasons?.map(season => (
                             <option key={season?._id} value={season?._id}>{season?.season}</option>
 
@@ -72,9 +63,9 @@ const ModalRounds = ({ round, season, modalShow, handleClose, action, type, setU
                         </Form.Select>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>League:</Form.Label>
+                        <Form.Label>Liga</Form.Label>
                         <Form.Select id="league" name="league" {...formik.getFieldProps('league')} disabled>
-                            <option value={false}>Select the league</option>
+                            <option value={false}>Selecciona la liga</option>
                         {leagues?.map(league => (
                             <option key={league?._id} value={league?._id}>{league?.league}</option>
 
@@ -82,10 +73,19 @@ const ModalRounds = ({ round, season, modalShow, handleClose, action, type, setU
                         </Form.Select>
                     </Form.Group>
 
+                    <Form.Group>
+                        <Form.Label>Estatus</Form.Label>
+                        <Form.Select id="status" name="status"{...formik.getFieldProps('status')} >
+                            <option >Selecciona el estatus</option>
+                            <option value={true}>Activo</option>
+                            <option value={false}>Inactivo</option>
+                        </Form.Select>
+                    </Form.Group>
+
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="dark" onClick={handleCloseUpdate}>Close</Button>
-                <Button variant="warning" type="submit">{type} round</Button>
+                <Button variant="dark" onClick={handleCloseUpdate}>Cerrar</Button>
+                <Button variant="warning" type="submit">{type} jornada</Button>
             </Modal.Footer>
         </Form>
       </Modal>

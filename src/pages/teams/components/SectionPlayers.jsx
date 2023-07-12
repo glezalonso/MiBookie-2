@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import toast from 'react-hot-toast'
 import { Button, Table, Alert, FormControl } from 'react-bootstrap'
 import Loading from '../../../ui/Loading'
-import { useGetPlayers } from '../../../features/players.features'
+import { useGetPlayerBySport } from '../../../features/players.features'
 import { useAddPlayer } from '../../../features/teams.features'
 
 const SectionPlayers = ({ team }) => {
   const addPlayer = useAddPlayer(team?._id)
-  const { data: players, isLoading, isError } = useGetPlayers()
+  const { data: players, isLoading, isError } = useGetPlayerBySport(team?.sport?._id)
 
   const [dataFilter, setDataFilter] = useState('')
 
@@ -16,13 +16,10 @@ const SectionPlayers = ({ team }) => {
   }
 
   if (isLoading) return <Loading />
-  if (isError) return toast.error('failed to load!')
-
-  // players belog to a sport
-  const playerBySport = players?.filter(player => player?.sport?._id === team?.sport?._id)
+  if (isError) return toast.error('Hubo un error al cargar los jugadores!')
 
   // players without team
-  const playerFilter = playerBySport?.filter(player => player?.team === undefined || player?.team === null)
+  const playerFilter = players?.filter(player => player?.team === undefined || player?.team === null)
 
   // Filter ser
   const filter = playerFilter?.filter(player => {
@@ -33,22 +30,23 @@ const SectionPlayers = ({ team }) => {
   return (
         <>
         <section>
-        <h5 className="h7 ">All players</h5>
+        <h5 className="h7 ">Jugadores de {team?.sport?.sport}</h5>
         <div className='mx-2 my-3'>
-            <FormControl placeholder='Search Player...' id='player' name='player' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
+            <FormControl style={{ fontSize: '13px' }} placeholder='Nombre...' name='filter' value={dataFilter} onChange={(event) => setDataFilter(event.target.value)} />
             </div>
             {(filter?.length > 0)
-              ? <div className='table-wrapper-scroll-y my-custom-scrollbar'><Table responsive variant="dark table-sm table-borderless" hover >
-                <thead>
+              ? <div className='table-wrapper-scroll-y my-custom-scrollbar'>
+                <Table style={{ fontSize: '13px' }} responsive variant="dark table-sm table-borderless" hover >
+                <thead className='border-bottom'>
                     <tr>
-                        <th>Player</th>
-                        <th>Position</th>
-                        <th>Actions</th>
+                    <th>Jugador</th>
+                    <th>Posición</th>
+                    <th>Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
           { filter?.map(player => (
-            <tr key={player?._id}><td>{player?.fullName}</td><td>{player?.position}</td><td> <Button variant="warning btn-sm" onClick={() => handleAdd(team?._id, player?._id)}>Add</Button></td></tr>
+            <tr key={player?._id}><td>{player?.fullName}</td><td>{player?.position}</td><td> <Button style={{ fontSize: '13px' }} variant="warning btn-sm p-1" onClick={() => handleAdd(team?._id, player?._id)}>Agregar</Button></td></tr>
           ))}
             </tbody>
            </Table>

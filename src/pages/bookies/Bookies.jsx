@@ -1,6 +1,6 @@
 import React from 'react'
 import { useGetBookies } from '../../features/bookies.features'
-import { toast, Toaster } from 'react-hot-toast'
+import { toast } from 'react-hot-toast'
 import Navigate from '../../ui/Navigate'
 import { Container, Row, Col } from 'react-bootstrap'
 import Loading from '../../ui/Loading'
@@ -15,12 +15,10 @@ const Bookies = () => {
   return (
         <>
          <Navigate />
-        <Toaster position="top-center" reverseOrder={false}></Toaster>
          <Container fluid >
-          <Row className='m-2 p-2 mx-auto' >
-            <Col xs={12} md={11} className='border rounded mx-auto p-4 fs-4'>
+          <Row className='my-2  mx-auto' >
+            <Col md={11} className='bg-dark text-light rounded mx-auto  fs-4'>
             <SectionBookies bookies={bookies} />
-
             </Col>
           </Row>
         </Container>

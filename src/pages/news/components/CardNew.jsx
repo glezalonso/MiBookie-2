@@ -14,10 +14,10 @@ const CardNew = ({ content, handleDelete, handleUpdate }) => {
             <Card.Text >{content?.content}</Card.Text>
             </Card.Body>
             <Card.Footer>
-                <p>{content?.date?.split('T', 3).reverse().join(' ')}<span><strong> posted by: </strong> {content?.author}</span></p>
+                <p>{content?.date?.split('T', 3).reverse().join(' ')}<span><strong> Escrito por: </strong> {content?.author}</span></p>
                 <ButtonGroup>
-                <Button className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(content)}>Edit</Button>
-                <Button className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(content?._id)}>Delete</Button>
+                <Button className='btn btn-warning btn-sm mx-1 rounded' onClick={() => handleUpdate(content)}>Editar</Button>
+                <Button className='btn btn-danger btn-sm  mx-1 rounded' onClick={() => handleDelete(content?._id)}>Borrar</Button>
                  </ButtonGroup>
             </Card.Footer>
             </Card>
