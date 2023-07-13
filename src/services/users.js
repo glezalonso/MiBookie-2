@@ -11,13 +11,13 @@ export const resetPassword = (values) => axios.put('/api/resetPassword', values)
 export const register = (values) => axios.post('/api/users/register', values)
 
 export const getUsers = async () => {
-  const { data } = await axios.get('/api/users')
-  return data
+    const { data } = await axios.get('/api/users')
+    return data
 }
 
 export const getUser = async (id) => {
-  const { data } = await axios.get(`/api/users/${id}`)
-  return data
+    const { data } = await axios.get(`/api/users/${id}`)
+    return data
 }
 
 export const updateUser = ({ id, body }) => axios.put(`/api/users/${id}`, body)

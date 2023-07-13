@@ -15,22 +15,28 @@ const Leagues = () => {
   if (isError) return toast.error('Hubo un error al cargar la liga!')
 
   return (
-        <>
-        <Navigate />
-         <Container fluid >
-         <Row className='my-2 mx-auto' >
-            <Col md={8} className='bg-dark rounded my-2 mx-auto fs-6'>
-            <Breadcrumb className='mx-auto rounded p-2  bold' >
-            <div className='breadcrumb-item'><Link to={`../sports/${league?.sport?._id}`}>{league?.sport?.sport}</Link></div>
-             <Breadcrumb.Item className='text-light' active>{league?.league}</Breadcrumb.Item>
-             </Breadcrumb>
+    <>
+      <Navigate />
+      <Container fluid>
+        <Row className="my-2 mx-auto">
+          <Col md={8} className="bg-black rounded my-2 mx-auto fs-6">
+            <Breadcrumb className="mx-auto my-2 p-2">
+              <div className="breadcrumb-item">
+                <Link to={`../sports/${league?.sport?._id}`}>
+                  {league?.sport?.sport}
+                </Link>
+              </div>
+              <Breadcrumb.Item className="text-light" active>
+                {league?.league}
+              </Breadcrumb.Item>
+            </Breadcrumb>
+          </Col>
+          <Col md={8} className="bg-dark rounded my-2 mx-auto fs-6">
             <SectionSeasons league={league} />
-            </Col>
-          </Row>
-
-         </Container>
-
-        </>
+          </Col>
+        </Row>
+      </Container>
+    </>
   )
 }
 

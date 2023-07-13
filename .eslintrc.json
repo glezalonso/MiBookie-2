@@ -5,7 +5,8 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "standard"
+        "standard",
+        "plugin:prettier/recommended"
     ],
     "overrides": [
     ],
@@ -17,6 +18,13 @@
         "react"
     ],
     "rules": {
-        "react/prop-types": "off"
+        "react/prop-types": "off",
+         "prettier/prettier" :  [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
     }
+   
 }

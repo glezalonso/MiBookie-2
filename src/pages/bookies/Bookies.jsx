@@ -7,24 +7,26 @@ import Loading from '../../ui/Loading'
 import SectionBookies from './components/SectionBookies'
 
 const Bookies = () => {
-  const { data: bookies, isLoading, isError } = useGetBookies()
+    const { data: bookies, isLoading, isError } = useGetBookies()
 
-  if (isLoading) return <Loading />
-  if (isError) return toast.error('failed to load!')
+    if (isLoading) return <Loading />
+    if (isError) return toast.error('failed to load!')
 
-  return (
+    return (
         <>
-         <Navigate />
-         <Container fluid >
-          <Row className='my-2  mx-auto' >
-            <Col md={11} className='bg-dark text-light rounded mx-auto  fs-4'>
-            <SectionBookies bookies={bookies} />
-            </Col>
-          </Row>
-        </Container>
-
+            <Navigate />
+            <Container fluid>
+                <Row className="my-2  mx-auto">
+                    <Col
+                        md={11}
+                        className="bg-dark text-light rounded mx-auto  fs-4"
+                    >
+                        <SectionBookies bookies={bookies} />
+                    </Col>
+                </Row>
+            </Container>
         </>
-  )
+    )
 }
 
 export default Bookies
