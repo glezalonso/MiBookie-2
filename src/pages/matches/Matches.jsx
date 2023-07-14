@@ -8,35 +8,55 @@ import Loading from '../../ui/Loading'
 import { useGetMatch } from '../../features/matches.features'
 
 const Matches = () => {
-  const { id } = useParams()
-  const { data: match, isLoading, isError } = useGetMatch(id)
+    const { id } = useParams()
+    const { data: match, isLoading, isError } = useGetMatch(id)
 
-  if (isLoading) return <Loading />
+    if (isLoading) return <Loading />
 
-  if (isError) return toast.error('Hubo un error al cargar el partido!')
+    if (isError) return toast.error('Hubo un error al cargar el partido!')
 
-  return (
+    return (
         <>
-        <Navigate />
-         <Container fluid >
-         <Row className='my-2 mx-auto' >
-          <Col md={8} className='bg-black text-light rounded my-2 mx-auto'>
-          <Breadcrumb className='mx-auto my-2 p-2'>
-         <div className='breadcrumb-item'><Link to={`../leagues/${match?.league?._id}`}>{match?.league?.league}</Link></div>
-         <div className='breadcrumb-item'><Link to={`../seasons/${match?.season?._id}`}>{match?.season?.season}</Link></div>
-         <div className='breadcrumb-item'><Link to={`../rounds/${match?.round?._id}`}>{match?.round?.round}</Link></div>
-          <Breadcrumb.Item className='text-light' active>{match?.local?.name} vs {match?.away?.name}</Breadcrumb.Item>
-          </Breadcrumb>
-          </Col>
-          </Row>
-          <Row className='my-2 mx-auto'>
-            <Col md={10} className='bg-dark text-light rounded my-2 mx-auto fs-6' >
-                <MatchContent match={match} />
-            </Col>
-          </Row>
-         </Container>
+            <Navigate />
+            <Container fluid>
+                <Row className="my-2 mx-auto">
+                    <Col
+                        md={8}
+                        className="bg-black text-light rounded my-2 mx-auto"
+                    >
+                        <Breadcrumb className="mx-auto my-2 p-2">
+                            <div className="breadcrumb-item">
+                                <Link to={`../leagues/${match?.league?._id}`}>
+                                    {match?.league?.league}
+                                </Link>
+                            </div>
+                            <div className="breadcrumb-item">
+                                <Link to={`../seasons/${match?.season?._id}`}>
+                                    {match?.season?.season}
+                                </Link>
+                            </div>
+                            <div className="breadcrumb-item">
+                                <Link to={`../rounds/${match?.round?._id}`}>
+                                    {match?.round?.round}
+                                </Link>
+                            </div>
+                            <Breadcrumb.Item className="text-light" active>
+                                {match?.local?.name} vs {match?.away?.name}
+                            </Breadcrumb.Item>
+                        </Breadcrumb>
+                    </Col>
+                </Row>
+                <Row className="my-2 mx-auto">
+                    <Col
+                        md={10}
+                        className="bg-dark text-light rounded my-2 mx-auto fs-6"
+                    >
+                        <MatchContent match={match} />
+                    </Col>
+                </Row>
+            </Container>
         </>
-  )
+    )
 }
 
 export default Matches
