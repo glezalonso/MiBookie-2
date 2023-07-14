@@ -8,34 +8,46 @@ import Loading from '../../ui/Loading'
 import { useGetRound } from '../../features/rounds.features'
 
 const Rounds = () => {
-  const { id } = useParams()
-  const { data: round, isLoading, isError } = useGetRound(id)
+    const { id } = useParams()
+    const { data: round, isLoading, isError } = useGetRound(id)
 
-  if (isLoading) return <Loading />
-  if (isError) return toast.error('Hubo un error al cargar la jornada!')
+    if (isLoading) return <Loading />
+    if (isError) return toast.error('Hubo un error al cargar la jornada!')
 
-  return (
-
-         <>
-        <Navigate />
-         <Container fluid>
-         <Row className='my-2  mx-auto' >
-          <Col md={8} className='bg-black text-light mx-auto'>
-         <Breadcrumb className='mx-auto my-2 p-2'>
-         <div className='breadcrumb-item'><Link to={`../sports/${round?.sport?._id}`}>{round?.sport?.sport}</Link></div>
-         <div className='breadcrumb-item'><Link to={`../leagues/${round?.league?._id}`}>{round?.league?.league}</Link></div>
-         <div className='breadcrumb-item'><Link to={`../seasons/${round?.season?._id}`}>{round?.season?.season}</Link></div>
-          <Breadcrumb.Item className='text-light' active>{round?.round}</Breadcrumb.Item>
-          </Breadcrumb>
-          </Col>
-          <Col md={8} className='bg-dark text-light rounded mx-auto'>
-            <SectionMatches round={round}/>
-            </Col>
-          </Row>
-         </Container>
-
+    return (
+        <>
+            <Navigate />
+            <Container fluid>
+                <Row className="my-2  mx-auto">
+                    <Col md={8} className="bg-black text-light mx-auto">
+                        <Breadcrumb className="mx-auto my-2 p-2">
+                            <div className="breadcrumb-item">
+                                <Link to={`../sports/${round?.sport?._id}`}>
+                                    {round?.sport?.sport}
+                                </Link>
+                            </div>
+                            <div className="breadcrumb-item">
+                                <Link to={`../leagues/${round?.league?._id}`}>
+                                    {round?.league?.league}
+                                </Link>
+                            </div>
+                            <div className="breadcrumb-item">
+                                <Link to={`../seasons/${round?.season?._id}`}>
+                                    {round?.season?.season}
+                                </Link>
+                            </div>
+                            <Breadcrumb.Item className="text-light" active>
+                                {round?.round}
+                            </Breadcrumb.Item>
+                        </Breadcrumb>
+                    </Col>
+                    <Col md={8} className="bg-dark text-light rounded mx-auto">
+                        <SectionMatches round={round} />
+                    </Col>
+                </Row>
+            </Container>
         </>
-  )
+    )
 }
 
 export default Rounds

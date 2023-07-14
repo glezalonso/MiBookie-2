@@ -23,9 +23,9 @@ const Login = () => {
 
     return (
         <>
-            <Container className=" w-75 h-75 mt-5 rounded">
+            <Container className=" w-75 h-75 mt-5 ">
                 <Row>
-                    <Col className="col-lg-6 col-xs-12 bg-dark text-light  mx-auto p-4 border rounded">
+                    <Col className="col-lg-6 col-xs-12 bg-dark text-light  mx-auto p-4 rounded">
                         <h1 className="h1 pt-3 text-center">Mi Bookie Panel</h1>
                         <Form className="p-3" onSubmit={formik.handleSubmit}>
                             <Form.Group>
