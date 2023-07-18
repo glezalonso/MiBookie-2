@@ -29,7 +29,7 @@ const ModalTeams = ({
         validateOnChange: false,
         onSubmit: (values) => {
             values = Object.assign(values, {
-                poster: team?.poster || file || '',
+                poster: file || '',
             })
             action.mutate(!team?._id ? values : { id: team?._id, body: values })
             formik.resetForm()
