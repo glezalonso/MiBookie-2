@@ -23,8 +23,8 @@ const Seasons = () => {
 
             <Container fluid>
                 <Row className="my-2 mx-auto">
-                    <Col md={8} className="bg-black mx-auto ">
-                        <Breadcrumb className="mx-auto my-2 p-2">
+                    <Col md={8} className="mx-auto ">
+                        <Breadcrumb className=" p-2">
                             <div className="breadcrumb-item">
                                 <Link to={`../sports/${season?.sport?._id}`}>
                                     {season?.sport?.sport}
@@ -35,13 +35,13 @@ const Seasons = () => {
                                     {season?.league?.league}
                                 </Link>
                             </div>
-                            <Breadcrumb.Item className="text-light" active>
+                            <Breadcrumb.Item active>
                                 {season?.season}
                             </Breadcrumb.Item>
                         </Breadcrumb>
                     </Col>
                     <Col
-                        md={6}
+                        md={5}
                         className="bg-dark text-light rounded mx-auto my-2 fs-6"
                     >
                         <SectionRounds season={season} />

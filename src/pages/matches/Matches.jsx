@@ -20,11 +20,8 @@ const Matches = () => {
             <Navigate />
             <Container fluid>
                 <Row className="my-2 mx-auto">
-                    <Col
-                        md={8}
-                        className="bg-black text-light rounded my-2 mx-auto"
-                    >
-                        <Breadcrumb className="mx-auto my-2 p-2">
+                    <Col md={8} className="mx-auto">
+                        <Breadcrumb className=" p-2">
                             <div className="breadcrumb-item">
                                 <Link to={`../leagues/${match?.league?._id}`}>
                                     {match?.league?.league}
@@ -40,7 +37,7 @@ const Matches = () => {
                                     {match?.round?.round}
                                 </Link>
                             </div>
-                            <Breadcrumb.Item className="text-light" active>
+                            <Breadcrumb.Item active>
                                 {match?.local?.name} vs {match?.away?.name}
                             </Breadcrumb.Item>
                         </Breadcrumb>

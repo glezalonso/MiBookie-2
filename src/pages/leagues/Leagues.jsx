@@ -19,14 +19,14 @@ const Leagues = () => {
             <Navigate />
             <Container fluid>
                 <Row className="my-2 mx-auto">
-                    <Col md={8} className="bg-black rounded my-2 mx-auto fs-6">
-                        <Breadcrumb className="mx-auto my-2 p-2">
+                    <Col md={8} className=" mx-auto">
+                        <Breadcrumb className="p-2">
                             <div className="breadcrumb-item">
                                 <Link to={`../sports/${league?.sport?._id}`}>
                                     {league?.sport?.sport}
                                 </Link>
                             </div>
-                            <Breadcrumb.Item className="text-light" active>
+                            <Breadcrumb.Item active>
                                 {league?.league}
                             </Breadcrumb.Item>
                         </Breadcrumb>

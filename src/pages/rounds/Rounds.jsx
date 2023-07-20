@@ -19,8 +19,8 @@ const Rounds = () => {
             <Navigate />
             <Container fluid>
                 <Row className="my-2  mx-auto">
-                    <Col md={8} className="bg-black text-light mx-auto">
-                        <Breadcrumb className="mx-auto my-2 p-2">
+                    <Col md={8} className=" mx-auto">
+                        <Breadcrumb className=" p-2">
                             <div className="breadcrumb-item">
                                 <Link to={`../sports/${round?.sport?._id}`}>
                                     {round?.sport?.sport}
@@ -36,7 +36,7 @@ const Rounds = () => {
                                     {round?.season?.season}
                                 </Link>
                             </div>
-                            <Breadcrumb.Item className="text-light" active>
+                            <Breadcrumb.Item active>
                                 {round?.round}
                             </Breadcrumb.Item>
                         </Breadcrumb>

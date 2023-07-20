@@ -19,9 +19,9 @@ const SportDetails = () => {
             <Navigate />
             <Container fluid>
                 <Row className="my-2 mx-auto">
-                    <Col md={8} className="bg-black text-light my-2 mx-auto">
-                        <Breadcrumb className="mx-auto my-2 p-2">
-                            <Breadcrumb.Item className="text-light" active>
+                    <Col md={8} className=" mx-auto">
+                        <Breadcrumb className="p-2">
+                            <Breadcrumb.Item active>
                                 {sport?.sport}
                             </Breadcrumb.Item>
                         </Breadcrumb>
