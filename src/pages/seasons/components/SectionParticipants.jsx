@@ -35,9 +35,10 @@ const SectionParticipants = ({ season }) => {
                 {filter?.length > 0 ? (
                     <div className="table-wrapper-scroll-y my-custom-scrollbar">
                         <Table
-                            style={{ fontSize: '13px' }}
                             responsive
-                            variant="dark table-sm table-borderless my-1"
+                            size="sm"
+                            borderless
+                            variant="dark"
                             hover
                         >
                             <thead className="border-bottom">

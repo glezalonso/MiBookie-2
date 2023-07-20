@@ -24,7 +24,9 @@ const SectionStandings = ({ season }) => {
                     <div className="table-wrapper-scroll-y my-custom-scrollbar">
                         <Table
                             responsive
-                            variant="dark table-sm table-borderless my-1"
+                            size="sm"
+                            borderless
+                            variant="dark"
                             hover
                         >
                             <thead className="border-bottom">

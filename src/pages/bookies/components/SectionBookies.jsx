@@ -52,7 +52,6 @@ const SectionBookies = ({ bookies }) => {
                         className="mb-3"
                         style={{ fontSize: '13px' }}
                         placeholder="Buscar Bookie..."
-                        id="bookie"
                         name="bookie"
                         value={dataFilter}
                         onChange={(event) => setDataFilter(event.target.value)}
@@ -65,11 +64,7 @@ const SectionBookies = ({ bookies }) => {
                     action={updateBookie}
                 />
                 {filter?.length > 0 ? (
-                    <Table
-                        responsive
-                        variant="dark table-sm table-borderless"
-                        hover
-                    >
+                    <Table responsive size="sm" borderless variant="dark" hover>
                         <thead className="border-bottom">
                             <tr>
                                 <th>Nombre completo</th>

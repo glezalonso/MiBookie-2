@@ -23,7 +23,7 @@ const Seasons = () => {
 
             <Container fluid>
                 <Row className="my-2 mx-auto">
-                    <Col md={8} className="mx-auto ">
+                    <Col xs={12} lg={8} className="mx-auto ">
                         <Breadcrumb className=" p-2">
                             <div className="breadcrumb-item">
                                 <Link to={`../sports/${season?.sport?._id}`}>
@@ -41,13 +41,15 @@ const Seasons = () => {
                         </Breadcrumb>
                     </Col>
                     <Col
-                        md={5}
+                        xs={12}
+                        lg={5}
                         className="bg-dark text-light rounded mx-auto my-2 fs-6"
                     >
                         <SectionRounds season={season} />
                     </Col>
                     <Col
-                        md={5}
+                        xs={12}
+                        lg={5}
                         className="bg-dark rounded text-light mx-auto my-2 fs-6"
                     >
                         <SectionStandings season={season} />
@@ -55,13 +57,15 @@ const Seasons = () => {
                 </Row>
                 <Row className="my-2 mx-auto">
                     <Col
-                        md={5}
+                        xs={12}
+                        lg={5}
                         className="bg-dark rounded text-light mx-auto my-2 fs-6"
                     >
                         <SectionParticipants season={season} />
                     </Col>
                     <Col
-                        md={5}
+                        xs={12}
+                        lg={5}
                         className="bg-dark rounded text-light mx-auto my-2 fs-6"
                     >
                         <SectionTeams season={season} />

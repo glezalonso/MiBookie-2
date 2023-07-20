@@ -40,7 +40,7 @@ const SectionSeasons = ({ league }) => {
     return (
         <>
             <section>
-                <h5 className="h7 ">
+                <h5 className="h7">
                     Temporadas{' '}
                     <Button variant="warning mx-1 btn-sm" onClick={handleShow}>
                         Crear temporada
@@ -70,8 +70,10 @@ const SectionSeasons = ({ league }) => {
                 {seasonByLeague?.length > 0 ? (
                     <div className="table-wrapper-scroll-y my-custom-scrollbar rounded ">
                         <Table
-                            variant="dark table-sm table-borderless my-1"
                             responsive
+                            size="sm"
+                            borderless
+                            variant="dark"
                             hover
                         >
                             <thead className="border-bottom">

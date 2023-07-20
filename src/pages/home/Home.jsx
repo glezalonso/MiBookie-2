@@ -12,7 +12,8 @@ const Home = () => {
             <Container fluid>
                 <Row className="my-2 mx-auto">
                     <Col
-                        md={11}
+                        xs={12}
+                        lg={11}
                         className="bg-dark text-light rounded mx-auto my-2 fs-4"
                     >
                         <SectionTodayMatches />
@@ -20,12 +21,14 @@ const Home = () => {
                 </Row>
                 <Row className="my-2 mx-auto">
                     <Col
-                        lg={7}
+                        xs={12}
+                        lg={5}
                         className="bg-dark text-light rounded mx-auto my-2 fs-4"
                     >
                         <SectionSeasonsOpen />
                     </Col>
                     <Col
+                        xs={12}
                         lg={4}
                         className="bg-dark text-light rounded mx-auto my-2 fs-4"
                     >

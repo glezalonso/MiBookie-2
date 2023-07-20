@@ -63,7 +63,6 @@ const TableTeams = () => {
                         className="mb-3"
                         style={{ fontSize: '13px' }}
                         placeholder="Buscar equipo..."
-                        id="team"
                         name="team"
                         value={dataFilter}
                         onChange={(event) => setDataFilter(event.target.value)}
@@ -88,11 +87,7 @@ const TableTeams = () => {
                     />
                 )}
                 {filter?.length > 0 ? (
-                    <Table
-                        responsive
-                        variant="dark table-sm table-borderless"
-                        hover
-                    >
+                    <Table responsive size="sm" borderless variant="dark" hover>
                         <thead className="border-bottom">
                             <tr>
                                 <th>Equipo</th>

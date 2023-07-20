@@ -22,24 +22,40 @@ const TeamDetail = () => {
         <>
             <Navigate />
             <Container fluid>
-                <Row className="my-2 mx-auto rounded">
-                    <Col lg={6}>
+                <Row className="my-2 mx-auto ">
+                    <Col xs={12} lg={11}>
                         <SectionTeam team={team} />
                     </Col>
                 </Row>
-                <Row className="my-2 mx-auto rounded">
-                    <Col md={6} className="bg-dark text-light rounded mx-auto">
+                <Row className="my-2 gap">
+                    <Col
+                        xs={12}
+                        lg={5}
+                        className="bg-dark text-light rounded mx-auto"
+                    >
                         <SectionMatches team={team} />
                     </Col>
-                    <Col md={5} className="bg-dark text-light rounded mx-auto">
+                    <Col
+                        xs={12}
+                        lg={5}
+                        className="bg-dark text-light rounded mx-auto"
+                    >
                         <SectionNextMatches team={team} />
                     </Col>
                 </Row>
                 <Row className="my-3 mx-auto rounded">
-                    <Col md={5} className="bg-dark text-light rounded mx-auto">
+                    <Col
+                        xs={12}
+                        lg={5}
+                        className="bg-dark text-light rounded mx-auto"
+                    >
                         <SectionRoster team={team} />
                     </Col>
-                    <Col md={5} className="bg-dark text-light rounded mx-auto">
+                    <Col
+                        xs={12}
+                        lg={5}
+                        className="bg-dark text-light rounded mx-auto"
+                    >
                         <SectionPlayers team={team} />
                     </Col>
                 </Row>

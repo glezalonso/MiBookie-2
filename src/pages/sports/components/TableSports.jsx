@@ -66,11 +66,7 @@ const TableSport = () => {
                     />
                 )}
                 {sports?.length > 0 ? (
-                    <Table
-                        variant="dark table-sm my-2 mx-auto table-borderless"
-                        responsive
-                        hover
-                    >
+                    <Table responsive size="sm" borderless variant="dark" hover>
                         <thead className="border-bottom">
                             <tr>
                                 <th>Deporte</th>

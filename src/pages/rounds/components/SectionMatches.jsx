@@ -98,13 +98,14 @@ const SectionMatches = ({ round }) => {
                 {filter?.length > 0 ? (
                     <div className="table-wrapper-scroll-y my-custom-scrollbar">
                         <Table
-                            style={{ fontSize: '13px' }}
-                            variant="dark table-sm table-borderless my-1"
                             responsive
+                            size="sm"
+                            borderless
+                            variant="dark"
                             hover
                         >
                             <caption className="m-1 text-light">
-                                Total: {filter?.length} patidos
+                                Total: {filter?.length} partidos
                             </caption>
                             <thead className="border-bottom">
                                 <tr>

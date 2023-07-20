@@ -23,18 +23,14 @@ const Roaster = ({ match, roster, handleAddLineUp, type }) => {
                 <FormControl
                     style={{ fontSize: '13px' }}
                     placeholder="Buscar jugador..."
-                    name="filter"
+                    name="player"
                     value={dataFilter}
                     onChange={(event) => setDataFilter(event.target.value)}
                 />
             </div>
             {filter?.length > 0 ? (
                 <div className="table-wrapper-scroll-y my-custom-scrollbar rounded ">
-                    <Table
-                        responsive
-                        variant="dark table-sm table-borderless my-1"
-                        hover
-                    >
+                    <Table responsive size="sm" borderless variant="dark" hover>
                         <thead className="border-bottom">
                             <tr>
                                 <th>Jugador</th>

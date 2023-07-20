@@ -70,8 +70,10 @@ const SectionLeagues = ({ sport }) => {
                 {leaguesBySport?.length > 0 ? (
                     <div className="table-wrapper-scroll-y my-custom-scrollbar rounded my-1">
                         <Table
-                            variant="dark table-sm table-borderless"
                             responsive
+                            size="sm"
+                            borderless
+                            variant="dark"
                             hover
                         >
                             <thead className="border-bottom">

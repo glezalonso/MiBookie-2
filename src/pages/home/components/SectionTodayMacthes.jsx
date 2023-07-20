@@ -39,7 +39,6 @@ const SectionTodayMatches = () => {
                         style={{ fontSize: '13px' }}
                         className="mb-3"
                         placeholder="Buscar equipo..."
-                        id="team"
                         name="team"
                         value={dataFilter}
                         onChange={(event) => setDataFilter(event.target.value)}
@@ -49,17 +48,18 @@ const SectionTodayMatches = () => {
                     <div className="table-wrapper-scroll-y my-custom-scrollbar p-1">
                         <Table
                             responsive
-                            variant="dark table-sm table-borderless "
+                            size="sm"
+                            borderless
+                            variant="dark"
                             hover
                         >
                             <caption className="m-1 text-light">
-                                Total: {filter?.length} matches
+                                Total: {filter?.length} partidos
                             </caption>
                             <thead className="border-bottom">
                                 <tr>
-                                    <th>Fecha</th>
+                                    <th>Hora</th>
                                     <th>Liga</th>
-                                    <th>Temporada</th>
                                     <th>Jornada</th>
                                     <th>Local</th>
                                     <th>Visitante</th>
@@ -70,13 +70,9 @@ const SectionTodayMatches = () => {
                             <tbody>
                                 {filter?.map((match) => (
                                     <tr key={match?._id}>
-                                        <td>
-                                            {match?.date
-                                                ?.split('T', 3)
-                                                .join(' ')}
-                                        </td>
+                                        <td>{match?.date?.split('T', 3)[1]}</td>
                                         <td>{match?.league?.league}</td>
-                                        <td>{match?.season?.season}</td>
+
                                         <td>{match?.round?.round}</td>
                                         <td>
                                             {match?.local.name}

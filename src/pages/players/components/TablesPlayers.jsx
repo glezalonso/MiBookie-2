@@ -71,8 +71,7 @@ const TableSport = () => {
                     <FormControl
                         style={{ fontSize: '13px' }}
                         placeholder="Bucar por nombre, equipo, deporte..."
-                        id="filter"
-                        name="filter"
+                        name="player"
                         value={dataFilter}
                         onChange={(event) => setDataFilter(event.target.value)}
                     />
@@ -99,7 +98,9 @@ const TableSport = () => {
                     <div className="table-wrapper-scroll-y my-custom-scrollbar">
                         <Table
                             responsive
-                            variant="dark table-sm table-borderless"
+                            size="sm"
+                            borderless
+                            variant="dark"
                             hover
                         >
                             <thead className="border-bottom">

@@ -6,11 +6,7 @@ const TeamSettings = ({ match, handleRemoveLineUp, type }) => {
         <>
             {type === 'local' ? (
                 match?.lineup?.length > 0 ? (
-                    <Table
-                        responsive
-                        variant="dark my-1 table-sm table-borderless"
-                        hover
-                    >
+                    <Table responsive size="sm" borderless variant="dark" hover>
                         <thead className="border-bottom">
                             <tr>
                                 <th>Jugador</th>

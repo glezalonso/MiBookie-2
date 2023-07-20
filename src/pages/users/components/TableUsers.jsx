@@ -61,11 +61,7 @@ const TableUsers = ({ users }) => {
                     />
                 )}
                 {users?.length > 0 ? (
-                    <Table
-                        variant="dark table-sm table-borderless my-2"
-                        responsive
-                        hover
-                    >
+                    <Table responsive size="sm" borderless variant="dark" hover>
                         <thead className="border-bottom">
                             <tr>
                                 <th>Nombre completo</th>

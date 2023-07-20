@@ -69,8 +69,10 @@ const SectionRounds = ({ season }) => {
                 {roundsbySeason?.length > 0 ? (
                     <div className="table-wrapper-scroll-y my-custom-scrollbar">
                         <Table
-                            variant="dark table-sm table-borderless my-1"
                             responsive
+                            size="sm"
+                            borderless
+                            variant="dark"
                             hover
                         >
                             <thead className="border-bottom">

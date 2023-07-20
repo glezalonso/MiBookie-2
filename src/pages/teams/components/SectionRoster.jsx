@@ -22,11 +22,11 @@ const SectionRoster = ({ team }) => {
         <>
             <section>
                 <h5 className="h7 ">Plantilla</h5>
-                <div className="mx-2 my-3">
+                <div className=" my-3">
                     <FormControl
                         style={{ fontSize: '13px' }}
                         placeholder="Nombre..."
-                        name="filter"
+                        name="player"
                         value={dataFilter}
                         onChange={(event) => setDataFilter(event.target.value)}
                     />
@@ -35,9 +35,10 @@ const SectionRoster = ({ team }) => {
                 {filter?.length > 0 ? (
                     <div className="table-wrapper-scroll-y my-custom-scrollbar rounded">
                         <Table
-                            style={{ fontSize: '13px' }}
                             responsive
-                            variant="dark table-sm table-borderless"
+                            size="sm"
+                            borderless
+                            variant="dark"
                             hover
                         >
                             <thead className="border-bottom">

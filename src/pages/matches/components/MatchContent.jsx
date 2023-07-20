@@ -31,7 +31,9 @@ const MatchContent = ({ match }) => {
                 <div className="bg-light rounded p-1">
                     <Table
                         responsive
-                        variant="light table-sm table-borderless"
+                        size="sm"
+                        borderless
+                        variant="light"
                         hover
                     >
                         <tbody>
@@ -92,12 +94,14 @@ const MatchContent = ({ match }) => {
                     </Table>
                 </div>
                 {match?.status && (
-                    <Button
-                        variant="warning my-2 btn-sm"
-                        onClick={() => handleShow()}
-                    >
-                        Colocar marcador
-                    </Button>
+                    <div className="d-flex justify-content-center my-1">
+                        <Button
+                            variant="warning my-2 btn-sm"
+                            onClick={() => handleShow()}
+                        >
+                            Colocar marcador
+                        </Button>
+                    </div>
                 )}
                 <ModalScore
                     match={match}

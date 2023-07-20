@@ -18,7 +18,8 @@ const Bookies = () => {
             <Container fluid>
                 <Row className="my-2  mx-auto">
                     <Col
-                        md={11}
+                        xs={12}
+                        lg={8}
                         className="bg-dark text-light rounded mx-auto  fs-4"
                     >
                         <SectionBookies bookies={bookies} />

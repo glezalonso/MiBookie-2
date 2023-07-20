@@ -14,8 +14,9 @@ const MatchSettings = ({ match, handleRemoveLineUp, handleAddLineUp }) => {
         <>
             <Row className="m-2 mx-auto">
                 <Col
-                    md={5}
-                    className="bg-dark text-light rounded mx-auto my-1 min-vh-100"
+                    xs={12}
+                    lg={5}
+                    className="bg-dark text-light rounded mx-auto my-1 min-vh-50"
                 >
                     <section>
                         <h5 className="h5">{match?.local?.name} plantilla</h5>
@@ -29,8 +30,9 @@ const MatchSettings = ({ match, handleRemoveLineUp, handleAddLineUp }) => {
                 </Col>
 
                 <Col
-                    md={5}
-                    className="bg-dark text-light rounded mx-auto my-1  min-vh-100"
+                    xs={12}
+                    lg={5}
+                    className="bg-dark text-light rounded mx-auto my-1  min-vh-50"
                 >
                     <section>
                         <h5 className="h5">{match?.local?.name} alineación</h5>

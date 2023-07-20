@@ -21,8 +21,8 @@ const BookieDetails = () => {
                 <Row className="my-2 p-1  mx-auto">
                     <Col
                         xs={12}
-                        md={11}
-                        className="bg-dark text-light rounded mx-auto p-1 fs-4"
+                        md={10}
+                        className="bg-dark text-light rounded mx-auto p-1"
                     >
                         <Card bg="light">
                             <Card.Header>
