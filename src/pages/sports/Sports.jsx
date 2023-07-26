@@ -9,10 +9,7 @@ const Sports = () => {
             <Navigate />
             <Container fluid>
                 <Row className="my-2 mx-auto">
-                    <Col
-                        md={8}
-                        className="bg-dark text-light rounded mx-auto fs-4"
-                    >
+                    <Col xs={12} md={8} className="mx-auto my-1">
                         <TableSports />
                     </Col>
                 </Row>

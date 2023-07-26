@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Table, Alert, FormControl } from 'react-bootstrap'
+
 const Roaster = ({ match, roster, handleAddLineUp, type }) => {
     const [dataFilter, setDataFilter] = useState('')
 
@@ -21,7 +22,7 @@ const Roaster = ({ match, roster, handleAddLineUp, type }) => {
         <>
             <div className="mx-auto my-3">
                 <FormControl
-                    style={{ fontSize: '13px' }}
+                    size="sm"
                     placeholder="Buscar jugador..."
                     name="player"
                     value={dataFilter}
@@ -29,7 +30,7 @@ const Roaster = ({ match, roster, handleAddLineUp, type }) => {
                 />
             </div>
             {filter?.length > 0 ? (
-                <div className="table-wrapper-scroll-y my-custom-scrollbar rounded ">
+                <div className="data-tables bg-dark rounded p-1 my-1">
                     <Table responsive size="sm" borderless variant="dark" hover>
                         <thead className="border-bottom">
                             <tr>

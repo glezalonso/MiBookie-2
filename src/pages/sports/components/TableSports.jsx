@@ -40,10 +40,12 @@ const TableSport = () => {
     return (
         <>
             <section>
-                <h5 className="h7 ">
-                    Deportes{' '}
-                    <Button variant="warning mx-1 btn-sm" onClick={handleShow}>
-                        {' '}
+                <h5>
+                    Deportes
+                    <Button
+                        variant="warning mx-1 btn-sm my-1 "
+                        onClick={handleShow}
+                    >
                         Crear deporte
                     </Button>
                 </h5>
@@ -65,55 +67,63 @@ const TableSport = () => {
                         setUpdate={setUpdate}
                     />
                 )}
-                {sports?.length > 0 ? (
-                    <Table responsive size="sm" borderless variant="dark" hover>
-                        <thead className="border-bottom">
-                            <tr>
-                                <th>Deporte</th>
-                                <th>Description</th>
-                                <th>Options</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {sports?.map((sport) => (
-                                <tr key={sport?._id}>
-                                    <td>{sport?.sport}</td>
-                                    <td>{sport?.description}</td>
-                                    <td>
-                                        <ButtonGroup>
-                                            <Link
-                                                className="btn btn-secondary btn-sm mx-1 rounded "
-                                                to={`./${sport?._id}`}
-                                            >
-                                                Detalles
-                                            </Link>
-                                            <Button
-                                                className="btn btn-warning btn-sm mx-1 rounded"
-                                                onClick={() =>
-                                                    handleUpdate(sport)
-                                                }
-                                            >
-                                                Editar
-                                            </Button>
-                                            <Button
-                                                className="btn btn-danger btn-sm  mx-1 rounded"
-                                                onClick={() =>
-                                                    handleDelete(sport?._id)
-                                                }
-                                            >
-                                                Borrar
-                                            </Button>
-                                        </ButtonGroup>
-                                    </td>
+                <div className="data-tables bg-dark rounded p-1 my-1">
+                    {sports?.length > 0 ? (
+                        <Table
+                            responsive
+                            size="sm"
+                            borderless
+                            variant="dark"
+                            hover
+                        >
+                            <thead className="border-bottom">
+                                <tr>
+                                    <th>Deporte</th>
+                                    <th>Description</th>
+                                    <th>Options</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </Table>
-                ) : (
-                    <Alert variant="warning">
-                        No hay deportes para mostrar!
-                    </Alert>
-                )}
+                            </thead>
+                            <tbody>
+                                {sports?.map((sport) => (
+                                    <tr key={sport?._id}>
+                                        <td>{sport?.sport}</td>
+                                        <td>{sport?.description}</td>
+                                        <td>
+                                            <ButtonGroup>
+                                                <Link
+                                                    className="btn btn-secondary btn-sm mx-1 rounded "
+                                                    to={`./${sport?._id}`}
+                                                >
+                                                    Detalles
+                                                </Link>
+                                                <Button
+                                                    className="btn btn-warning btn-sm mx-1 rounded"
+                                                    onClick={() =>
+                                                        handleUpdate(sport)
+                                                    }
+                                                >
+                                                    Editar
+                                                </Button>
+                                                <Button
+                                                    className="btn btn-danger btn-sm  mx-1 rounded"
+                                                    onClick={() =>
+                                                        handleDelete(sport?._id)
+                                                    }
+                                                >
+                                                    Borrar
+                                                </Button>
+                                            </ButtonGroup>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </Table>
+                    ) : (
+                        <Alert variant="warning">
+                            No hay deportes para mostrar!
+                        </Alert>
+                    )}
+                </div>
             </section>
         </>
     )

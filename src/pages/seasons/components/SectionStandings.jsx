@@ -19,9 +19,9 @@ const SectionStandings = ({ season }) => {
     return (
         <>
             <section>
-                <h5 className="h7 ">Posiciones</h5>
+                <h5>Posiciones</h5>
                 {sort?.length > 0 ? (
-                    <div className="table-wrapper-scroll-y my-custom-scrollbar">
+                    <div className="data-tables bg-dark rounded p-1 my-1">
                         <Table
                             responsive
                             size="sm"
@@ -31,13 +31,13 @@ const SectionStandings = ({ season }) => {
                         >
                             <thead className="border-bottom">
                                 <tr>
-                                    <th>No.</th>
+                                    <th>Pos.</th>
                                     <th>Equipo </th>
-                                    <th>Victorias</th>
-                                    <th>Empates</th>
-                                    <th>Derrotas</th>
+                                    <th>Gan</th>
+                                    <th>Emp</th>
+                                    <th>Per</th>
                                     {season?.sport?._id === ID_SOCCER ? (
-                                        <th>Puntos</th>
+                                        <th>Pts</th>
                                     ) : null}
                                 </tr>
                             </thead>

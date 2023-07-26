@@ -35,10 +35,12 @@ const TableUsers = ({ users }) => {
     return (
         <>
             <section>
-                <h5 className="h7 ">
-                    Usuarios{' '}
-                    <Button variant="warning mx-1 btn-sm" onClick={handleShow}>
-                        {' '}
+                <h5>
+                    Usuarios
+                    <Button
+                        variant="warning mx-1 my-1 btn-sm"
+                        onClick={handleShow}
+                    >
                         Crear usuario
                     </Button>
                 </h5>
@@ -61,62 +63,70 @@ const TableUsers = ({ users }) => {
                     />
                 )}
                 {users?.length > 0 ? (
-                    <Table responsive size="sm" borderless variant="dark" hover>
-                        <thead className="border-bottom">
-                            <tr>
-                                <th>Nombre completo</th>
-                                <th>Email</th>
-                                <th>Usuario</th>
-                                <th>Rol</th>
-                                <th>Opciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {users?.map((user) => (
-                                <tr key={user?._id}>
-                                    <td>{user?.fullName}</td>
-                                    <td>{user?.email}</td>
-                                    <td>{user?.username}</td>
-                                    <td>
-                                        {user.isAdmin ? (
-                                            <span>User</span>
-                                        ) : (
-                                            <span>Admin</span>
-                                        )}
-                                    </td>
-                                    <td>
-                                        <ButtonGroup>
-                                            <Link
-                                                className="btn btn-secondary btn-sm mx-1 rounded "
-                                                to={`./${user?._id}`}
-                                            >
-                                                Detalles
-                                            </Link>
-                                            <Button
-                                                className="btn btn-warning btn-sm mx-1 rounded"
-                                                onClick={() =>
-                                                    handleUpdate(user)
-                                                }
-                                            >
-                                                Editar
-                                            </Button>
-                                            <Button
-                                                className="btn btn-danger btn-sm  mx-1 rounded"
-                                                onClick={() =>
-                                                    handleDelete(user?._id)
-                                                }
-                                            >
-                                                Borrar
-                                            </Button>
-                                        </ButtonGroup>
-                                    </td>
+                    <div className="data-tables bg-dark rounded p-1 my-1">
+                        <Table
+                            responsive
+                            size="sm"
+                            borderless
+                            variant="dark"
+                            hover
+                        >
+                            <thead className="border-bottom">
+                                <tr>
+                                    <th>Nombre completo</th>
+                                    <th>Email</th>
+                                    <th>Usuario</th>
+                                    <th>Rol</th>
+                                    <th>Opciones</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                        <caption className="text-light">
-                            Total de usuarios {users?.length}
-                        </caption>
-                    </Table>
+                            </thead>
+                            <tbody>
+                                {users?.map((user) => (
+                                    <tr key={user?._id}>
+                                        <td>{user?.fullName}</td>
+                                        <td>{user?.email}</td>
+                                        <td>{user?.username}</td>
+                                        <td>
+                                            {user.isAdmin ? (
+                                                <span>User</span>
+                                            ) : (
+                                                <span>Admin</span>
+                                            )}
+                                        </td>
+                                        <td>
+                                            <ButtonGroup>
+                                                <Link
+                                                    className="btn btn-secondary btn-sm mx-1 rounded "
+                                                    to={`./${user?._id}`}
+                                                >
+                                                    Detalles
+                                                </Link>
+                                                <Button
+                                                    className="btn btn-warning btn-sm mx-1 rounded"
+                                                    onClick={() =>
+                                                        handleUpdate(user)
+                                                    }
+                                                >
+                                                    Editar
+                                                </Button>
+                                                <Button
+                                                    className="btn btn-danger btn-sm  mx-1 rounded"
+                                                    onClick={() =>
+                                                        handleDelete(user?._id)
+                                                    }
+                                                >
+                                                    Borrar
+                                                </Button>
+                                            </ButtonGroup>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                            <caption className="text-light">
+                                Total de usuarios {users?.length}
+                            </caption>
+                        </Table>
+                    </div>
                 ) : (
                     <Alert variant="warning">
                         No hay usuarios para mostrar!

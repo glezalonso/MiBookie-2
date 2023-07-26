@@ -59,9 +59,12 @@ const SectionMatches = ({ round }) => {
     return (
         <>
             <section>
-                <h5 className="h7 ">
-                    Partidos{' '}
-                    <Button variant="warning mx-2 btn-sm" onClick={handleShow}>
+                <h5>
+                    Partidos
+                    <Button
+                        variant="warning mx-2 my-1 btn-sm"
+                        onClick={handleShow}
+                    >
                         Crear partido
                     </Button>
                 </h5>
@@ -96,7 +99,7 @@ const SectionMatches = ({ round }) => {
                     />
                 </div>
                 {filter?.length > 0 ? (
-                    <div className="table-wrapper-scroll-y my-custom-scrollbar">
+                    <div className="data-tables bg-dark rounded p-1 my-1">
                         <Table
                             responsive
                             size="sm"
@@ -158,14 +161,14 @@ const SectionMatches = ({ round }) => {
                                             <ButtonGroup>
                                                 <Link
                                                     style={{ fontSize: '13px' }}
-                                                    className="btn btn-secondary btn-sm mx-1 rounded "
+                                                    className="btn btn-secondary btn-sm  "
                                                     to={`../matches/${match?._id}`}
                                                 >
                                                     Detalles
                                                 </Link>
                                                 <Button
                                                     style={{ fontSize: '13px' }}
-                                                    className="btn btn-warning btn-sm mx-1 rounded"
+                                                    className="btn btn-warning btn-sm "
                                                     onClick={() =>
                                                         handleUpdate(match)
                                                     }
@@ -174,7 +177,7 @@ const SectionMatches = ({ round }) => {
                                                 </Button>
                                                 <Button
                                                     style={{ fontSize: '13px' }}
-                                                    className="btn btn-danger btn-sm  mx-1 rounded"
+                                                    className="btn btn-danger btn-sm  "
                                                     onClick={() =>
                                                         handleDelete(match?._id)
                                                     }

@@ -3,14 +3,15 @@ import { Table, Button, Alert, ButtonGroup } from 'react-bootstrap'
 import {
     useCreateSeason,
     useDeleteSeason,
-    useGetSeasons,
+    useGetSeasonsByLeague,
     useUpdateSeason,
 } from '../../../features/seasons.features'
 import ModalSeasons from './ModalSeasons'
+import Loading from '../../../ui/Loading'
 import { Link } from 'react-router-dom'
 
 const SectionSeasons = ({ league }) => {
-    const { data: seasons } = useGetSeasons()
+    const { data: seasons, isLoading } = useGetSeasonsByLeague(league?._id)
     const createSeason = useCreateSeason()
     const updateSeason = useUpdateSeason()
     const deleteSeason = useDeleteSeason()
@@ -32,17 +33,18 @@ const SectionSeasons = ({ league }) => {
         setSeason(data)
         setUpdate(true)
     }
+    if (isLoading) return <Loading />
 
-    const seasonByLeague = seasons?.filter(
-        (season) => season?.league?._id === league?._id
-    )
-    seasonByLeague?.sort((a, b) => b.status - a.status)
+    seasons?.sort((a, b) => b.status - a.status)
     return (
         <>
             <section>
-                <h5 className="h7">
-                    Temporadas{' '}
-                    <Button variant="warning mx-1 btn-sm" onClick={handleShow}>
+                <h5>
+                    Temporadas
+                    <Button
+                        variant="warning mx-1 my-1 btn-sm"
+                        onClick={handleShow}
+                    >
                         Crear temporada
                     </Button>
                 </h5>
@@ -67,8 +69,8 @@ const SectionSeasons = ({ league }) => {
                     />
                 )}
 
-                {seasonByLeague?.length > 0 ? (
-                    <div className="table-wrapper-scroll-y my-custom-scrollbar rounded ">
+                {seasons?.length > 0 ? (
+                    <div className="data-tables bg-dark rounded p-1 my-1">
                         <Table
                             responsive
                             size="sm"
@@ -86,7 +88,7 @@ const SectionSeasons = ({ league }) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {seasonByLeague?.map((season) => (
+                                {seasons?.map((season) => (
                                     <tr key={season?._id}>
                                         <td>{season?.season}</td>
                                         <td>{season?.league?.league}</td>

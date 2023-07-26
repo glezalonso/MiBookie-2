@@ -25,7 +25,7 @@ const ModalSports = ({
         validateOnChange: false,
         onSubmit: (values) => {
             values = Object.assign(values, {
-                poster: sport?.poster || file || '',
+                poster: file || '',
             })
             action.mutate(
                 !sport?._id ? values : { id: sport?._id, body: values }

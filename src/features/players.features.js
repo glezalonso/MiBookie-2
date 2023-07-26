@@ -7,18 +7,19 @@ import {
     getPlayers,
     updatePlayer,
     getPlayersBySport,
+    getPlayersTeamless,
 } from '../services/players'
 
 export const useGetPlayers = () => {
     const { data, isLoading, isError } = useQuery({
-        queryKey: ['Players'],
+        queryKey: ['players'],
         queryFn: getPlayers,
     })
     return { data, isLoading, isError }
 }
 export const useGetPlayer = (id) => {
     const { data, isLoading, isError } = useQuery({
-        queryKey: ['Player', id],
+        queryKey: ['player', id],
         queryFn: () => getPlayer(id),
     })
     return { data, isLoading, isError }
@@ -29,7 +30,7 @@ export const useDeletePlayer = () => {
         mutationFn: deletePlayer,
         onSuccess: () => {
             toast.success('Jugador borrado exitosamente!')
-            queryClient.invalidateQueries({ queryKey: ['Players'] })
+            queryClient.invalidateQueries({ queryKey: ['players'] })
         },
     })
     return mutationDelete
@@ -41,7 +42,7 @@ export const useUpdatePlayer = () => {
         mutationFn: updatePlayer,
         onSuccess: () => {
             toast.success('Jugador actualizado exitosamente!')
-            queryClient.invalidateQueries({ queryKey: ['Players'] })
+            queryClient.invalidateQueries({ queryKey: ['players'] })
         },
     })
     return mutationUpdate
@@ -53,7 +54,7 @@ export const useCreatePlayer = () => {
         mutationFn: createPlayer,
         onSuccess: () => {
             toast.success('Jugador creado exitosamente!')
-            queryClient.invalidateQueries({ queryKey: ['Players'] })
+            queryClient.invalidateQueries({ queryKey: ['players'] })
         },
     })
     return mutationCreate
@@ -62,6 +63,14 @@ export const useGetPlayerBySport = (sport) => {
     const { data, isLoading, isError } = useQuery({
         queryKey: ['players'],
         queryFn: () => getPlayersBySport(sport),
+    })
+    return { data, isLoading, isError }
+}
+
+export const useGetPlayersTeamless = (sport) => {
+    const { data, isLoading, isError } = useQuery({
+        queryKey: ['players'],
+        queryFn: () => getPlayersTeamless(sport),
     })
     return { data, isLoading, isError }
 }

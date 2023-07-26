@@ -44,11 +44,7 @@ const Matches = () => {
                     </Col>
                 </Row>
                 <Row className="my-2 mx-auto">
-                    <Col
-                        xs={12}
-                        lg={10}
-                        className="bg-dark text-light rounded my-2 mx-auto fs-6"
-                    >
+                    <Col xs={12} lg={10} className=" mx-auto my-1">
                         <MatchContent match={match} />
                     </Col>
                 </Row>

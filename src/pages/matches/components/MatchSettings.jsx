@@ -1,11 +1,11 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
-import { useGetTeams } from '../../../features/teams.features'
+import { useGetTeamsBySport } from '../../../features/teams.features'
 import TeamSettings from './TeamSettings'
 import Roster from './Roster'
 
 const MatchSettings = ({ match, handleRemoveLineUp, handleAddLineUp }) => {
-    const { data: teams } = useGetTeams()
+    const { data: teams } = useGetTeamsBySport(match?.sport?._id)
 
     const rostLocal = teams?.filter((team) => team._id === match?.local?._id)
     const rostAway = teams?.filter((team) => team._id === match?.away?._id)
@@ -13,13 +13,9 @@ const MatchSettings = ({ match, handleRemoveLineUp, handleAddLineUp }) => {
     return (
         <>
             <Row className="m-2 mx-auto">
-                <Col
-                    xs={12}
-                    lg={5}
-                    className="bg-dark text-light rounded mx-auto my-1 min-vh-50"
-                >
+                <Col xs={12} lg={5} className="mx-auto my-1 min-vh-75">
                     <section>
-                        <h5 className="h5">{match?.local?.name} plantilla</h5>
+                        <h5>{match?.local?.name} plantilla</h5>
                         <Roster
                             match={match}
                             roster={rostLocal}
@@ -29,13 +25,9 @@ const MatchSettings = ({ match, handleRemoveLineUp, handleAddLineUp }) => {
                     </section>
                 </Col>
 
-                <Col
-                    xs={12}
-                    lg={5}
-                    className="bg-dark text-light rounded mx-auto my-1  min-vh-50"
-                >
+                <Col xs={12} lg={5} className=" mx-auto my-1  min-vh-50">
                     <section>
-                        <h5 className="h5">{match?.local?.name} alineación</h5>
+                        <h5>{match?.local?.name} alineación</h5>
                         <TeamSettings
                             match={match}
                             handleRemoveLineUp={handleRemoveLineUp}
@@ -45,10 +37,7 @@ const MatchSettings = ({ match, handleRemoveLineUp, handleAddLineUp }) => {
                 </Col>
             </Row>
             <Row className="m-2  mx-auto">
-                <Col
-                    md={5}
-                    className="bg-dark text-light rounded mx-auto my-1 min-vh-100"
-                >
+                <Col md={5} className="mx-auto my-1 min-vh-100">
                     <section>
                         <h5 className="h5">{match?.away.name} plantilla</h5>
                         <Roster
@@ -59,10 +48,7 @@ const MatchSettings = ({ match, handleRemoveLineUp, handleAddLineUp }) => {
                         />
                     </section>
                 </Col>
-                <Col
-                    md={5}
-                    className="bg-dark text-light rounded mx-auto my-1 fs-6"
-                >
+                <Col md={5} className="mx-auto my-1">
                     <section>
                         <h5 className="h5">{match?.away.name} alineación </h5>
                         <TeamSettings

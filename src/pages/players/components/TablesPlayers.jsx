@@ -58,10 +58,10 @@ const TableSport = () => {
     return (
         <>
             <section>
-                <h5 className="h7 ">
-                    Jugadores{' '}
+                <h5>
+                    Jugadores
                     <Button
-                        className="btn btn-warning btn-sm mb-2 mx-1"
+                        className="btn btn-warning btn-sm my-2 mx-1"
                         onClick={handleShow}
                     >
                         Crear jugador
@@ -69,7 +69,7 @@ const TableSport = () => {
                 </h5>
                 <div className="mx-2 my-3">
                     <FormControl
-                        style={{ fontSize: '13px' }}
+                        size="sm"
                         placeholder="Bucar por nombre, equipo, deporte..."
                         name="player"
                         value={dataFilter}
@@ -95,7 +95,7 @@ const TableSport = () => {
                     />
                 )}
                 {filter?.length > 0 ? (
-                    <div className="table-wrapper-scroll-y my-custom-scrollbar">
+                    <div className="data-tables bg-dark rounded p-1 my-1">
                         <Table
                             responsive
                             size="sm"
@@ -134,13 +134,13 @@ const TableSport = () => {
                                         <td>
                                             <ButtonGroup>
                                                 <Link
-                                                    className="btn btn-secondary btn-sm mx-1 rounded "
+                                                    className="btn btn-secondary btn-sm  "
                                                     to={`./${player?._id}`}
                                                 >
                                                     Detalles
                                                 </Link>
                                                 <Button
-                                                    className="btn btn-warning btn-sm mx-1 rounded"
+                                                    className="btn btn-warning btn-sm "
                                                     onClick={() =>
                                                         handleUpdate(player)
                                                     }
@@ -148,7 +148,7 @@ const TableSport = () => {
                                                     Editar
                                                 </Button>
                                                 <Button
-                                                    className="btn btn-danger btn-sm  mx-1 rounded"
+                                                    className="btn btn-danger btn-sm"
                                                     onClick={() =>
                                                         handleDelete(
                                                             player?._id

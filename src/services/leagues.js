@@ -16,3 +16,8 @@ export const updateLeague = ({ id, body }) =>
     axios.put(`/api/leagues/${id}`, body)
 
 export const deleteLeague = (id) => axios.delete(`/api/leagues/${id}`)
+
+export const getLeaguesBySport = async (sport) => {
+    const { data } = await axios.post('/api/leagues/leaguesbysport', { sport })
+    return data
+}

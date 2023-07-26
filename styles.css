@@ -1,30 +1,20 @@
+  #body{
+    background-color: rgb(236, 236, 236);
+  }
 
-  .my-custom-scrollbar {
-    position: relative;
-    max-height: 500px;
-    overflow: auto;
-    }
-
-  .table-wrapper-scroll-y {
-    display: block;
-    }
-
-   .table{
+.table{
     font-size: 13px;
-   }
-   .alert {
-    font-size: 13px;
+   } 
+   
+.alert {
+font-size: 13px;
     
 }
 .card{
   font-size: 15px;
 }
-.card-Title {
-  font-size: 15px;
-}
-.card-text {
-  font-size: 13px;
-}
-section{
-  padding: 10px;
+.data-tables {
+  max-height:600px;
+  overflow-y: auto;
+
 }

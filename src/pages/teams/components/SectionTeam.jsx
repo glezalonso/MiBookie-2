@@ -6,11 +6,20 @@ const SectionTeam = ({ team }) => {
         <>
             <section>
                 <Card bg="dark" text="white">
-                    <Card.Body>
-                        <Card.Title>Equipo: {team?.name}</Card.Title>
-                        <Card.Subtitle>Estadio: {team?.stadium} </Card.Subtitle>
-                        <Card.Text>Deporte: {team?.sport?.sport}</Card.Text>
-                    </Card.Body>
+                    <div className="d-flex justify-content-center">
+                        <Card.Img
+                            style={{ width: '100px', height: '100px' }}
+                            src={team?.poster}
+                            alt={team?.name}
+                        />
+                        <Card.Body>
+                            <Card.Title>Equipo: {team?.name}</Card.Title>
+                            <Card.Subtitle>
+                                Estadio: {team?.stadium}{' '}
+                            </Card.Subtitle>
+                            <Card.Text>Deporte: {team?.sport?.sport}</Card.Text>
+                        </Card.Body>
+                    </div>
                 </Card>
             </section>
         </>

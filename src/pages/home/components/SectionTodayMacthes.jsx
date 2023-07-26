@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Table, Alert, FormControl } from 'react-bootstrap'
+import { Table, Alert, FormControl, Badge } from 'react-bootstrap'
 import { useGetMatchesToday } from '../../../features/matches.features'
 import formatedDate from '../../../utils/formatedDate'
 import Loading from '../../../ui/Loading'
@@ -33,10 +33,15 @@ const SectionTodayMatches = () => {
     return (
         <>
             <section>
-                <h5 className="h7 ">Partidos de hoy ({matches?.length})</h5>
+                <h5>
+                    Partidos de hoy
+                    <Badge bg="dark" className="mx-1">
+                        {matches?.length}
+                    </Badge>
+                </h5>
                 <div className="mx-auto my-3">
                     <FormControl
-                        style={{ fontSize: '13px' }}
+                        size="sm"
                         className="mb-3"
                         placeholder="Buscar equipo..."
                         name="team"
@@ -45,8 +50,9 @@ const SectionTodayMatches = () => {
                     />
                 </div>
                 {filter?.length > 0 ? (
-                    <div className="table-wrapper-scroll-y my-custom-scrollbar p-1">
+                    <div className="data-tables bg-dark p-1 my-1 rounded ">
                         <Table
+                            className="h-25"
                             responsive
                             size="sm"
                             borderless

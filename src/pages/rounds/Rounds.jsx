@@ -41,11 +41,7 @@ const Rounds = () => {
                             </Breadcrumb.Item>
                         </Breadcrumb>
                     </Col>
-                    <Col
-                        xs={12}
-                        lg={8}
-                        className="bg-dark text-light rounded mx-auto"
-                    >
+                    <Col xs={12} lg={8} className="mx-auto my-1">
                         <SectionMatches round={round} />
                     </Col>
                 </Row>

@@ -11,27 +11,15 @@ const Home = () => {
             <Navigate />
             <Container fluid>
                 <Row className="my-2 mx-auto">
-                    <Col
-                        xs={12}
-                        lg={11}
-                        className="bg-dark text-light rounded mx-auto my-2 fs-4"
-                    >
+                    <Col xs={12} md={11} className="mx-auto my-2">
                         <SectionTodayMatches />
                     </Col>
                 </Row>
                 <Row className="my-2 mx-auto">
-                    <Col
-                        xs={12}
-                        lg={5}
-                        className="bg-dark text-light rounded mx-auto my-2 fs-4"
-                    >
+                    <Col xs={12} md={5} className="mx-auto my-2 ">
                         <SectionSeasonsOpen />
                     </Col>
-                    <Col
-                        xs={12}
-                        lg={4}
-                        className="bg-dark text-light rounded mx-auto my-2 fs-4"
-                    >
+                    <Col xs={12} md={5} className="mx-auto my-2 ">
                         <SectionLeagues />
                     </Col>
                 </Row>

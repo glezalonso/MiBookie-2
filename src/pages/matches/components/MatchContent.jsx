@@ -27,7 +27,7 @@ const MatchContent = ({ match }) => {
     return (
         <>
             <section>
-                <h5 className="h7 ">Datos del partido</h5>
+                <h5>Datos del partido</h5>
                 <div className="bg-light rounded p-1">
                     <Table
                         responsive

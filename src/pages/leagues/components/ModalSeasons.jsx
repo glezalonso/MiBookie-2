@@ -2,8 +2,6 @@ import React from 'react'
 import { Modal, Form, Button, FormControl } from 'react-bootstrap'
 import { useFormik } from 'formik'
 import { validateSeason } from '../../../helpers/validations'
-import { useGetLeagues } from '../../../features/leagues.features'
-import { useGetSports } from '../../../features/sports.features'
 
 const ModalSeasons = ({
     league,
@@ -14,9 +12,6 @@ const ModalSeasons = ({
     type,
     setUpdate,
 }) => {
-    const { data: leagues } = useGetLeagues()
-    const { data: sports } = useGetSports()
-
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
@@ -44,10 +39,6 @@ const ModalSeasons = ({
         setUpdate(false)
         handleClose()
     }
-
-    const leagueBySport = leagues?.filter(
-        (leagues) => leagues?._id === league?._id
-    )
 
     return (
         <>
@@ -80,41 +71,6 @@ const ModalSeasons = ({
                                 id="description"
                                 name="description"
                             ></FormControl>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Liga:</Form.Label>
-                            <Form.Select
-                                id="league"
-                                name="league"
-                                {...formik.getFieldProps('league')}
-                                disabled
-                            >
-                                <option value={false}>Liga</option>
-                                {leagueBySport?.map((league) => (
-                                    <option
-                                        key={league?._id}
-                                        value={league?._id}
-                                    >
-                                        {league?.league}
-                                    </option>
-                                ))}
-                            </Form.Select>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Deporte:</Form.Label>
-                            <Form.Select
-                                id="sport"
-                                name="sport"
-                                {...formik.getFieldProps('sport')}
-                                disabled
-                            >
-                                <option value={false}>Deporte</option>
-                                {sports?.map((sport) => (
-                                    <option key={sport?._id} value={sport?._id}>
-                                        {sport?.sport}
-                                    </option>
-                                ))}
-                            </Form.Select>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Estatus</Form.Label>

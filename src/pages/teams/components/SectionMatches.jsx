@@ -33,18 +33,18 @@ const SectionMatches = ({ team }) => {
     return (
         <>
             <section>
-                <h5 className="h7 ">Juegos previos</h5>
+                <h5>Juegos previos</h5>
                 <div className="mx-2 my-3">
                     <FormControl
                         placeholder="Busca por equipo, temporada, jornada.."
-                        style={{ fontSize: '12px' }}
+                        size="sm"
                         name="team"
                         value={dataFilter}
                         onChange={(event) => setDataFilter(event.target.value)}
                     />
                 </div>
                 {filter?.length > 0 ? (
-                    <div className="table-wrapper-scroll-y my-custom-scrollbar rounded">
+                    <div className="data-tables bg-fark p-1 my-1 rounded">
                         <Table
                             responsive
                             size="sm"

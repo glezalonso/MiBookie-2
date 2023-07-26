@@ -22,10 +22,10 @@ const SectionParticipants = ({ season }) => {
     return (
         <>
             <section>
-                <h5 className="h7">Participantes</h5>
+                <h5>Participantes</h5>
                 <div className="mx-2 my-3">
                     <FormControl
-                        style={{ fontSize: '13px' }}
+                        size="sm"
                         placeholder="Buscar equipo..."
                         name="team"
                         value={dataFilter}
@@ -33,7 +33,7 @@ const SectionParticipants = ({ season }) => {
                     />
                 </div>
                 {filter?.length > 0 ? (
-                    <div className="table-wrapper-scroll-y my-custom-scrollbar">
+                    <div className="data-tables bg-dark rounded p-1 my-1">
                         <Table
                             responsive
                             size="sm"

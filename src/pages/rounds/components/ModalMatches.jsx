@@ -2,7 +2,7 @@ import React from 'react'
 import { Modal, Form, Button, FormControl } from 'react-bootstrap'
 import { useFormik } from 'formik'
 import { validateMatch } from '../../../helpers/validations'
-import { useGetRounds } from '../../../features/rounds.features'
+
 import { useGetSeason } from '../../../features/seasons.features'
 
 const ModalMatches = ({
@@ -15,7 +15,6 @@ const ModalMatches = ({
     setUpdate,
 }) => {
     const { data: season } = useGetSeason(round?.season?._id)
-    const { data: rounds } = useGetRounds()
 
     const formik = useFormik({
         enableReinitialize: true,
@@ -111,24 +110,7 @@ const ModalMatches = ({
                                 ))}
                             </Form.Select>
                         </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Jornada:</Form.Label>
-                            <Form.Select
-                                id="round"
-                                name="round"
-                                {...formik.getFieldProps('round')}
-                                disabled
-                            >
-                                <option value={false}>
-                                    Selecciona la jornada{' '}
-                                </option>
-                                {rounds?.map((round) => (
-                                    <option key={round?._id} value={round?._id}>
-                                        {round?.round}
-                                    </option>
-                                ))}
-                            </Form.Select>
-                        </Form.Group>
+
                         <Form.Group>
                             <Form.Label>Estatus</Form.Label>
                             <Form.Select

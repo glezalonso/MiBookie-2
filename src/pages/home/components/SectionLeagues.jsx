@@ -17,11 +17,14 @@ const SectionLeagues = () => {
             <section>
                 <h5 className="h5 ">Ligas</h5>
                 {leagues?.length > 0 ? (
-                    <div className="table-wrapper-scroll-y my-custom-scrollbar rounded my-3">
+                    <div className="data-tables bg-dark p-1 my-1 rounded">
                         <Table
+                            className="h-25"
+                            size="sm"
                             responsive
-                            variant="dark table-sm table-borderless"
+                            variant="dark"
                             hover
+                            borderless
                         >
                             <thead className="border-bottom">
                                 <tr>

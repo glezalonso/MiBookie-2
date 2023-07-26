@@ -5,7 +5,7 @@ const CardNew = ({ content, handleDelete, handleUpdate }) => {
     return (
         <>
             <section>
-                <Card key={content?._id} bg="light">
+                <Card key={content?._id} bg="light" className="my-2">
                     <Card.Header>
                         <Card.Title>{content?.title}</Card.Title>
                         <Card.Subtitle>{content?.sport?.sport}</Card.Subtitle>

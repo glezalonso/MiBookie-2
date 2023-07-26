@@ -1,13 +1,12 @@
 import React from 'react'
 import { Table, Alert } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { useGetSeasons } from '../../../features/seasons.features'
+import { useGetSeasonsOpen } from '../../../features/seasons.features'
 import Loading from '../../../ui/Loading'
 import { toast } from 'react-hot-toast'
 
 const SectionSeasonsOpen = () => {
-    const { data: seasons, isLoading, isError } = useGetSeasons()
-    const SeasonsOpen = seasons?.filter((season) => season?.status === true)
+    const { data: seasons, isLoading, isError } = useGetSeasonsOpen()
 
     if (isLoading) return <Loading />
     if (isError)
@@ -16,13 +15,15 @@ const SectionSeasonsOpen = () => {
     return (
         <>
             <section>
-                <h5 className="h7">Temporadas abiertas</h5>
-                {SeasonsOpen?.length > 0 ? (
-                    <div className="table-wrapper-scroll-y my-custom-scrollbar rounded my-3">
+                <h5>Temporadas abiertas</h5>
+                {seasons?.length > 0 ? (
+                    <div className="data-tables bg-dark p-1 my-1 rounded">
                         <Table
+                            size="sm"
                             responsive
-                            variant="dark table-sm table-borderless"
+                            variant="dark"
                             hover
+                            borderless
                         >
                             <thead className="border-bottom">
                                 <tr>
@@ -33,7 +34,7 @@ const SectionSeasonsOpen = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {SeasonsOpen?.map((season) => (
+                                {seasons?.map((season) => (
                                     <tr key={season?._id}>
                                         <td>{season?.season}</td>
                                         <td>{season?.league?.league}</td>

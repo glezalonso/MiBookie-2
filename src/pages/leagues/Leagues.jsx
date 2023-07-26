@@ -31,11 +31,7 @@ const Leagues = () => {
                             </Breadcrumb.Item>
                         </Breadcrumb>
                     </Col>
-                    <Col
-                        xs={12}
-                        lg={8}
-                        className="bg-dark text-white rounded my-2 mx-auto fs-6"
-                    >
+                    <Col xs={12} lg={8} className=" my-2 mx-auto">
                         <SectionSeasons league={league} />
                     </Col>
                 </Row>

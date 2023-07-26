@@ -46,11 +46,11 @@ const SectionBookies = ({ bookies }) => {
     return (
         <>
             <section>
-                <h5 className="h7 ">Bookies</h5>
+                <h5>Bookies</h5>
                 <div className="mx-2 my-3">
                     <FormControl
                         className="mb-3"
-                        style={{ fontSize: '13px' }}
+                        size="sm"
                         placeholder="Buscar Bookie..."
                         name="bookie"
                         value={dataFilter}
@@ -64,54 +64,64 @@ const SectionBookies = ({ bookies }) => {
                     action={updateBookie}
                 />
                 {filter?.length > 0 ? (
-                    <Table responsive size="sm" borderless variant="dark" hover>
-                        <thead className="border-bottom">
-                            <tr>
-                                <th>Nombre completo</th>
-                                <th>Email</th>
-                                <th>Usuario</th>
-                                <th>Opciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {filter?.map((bookie) => (
-                                <tr key={bookie?._id}>
-                                    <td>{bookie?.fullName}</td>
-                                    <td>{bookie?.email}</td>
-                                    <td>{bookie?.username}</td>
-                                    <td>
-                                        <ButtonGroup>
-                                            <Link
-                                                className="btn btn-secondary btn-sm mx-1 rounded "
-                                                to={`./${bookie?._id}`}
-                                            >
-                                                Detalles
-                                            </Link>
-                                            <Button
-                                                className="btn btn-warning btn-sm mx-1 rounded"
-                                                onClick={() =>
-                                                    handleUpdate(bookie)
-                                                }
-                                            >
-                                                Editar
-                                            </Button>
-                                            <Button
-                                                className="btn btn-danger btn-sm  mx-1 rounded"
-                                                onClick={() =>
-                                                    handleDelete(bookie?._id)
-                                                }
-                                            >
-                                                Borrar
-                                            </Button>
-                                        </ButtonGroup>
-                                    </td>
+                    <div className="data-tables bg-dark rounded p-1 my-1">
+                        <Table
+                            responsive
+                            size="sm"
+                            borderless
+                            variant="dark"
+                            hover
+                        >
+                            <thead className="border-bottom">
+                                <tr>
+                                    <th>Nombre completo</th>
+                                    <th>Email</th>
+                                    <th>Usuario</th>
+                                    <th>Opciones</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                        <caption className="text-light">
-                            Total de miembros: {bookies.length}
-                        </caption>
-                    </Table>
+                            </thead>
+                            <tbody>
+                                {filter?.map((bookie) => (
+                                    <tr key={bookie?._id}>
+                                        <td>{bookie?.fullName}</td>
+                                        <td>{bookie?.email}</td>
+                                        <td>{bookie?.username}</td>
+                                        <td>
+                                            <ButtonGroup>
+                                                <Link
+                                                    className="btn btn-secondary btn-sm  "
+                                                    to={`./${bookie?._id}`}
+                                                >
+                                                    Detalles
+                                                </Link>
+                                                <Button
+                                                    className="btn btn-warning btn-sm "
+                                                    onClick={() =>
+                                                        handleUpdate(bookie)
+                                                    }
+                                                >
+                                                    Editar
+                                                </Button>
+                                                <Button
+                                                    className="btn btn-danger btn-sm  "
+                                                    onClick={() =>
+                                                        handleDelete(
+                                                            bookie?._id
+                                                        )
+                                                    }
+                                                >
+                                                    Borrar
+                                                </Button>
+                                            </ButtonGroup>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                            <caption className="text-light">
+                                Total de miembros: {bookies.length}
+                            </caption>
+                        </Table>
+                    </div>
                 ) : (
                     <Alert variant="warning">No hay bookies para mostar!</Alert>
                 )}

@@ -25,16 +25,16 @@ const PlayerDetails = () => {
                                     <Card.Title>{player?.fullName}</Card.Title>
                                 </Card.Header>
                                 <Card.Body>
-                                    <Card.Text>
+                                    <Card.Text className="my-1">
                                         Posición {player?.position}
                                     </Card.Text>
-                                    <Card.Text>
+                                    <Card.Text className="my-1">
                                         Equipo: {player?.team?.name}
                                     </Card.Text>
-                                    <Card.Text>
+                                    <Card.Text className="my-1">
                                         Deporte: {player?.sport?.sport}
                                     </Card.Text>
-                                    <Card.Text>
+                                    <Card.Text className="my-1">
                                         Estatus:{' '}
                                         {player?.status ? (
                                             <strong className="text-success">

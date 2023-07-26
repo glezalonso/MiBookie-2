@@ -3,7 +3,6 @@ import { Modal, Form, Button, FormControl } from 'react-bootstrap'
 import { useFormik } from 'formik'
 import { convertToBase64 } from '../../../helpers/converters'
 import { validateLeague } from '../../../helpers/validations'
-import { useGetSports } from '../../../features/sports.features'
 
 const ModalLeagues = ({
     league,
@@ -14,7 +13,6 @@ const ModalLeagues = ({
     type,
     setUpdate,
 }) => {
-    const { data: sports } = useGetSports()
     const [file, setFile] = useState()
 
     const formik = useFormik({
@@ -91,23 +89,6 @@ const ModalLeagues = ({
                                 name="poster"
                                 onChange={onUpload}
                             ></FormControl>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Deporte:</Form.Label>
-                            <Form.Select
-                                id="sport"
-                                name="sport"
-                                {...formik.getFieldProps('sport')}
-                            >
-                                <option value={false}>
-                                    Selecciona el deporte al que pertenece
-                                </option>
-                                {sports?.map((sport) => (
-                                    <option key={sport?._id} value={sport?._id}>
-                                        {sport?.sport}
-                                    </option>
-                                ))}
-                            </Form.Select>
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>

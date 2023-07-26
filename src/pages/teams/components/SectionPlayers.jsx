@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import toast from 'react-hot-toast'
 import { Button, Table, Alert, FormControl } from 'react-bootstrap'
 import Loading from '../../../ui/Loading'
-import { useGetPlayerBySport } from '../../../features/players.features'
+import { useGetPlayersTeamless } from '../../../features/players.features'
 import { useAddPlayer } from '../../../features/teams.features'
 
 const SectionPlayers = ({ team }) => {
@@ -11,7 +11,7 @@ const SectionPlayers = ({ team }) => {
         data: players,
         isLoading,
         isError,
-    } = useGetPlayerBySport(team?.sport?._id)
+    } = useGetPlayersTeamless(team?.sport?._id)
 
     const [dataFilter, setDataFilter] = useState('')
 
@@ -39,10 +39,10 @@ const SectionPlayers = ({ team }) => {
     return (
         <>
             <section>
-                <h5 className="h7 ">Jugadores de {team?.sport?.sport}</h5>
+                <h5>Jugadores de {team?.sport?.sport}</h5>
                 <div className="mx-2 my-3">
                     <FormControl
-                        style={{ fontSize: '13px' }}
+                        size="sm"
                         placeholder="Nombre..."
                         name="player"
                         value={dataFilter}
@@ -50,7 +50,7 @@ const SectionPlayers = ({ team }) => {
                     />
                 </div>
                 {filter?.length > 0 ? (
-                    <div className="table-wrapper-scroll-y my-custom-scrollbar">
+                    <div className="data-tables bg-dark rounded p-1 my-1">
                         <Table
                             responsive
                             size="sm"

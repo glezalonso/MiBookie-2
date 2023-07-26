@@ -9,11 +9,7 @@ const Players = () => {
             <Navigate />
             <Container fluid>
                 <Row className="my-2 mx-auto">
-                    <Col
-                        xs={12}
-                        md={11}
-                        className="bg-dark text-white rounded mx-auto my-2 fs-6"
-                    >
+                    <Col xs={12} md={10} className="mx-auto my-2">
                         <TablePlayers />
                     </Col>
                 </Row>

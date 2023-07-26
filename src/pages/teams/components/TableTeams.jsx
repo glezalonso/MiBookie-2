@@ -49,10 +49,10 @@ const TableTeams = () => {
     return (
         <>
             <section>
-                <h5 className="h7 ">
-                    Equipos{' '}
+                <h5>
+                    Equipos
                     <Button
-                        className="btn btn-warning btn-sm mb-2 mx-1"
+                        className="btn btn-warning btn-sm my-1 mx-1"
                         onClick={handleShow}
                     >
                         Crear equipo
@@ -61,7 +61,7 @@ const TableTeams = () => {
                 <div className="mx-2">
                     <FormControl
                         className="mb-3"
-                        style={{ fontSize: '13px' }}
+                        size="sm"
                         placeholder="Buscar equipo..."
                         name="team"
                         value={dataFilter}
@@ -86,69 +86,77 @@ const TableTeams = () => {
                         setUpdate={setUpdate}
                     />
                 )}
-                {filter?.length > 0 ? (
-                    <Table responsive size="sm" borderless variant="dark" hover>
-                        <thead className="border-bottom">
-                            <tr>
-                                <th>Equipo</th>
-                                <th>Estadio</th>
-                                <th>Deporte</th>
-                                <th>Estatus</th>
-                                <th>Opciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {filter?.map((team) => (
-                                <tr key={team?._id}>
-                                    <td>{team?.name}</td>
-                                    <td>{team?.stadium}</td>
-                                    <td>{team?.sport?.sport}</td>
-                                    <td>
-                                        {team.status ? (
-                                            <span className="text-success">
-                                                Activo
-                                            </span>
-                                        ) : (
-                                            <span className="text-danger">
-                                                Inactivo
-                                            </span>
-                                        )}
-                                    </td>
-                                    <td>
-                                        <ButtonGroup>
-                                            <Link
-                                                className="btn btn-secondary btn-sm mx-1 rounded "
-                                                to={`./${team?._id}`}
-                                            >
-                                                Detalles
-                                            </Link>
-                                            <Button
-                                                className="btn btn-warning btn-sm mx-1 rounded"
-                                                onClick={() =>
-                                                    handleUpdate(team)
-                                                }
-                                            >
-                                                Editar
-                                            </Button>
-                                            <Button
-                                                className="btn btn-danger btn-sm  mx-1 rounded"
-                                                onClick={() =>
-                                                    handleDelete(team?._id)
-                                                }
-                                            >
-                                                Borrar
-                                            </Button>
-                                        </ButtonGroup>
-                                    </td>
+                <div className="data-tables bg-dark  rounded p-1 my-1">
+                    {filter?.length > 0 ? (
+                        <Table
+                            responsive
+                            size="sm"
+                            borderless
+                            variant="dark"
+                            hover
+                        >
+                            <thead className="border-bottom">
+                                <tr>
+                                    <th>Equipo</th>
+                                    <th>Estadio</th>
+                                    <th>Deporte</th>
+                                    <th>Estatus</th>
+                                    <th>Opciones</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </Table>
-                ) : (
-                    <Alert variant="warning">
-                        No hay equipos para mostrar!
-                    </Alert>
-                )}
+                            </thead>
+                            <tbody>
+                                {filter?.map((team) => (
+                                    <tr key={team?._id}>
+                                        <td>{team?.name}</td>
+                                        <td>{team?.stadium}</td>
+                                        <td>{team?.sport?.sport}</td>
+                                        <td>
+                                            {team.status ? (
+                                                <span className="text-success">
+                                                    Activo
+                                                </span>
+                                            ) : (
+                                                <span className="text-danger">
+                                                    Inactivo
+                                                </span>
+                                            )}
+                                        </td>
+                                        <td>
+                                            <ButtonGroup>
+                                                <Link
+                                                    className="btn btn-secondary btn-sm "
+                                                    to={`./${team?._id}`}
+                                                >
+                                                    Detalles
+                                                </Link>
+                                                <Button
+                                                    className="btn btn-warning btn-sm"
+                                                    onClick={() =>
+                                                        handleUpdate(team)
+                                                    }
+                                                >
+                                                    Editar
+                                                </Button>
+                                                <Button
+                                                    className="btn btn-danger btn-sm "
+                                                    onClick={() =>
+                                                        handleDelete(team?._id)
+                                                    }
+                                                >
+                                                    Borrar
+                                                </Button>
+                                            </ButtonGroup>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </Table>
+                    ) : (
+                        <Alert variant="warning">
+                            No hay equipos para mostrar!
+                        </Alert>
+                    )}
+                </div>
             </section>
         </>
     )

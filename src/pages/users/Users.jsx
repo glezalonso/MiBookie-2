@@ -17,11 +17,7 @@ const Users = () => {
             <Navigate />
             <Container fluid>
                 <Row className="my-2 mx-auto">
-                    <Col
-                        xs={12}
-                        md={11}
-                        className="bg-dark text-light rounded mx-auto my-2 fs-4"
-                    >
+                    <Col xs={12} lg={8} className=" mx-auto my-1">
                         <TableUsers users={users} />
                     </Col>
                 </Row>

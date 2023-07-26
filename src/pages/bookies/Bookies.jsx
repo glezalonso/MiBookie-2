@@ -17,11 +17,7 @@ const Bookies = () => {
             <Navigate />
             <Container fluid>
                 <Row className="my-2  mx-auto">
-                    <Col
-                        xs={12}
-                        lg={8}
-                        className="bg-dark text-light rounded mx-auto  fs-4"
-                    >
+                    <Col xs={12} lg={8} className=" mx-auto my-1">
                         <SectionBookies bookies={bookies} />
                     </Col>
                 </Row>

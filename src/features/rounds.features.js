@@ -6,6 +6,7 @@ import {
     getRound,
     getRounds,
     updateRound,
+    getRoundsBySeason,
 } from '../services/rounds'
 
 export const useGetRounds = () => {
@@ -56,4 +57,12 @@ export const useCreateRound = () => {
         },
     })
     return mutationCreate
+}
+
+export const useGetRoundsBySeason = (season) => {
+    const { data, isLoading, isError } = useQuery({
+        queryKey: ['Rounds'],
+        queryFn: () => getRoundsBySeason(season),
+    })
+    return { data, isLoading, isError }
 }

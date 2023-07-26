@@ -53,10 +53,10 @@ const SectionNews = () => {
     return (
         <>
             <section>
-                <h5 className="h7 ">
-                    Noticias{' '}
+                <h5>
+                    Noticias
                     <Button
-                        className="btn btn-warning btn-sm mb-2 mx-1"
+                        className="btn btn-warning btn-sm my-1 mx-1"
                         onClick={handleShow}
                     >
                         Crear noticia
@@ -65,7 +65,7 @@ const SectionNews = () => {
                 <div className="mx-2">
                     <FormControl
                         className="mb-3"
-                        style={{ fontSize: '13px' }}
+                        size="sm"
                         placeholder="Buscar por deporte, título.."
                         id="team"
                         name="team"

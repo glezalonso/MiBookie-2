@@ -18,18 +18,15 @@ const SportDetails = () => {
         <>
             <Navigate />
             <Container fluid>
-                <Row className="my-2 mx-auto">
+                <Row className="mt-1 mx-auto">
                     <Col md={8} className=" mx-auto">
-                        <Breadcrumb className="p-2">
+                        <Breadcrumb className="p-1 ">
                             <Breadcrumb.Item active>
                                 {sport?.sport}
                             </Breadcrumb.Item>
                         </Breadcrumb>
                     </Col>
-                    <Col
-                        md={8}
-                        className="bg-dark text-light rounded my-2 mx-auto"
-                    >
+                    <Col md={8} className="my-1 mx-auto">
                         <SectionLeagues sport={sport} />
                     </Col>
                 </Row>

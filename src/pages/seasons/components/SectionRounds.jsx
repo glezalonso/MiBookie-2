@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom'
 import {
     useCreateRound,
     useDeleteRound,
-    useGetRounds,
+    useGetRoundsBySeason,
     useUpdateRound,
 } from '../../../features/rounds.features'
 
 const SectionRounds = ({ season }) => {
-    const { data: rounds } = useGetRounds()
+    const { data: rounds } = useGetRoundsBySeason(season?._id)
     const createRound = useCreateRound()
     const updateRound = useUpdateRound()
     const deleteRound = useDeleteRound()
@@ -33,16 +33,16 @@ const SectionRounds = ({ season }) => {
         setUpdate(true)
     }
 
-    const roundsbySeason = rounds?.filter(
-        (round) => round?.season?._id === season._id
-    )
-    roundsbySeason?.sort((a, b) => b.status - a.status)
+    rounds?.sort((a, b) => b.status - a.status)
     return (
         <>
             <section>
-                <h5 className="h7 ">
-                    Jornadas{' '}
-                    <Button variant="warning mx-1 btn-sm" onClick={handleShow}>
+                <h5>
+                    Jornadas
+                    <Button
+                        variant="warning mx-1 my-1 btn-sm"
+                        onClick={handleShow}
+                    >
                         Crear jornada
                     </Button>
                 </h5>
@@ -66,8 +66,8 @@ const SectionRounds = ({ season }) => {
                         setUpdate={setUpdate}
                     />
                 )}
-                {roundsbySeason?.length > 0 ? (
-                    <div className="table-wrapper-scroll-y my-custom-scrollbar">
+                {rounds?.length > 0 ? (
+                    <div className="data-tables bg-dark rounded p-1 myl1">
                         <Table
                             responsive
                             size="sm"
@@ -83,7 +83,7 @@ const SectionRounds = ({ season }) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {roundsbySeason?.map((round) => (
+                                {rounds?.map((round) => (
                                     <tr key={round?._id}>
                                         <td>{round?.round}</td>
                                         <td>
@@ -100,13 +100,13 @@ const SectionRounds = ({ season }) => {
                                         <td>
                                             <ButtonGroup>
                                                 <Link
-                                                    className="btn btn-secondary btn-sm mx-1 rounded "
+                                                    className="btn btn-secondary btn-sm  "
                                                     to={`../rounds/${round?._id}`}
                                                 >
                                                     Detalles
                                                 </Link>
                                                 <Button
-                                                    className="btn btn-warning btn-sm mx-1 rounded"
+                                                    className="btn btn-warning btn-sm "
                                                     onClick={() =>
                                                         handleUpdate(round)
                                                     }
@@ -114,7 +114,7 @@ const SectionRounds = ({ season }) => {
                                                     Editar
                                                 </Button>
                                                 <Button
-                                                    className="btn btn-danger btn-sm  mx-1 rounded"
+                                                    className="btn btn-danger btn-sm  "
                                                     onClick={() =>
                                                         handleDelete(round?._id)
                                                     }

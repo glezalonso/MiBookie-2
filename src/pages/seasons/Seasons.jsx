@@ -40,34 +40,18 @@ const Seasons = () => {
                             </Breadcrumb.Item>
                         </Breadcrumb>
                     </Col>
-                    <Col
-                        xs={12}
-                        lg={5}
-                        className="bg-dark text-light rounded mx-auto my-2 fs-6"
-                    >
+                    <Col xs={12} lg={5} className="mx-auto my-2">
                         <SectionRounds season={season} />
                     </Col>
-                    <Col
-                        xs={12}
-                        lg={5}
-                        className="bg-dark rounded text-light mx-auto my-2 fs-6"
-                    >
+                    <Col xs={12} lg={5} className=" mx-auto my-2 ">
                         <SectionStandings season={season} />
                     </Col>
                 </Row>
                 <Row className="my-2 mx-auto">
-                    <Col
-                        xs={12}
-                        lg={5}
-                        className="bg-dark rounded text-light mx-auto my-2 fs-6"
-                    >
+                    <Col xs={12} lg={5} className="mx-auto my-2">
                         <SectionParticipants season={season} />
                     </Col>
-                    <Col
-                        xs={12}
-                        lg={5}
-                        className="bg-dark rounded text-light mx-auto my-2 fs-6"
-                    >
+                    <Col xs={12} lg={5} className="mx-auto my-2">
                         <SectionTeams season={season} />
                     </Col>
                 </Row>

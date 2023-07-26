@@ -8,6 +8,8 @@ import {
     updateSeason,
     addTeam,
     removeTeam,
+    getSeasonsOpen,
+    getSeasonsByLeague,
 } from '../services/seasons'
 
 export const useGetSeasons = () => {
@@ -81,4 +83,20 @@ export const useRemoveTeam = () => {
         },
     })
     return mutationRemove
+}
+
+export const useGetSeasonsOpen = () => {
+    const { data, isLoading, isError } = useQuery({
+        queryKey: ['seasons'],
+        queryFn: getSeasonsOpen,
+    })
+    return { data, isLoading, isError }
+}
+
+export const useGetSeasonsByLeague = (league) => {
+    const { data, isLoading, isError } = useQuery({
+        queryKey: ['seasons'],
+        queryFn: () => getSeasonsByLeague(league),
+    })
+    return { data, isLoading, isError }
 }

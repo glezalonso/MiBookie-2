@@ -34,10 +34,10 @@ const SectionNextMatches = ({ team }) => {
     return (
         <>
             <section>
-                <h5 className="h7 ">Próximos partidos</h5>
+                <h5>Próximos partidos</h5>
                 <div className="mx-2 my-3">
                     <FormControl
-                        style={{ fontSize: '11px' }}
+                        size="sm"
                         placeholder="Busca por equipo, temporada, jornada.."
                         name="team"
                         value={dataFilter}
@@ -45,7 +45,7 @@ const SectionNextMatches = ({ team }) => {
                     />
                 </div>
                 {filter?.length > 0 ? (
-                    <div className="table-wrapper-scroll-y my-custom-scrollbar rounded">
+                    <div className="data-tables bg-dark p-1 my-1 rounded">
                         <Table
                             responsive
                             size="sm"

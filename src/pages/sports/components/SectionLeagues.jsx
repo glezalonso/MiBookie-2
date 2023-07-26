@@ -2,15 +2,21 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Table, Button, Alert, ButtonGroup } from 'react-bootstrap'
 import ModalLeagues from './ModalLeagues'
+import Loading from '../../../ui/Loading'
+import { toast } from 'react-hot-toast'
 import {
     useCreateLeague,
     useDeleteLeague,
-    useGetLeagues,
+    useGetLeaguesBySport,
     useUpdateLeague,
 } from '../../../features/leagues.features'
 
 const SectionLeagues = ({ sport }) => {
-    const { data: leagues } = useGetLeagues()
+    const {
+        data: leagues,
+        isLoading,
+        isError,
+    } = useGetLeaguesBySport(sport?._id)
     const createLeague = useCreateLeague()
     const updateLeague = useUpdateLeague()
     const deleteLeague = useDeleteLeague()
@@ -33,14 +39,12 @@ const SectionLeagues = ({ sport }) => {
         setUpdate(true)
     }
 
-    const leaguesBySport = leagues?.filter(
-        (league) => league?.sport?._id === sport?._id
-    )
-
+    if (isLoading) return <Loading />
+    if (isError) return toast.error('Hubo un error al cargar los deportes!')
     return (
         <>
             <section>
-                <h5 className="h7 ">
+                <h5>
                     Ligas{' '}
                     <Button variant="warning mx-2 btn-sm" onClick={handleShow}>
                         Crear liga
@@ -67,8 +71,8 @@ const SectionLeagues = ({ sport }) => {
                     />
                 )}
 
-                {leaguesBySport?.length > 0 ? (
-                    <div className="table-wrapper-scroll-y my-custom-scrollbar rounded my-1">
+                {leagues?.length > 0 ? (
+                    <div className="data-tables bg-dark rounded p-1 my-1">
                         <Table
                             responsive
                             size="sm"
@@ -84,7 +88,7 @@ const SectionLeagues = ({ sport }) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {leaguesBySport?.map((league) => (
+                                {leagues?.map((league) => (
                                     <tr key={league._id}>
                                         <td>{league?.league}</td>
                                         <td>{league?.description}</td>
