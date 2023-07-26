@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useFormik } from 'formik'
-import { convertToBase64 } from '../../../helpers/converters'
 import { Modal, Form, Button, FormControl } from 'react-bootstrap'
 import { validateTeam } from '../../../helpers/validations'
 import { useGetSports } from '../../../features/sports.features'
@@ -37,11 +36,6 @@ const ModalTeams = ({
             setUpdate(false)
         },
     })
-
-    const onUpload = async (event) => {
-        const base64 = await convertToBase64(event.target.files[0])
-        setFile(base64)
-    }
 
     const handleCloseUpdate = () => {
         formik.resetForm()
@@ -87,7 +81,7 @@ const ModalTeams = ({
                                 type="file"
                                 id="poster"
                                 name="poster"
-                                onChange={onUpload}
+                                onChange={(e) => setFile(e.target.files[0])}
                             ></FormControl>
                         </Form.Group>
                         <Form.Group>

@@ -10,9 +10,32 @@ export const getSport = async (id) => {
     return data
 }
 
-export const createSport = (body) => axios.post('/api/sports', body)
+export const createSport = (body) => {
+    const form = new FormData()
 
-export const updateSport = ({ id, body }) =>
-    axios.put(`/api/sports/${id}`, body)
+    for (const key in body) {
+        form.append(key, body[key])
+    }
+
+    axios.post('/api/sports', form, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    })
+}
+
+export const updateSport = ({ id, body }) => {
+    const form = new FormData()
+
+    for (const key in body) {
+        form.append(key, body[key])
+    }
+
+    axios.put(`/api/sports/${id}`, form, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    })
+}
 
 export const deleteSport = (id) => axios.delete(`/api/sports/${id}`)
