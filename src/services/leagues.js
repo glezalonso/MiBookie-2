@@ -10,10 +10,32 @@ export const getLeague = async (id) => {
     return data
 }
 
-export const createLeague = (body) => axios.post('/api/leagues', body)
+export const createLeague = (body) => {
+    const form = new FormData()
 
-export const updateLeague = ({ id, body }) =>
-    axios.put(`/api/leagues/${id}`, body)
+    for (const key in body) {
+        form.append(key, body[key])
+    }
+
+    axios.post('/api/leagues', form, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    })
+}
+
+export const updateLeague = ({ id, body }) => {
+    const form = new FormData()
+
+    for (const key in body) {
+        form.append(key, body[key])
+    }
+    axios.put(`/api/leagues/${id}`, form, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    })
+}
 
 export const deleteLeague = (id) => axios.delete(`/api/leagues/${id}`)
 

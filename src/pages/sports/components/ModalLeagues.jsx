@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Modal, Form, Button, FormControl } from 'react-bootstrap'
 import { useFormik } from 'formik'
-import { convertToBase64 } from '../../../helpers/converters'
+
 import { validateLeague } from '../../../helpers/validations'
 
 const ModalLeagues = ({
@@ -27,7 +27,7 @@ const ModalLeagues = ({
         validateOnChange: false,
         onSubmit: (values) => {
             values = Object.assign(values, {
-                poster: league?.poster || file || '',
+                poster: file || '',
             })
             action.mutate(
                 !league?._id ? values : { id: league?._id, body: values }
@@ -37,11 +37,6 @@ const ModalLeagues = ({
             setUpdate(false)
         },
     })
-
-    const onUpload = async (event) => {
-        const base64 = await convertToBase64(event.target.files[0])
-        setFile(base64)
-    }
 
     const handleCloseUpdate = () => {
         formik.resetForm()
@@ -87,7 +82,9 @@ const ModalLeagues = ({
                                 type="file"
                                 id="poster"
                                 name="poster"
-                                onChange={onUpload}
+                                onChange={(event) =>
+                                    setFile(event.target.files[0])
+                                }
                             ></FormControl>
                         </Form.Group>
                     </Modal.Body>
