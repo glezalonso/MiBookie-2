@@ -91,13 +91,13 @@ const TableSport = () => {
                                         <td>
                                             <ButtonGroup>
                                                 <Link
-                                                    className="btn btn-secondary btn-sm mx-1 rounded "
+                                                    className="btn btn-secondary btn-sm  "
                                                     to={`./${sport?._id}`}
                                                 >
                                                     Detalles
                                                 </Link>
                                                 <Button
-                                                    className="btn btn-warning btn-sm mx-1 rounded"
+                                                    className="btn btn-warning btn-sm "
                                                     onClick={() =>
                                                         handleUpdate(sport)
                                                     }
@@ -105,7 +105,7 @@ const TableSport = () => {
                                                     Editar
                                                 </Button>
                                                 <Button
-                                                    className="btn btn-danger btn-sm  mx-1 rounded"
+                                                    className="btn btn-danger btn-sm  "
                                                     onClick={() =>
                                                         handleDelete(sport?._id)
                                                     }

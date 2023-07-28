@@ -95,13 +95,13 @@ const SectionLeagues = ({ sport }) => {
                                         <td>
                                             <ButtonGroup>
                                                 <Link
-                                                    className="btn btn-secondary btn-sm mx-1 rounded "
+                                                    className="btn btn-secondary btn-sm "
                                                     to={`../leagues/${league?._id}`}
                                                 >
                                                     Detalles
                                                 </Link>
                                                 <Button
-                                                    className="btn btn-warning btn-sm mx-1 rounded"
+                                                    className="btn btn-warning btn-sm"
                                                     onClick={() =>
                                                         handleUpdate(league)
                                                     }
@@ -109,7 +109,7 @@ const SectionLeagues = ({ sport }) => {
                                                     Editar
                                                 </Button>
                                                 <Button
-                                                    className="btn btn-danger btn-sm  mx-1 rounded"
+                                                    className="btn btn-danger btn-sm "
                                                     onClick={() =>
                                                         handleDelete(
                                                             league?._id
