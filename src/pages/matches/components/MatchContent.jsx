@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { Button, Table } from 'react-bootstrap'
-import MatchSettings from './MatchSettings'
-import ModalScore from './ModalScore'
 import {
     useAddLineUp,
     useRemoveLineUp,
 } from '../../../features/matches.features'
+import MatchDetail from './MatchDetail'
+import MatchSettings from './MatchSettings'
+import ModalScore from './ModalScore'
+import SectionClose from './SectionClose'
 
 const MatchContent = ({ match }) => {
     const addLineUp = useAddLineUp()
@@ -28,87 +29,13 @@ const MatchContent = ({ match }) => {
         <>
             <section>
                 <h5>Datos del partido</h5>
-                <div className="bg-light rounded p-1">
-                    <Table
-                        responsive
-                        size="sm"
-                        borderless
-                        variant="light"
-                        hover
-                    >
-                        <tbody>
-                            <tr>
-                                <td>Fecha</td>
-                                <td>
-                                    {match?.date
-                                        ?.split('T', 3)
-                                        .reverse()
-                                        .join(' ')}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Estatus</td>
-                                <td>
-                                    {match?.status ? (
-                                        <span className="text-success">
-                                            Activo
-                                        </span>
-                                    ) : (
-                                        <span className="text-danger ">
-                                            Inactivo
-                                        </span>
-                                    )}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Estadio</td>
-                                <td>{match?.local?.stadium}</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>Local </strong>
-                                    {match?.local?.name}
-                                </td>
-                                <td>
-                                    <strong>
-                                        {match?.score?.map(
-                                            (score) => score?.local
-                                        )}
-                                    </strong>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <strong>Visitante </strong>
-                                    {match?.away?.name}
-                                </td>
-                                <td>
-                                    <strong>
-                                        {match?.score?.map(
-                                            (score) => score?.away
-                                        )}
-                                    </strong>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </Table>
-                </div>
-                {match?.status && (
-                    <div className="d-flex justify-content-center my-1">
-                        <Button
-                            variant="warning my-2 btn-sm"
-                            onClick={() => handleShow()}
-                        >
-                            Colocar marcador
-                        </Button>
-                    </div>
-                )}
+                <MatchDetail match={match} />
+                {match?.status && <SectionClose handleShow={handleShow} />}
                 <ModalScore
                     match={match}
                     modalShow={modalShow}
                     handleClose={handleClose}
                 />
-
                 {match?.status && (
                     <MatchSettings
                         match={match}

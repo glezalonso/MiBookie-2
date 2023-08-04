@@ -14,49 +14,37 @@ const MatchSettings = ({ match, handleRemoveLineUp, handleAddLineUp }) => {
         <>
             <Row className="m-2 mx-auto">
                 <Col xs={12} lg={5} className="mx-auto my-1 min-vh-75">
-                    <section>
-                        <h5>{match?.local?.name} plantilla</h5>
-                        <Roster
-                            match={match}
-                            roster={rostLocal}
-                            handleAddLineUp={handleAddLineUp}
-                            type={'local'}
-                        />
-                    </section>
+                    <Roster
+                        match={match}
+                        roster={rostLocal}
+                        handleAddLineUp={handleAddLineUp}
+                        type={'local'}
+                    />
                 </Col>
 
                 <Col xs={12} lg={5} className=" mx-auto my-1  min-vh-50">
-                    <section>
-                        <h5>{match?.local?.name} alineación</h5>
-                        <TeamSettings
-                            match={match}
-                            handleRemoveLineUp={handleRemoveLineUp}
-                            type={'local'}
-                        />
-                    </section>
+                    <TeamSettings
+                        match={match}
+                        handleRemoveLineUp={handleRemoveLineUp}
+                        type={'local'}
+                    />
                 </Col>
             </Row>
             <Row className="m-2  mx-auto">
                 <Col md={5} className="mx-auto my-1 min-vh-100">
-                    <section>
-                        <h5 className="h5">{match?.away.name} plantilla</h5>
-                        <Roster
-                            match={match}
-                            roster={rostAway}
-                            handleAddLineUp={handleAddLineUp}
-                            type={'away'}
-                        />
-                    </section>
+                    <Roster
+                        match={match}
+                        roster={rostAway}
+                        handleAddLineUp={handleAddLineUp}
+                        type={'away'}
+                    />
                 </Col>
                 <Col md={5} className="mx-auto my-1">
-                    <section>
-                        <h5 className="h5">{match?.away.name} alineación </h5>
-                        <TeamSettings
-                            match={match}
-                            handleRemoveLineUp={handleRemoveLineUp}
-                            type={'away'}
-                        />
-                    </section>
+                    <TeamSettings
+                        match={match}
+                        handleRemoveLineUp={handleRemoveLineUp}
+                        type={'away'}
+                    />
                 </Col>
             </Row>
         </>

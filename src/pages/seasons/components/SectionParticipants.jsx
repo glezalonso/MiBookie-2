@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import { FormControl, Alert, Table, Button } from 'react-bootstrap'
+import { Alert } from 'react-bootstrap'
 import { useRemoveTeam } from '../../../features/seasons.features'
+import FormFilter from '../../comuncomponents/FormFilter'
+import TableParticipants from './TableParticipants'
 
 const SectionParticipants = ({ season }) => {
     const [dataFilter, setDataFilter] = useState('')
@@ -23,54 +25,18 @@ const SectionParticipants = ({ season }) => {
         <>
             <section>
                 <h5>Participantes</h5>
-                <div className="mx-2 my-3">
-                    <FormControl
-                        size="sm"
-                        placeholder="Buscar equipo..."
-                        name="team"
-                        value={dataFilter}
-                        onChange={(event) => setDataFilter(event.target.value)}
-                    />
-                </div>
+                <FormFilter
+                    name={'equipo'}
+                    dataFilter={dataFilter}
+                    setDataFilter={setDataFilter}
+                />
+
                 {filter?.length > 0 ? (
-                    <div className="data-tables bg-dark rounded p-1 my-1">
-                        <Table
-                            responsive
-                            size="sm"
-                            borderless
-                            variant="dark"
-                            hover
-                        >
-                            <thead className="border-bottom">
-                                <tr>
-                                    <th>Equipos</th>
-                                    <th>Opciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {filter?.map((team) => (
-                                    <tr key={team?.team?._id}>
-                                        <td>{team?.team?.name}</td>
-                                        <td>
-                                            {' '}
-                                            <Button
-                                                style={{ fontSize: '13px' }}
-                                                variant="danger btn-sm"
-                                                onClick={() =>
-                                                    handleRemove(
-                                                        season?._id,
-                                                        team?._id
-                                                    )
-                                                }
-                                            >
-                                                Remover
-                                            </Button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </Table>
-                    </div>
+                    <TableParticipants
+                        season={season}
+                        teams={filter}
+                        handleRemove={handleRemove}
+                    />
                 ) : (
                     <Alert variant="warning">
                         No hay equipos participantes!

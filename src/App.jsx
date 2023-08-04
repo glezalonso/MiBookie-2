@@ -8,9 +8,6 @@ import Protected from './auth/Protected'
 
 // Unprotected Routes
 import Login from './pages/Login'
-import GenerateOTP from './pages/recovery/GenerateOTP'
-import VerifyOTP from './pages/recovery/VeryfyOPT'
-import ResetPassword from './pages/recovery/ResetPassword'
 
 // Protected Routes
 import Home from './pages/home/Home'
@@ -48,9 +45,7 @@ const App = () => {
                         }
                     >
                         <Route path="/" element={<Login />} />
-                        <Route path="/recovery" element={<GenerateOTP />} />
-                        <Route path="/verify" element={<VerifyOTP />} />
-                        <Route path="/reset" element={<ResetPassword />} />
+
                         <Route path="*" element={<h1>Not Found!</h1>} />
                     </Route>
 

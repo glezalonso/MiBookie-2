@@ -1,7 +1,7 @@
 import React from 'react'
 import Navigate from '../../ui/Navigate'
 import { Container, Row, Col } from 'react-bootstrap'
-import TableTeams from './components/TableTeams'
+import SectionTeams from './components/SectionTeams'
 
 const Teams = () => {
     return (
@@ -10,7 +10,7 @@ const Teams = () => {
             <Container fluid>
                 <Row className="my-2 mx-auto">
                     <Col xs={12} md={10} className="mx-auto my-1">
-                        <TableTeams />
+                        <SectionTeams />
                     </Col>
                 </Row>
             </Container>

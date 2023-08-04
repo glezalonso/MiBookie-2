@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { Button, Table, Alert, FormControl } from 'react-bootstrap'
+import { Alert } from 'react-bootstrap'
+import FormFilter from '../../comuncomponents/FormFilter'
+import TableRoster from './TableRoster'
 
 const Roaster = ({ match, roster, handleAddLineUp, type }) => {
     const [dataFilter, setDataFilter] = useState('')
@@ -20,55 +22,30 @@ const Roaster = ({ match, roster, handleAddLineUp, type }) => {
 
     return (
         <>
-            <div className="mx-auto my-3">
-                <FormControl
-                    size="sm"
-                    placeholder="Buscar jugador..."
-                    name="player"
-                    value={dataFilter}
-                    onChange={(event) => setDataFilter(event.target.value)}
+            <section>
+                <h5 className="h5">
+                    {type === 'local' ? match?.local?.name : match?.away.name}{' '}
+                    plantilla
+                </h5>
+                <FormFilter
+                    name={'jugador'}
+                    dataFilter={dataFilter}
+                    setDataFilter={setDataFilter}
                 />
-            </div>
-            {filter?.length > 0 ? (
-                <div className="data-tables bg-dark rounded p-1 my-1">
-                    <Table responsive size="sm" borderless variant="dark" hover>
-                        <thead className="border-bottom">
-                            <tr>
-                                <th>Jugador</th>
-                                <th>Posición</th>
-                                <th>Opciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {filter?.map((players) =>
-                                players?.map((player) => (
-                                    <tr key={player?._id}>
-                                        <td>{player?.fullName}</td>
-                                        <td>{player?.position}</td>
-                                        <td>
-                                            <Button
-                                                style={{ fontSize: '13px' }}
-                                                variant="warning btn-sm"
-                                                onClick={() =>
-                                                    handleAddLineUp(
-                                                        match?._id,
-                                                        player?._id,
-                                                        type
-                                                    )
-                                                }
-                                            >
-                                                Agregar
-                                            </Button>
-                                        </td>
-                                    </tr>
-                                ))
-                            )}
-                        </tbody>
-                    </Table>
-                </div>
-            ) : (
-                <Alert variant="warning">No hay jugadores para mostar!</Alert>
-            )}
+
+                {filter?.length > 0 ? (
+                    <TableRoster
+                        match={match}
+                        type={type}
+                        players={filter}
+                        handleAddLineUp={handleAddLineUp}
+                    />
+                ) : (
+                    <Alert variant="warning">
+                        No hay jugadores para mostar!
+                    </Alert>
+                )}
+            </section>
         </>
     )
 }

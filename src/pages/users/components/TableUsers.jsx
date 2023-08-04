@@ -6,7 +6,6 @@ import {
     useCreateUser,
     useUpdateUser,
 } from '../../../features/users.features'
-
 import ModalUsers from './ModalUsers'
 
 const TableUsers = ({ users }) => {
@@ -63,12 +62,12 @@ const TableUsers = ({ users }) => {
                     />
                 )}
                 {users?.length > 0 ? (
-                    <div className="data-tables bg-dark rounded p-1 my-1">
+                    <div className="data-tables bg-light rounded p-1 my-1">
                         <Table
                             responsive
                             size="sm"
                             borderless
-                            variant="dark"
+                            variant="light"
                             hover
                         >
                             <thead className="border-bottom">
@@ -122,7 +121,7 @@ const TableUsers = ({ users }) => {
                                     </tr>
                                 ))}
                             </tbody>
-                            <caption className="text-light">
+                            <caption className="mx-1 text-dark">
                                 Total de usuarios {users?.length}
                             </caption>
                         </Table>

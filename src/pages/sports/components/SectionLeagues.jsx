@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Table, Button, Alert, ButtonGroup } from 'react-bootstrap'
-import ModalLeagues from './ModalLeagues'
-import Loading from '../../../ui/Loading'
-import { toast } from 'react-hot-toast'
 import {
     useCreateLeague,
-    useDeleteLeague,
     useGetLeaguesBySport,
     useUpdateLeague,
+    useDeleteLeague,
 } from '../../../features/leagues.features'
+import { Button, Alert } from 'react-bootstrap'
+import { toast } from 'react-hot-toast'
+import ModalLeagues from './ModalLeagues'
+import Loading from '../../../ui/Loading'
+import TableLeagues from '../../comuncomponents/TableLeagues'
 
 const SectionLeagues = ({ sport }) => {
     const {
@@ -28,15 +28,15 @@ const SectionLeagues = ({ sport }) => {
     const handleClose = () => setModalShow(false)
     const handleShow = () => setModalShow(true)
 
-    const handleDelete = (id) => {
-        const sure = confirm('Esta seguro que desea borrar?')
-        if (sure) return deleteLeague.mutate(id)
-    }
-
     const handleUpdate = (data) => {
         handleShow()
         setLeague(data)
         setUpdate(true)
+    }
+
+    const handleDelete = (id) => {
+        const sure = confirm('Esta seguro que desea borrar?')
+        if (sure) return deleteLeague.mutate(id)
     }
 
     if (isLoading) return <Loading />
@@ -45,7 +45,7 @@ const SectionLeagues = ({ sport }) => {
         <>
             <section>
                 <h5>
-                    Ligas{' '}
+                    Ligas
                     <Button variant="warning mx-2 btn-sm" onClick={handleShow}>
                         Crear liga
                     </Button>
@@ -72,59 +72,11 @@ const SectionLeagues = ({ sport }) => {
                 )}
 
                 {leagues?.length > 0 ? (
-                    <div className="data-tables bg-dark rounded p-1 my-1">
-                        <Table
-                            responsive
-                            size="sm"
-                            borderless
-                            variant="dark"
-                            hover
-                        >
-                            <thead className="border-bottom">
-                                <tr>
-                                    <th>Liga</th>
-                                    <th>Descripción</th>
-                                    <th>Opciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {leagues?.map((league) => (
-                                    <tr key={league._id}>
-                                        <td>{league?.league}</td>
-                                        <td>{league?.description}</td>
-                                        <td>
-                                            <ButtonGroup>
-                                                <Link
-                                                    className="btn btn-secondary btn-sm "
-                                                    to={`../leagues/${league?._id}`}
-                                                >
-                                                    Detalles
-                                                </Link>
-                                                <Button
-                                                    className="btn btn-warning btn-sm"
-                                                    onClick={() =>
-                                                        handleUpdate(league)
-                                                    }
-                                                >
-                                                    Editar
-                                                </Button>
-                                                <Button
-                                                    className="btn btn-danger btn-sm "
-                                                    onClick={() =>
-                                                        handleDelete(
-                                                            league?._id
-                                                        )
-                                                    }
-                                                >
-                                                    Borrar
-                                                </Button>
-                                            </ButtonGroup>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </Table>
-                    </div>
+                    <TableLeagues
+                        leagues={leagues}
+                        handleUpdate={handleUpdate}
+                        handleDelete={handleDelete}
+                    />
                 ) : (
                     <Alert variant="warning">No hay ligas para mostrar!</Alert>
                 )}

@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Table, Alert, FormControl, Badge } from 'react-bootstrap'
+import { Alert, Badge } from 'react-bootstrap'
+import { toast } from 'react-hot-toast'
 import { useGetMatchesToday } from '../../../features/matches.features'
 import formatedDate from '../../../utils/formatedDate'
 import Loading from '../../../ui/Loading'
-import { toast } from 'react-hot-toast'
+import TableMatches from '../../comuncomponents/TableMatches'
+import FormFilter from '../../comuncomponents/FormFilter'
 
 const SectionTodayMatches = () => {
     const [dataFilter, setDataFilter] = useState('')
@@ -39,91 +40,13 @@ const SectionTodayMatches = () => {
                         {matches?.length}
                     </Badge>
                 </h5>
-                <div className="mx-auto my-3">
-                    <FormControl
-                        size="sm"
-                        className="mb-3"
-                        placeholder="Buscar equipo..."
-                        name="team"
-                        value={dataFilter}
-                        onChange={(event) => setDataFilter(event.target.value)}
-                    />
-                </div>
+                <FormFilter
+                    name={'equipo'}
+                    dataFilter={dataFilter}
+                    setDataFilter={setDataFilter}
+                />
                 {filter?.length > 0 ? (
-                    <div className="data-tables bg-dark p-1 my-1 rounded ">
-                        <Table
-                            className="h-25"
-                            responsive
-                            size="sm"
-                            borderless
-                            variant="dark"
-                            hover
-                        >
-                            <caption className="m-1 text-light">
-                                Total: {filter?.length} partidos
-                            </caption>
-                            <thead className="border-bottom">
-                                <tr>
-                                    <th>Hora</th>
-                                    <th>Liga</th>
-                                    <th>Jornada</th>
-                                    <th>Local</th>
-                                    <th>Visitante</th>
-                                    <th>Estatus</th>
-                                    <th>Opciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {filter?.map((match) => (
-                                    <tr key={match?._id}>
-                                        <td>{match?.date?.split('T', 3)[1]}</td>
-                                        <td>{match?.league?.league}</td>
-
-                                        <td>{match?.round?.round}</td>
-                                        <td>
-                                            {match?.local.name}
-                                            <strong>
-                                                {' '}
-                                                {match?.score?.map(
-                                                    (score) => score?.local
-                                                )}
-                                            </strong>
-                                        </td>
-                                        <td>
-                                            {' '}
-                                            {match?.away?.name}
-                                            <strong>
-                                                {' '}
-                                                {match?.score?.map(
-                                                    (score) => score?.away
-                                                )}
-                                            </strong>
-                                        </td>
-                                        <td>
-                                            {match?.status ? (
-                                                <span className="text-success">
-                                                    Abierto!
-                                                </span>
-                                            ) : (
-                                                <span className="text-danger">
-                                                    Cerrado!
-                                                </span>
-                                            )}
-                                        </td>
-                                        <td>
-                                            <Link
-                                                style={{ fontSize: '13px' }}
-                                                className="btn  btn-warning btn-sm w-100 "
-                                                to={`../matches/${match?._id}`}
-                                            >
-                                                Detalles
-                                            </Link>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </Table>
-                    </div>
+                    <TableMatches match={filter} />
                 ) : (
                     <Alert variant="warning">
                         No hay partidos para mostrar!

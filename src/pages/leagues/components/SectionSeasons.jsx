@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Table, Button, Alert, ButtonGroup } from 'react-bootstrap'
+import { Button, Alert } from 'react-bootstrap'
 import {
     useCreateSeason,
     useDeleteSeason,
@@ -8,7 +8,7 @@ import {
 } from '../../../features/seasons.features'
 import ModalSeasons from './ModalSeasons'
 import Loading from '../../../ui/Loading'
-import { Link } from 'react-router-dom'
+import TableSeasons from '../../comuncomponents/TableSeasons'
 
 const SectionSeasons = ({ league }) => {
     const { data: seasons, isLoading } = useGetSeasonsByLeague(league?._id)
@@ -70,73 +70,11 @@ const SectionSeasons = ({ league }) => {
                 )}
 
                 {seasons?.length > 0 ? (
-                    <div className="data-tables bg-dark rounded p-1 my-1">
-                        <Table
-                            responsive
-                            size="sm"
-                            borderless
-                            variant="dark"
-                            hover
-                        >
-                            <thead className="border-bottom">
-                                <tr>
-                                    <th>Temporada</th>
-                                    <th>Liga</th>
-                                    <th>Deporte</th>
-                                    <th>Estatus</th>
-                                    <th>Opciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {seasons?.map((season) => (
-                                    <tr key={season?._id}>
-                                        <td>{season?.season}</td>
-                                        <td>{season?.league?.league}</td>
-                                        <td>{season?.sport?.sport}</td>
-                                        <td>
-                                            {season?.status ? (
-                                                <span className="text-success">
-                                                    Activo!
-                                                </span>
-                                            ) : (
-                                                <span className="text-danger">
-                                                    Inactivo!
-                                                </span>
-                                            )}
-                                        </td>
-                                        <td>
-                                            <ButtonGroup>
-                                                <Link
-                                                    className="btn btn-secondary btn-sm "
-                                                    to={`../seasons/${season?._id}`}
-                                                >
-                                                    Detalles
-                                                </Link>
-                                                <Button
-                                                    className="btn btn-warning btn-sm"
-                                                    onClick={() =>
-                                                        handleUpdate(season)
-                                                    }
-                                                >
-                                                    Editar
-                                                </Button>
-                                                <Button
-                                                    className="btn btn-danger btn-sm "
-                                                    onClick={() =>
-                                                        handleDelete(
-                                                            season?._id
-                                                        )
-                                                    }
-                                                >
-                                                    Borrar
-                                                </Button>
-                                            </ButtonGroup>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </Table>
-                    </div>
+                    <TableSeasons
+                        seasons={seasons}
+                        handleUpdate={handleUpdate}
+                        handleDelete={handleDelete}
+                    />
                 ) : (
                     <Alert variant="warning">
                         No hay temporadas para mostrar!

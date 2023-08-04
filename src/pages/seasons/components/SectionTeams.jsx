@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useGetTeamsBySport } from '../../../features/teams.features'
-import Loading from '../../../ui/Loading'
-import toast from 'react-hot-toast'
-import { FormControl, Table, Alert, Button } from 'react-bootstrap'
+import { toast } from 'react-hot-toast'
+import { Alert } from 'react-bootstrap'
 import { useAddTeam } from '../../../features/seasons.features'
+import Loading from '../../../ui/Loading'
+import TableTeams from './TableTeams'
+import FormFilter from '../../comuncomponents/FormFilter'
 
 const SectionTeams = ({ season }) => {
     const {
@@ -31,54 +33,18 @@ const SectionTeams = ({ season }) => {
         <>
             <section>
                 <h5>Equipos {season?.sport?.sport}</h5>
-                <div className="mx-2 my-3">
-                    <FormControl
-                        size="sm"
-                        placeholder="Buscar equipo..."
-                        name="team"
-                        value={dataFilter}
-                        onChange={(event) => setDataFilter(event.target.value)}
-                    />
-                </div>
+                <FormFilter
+                    name={'equipo'}
+                    dataFilter={dataFilter}
+                    setDataFilter={setDataFilter}
+                />
+
                 {filter?.length > 0 ? (
-                    <div className="data-tables bg-dark rounded p-1 my-1">
-                        <Table
-                            responsive
-                            size="sm"
-                            borderless
-                            variant="dark"
-                            hover
-                        >
-                            <thead className="border-bottom">
-                                <tr>
-                                    <th>Equipo</th>
-                                    <th>Opciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {filter?.map((team) => (
-                                    <tr key={team?._id}>
-                                        <td>{team?.name}</td>
-                                        <td>
-                                            {' '}
-                                            <Button
-                                                style={{ fontSize: '13px' }}
-                                                variant="warning btn-sm"
-                                                onClick={() =>
-                                                    handleAdd(
-                                                        season?._id,
-                                                        team?._id
-                                                    )
-                                                }
-                                            >
-                                                Agregar
-                                            </Button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </Table>
-                    </div>
+                    <TableTeams
+                        season={season}
+                        teams={filter}
+                        handleAdd={handleAdd}
+                    />
                 ) : (
                     <Alert variant="warning">
                         No hay equipos para mostrar!

@@ -10,8 +10,8 @@ const Home = () => {
         <>
             <Navigate />
             <Container fluid>
-                <Row className="my-2 mx-auto">
-                    <Col xs={12} md={11} className="mx-auto my-2">
+                <Row className="my-2 mx-auto ">
+                    <Col xs={12} md={11} className="mx-auto my-2 min-vh-100">
                         <SectionTodayMatches />
                     </Col>
                 </Row>

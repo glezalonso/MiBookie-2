@@ -4,8 +4,8 @@ import { toast } from 'react-hot-toast'
 import { Container, Row, Col } from 'react-bootstrap'
 import Navigate from '../../ui/Navigate'
 import Loading from '../../ui/Loading'
-import SectionTeam from './components/SectionTeam'
-import SectionMatches from './components/SectionMatches'
+import CardTeam from './components/CardTeam'
+import SectionLastMatches from './components/SectionLastMatches'
 import SectionRoster from './components/SectionRoster'
 import SectionPlayers from './components/SectionPlayers'
 import SectionNextMatches from './components/SectionNextMatches'
@@ -24,12 +24,12 @@ const TeamDetail = () => {
             <Container fluid>
                 <Row className="my-2 mx-auto ">
                     <Col xs={12} md={10} className="mx-auto">
-                        <SectionTeam team={team} />
+                        <CardTeam team={team} />
                     </Col>
                 </Row>
                 <Row className="my-2p">
                     <Col xs={12} md={5} className="mx-auto my-1">
-                        <SectionMatches team={team} />
+                        <SectionLastMatches team={team} />
                     </Col>
                     <Col xs={12} md={5} className="mx-auto my-1">
                         <SectionNextMatches team={team} />

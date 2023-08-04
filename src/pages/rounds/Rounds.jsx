@@ -22,17 +22,26 @@ const Rounds = () => {
                     <Col xs={12} lg={8} className=" mx-auto">
                         <Breadcrumb className=" p-2">
                             <div className="breadcrumb-item">
-                                <Link to={`../sports/${round?.sport?._id}`}>
+                                <Link
+                                    className="text-decoration-none"
+                                    to={`../sports/${round?.sport?._id}`}
+                                >
                                     {round?.sport?.sport}
                                 </Link>
                             </div>
                             <div className="breadcrumb-item">
-                                <Link to={`../leagues/${round?.league?._id}`}>
+                                <Link
+                                    className="text-decoration-none"
+                                    to={`../leagues/${round?.league?._id}`}
+                                >
                                     {round?.league?.league}
                                 </Link>
                             </div>
                             <div className="breadcrumb-item">
-                                <Link to={`../seasons/${round?.season?._id}`}>
+                                <Link
+                                    className="text-decoration-none"
+                                    to={`../seasons/${round?.season?._id}`}
+                                >
                                     {round?.season?.season}
                                 </Link>
                             </div>

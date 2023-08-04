@@ -19,11 +19,7 @@ const UserDetails = () => {
 
             <Container fluid>
                 <Row className="my-2 p-1  mx-auto">
-                    <Col
-                        xs={12}
-                        md={11}
-                        className="bg-dark text-light rounded mx-auto p-1 fs-4"
-                    >
+                    <Col xs={12} md={11} className="mx-auto p-1 fs-4">
                         <section>
                             <Card bg="light">
                                 <Card.Header>

@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import toast from 'react-hot-toast'
 import { Container, Nav, Navbar, Button } from 'react-bootstrap'
+import { toast } from 'react-hot-toast'
 import { useAuthStore } from '../store/auth'
+import logo from '../assets/mibookie.png'
 
 const Navigate = () => {
     const logOut = useAuthStore((state) => state.logOut)
@@ -18,7 +19,18 @@ const Navigate = () => {
         <>
             <Navbar expand="lg" bg="dark" data-bs-theme="dark">
                 <Container>
-                    <Navbar.Brand>Mi Bookie Panel</Navbar.Brand>
+                    <Navbar.Brand>
+                        <div className="d-flex">
+                            <div className="">
+                                <img
+                                    style={{ width: '33px', height: '33px' }}
+                                    src={logo}
+                                    alt="Mi Bookie"
+                                />
+                            </div>
+                            <div className="mt-1 mx-1">Mi Bookie Panel</div>
+                        </div>
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav className="me-auto">

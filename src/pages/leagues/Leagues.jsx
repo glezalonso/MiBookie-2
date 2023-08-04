@@ -22,7 +22,10 @@ const Leagues = () => {
                     <Col xs={12} lg={8} className="  mx-auto">
                         <Breadcrumb className="p-2">
                             <div className="breadcrumb-item">
-                                <Link to={`../sports/${league?.sport?._id}`}>
+                                <Link
+                                    className="text-decoration-none"
+                                    to={`../sports/${league?.sport?._id}`}
+                                >
                                     {league?.sport?.sport}
                                 </Link>
                             </div>

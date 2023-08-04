@@ -1,11 +1,11 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 
-const SectionTeam = ({ team }) => {
+const CardTeam = ({ team }) => {
     return (
         <>
             <section>
-                <Card bg="dark" text="white">
+                <Card bg="light" text="dark" className="p-2">
                     <div className="d-flex justify-content-center">
                         <Card.Img
                             style={{ width: '100px', height: '100px' }}
@@ -25,4 +25,4 @@ const SectionTeam = ({ team }) => {
         </>
     )
 }
-export default SectionTeam
+export default CardTeam

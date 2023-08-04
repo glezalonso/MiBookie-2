@@ -1,9 +1,9 @@
 import React from 'react'
-import { useFormik } from 'formik'
 import { Form, Button, Container, Row, Col } from 'react-bootstrap'
-// import { Link } from 'react-router-dom'
+import { useFormik } from 'formik'
 import { verifyLogin } from '../helpers/validations'
 import { useLogin } from '../features/users.features'
+import logo from '../assets/mibookie.png'
 
 const Login = () => {
     const login = useLogin()
@@ -23,11 +23,26 @@ const Login = () => {
 
     return (
         <>
-            <Container className=" w-75 h-75 mt-5 ">
-                <Row>
-                    <Col className="col-lg-6 col-xs-12 bg-dark text-light  mx-auto p-4 rounded">
-                        <h1 className="h1 pt-3 text-center">Mi Bookie Panel</h1>
-                        <Form className="p-3" onSubmit={formik.handleSubmit}>
+            <Container className="d-flex justify-content-center " fluid>
+                <Row className=" my-5 vh-50 vw-50">
+                    <Col
+                        xs={12}
+                        className="bg-dark text-light  mx-auto p-3 rounded "
+                    >
+                        <div className="d-flex justify-content-center">
+                            <div className="mt-2">
+                                <img
+                                    style={{ width: '100px', height: '100px' }}
+                                    src={logo}
+                                    alt="Mi Bookie"
+                                />
+                            </div>
+                            <div className="mt-5 mx-3">
+                                <h1 className="text-center">Mi Bookie Panel</h1>
+                            </div>
+                        </div>
+
+                        <Form className="p-2" onSubmit={formik.handleSubmit}>
                             <Form.Group>
                                 <Form.Label htmlFor="username">
                                     Usuario:{' '}

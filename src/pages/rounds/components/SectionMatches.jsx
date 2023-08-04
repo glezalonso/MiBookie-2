@@ -5,11 +5,12 @@ import {
     useUpdateMatch,
     useGetMatchesByRound,
 } from '../../../features/matches.features'
-import { Table, Button, Alert, ButtonGroup, FormControl } from 'react-bootstrap'
-import ModalMatches from './ModalMatches'
-import { Link } from 'react-router-dom'
-import Loading from '../../../ui/Loading'
 import { toast } from 'react-hot-toast'
+import { Button, Alert } from 'react-bootstrap'
+import ModalMatches from './ModalMatches'
+import Loading from '../../../ui/Loading'
+import TableMatches from '../../comuncomponents/TableMatches'
+import FormFilter from '../../comuncomponents/FormFilter'
 
 const SectionMatches = ({ round }) => {
     const {
@@ -88,109 +89,18 @@ const SectionMatches = ({ round }) => {
                         setUpdate={setUpdate}
                     />
                 )}
-                <div className="mx-2 mt-2">
-                    <FormControl
-                        style={{ fontSize: '13px' }}
-                        className="mb-3"
-                        placeholder="Buscar equipo..."
-                        name="team"
-                        value={dataFilter}
-                        onChange={(event) => setDataFilter(event.target.value)}
-                    />
-                </div>
+                <FormFilter
+                    name={'equipo'}
+                    dataFilter={dataFilter}
+                    setDataFilter={setDataFilter}
+                />
+
                 {filter?.length > 0 ? (
-                    <div className="data-tables bg-dark rounded p-1 my-1">
-                        <Table
-                            responsive
-                            size="sm"
-                            borderless
-                            variant="dark"
-                            hover
-                        >
-                            <caption className="m-1 text-light">
-                                Total: {filter?.length} partidos
-                            </caption>
-                            <thead className="border-bottom">
-                                <tr>
-                                    <th>Fecha</th>
-                                    <th>Local</th>
-                                    <th>Visitante</th>
-                                    <th>Marcador</th>
-                                    <th>Estatus</th>
-                                    <th>Opciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {filter?.map((match) => (
-                                    <tr key={match?._id}>
-                                        <td>
-                                            {match?.date
-                                                ?.split('T', 3)
-                                                .reverse()
-                                                .join(' ')}
-                                        </td>
-                                        <td>{match?.local?.name}</td>
-                                        <td>{match?.away?.name}</td>
-                                        <td>
-                                            <strong>
-                                                {' '}
-                                                {match?.score?.map(
-                                                    (score) => score?.local
-                                                )}
-                                            </strong>
-                                            -
-                                            <strong>
-                                                {' '}
-                                                {match?.score?.map(
-                                                    (score) => score?.away
-                                                )}
-                                            </strong>
-                                        </td>
-                                        <td>
-                                            {match?.status ? (
-                                                <span className="text-success">
-                                                    Activo!
-                                                </span>
-                                            ) : (
-                                                <span className="text-danger">
-                                                    Inactivo!
-                                                </span>
-                                            )}
-                                        </td>
-                                        <td>
-                                            <ButtonGroup>
-                                                <Link
-                                                    style={{ fontSize: '13px' }}
-                                                    className="btn btn-secondary btn-sm  "
-                                                    to={`../matches/${match?._id}`}
-                                                >
-                                                    Detalles
-                                                </Link>
-                                                <Button
-                                                    style={{ fontSize: '13px' }}
-                                                    className="btn btn-warning btn-sm "
-                                                    onClick={() =>
-                                                        handleUpdate(match)
-                                                    }
-                                                >
-                                                    Editar
-                                                </Button>
-                                                <Button
-                                                    style={{ fontSize: '13px' }}
-                                                    className="btn btn-danger btn-sm  "
-                                                    onClick={() =>
-                                                        handleDelete(match?._id)
-                                                    }
-                                                >
-                                                    Borrar
-                                                </Button>
-                                            </ButtonGroup>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </Table>
-                    </div>
+                    <TableMatches
+                        match={filter}
+                        handleUpdate={handleUpdate}
+                        handleDelete={handleDelete}
+                    />
                 ) : (
                     <Alert variant="warning">
                         There is no information to show!
