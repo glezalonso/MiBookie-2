@@ -72,14 +72,18 @@ const TableMatches = ({ match, handleUpdate, handleDelete }) => {
                                         <DetailsButton
                                             route={`../matches/${match?._id}`}
                                         />
-                                        <EditButton
-                                            data={match}
-                                            handleUpdate={handleUpdate}
-                                        />
-                                        <DeleteButton
-                                            data={match?._id}
-                                            handleDelete={handleDelete}
-                                        />
+                                        {handleUpdate ? (
+                                            <EditButton
+                                                data={match}
+                                                handleUpdate={handleUpdate}
+                                            />
+                                        ) : null}
+                                        {handleDelete ? (
+                                            <DeleteButton
+                                                data={match?._id}
+                                                handleDelete={handleDelete}
+                                            />
+                                        ) : null}
                                     </ButtonGroup>
                                 </td>
                             </tr>
