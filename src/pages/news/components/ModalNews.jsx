@@ -19,8 +19,7 @@ const ModalNews = ({
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            sport: content?.sport?._id || '',
-            league: content?.league || '',
+            league: content?.league?._id || '',
             title: content?.title || '',
             date: content?.date || '',
             content: content?.content || '',
