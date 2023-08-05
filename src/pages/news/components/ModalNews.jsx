@@ -1,8 +1,9 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import { Modal, Form, Button, FormControl } from 'react-bootstrap'
-import { useGetSports } from '../../../features/sports.features'
+
 import { useAuthStore } from '../../../store/auth'
+import { useGetLeagues } from '../../../features/leagues.features'
 
 const ModalNews = ({
     content,
@@ -13,12 +14,13 @@ const ModalNews = ({
     setUpdate,
 }) => {
     const { profile } = useAuthStore((state) => state)
-    const { data: sports } = useGetSports()
+    const { data: leagues } = useGetLeagues()
 
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            sport: content?.sport || '',
+            sport: content?.sport?._id || '',
+            league: content?.league || '',
             title: content?.title || '',
             date: content?.date || '',
             content: content?.content || '',
@@ -58,18 +60,21 @@ const ModalNews = ({
                 <Form onSubmit={formik.handleSubmit}>
                     <Modal.Body>
                         <Form.Group>
-                            <Form.Label>Deporte:</Form.Label>
+                            <Form.Label>Liga:</Form.Label>
                             <Form.Select
-                                id="sport"
-                                name="sport"
-                                {...formik.getFieldProps('sport')}
+                                id="league"
+                                name="league"
+                                {...formik.getFieldProps('league')}
                             >
                                 <option value={false}>
-                                    Selecciona el deporte
+                                    Selecciona la liga
                                 </option>
-                                {sports?.map((sport) => (
-                                    <option key={sport?._id} value={sport?._id}>
-                                        {sport?.sport}
+                                {leagues?.map((league) => (
+                                    <option
+                                        key={league?._id}
+                                        value={league?._id}
+                                    >
+                                        {league?.league}
                                     </option>
                                 ))}
                             </Form.Select>

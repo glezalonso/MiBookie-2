@@ -8,7 +8,10 @@ const CardNew = ({ content, handleDelete, handleUpdate }) => {
                 <Card key={content?._id} bg="light" className="my-2">
                     <Card.Header>
                         <Card.Title>{content?.title}</Card.Title>
-                        <Card.Subtitle>{content?.sport?.sport}</Card.Subtitle>
+
+                        <Card.Subtitle className="my-1">
+                            {content?.league?.league}
+                        </Card.Subtitle>
                     </Card.Header>
                     <Card.Body>
                         <Card.Text>{content?.content}</Card.Text>
