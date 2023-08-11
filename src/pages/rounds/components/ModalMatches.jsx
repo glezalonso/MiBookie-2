@@ -22,6 +22,10 @@ const ModalMatches = ({
             date: match?.date || '',
             teamHome: match?.local?._id || '',
             teamAway: match?.away?._id || '',
+            oddHome: match?.oddHome || '',
+            oddAway: match?.oddAway || '',
+            oddDraw: match?.oddDraw || '',
+            oddOverUnder: match?.oddOverUnder || '',
             round: round?._id,
             league: round?.league?._id,
             season: round?.season?._id,
@@ -91,6 +95,15 @@ const ModalMatches = ({
                             </Form.Select>
                         </Form.Group>
                         <Form.Group>
+                            <Form.Label>Cuota Local</Form.Label>
+                            <FormControl
+                                {...formik.getFieldProps('oddHome')}
+                                type="text"
+                                id="oddHome"
+                                name="oddHome"
+                            ></FormControl>
+                        </Form.Group>
+                        <Form.Group>
                             <Form.Label>Equipo visitante</Form.Label>
                             <Form.Select
                                 id="teamAway"
@@ -110,7 +123,33 @@ const ModalMatches = ({
                                 ))}
                             </Form.Select>
                         </Form.Group>
-
+                        <Form.Group>
+                            <Form.Label>Cuota Visita</Form.Label>
+                            <FormControl
+                                {...formik.getFieldProps('oddAway')}
+                                type="text"
+                                id="oddAway"
+                                name="oddAway"
+                            ></FormControl>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Cuota empate</Form.Label>
+                            <FormControl
+                                {...formik.getFieldProps('oddDraw')}
+                                type="text"
+                                id="oddDraw"
+                                name="oddDraw"
+                            ></FormControl>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Cuota total</Form.Label>
+                            <FormControl
+                                {...formik.getFieldProps('oddOverUnder')}
+                                type="text"
+                                id="oddOverUnder"
+                                name="oddOverUnder"
+                            ></FormControl>
+                        </Form.Group>
                         <Form.Group>
                             <Form.Label>Estatus</Form.Label>
                             <Form.Select

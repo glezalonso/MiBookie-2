@@ -11,7 +11,7 @@ const Home = () => {
             <Navigate />
             <Container fluid>
                 <Row className="my-2 mx-auto ">
-                    <Col xs={12} md={11} className="mx-auto my-2 min-vh-100">
+                    <Col xs={12} md={11} className="mx-auto my-2 min-vh-75">
                         <SectionTodayMatches />
                     </Col>
                 </Row>

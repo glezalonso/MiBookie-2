@@ -28,7 +28,7 @@ const Navigate = () => {
                                     alt="Mi Bookie"
                                 />
                             </div>
-                            <div className="mt-1 mx-1">Mi Bookie Panel</div>
+                            <div className="mt-1 mx-1"></div>
                         </div>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
