@@ -9,7 +9,7 @@ import {
     getMatches,
     removeLineUp,
     updateMatch,
-    getMatchesByLeague,
+    // getMatchesByLeague,
     getMatchesByRound,
     getMatchesBySeason,
     getMatchesByTeam,
@@ -118,13 +118,13 @@ export const useGetMatchesByTeam = (team) => {
     })
     return { data, isLoading, isError }
 }
-export const useGetMatchesByLeague = (league) => {
-    const { data, isLoading, isError } = useQuery({
-        queryKey: ['matches', league],
-        queryFn: () => getMatchesByLeague(league),
-    })
-    return { data, isLoading, isError }
-}
+// export const useGetMatchesByLeague = (league) => {
+//     const { data, isLoading, isError } = useQuery({
+//         queryKey: ['matches', league],
+//         queryFn: () => getMatchesByLeague(league),
+//     })
+//     return { data, isLoading, isError }
+// }
 export const useGetMatchesByRound = (round) => {
     const { data, isLoading, isError } = useQuery({
         queryKey: ['matches', round],

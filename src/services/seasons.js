@@ -28,8 +28,6 @@ export const removeTeam = ({ id, data }) =>
     axios.delete(`/api/seasons/removeteam/${id}`, { data })
 
 export const getSeasonsByLeague = async (league) => {
-    const { data } = await axios.post('/api/seasons/seasonsbyleague', {
-        league,
-    })
+    const { data } = await axios.get(`/api/seasons/league/${league}`)
     return data
 }

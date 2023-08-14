@@ -45,6 +45,6 @@ export const removePlayer = ({ id, data }) =>
     axios.delete(`/api/teams/removeplayer/${id}`, { data })
 
 export const getTeamsBySport = async (sport) => {
-    const { data } = await axios.post('/api/teams/teamsbysport', { sport })
+    const { data } = await axios.get(`/api/teams/sport/${sport}`)
     return data
 }

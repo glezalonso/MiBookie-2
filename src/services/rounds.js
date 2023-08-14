@@ -18,6 +18,6 @@ export const updateRound = ({ id, body }) =>
 export const deleteRound = (id) => axios.delete(`/api/rounds/${id}`)
 
 export const getRoundsBySeason = async (season) => {
-    const { data } = await axios.post('/api/rounds/roundsbyseason', { season })
+    const { data } = await axios.get(`/api/rounds/season/${season}`)
     return data
 }

@@ -18,7 +18,7 @@ export const updatePlayer = ({ id, body }) =>
 export const deletePlayer = (id) => axios.delete(`/api/players/${id}`)
 
 export const getPlayersBySport = async (sport) => {
-    const { data } = await axios.post('/api/players/playersteamless', { sport })
+    const { data } = await axios.get(`/api/players/sport/${sport}`)
     return data
 }
 
