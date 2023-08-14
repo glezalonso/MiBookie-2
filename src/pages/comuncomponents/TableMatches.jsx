@@ -9,11 +9,11 @@ const TableMatches = ({ match, handleUpdate, handleDelete }) => {
         <>
             <div className="data-tables bg-light p-1 my-1 rounded ">
                 <Table
-                    className="h-25"
                     responsive
                     size="sm"
                     borderless
                     variant="light"
+                    className="my-1"
                     hover
                 >
                     <caption className="m-1 text-light">
@@ -23,8 +23,7 @@ const TableMatches = ({ match, handleUpdate, handleDelete }) => {
                         <tr>
                             <th>Hora</th>
                             <th>Liga</th>
-                            <th>Local</th>
-                            <th>Visitante</th>
+                            <th>Equipos</th>
                             <th>Estatus</th>
                             <th>Opciones</th>
                         </tr>
@@ -38,24 +37,55 @@ const TableMatches = ({ match, handleUpdate, handleDelete }) => {
                                         .reverse()
                                         .join(' ')}
                                 </td>
-                                <td>{match?.league?.league}</td>
+                                <td>
+                                    <div>
+                                        <img
+                                            style={{
+                                                width: '16px',
+                                                height: '16px',
+                                            }}
+                                            src={match?.league?.poster}
+                                            alt={match?.league?.league}
+                                        />
+                                    </div>
+                                    <div>{match?.league?.league}</div>
+                                </td>
 
                                 <td>
-                                    {match?.local.name}
-                                    <strong>
-                                        {match?.score?.map(
-                                            (score) => score?.local
-                                        )}
-                                    </strong>
+                                    <div>
+                                        <img
+                                            style={{
+                                                width: '16px',
+                                                height: '16px',
+                                            }}
+                                            src={match?.local?.poster}
+                                            alt={match?.local.name}
+                                        />
+                                        {match?.local.name}
+                                        <strong className="mx-1">
+                                            {match?.score?.map(
+                                                (score) => score?.local
+                                            )}
+                                        </strong>
+                                    </div>
+                                    <div>
+                                        <img
+                                            style={{
+                                                width: '16px',
+                                                height: '16px',
+                                            }}
+                                            src={match?.away?.poster}
+                                            alt={match?.away?.name}
+                                        />
+                                        {match?.away?.name}
+                                        <strong className="mx-1">
+                                            {match?.score?.map(
+                                                (score) => score?.away
+                                            )}
+                                        </strong>
+                                    </div>
                                 </td>
-                                <td>
-                                    {match?.away?.name}
-                                    <strong>
-                                        {match?.score?.map(
-                                            (score) => score?.away
-                                        )}
-                                    </strong>
-                                </td>
+
                                 <td>
                                     {match?.status ? (
                                         <span className="text-success">

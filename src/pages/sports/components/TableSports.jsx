@@ -19,7 +19,18 @@ const TableSports = ({ sports, handleUpdate, handleDelete }) => {
                     <tbody>
                         {sports?.map((sport) => (
                             <tr key={sport?._id}>
-                                <td>{sport?.sport}</td>
+                                <td>
+                                    <img
+                                        style={{
+                                            width: '16px',
+                                            height: '16px',
+                                            marginRight: '2px',
+                                        }}
+                                        src={sport?.poster}
+                                        alt={sport?.sport}
+                                    />
+                                    {sport?.sport}
+                                </td>
                                 <td>{sport?.description}</td>
                                 <td>
                                     <ButtonGroup>

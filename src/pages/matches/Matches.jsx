@@ -18,8 +18,8 @@ const Matches = () => {
     return (
         <>
             <Navigate />
-            <Container fluid>
-                <Row className="my-2 mx-auto">
+            <Container fluid className="p-0">
+                <Row className="my-2 ">
                     <Col xs={12} lg={8} className="mx-auto">
                         <Breadcrumb className=" p-2">
                             <div className="breadcrumb-item">

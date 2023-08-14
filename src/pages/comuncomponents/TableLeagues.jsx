@@ -25,7 +25,17 @@ const TableLeagues = ({ leagues, handleUpdate, handleDelete }) => {
                     <tbody>
                         {leagues?.map((league) => (
                             <tr key={league?._id}>
-                                <td>{league?.league}</td>
+                                <td>
+                                    <img
+                                        style={{
+                                            width: '16px',
+                                            height: '16px',
+                                        }}
+                                        src={league?.poster}
+                                        alt={league?.league}
+                                    />
+                                    {league?.league}
+                                </td>
                                 <td>
                                     <ButtonGroup>
                                         <DetailsButton

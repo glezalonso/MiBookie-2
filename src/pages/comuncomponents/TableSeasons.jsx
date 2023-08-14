@@ -21,8 +21,28 @@ const TableSeasons = ({ seasons, handleUpdate, handleDelete }) => {
                         {seasons?.map((season) => (
                             <tr key={season?._id}>
                                 <td>{season?.season}</td>
-                                <td>{season?.league?.league}</td>
-                                <td>{season?.sport?.sport}</td>
+                                <td>
+                                    <img
+                                        style={{
+                                            width: '16px',
+                                            height: '16px',
+                                        }}
+                                        src={season?.league?.poster}
+                                        alt={season?.league?.league}
+                                    />
+                                    {season?.league?.league}
+                                </td>
+                                <td>
+                                    <img
+                                        style={{
+                                            width: '16px',
+                                            height: '16px',
+                                        }}
+                                        src={season?.sport?.poster}
+                                        alt={season?.sport?.sport}
+                                    />
+                                    {season?.sport?.sport}
+                                </td>
                                 <td>
                                     <ButtonGroup>
                                         <DetailsButton

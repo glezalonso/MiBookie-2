@@ -21,8 +21,8 @@ const Seasons = () => {
         <>
             <Navigate />
 
-            <Container fluid>
-                <Row className="my-2 mx-auto">
+            <Container fluid className="p-0">
+                <Row className="my-2">
                     <Col xs={12} lg={8} className="mx-auto ">
                         <Breadcrumb className=" p-2">
                             <div className="breadcrumb-item">
@@ -30,6 +30,15 @@ const Seasons = () => {
                                     className="text-decoration-none"
                                     to={`../sports/${season?.sport?._id}`}
                                 >
+                                    <img
+                                        style={{
+                                            width: '16px',
+                                            height: '16px',
+                                            marginBottom: '2px',
+                                        }}
+                                        src={season?.sport?.poster}
+                                        alt={season?.sport?.sport}
+                                    />{' '}
                                     {season?.sport?.sport}
                                 </Link>
                             </div>
@@ -38,6 +47,15 @@ const Seasons = () => {
                                     className="text-decoration-none"
                                     to={`../leagues/${season?.league?._id}`}
                                 >
+                                    <img
+                                        style={{
+                                            width: '16px',
+                                            height: '16px',
+                                            marginBottom: '2px',
+                                        }}
+                                        src={season?.league?.poster}
+                                        alt={season?.league?.league}
+                                    />{' '}
                                     {season?.league?.league}
                                 </Link>
                             </div>
@@ -53,7 +71,7 @@ const Seasons = () => {
                         <SectionStandings season={season} />
                     </Col>
                 </Row>
-                <Row className="my-2 mx-auto">
+                <Row className="my-2 ">
                     <Col xs={12} lg={5} className="mx-auto my-2">
                         <SectionParticipants season={season} />
                     </Col>

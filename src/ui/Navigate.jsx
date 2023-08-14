@@ -19,18 +19,16 @@ const Navigate = () => {
         <>
             <Navbar expand="lg" bg="dark" data-bs-theme="dark">
                 <Container>
-                    <Navbar.Brand>
-                        <div className="d-flex">
-                            <div className="">
-                                <img
-                                    style={{ width: '33px', height: '33px' }}
-                                    src={logo}
-                                    alt="Mi Bookie"
-                                />
-                            </div>
-                            <div className="mt-1 mx-1"></div>
+                    <Link to={'../home'} className="navbar-brand d-flex">
+                        <div>
+                            <img
+                                style={{ width: '33px', height: '33px' }}
+                                src={logo}
+                                alt="Mi Bookie"
+                            />
                         </div>
-                    </Navbar.Brand>
+                        <div className="mt-1 mx-1">Mi Bookie Panel</div>
+                    </Link>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav className="me-auto">

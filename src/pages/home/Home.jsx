@@ -9,13 +9,13 @@ const Home = () => {
     return (
         <>
             <Navigate />
-            <Container fluid>
-                <Row className="my-2 mx-auto ">
+            <Container fluid className="p-0 ">
+                <Row className="my-2 ">
                     <Col xs={12} md={11} className="mx-auto my-2 min-vh-75">
                         <SectionTodayMatches />
                     </Col>
                 </Row>
-                <Row className="my-2 mx-auto">
+                <Row className="my-2 ">
                     <Col xs={12} md={5} className="mx-auto my-2 ">
                         <SectionSeasonsOpen />
                     </Col>

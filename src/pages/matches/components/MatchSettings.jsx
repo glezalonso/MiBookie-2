@@ -31,7 +31,7 @@ const MatchSettings = ({ match, handleRemoveLineUp, handleAddLineUp }) => {
                 </Col>
             </Row>
             <Row className="m-2  mx-auto">
-                <Col md={5} className="mx-auto my-1 min-vh-100">
+                <Col md={5} className="mx-auto my-1 min-vh-75">
                     <Roster
                         match={match}
                         roster={rostAway}

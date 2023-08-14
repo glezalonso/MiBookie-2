@@ -7,8 +7,8 @@ const Sports = () => {
     return (
         <>
             <Navigate />
-            <Container fluid>
-                <Row className="my-2 mx-auto">
+            <Container fluid className="p-0">
+                <Row className="my-2 ">
                     <Col xs={12} md={8} className="mx-auto my-1">
                         <SectionSport />
                     </Col>

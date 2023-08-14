@@ -17,8 +17,8 @@ const Rounds = () => {
     return (
         <>
             <Navigate />
-            <Container fluid>
-                <Row className="my-2  mx-auto">
+            <Container fluid className="p-0">
+                <Row className="my-2 ">
                     <Col xs={12} lg={8} className=" mx-auto">
                         <Breadcrumb className=" p-2">
                             <div className="breadcrumb-item">
@@ -26,6 +26,15 @@ const Rounds = () => {
                                     className="text-decoration-none"
                                     to={`../sports/${round?.sport?._id}`}
                                 >
+                                    <img
+                                        style={{
+                                            width: '16px',
+                                            height: '16px',
+                                            marginBottom: '2px',
+                                        }}
+                                        src={round?.sport?.poster}
+                                        alt={round?.sport?.sport}
+                                    />{' '}
                                     {round?.sport?.sport}
                                 </Link>
                             </div>
@@ -34,6 +43,15 @@ const Rounds = () => {
                                     className="text-decoration-none"
                                     to={`../leagues/${round?.league?._id}`}
                                 >
+                                    <img
+                                        style={{
+                                            width: '16px',
+                                            height: '16px',
+                                            marginBottom: '2px',
+                                        }}
+                                        src={round?.league?.poster}
+                                        alt={round?.league?.league}
+                                    />{' '}
                                     {round?.league?.league}
                                 </Link>
                             </div>

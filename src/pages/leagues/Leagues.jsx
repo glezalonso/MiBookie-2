@@ -17,8 +17,8 @@ const Leagues = () => {
     return (
         <>
             <Navigate />
-            <Container fluid>
-                <Row className="my-2 mx-auto">
+            <Container fluid className="p-0">
+                <Row className="my-2 mx-">
                     <Col xs={12} lg={8} className="  mx-auto">
                         <Breadcrumb className="p-2">
                             <div className="breadcrumb-item">
@@ -26,10 +26,28 @@ const Leagues = () => {
                                     className="text-decoration-none"
                                     to={`../sports/${league?.sport?._id}`}
                                 >
+                                    <img
+                                        style={{
+                                            width: '16px',
+                                            height: '16px',
+                                            marginBottom: '2px',
+                                        }}
+                                        src={league?.sport?.poster}
+                                        alt={league?.sport?.sport}
+                                    />{' '}
                                     {league?.sport?.sport}
                                 </Link>
                             </div>
                             <Breadcrumb.Item active>
+                                <img
+                                    style={{
+                                        width: '16px',
+                                        height: '16px',
+                                        marginBottom: '2px',
+                                    }}
+                                    src={league?.poster}
+                                    alt={league?.league}
+                                />{' '}
                                 {league?.league}
                             </Breadcrumb.Item>
                         </Breadcrumb>
