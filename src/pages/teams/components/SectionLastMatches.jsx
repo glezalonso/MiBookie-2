@@ -8,7 +8,7 @@ import TableMatches from '../../comuncomponents/TableMatches'
 
 const SectionMatches = ({ team }) => {
     const limit = 0
-    const status = true
+    const status = false
 
     const {
         data: matches,
