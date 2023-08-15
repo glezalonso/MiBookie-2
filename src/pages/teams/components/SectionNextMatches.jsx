@@ -7,15 +7,19 @@ import FormFilter from '../../comuncomponents/FormFilter'
 import TableMatches from '../../comuncomponents/TableMatches'
 
 const SectionNextMatches = ({ team }) => {
-    const { data: matches, isLoading, isError } = useGetMatchesByTeam(team?._id)
+    const limit = 0
+    const status = true
+    const {
+        data: matches,
+        isLoading,
+        isError,
+    } = useGetMatchesByTeam(team?._id, limit, status)
     const [dataFilter, setDataFilter] = useState('')
-
-    const nextMatches = matches?.filter((match) => match?.status === true)
 
     if (isLoading) return <Loading />
     if (isError) return toast.error('Hubo un error al cargar los juegos')
     // filter by user
-    const filter = nextMatches?.filter((match) => {
+    const filter = matches?.filter((match) => {
         if (dataFilter)
             return (
                 match?.round?.round

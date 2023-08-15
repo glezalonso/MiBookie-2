@@ -30,8 +30,10 @@ export const getMatchesToday = async (date) => {
     const { data } = await axios.get(`/api/matches/date/${date}`)
     return data
 }
-export const getMatchesByTeam = async (team) => {
-    const { data } = await axios.get(`/api/matches/team/${team}`)
+export const getMatchesByTeam = async (team, limit, status) => {
+    const { data } = await axios.get(
+        `/api/matches/team/${team}/${limit}/${status}`
+    )
     return data
 }
 

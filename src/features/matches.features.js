@@ -111,10 +111,10 @@ export const useGetMatchesToday = (date) => {
     })
     return { data, isLoading, isError }
 }
-export const useGetMatchesByTeam = (team) => {
+export const useGetMatchesByTeam = (team, limit, status) => {
     const { data, isLoading, isError } = useQuery({
         queryKey: ['matches', team],
-        queryFn: () => getMatchesByTeam(team),
+        queryFn: () => getMatchesByTeam(team, limit, status),
     })
     return { data, isLoading, isError }
 }

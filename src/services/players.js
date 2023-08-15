@@ -23,6 +23,6 @@ export const getPlayersBySport = async (sport) => {
 }
 
 export const getPlayersTeamless = async (sport) => {
-    const { data } = await axios.post('/api/players/playersteamless', { sport })
+    const { data } = await axios.get(`/api/players/teamless/${sport}`)
     return data
 }
