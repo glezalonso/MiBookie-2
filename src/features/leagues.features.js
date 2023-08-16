@@ -29,7 +29,7 @@ export const useDeleteLeague = () => {
         mutationFn: deleteLeague,
         onSuccess: () => {
             toast.success('Liga borrada exitosamente!')
-            queryClient.invalidateQueries({ queryKey: ['leagues'] })
+            queryClient.invalidateQueries({ queryKey: ['Leagues'] })
         },
     })
     return mutationDelete
@@ -41,7 +41,7 @@ export const useUpdateLeague = () => {
         mutationFn: updateLeague,
         onSuccess: () => {
             toast.success('Liga actualizada exitosamente!')
-            queryClient.invalidateQueries({ queryKey: ['leagues'] })
+            queryClient.invalidateQueries({ queryKey: ['Leagues'] })
         },
     })
     return mutationUpdate
@@ -53,7 +53,7 @@ export const useCreateLeague = () => {
         mutationFn: createLeague,
         onSuccess: () => {
             toast.success('Liga creada exitosamente!')
-            queryClient.invalidateQueries({ queryKey: ['leagues'] })
+            queryClient.invalidateQueries({ queryKey: ['Leagues'] })
         },
     })
     return mutationCreate
@@ -61,7 +61,7 @@ export const useCreateLeague = () => {
 
 export const useGetLeaguesBySport = (sport) => {
     const { data, isLoading, isError } = useQuery({
-        queryKey: ['leagues'],
+        queryKey: ['Leagues'],
         queryFn: () => getLeaguesBySport(sport),
     })
     return { data, isLoading, isError }
