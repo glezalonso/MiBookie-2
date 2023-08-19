@@ -27,7 +27,7 @@ export const closeMatch = ({ id, body }) =>
     axios.put(`/api/matches/closematch/${id}`, body)
 
 export const getMatchesToday = async (date) => {
-    const { data } = await axios.get(`/api/matches/date/${date}`)
+    const { data } = await axios.get(`/api/matches//matchestoday/${date}`)
     return data
 }
 export const getMatchesByTeam = async (team, limit, status) => {
