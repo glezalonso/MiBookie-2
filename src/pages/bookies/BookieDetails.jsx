@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { Container, Row, Col, Table } from 'react-bootstrap'
-import { toast, Toaster } from 'react-hot-toast'
+import { toast } from 'react-hot-toast'
 import { useGetBookie } from '../../features/bookies.features'
 import Navigate from '../../ui/Navigate'
 import Loading from '../../ui/Loading'
@@ -16,8 +16,7 @@ const BookieDetails = () => {
     return (
         <>
             <Navigate />
-            <Toaster position="top-center" reverseOrder={false}></Toaster>
-            <Container fluid>
+            <Container fluid className="p-0 ">
                 <Row className="my-2 p-1  mx-auto">
                     <Col
                         xs={12}

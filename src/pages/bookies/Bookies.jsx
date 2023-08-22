@@ -15,7 +15,7 @@ const Bookies = () => {
     return (
         <>
             <Navigate />
-            <Container fluid>
+            <Container fluid className="p-0 ">
                 <Row className="my-2  mx-auto">
                     <Col xs={12} lg={8} className=" mx-auto my-1">
                         <SectionBookies bookies={bookies} />

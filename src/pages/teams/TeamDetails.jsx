@@ -21,13 +21,13 @@ const TeamDetail = () => {
     return (
         <>
             <Navigate />
-            <Container fluid>
+            <Container fluid className="p-0">
                 <Row className="my-2 mx-auto ">
                     <Col xs={12} md={10} className="mx-auto">
                         <CardTeam team={team} />
                     </Col>
                 </Row>
-                <Row className="my-2p">
+                <Row className="my-2 mx-auto">
                     <Col xs={12} md={5} className="mx-auto my-1">
                         <SectionLastMatches team={team} />
                     </Col>
@@ -35,7 +35,7 @@ const TeamDetail = () => {
                         <SectionNextMatches team={team} />
                     </Col>
                 </Row>
-                <Row className="my-3 mx-auto rounded">
+                <Row className="my-3 mx-auto">
                     <Col xs={12} md={5} className="mx-auto my-1">
                         <SectionRoster team={team} />
                     </Col>

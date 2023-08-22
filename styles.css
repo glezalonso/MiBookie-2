@@ -1,20 +1,18 @@
-  #body{
+#body {
     background-color: rgb(236, 236, 236);
-  }
-
-.table{
-    font-size: 13px;
-   } 
-   
-.alert {
-font-size: 13px;
-    
 }
-.card{
-  font-size: 15px;
+
+.table {
+    font-size: 13px;
+}
+
+.alert {
+    font-size: 13px;
+}
+.card {
+    font-size: 15px;
 }
 .data-tables {
-  max-height:600px;
-  overflow-y: auto;
-
+    max-height: fit-content;
+    overflow-y: auto;
 }

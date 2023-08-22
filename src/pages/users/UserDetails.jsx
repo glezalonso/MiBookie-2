@@ -16,8 +16,7 @@ const UserDetails = () => {
     return (
         <>
             <Navigate />
-
-            <Container fluid>
+            <Container fluid className="p-0 ">
                 <Row className="my-2 p-1  mx-auto">
                     <Col xs={12} md={11} className="mx-auto p-1 fs-4">
                         <section>

@@ -16,7 +16,7 @@ const PlayerDetails = () => {
     return (
         <>
             <Navigate />
-            <Container fluid>
+            <Container fluid className="p-0 ">
                 <Row className="my-2 mx-auto">
                     <Col xs={12} lg={11} className=" mx-auto fs-6">
                         <section>
