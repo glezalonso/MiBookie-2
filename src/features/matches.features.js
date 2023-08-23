@@ -113,7 +113,7 @@ export const useGetMatchesToday = (date) => {
 }
 export const useGetMatchesByTeam = (team, limit, status) => {
     const { data, isLoading, isError } = useQuery({
-        queryKey: ['matches', team],
+        queryKey: ['matches', team, status],
         queryFn: () => getMatchesByTeam(team, limit, status),
     })
     return { data, isLoading, isError }

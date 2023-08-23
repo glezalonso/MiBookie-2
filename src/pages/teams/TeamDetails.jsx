@@ -2,14 +2,13 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import { Container, Row, Col } from 'react-bootstrap'
+import { useGetTeam } from '../../features/teams.features'
 import Navigate from '../../ui/Navigate'
 import Loading from '../../ui/Loading'
 import CardTeam from './components/CardTeam'
-import SectionLastMatches from './components/SectionLastMatches'
 import SectionRoster from './components/SectionRoster'
 import SectionPlayers from './components/SectionPlayers'
-import SectionNextMatches from './components/SectionNextMatches'
-import { useGetTeam } from '../../features/teams.features'
+import SectionMatches from './components/SectionMatches'
 
 const TeamDetail = () => {
     const { id } = useParams()
@@ -29,10 +28,18 @@ const TeamDetail = () => {
                 </Row>
                 <Row className="my-2 mx-auto">
                     <Col xs={12} md={5} className="mx-auto my-1">
-                        <SectionLastMatches team={team} />
+                        <SectionMatches
+                            team={team}
+                            status={false}
+                            title={'Último'}
+                        />
                     </Col>
                     <Col xs={12} md={5} className="mx-auto my-1">
-                        <SectionNextMatches team={team} />
+                        <SectionMatches
+                            team={team}
+                            status={true}
+                            title={'Próximos'}
+                        />
                     </Col>
                 </Row>
                 <Row className="my-3 mx-auto">

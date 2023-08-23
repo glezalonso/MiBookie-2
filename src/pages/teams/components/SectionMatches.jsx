@@ -6,9 +6,9 @@ import Loading from '../../../ui/Loading'
 import FormFilter from '../../comuncomponents/FormFilter'
 import TableMatches from '../../comuncomponents/TableMatches'
 
-const SectionNextMatches = ({ team }) => {
+const SectionMatches = ({ team, status, title }) => {
     const limit = 0
-    const status = true
+
     const {
         data: matches,
         isLoading,
@@ -17,7 +17,8 @@ const SectionNextMatches = ({ team }) => {
     const [dataFilter, setDataFilter] = useState('')
 
     if (isLoading) return <Loading />
-    if (isError) return toast.error('Hubo un error al cargar los juegos')
+    if (isError)
+        return toast.error('Hubo un error al cargar los juegos del día')
     // filter by user
     const filter = matches?.filter((match) => {
         if (dataFilter)
@@ -34,11 +35,10 @@ const SectionNextMatches = ({ team }) => {
             )
         else return match
     })
-
     return (
         <>
             <section>
-                <h5>Próximos partidos</h5>
+                <h5>{title} juegos</h5>
                 <FormFilter
                     name={'equipo'}
                     dataFilter={dataFilter}
@@ -57,4 +57,4 @@ const SectionNextMatches = ({ team }) => {
     )
 }
 
-export default SectionNextMatches
+export default SectionMatches
