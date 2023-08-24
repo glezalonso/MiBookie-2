@@ -18,7 +18,7 @@ const Navigate = () => {
     return (
         <>
             <Navbar expand="lg" bg="dark" data-bs-theme="dark">
-                <Container>
+                <Container className="p-0">
                     <Link to={'../home'} className="navbar-brand d-flex">
                         <div>
                             <img

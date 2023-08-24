@@ -9,7 +9,7 @@ const News = () => {
             <Navigate />
             <Container fluid className="p-0 ">
                 <Row className="m-2 p-2 mx-auto">
-                    <Col xs={12} md={10} className="mx-auto my-1">
+                    <Col xs={12} md={8} className="mx-auto my-1">
                         <SectionNews />
                     </Col>
                 </Row>

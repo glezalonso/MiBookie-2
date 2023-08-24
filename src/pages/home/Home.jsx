@@ -9,17 +9,17 @@ const Home = () => {
     return (
         <>
             <Navigate />
-            <Container fluid className="p-0 ">
+            <Container fluid className="p-0">
                 <Row className="my-2 mx-auto ">
-                    <Col xs={12} md={9} className="mx-auto mt-2 min-vh-75">
+                    <Col xs={12} md={8} className="mx-auto mt-2 min-vh-75">
                         <SectionTodayMatches />
                     </Col>
                 </Row>
-                <Row className="my-2 p-0  mx-auto">
-                    <Col xs={12} md={5} className="mx-auto my-2 ">
+                <Row className="d-flex my-2 justify-content-center mx-auto">
+                    <Col xs={12} md={5} className="mr-auto my-2 ">
                         <SectionSeasonsOpen />
                     </Col>
-                    <Col xs={12} md={5} className="mx-auto my-2 ">
+                    <Col xs={12} md={3} className="ml-auto my-2 ">
                         <SectionLeagues />
                     </Col>
                 </Row>

@@ -16,9 +16,6 @@ const TableMatches = ({ match, handleUpdate, handleDelete }) => {
                     className="my-1"
                     hover
                 >
-                    <caption className="m-1 text-light">
-                        Total: {match?.length} partidos
-                    </caption>
                     <thead className="border-bottom">
                         <tr>
                             <th>Hora</th>
@@ -119,6 +116,9 @@ const TableMatches = ({ match, handleUpdate, handleDelete }) => {
                             </tr>
                         ))}
                     </tbody>
+                    <caption className="m-1">
+                        Total: {match?.length} partidos
+                    </caption>
                 </Table>
             </div>
         </>

@@ -41,7 +41,7 @@ const TableBookies = ({ bookies, handleUpdate, handleDelete }) => {
                             </tr>
                         ))}
                     </tbody>
-                    <caption className="text-light">
+                    <caption className="m-1">
                         Total de miembros: {bookies.length}
                     </caption>
                 </Table>

@@ -18,7 +18,7 @@ const PlayerDetails = () => {
             <Navigate />
             <Container fluid className="p-0 ">
                 <Row className="my-2 mx-auto">
-                    <Col xs={12} lg={11} className=" mx-auto fs-6">
+                    <Col xs={12} lg={8} className=" mx-auto fs-6">
                         <section>
                             <Card>
                                 <Card.Header>

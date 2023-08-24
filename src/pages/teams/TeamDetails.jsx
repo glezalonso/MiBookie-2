@@ -21,20 +21,20 @@ const TeamDetail = () => {
         <>
             <Navigate />
             <Container fluid className="p-0">
-                <Row className="my-2 mx-auto ">
-                    <Col xs={12} md={10} className="mx-auto">
+                <Row className="my-2  mx-auto">
+                    <Col xs={12} md={8} className="mx-auto">
                         <CardTeam team={team} />
                     </Col>
                 </Row>
-                <Row className="my-2 mx-auto">
-                    <Col xs={12} md={5} className="mx-auto my-1">
+                <Row className="d-flex my-2 justify-content-center mx-auto">
+                    <Col xs={12} md={4} className="my-1 vh-100 overflow-auto">
                         <SectionMatches
                             team={team}
                             status={false}
                             title={'Último'}
                         />
                     </Col>
-                    <Col xs={12} md={5} className="mx-auto my-1">
+                    <Col xs={12} md={4} className="my-1 vh-100 overflow-auto">
                         <SectionMatches
                             team={team}
                             status={true}
@@ -42,11 +42,19 @@ const TeamDetail = () => {
                         />
                     </Col>
                 </Row>
-                <Row className="my-3 mx-auto">
-                    <Col xs={12} md={5} className="mx-auto my-1">
+                <Row className="d-flex my-2 justify-content-center mx-auto ">
+                    <Col
+                        xs={12}
+                        md={4}
+                        className="mr-auto my-1 vh-100 overflow-auto"
+                    >
                         <SectionRoster team={team} />
                     </Col>
-                    <Col xs={12} md={5} className="mx-auto my-1">
+                    <Col
+                        xs={12}
+                        md={4}
+                        className="ml-auto my-1 vh-100 overflow-auto"
+                    >
                         <SectionPlayers team={team} />
                     </Col>
                 </Row>

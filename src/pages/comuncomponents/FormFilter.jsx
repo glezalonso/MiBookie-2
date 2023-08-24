@@ -6,7 +6,6 @@ const FormFilter = ({ name, dataFilter, setDataFilter }) => {
         <>
             <div className="mx-auto my-3">
                 <FormControl
-                    size="sm"
                     className="mb-3"
                     placeholder={`Buscar ${name}...`}
                     name={name}
