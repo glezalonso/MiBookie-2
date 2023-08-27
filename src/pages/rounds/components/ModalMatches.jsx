@@ -31,6 +31,7 @@ const ModalMatches = ({
             season: round?.season?._id,
             sport: round?.sport?._id,
             status: match?.status || '',
+            moreImportant: match?.moreImportant || '',
         },
         validate: validateMatch,
         validateOnBlur: false,
@@ -149,6 +150,18 @@ const ModalMatches = ({
                                 id="oddOverUnder"
                                 name="oddOverUnder"
                             ></FormControl>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Importante?</Form.Label>
+                            <Form.Select
+                                id="moreImportant"
+                                name="moreImportant"
+                                {...formik.getFieldProps('moreImportant')}
+                            >
+                                <option value={false}>Es importante?</option>
+                                <option value={true}>Si</option>
+                                <option value={false}>No</option>
+                            </Form.Select>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Estatus</Form.Label>
