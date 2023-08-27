@@ -1,11 +1,11 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
+import { useGetSport } from '../../features/sports.features'
 import { Container, Row, Col, Breadcrumb } from 'react-bootstrap'
 import Navigate from '../../ui/Navigate'
-import { toast } from 'react-hot-toast'
 import Loading from '../../ui/Loading'
 import SectionLeagues from './components/SectionLeagues'
-import { useGetSport } from '../../features/sports.features'
 
 const SportDetails = () => {
     const { id } = useParams()

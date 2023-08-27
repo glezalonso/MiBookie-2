@@ -1,10 +1,10 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import { Container, Row, Col, Card } from 'react-bootstrap'
+import { useGetPlayer } from '../../features/players.features'
 import toast from 'react-hot-toast'
 import Loading from '../../ui/Loading'
 import Navigate from '../../ui/Navigate'
-import { Container, Row, Col, Card } from 'react-bootstrap'
-import { useGetPlayer } from '../../features/players.features'
 
 const PlayerDetails = () => {
     const { id } = useParams()

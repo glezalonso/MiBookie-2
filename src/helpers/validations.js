@@ -53,7 +53,6 @@ export const validateMatch = (values) => {
         return toast.error('El partido debe tener equipo visitante')
     if (!values.round)
         return toast.error('El partido debe pertenecer a una jornada')
-    if (!values.status) return toast.error('El estatus es requerido')
 }
 
 export const validateLeague = (values) => {

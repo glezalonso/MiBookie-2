@@ -6,10 +6,10 @@ import {
     useUpdateNew,
     useGetNews,
 } from '../../../features/news.features'
+import { toast } from 'react-hot-toast'
 import ModalNews from './ModalNews'
 import CardNew from './CardNew'
 import Loading from '../../../ui/Loading'
-import { toast } from 'react-hot-toast'
 
 const SectionNews = () => {
     const { data: news, isLoading, isError } = useGetNews()

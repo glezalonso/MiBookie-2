@@ -1,11 +1,11 @@
 import React from 'react'
+import { useGetRound } from '../../features/rounds.features'
+import { Container, Row, Col, Breadcrumb } from 'react-bootstrap'
 import { useParams, Link } from 'react-router-dom'
 import Navigate from '../../ui/Navigate'
-import { Container, Row, Col, Breadcrumb } from 'react-bootstrap'
 import toast from 'react-hot-toast'
 import SectionMatches from './components/SectionMatches'
 import Loading from '../../ui/Loading'
-import { useGetRound } from '../../features/rounds.features'
 
 const Rounds = () => {
     const { id } = useParams()

@@ -1,7 +1,6 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import { Modal, Form, Button, FormControl } from 'react-bootstrap'
-
 import { useAuthStore } from '../../../store/auth'
 import { useGetLeagues } from '../../../features/leagues.features'
 

@@ -1,10 +1,10 @@
 import React from 'react'
 import { useGetUsers } from '../../features/users.features'
-import Navigate from '../../ui/Navigate'
+import { toast } from 'react-hot-toast'
 import { Container, Row, Col } from 'react-bootstrap'
+import Navigate from '../../ui/Navigate'
 import TableUsers from './components/TableUsers'
 import Loading from '../../ui/Loading'
-import { toast } from 'react-hot-toast'
 
 const Users = () => {
     const { data: users, isLoading, isError } = useGetUsers()

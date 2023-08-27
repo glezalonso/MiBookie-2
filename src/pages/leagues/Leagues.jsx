@@ -1,11 +1,11 @@
 import React from 'react'
+import { useGetLeague } from '../../features/leagues.features'
 import { useParams, Link } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import { Container, Row, Col, Breadcrumb } from 'react-bootstrap'
 import Navigate from '../../ui/Navigate'
 import Loading from '../../ui/Loading'
 import SectionSeasons from './components/SectionSeasons'
-import { useGetLeague } from '../../features/leagues.features'
 
 const Leagues = () => {
     const { id } = useParams()

@@ -1,6 +1,6 @@
 import React from 'react'
-import Navigate from '../../ui/Navigate'
 import { Container, Row, Col } from 'react-bootstrap'
+import Navigate from '../../ui/Navigate'
 import SectionSport from './components/SectionsSports'
 
 const Sports = () => {

@@ -84,15 +84,34 @@ const TableMatches = ({ match, handleUpdate, handleDelete }) => {
                                 </td>
 
                                 <td>
-                                    {match?.status ? (
-                                        <span className="text-success">
-                                            Abierto!
-                                        </span>
-                                    ) : (
-                                        <span className="text-danger">
-                                            Cerrado!
-                                        </span>
-                                    )}
+                                    <div>
+                                        {match?.moreImportant !== undefined ? (
+                                            match?.moreImportant ? (
+                                                <span className="text-primary">
+                                                    Importante
+                                                </span>
+                                            ) : (
+                                                <span className="text-danger">
+                                                    No importante
+                                                </span>
+                                            )
+                                        ) : (
+                                            <span className="text-warning">
+                                                No asignado
+                                            </span>
+                                        )}
+                                    </div>
+                                    <div>
+                                        {match?.status ? (
+                                            <span className="text-success">
+                                                Abierto!
+                                            </span>
+                                        ) : (
+                                            <span className="text-danger">
+                                                Cerrado!
+                                            </span>
+                                        )}
+                                    </div>
                                 </td>
                                 <td>
                                     <ButtonGroup>

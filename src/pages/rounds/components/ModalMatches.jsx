@@ -30,8 +30,8 @@ const ModalMatches = ({
             league: round?.league?._id,
             season: round?.season?._id,
             sport: round?.sport?._id,
-            status: match?.status || '',
-            moreImportant: match?.moreImportant || '',
+            status: match?.status,
+            moreImportant: match?.moreImportant,
         },
         validate: validateMatch,
         validateOnBlur: false,
@@ -156,9 +156,10 @@ const ModalMatches = ({
                             <Form.Select
                                 id="moreImportant"
                                 name="moreImportant"
+                                required
                                 {...formik.getFieldProps('moreImportant')}
                             >
-                                <option value={false}>Es importante?</option>
+                                <option>Es importante?</option>
                                 <option value={true}>Si</option>
                                 <option value={false}>No</option>
                             </Form.Select>
@@ -170,7 +171,7 @@ const ModalMatches = ({
                                 name="status"
                                 {...formik.getFieldProps('status')}
                             >
-                                <option>Selecciona el estatus</option>
+                                <option>Selecciona el Estatus</option>
                                 <option value={true}>Activo</option>
                                 <option value={false}>Inactivo</option>
                             </Form.Select>
