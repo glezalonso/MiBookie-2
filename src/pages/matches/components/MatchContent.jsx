@@ -7,6 +7,7 @@ import MatchDetail from './MatchDetail'
 import MatchSettings from './MatchSettings'
 import ModalScore from './ModalScore'
 import SectionClose from './SectionClose'
+import MatchVotes from './MatchVotes'
 
 const MatchContent = ({ match }) => {
     const addLineUp = useAddLineUp()
@@ -30,6 +31,7 @@ const MatchContent = ({ match }) => {
             <section>
                 <h5>Datos del partido</h5>
                 <MatchDetail match={match} />
+                <MatchVotes match={match} />
                 {match?.status && <SectionClose handleShow={handleShow} />}
                 <ModalScore
                     match={match}
