@@ -103,11 +103,11 @@ const TableMatches = ({ match, handleUpdate, handleDelete }) => {
                                     </div>
                                     <div>
                                         {match?.status ? (
-                                            <span className="text-success">
+                                            <span className="text-success fw-bold">
                                                 Abierto!
                                             </span>
                                         ) : (
-                                            <span className="text-danger">
+                                            <span className="text-danger  fw-bold">
                                                 Cerrado!
                                             </span>
                                         )}
