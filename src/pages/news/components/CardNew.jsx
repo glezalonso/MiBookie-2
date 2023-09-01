@@ -14,7 +14,9 @@ const CardNew = ({ content, handleDelete, handleUpdate }) => {
                         </Card.Subtitle>
                     </Card.Header>
                     <Card.Body>
-                        <Card.Text>{content?.content}</Card.Text>
+                        <Card.Text style={{ whiteSpace: 'pre-line' }}>
+                            {content?.content}
+                        </Card.Text>
                     </Card.Body>
                     <Card.Footer>
                         <p>
