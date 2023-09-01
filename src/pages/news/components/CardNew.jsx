@@ -28,13 +28,13 @@ const CardNew = ({ content, handleDelete, handleUpdate }) => {
                         </p>
                         <ButtonGroup>
                             <Button
-                                className="btn btn-warning btn-sm mx-1 rounded"
+                                className="btn btn-warning btn-sm mx-1"
                                 onClick={() => handleUpdate(content)}
                             >
                                 Editar
                             </Button>
                             <Button
-                                className="btn btn-danger btn-sm  mx-1 rounded"
+                                className="btn btn-danger btn-sm mx-1"
                                 onClick={() => handleDelete(content?._id)}
                             >
                                 Borrar
