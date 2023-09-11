@@ -27,6 +27,7 @@ import Bookies from './pages/bookies/Bookies'
 import BookieDetails from './pages/bookies/BookieDetails'
 import News from './pages/news/News'
 import NewDetails from './pages/news/NewDetails'
+import Tournaments from './pages/tournaments/Tournaments'
 // Store
 import { useAuthStore } from './store/auth'
 import { Toaster } from 'react-hot-toast'
@@ -73,6 +74,7 @@ const App = () => {
                             path="/bookies/:id"
                             element={<BookieDetails />}
                         />
+                        <Route path="/tournaments" element={<Tournaments />} />
                         <Route path="*" element={<h1>Not Found!</h1>} />
                     </Route>
                 </Routes>

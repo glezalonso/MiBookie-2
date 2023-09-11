@@ -47,6 +47,9 @@ const Navigate = () => {
                             <Link className="nav-link" to={'../news'}>
                                 Noticias
                             </Link>
+                            <Link className="nav-link" to={'../tournaments'}>
+                                Torneos
+                            </Link>
                             {isAdmin ? (
                                 <>
                                     <Link
