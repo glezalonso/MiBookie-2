@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal, Form, Button } from 'react-bootstrap'
+import { Modal, Form, Button, FormControl } from 'react-bootstrap'
 import { useFormik } from 'formik'
 import { useGetSeasons } from '../../../features/seasons.features'
 
@@ -18,6 +18,7 @@ const ModalTournament = ({
         initialValues: {
             season: tournament?.season?._id || '',
             status: tournament?.status || '',
+            minimum: tournament?.minimum || 0,
         },
         validate: false,
         validateOnBlur: false,
@@ -54,7 +55,7 @@ const ModalTournament = ({
                 <Form onSubmit={formik.handleSubmit}>
                     <Modal.Body>
                         <Form.Group>
-                            <Form.Label>Estatus</Form.Label>
+                            <Form.Label>Temporada</Form.Label>
                             <Form.Select
                                 id="season"
                                 name="season"
@@ -83,6 +84,15 @@ const ModalTournament = ({
                                 <option value={true}>Activo</option>
                                 <option value={false}>Inactivo</option>
                             </Form.Select>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Mínimo</Form.Label>
+                            <FormControl
+                                {...formik.getFieldProps('minimum')}
+                                type="number"
+                                id="minimum"
+                                name="minimum"
+                            ></FormControl>
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
