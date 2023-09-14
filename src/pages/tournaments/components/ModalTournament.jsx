@@ -18,7 +18,7 @@ const ModalTournament = ({
         initialValues: {
             season: tournament?.season?._id || '',
             status: tournament?.status || '',
-            minimum: tournament?.minimum || 0,
+            minimum: tournament?.minimum || '',
         },
         validate: false,
         validateOnBlur: false,

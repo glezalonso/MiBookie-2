@@ -36,14 +36,6 @@ export const getMatchesByTeam = async (team, limit, status) => {
     )
     return data
 }
-
-// export const getMatchesByLeague = async (league) => {
-//     const { data } = await axios.post('/api/matches/matchesbyleague', {
-//         league,
-//     })
-//     return data
-// }
-
 export const getMatchesByRound = async (round) => {
     const { data } = await axios.get(`/api/matches/round/${round}`)
     return data
