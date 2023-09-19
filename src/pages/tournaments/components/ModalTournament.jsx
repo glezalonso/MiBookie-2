@@ -85,6 +85,7 @@ const ModalTournament = ({
                                 name="status"
                                 {...formik.getFieldProps('status')}
                             >
+                                <option>Selecciona el Estatus</option>
                                 <option value={true}>Activo</option>
                                 <option value={false}>Inactivo</option>
                             </Form.Select>
@@ -105,7 +106,9 @@ const ModalTournament = ({
                                 name="bookie"
                                 {...formik.getFieldProps('bookie')}
                             >
-                                <option>Selecciona al ganador</option>
+                                <option value={' '}>
+                                    Selecciona al ganador
+                                </option>
                                 {bookies?.map?.((user) => (
                                     <option key={user?._id} value={user?._id}>
                                         {user?.username}
