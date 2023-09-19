@@ -67,7 +67,6 @@ export const useCreateMatch = () => {
     })
     return mutationCreate
 }
-
 export const useCloseMatch = () => {
     const queryClient = useQueryClient()
     const mutationClose = useMutation({
@@ -118,13 +117,7 @@ export const useGetMatchesByTeam = (team, limit, status) => {
     })
     return { data, isLoading, isError }
 }
-// export const useGetMatchesByLeague = (league) => {
-//     const { data, isLoading, isError } = useQuery({
-//         queryKey: ['matches', league],
-//         queryFn: () => getMatchesByLeague(league),
-//     })
-//     return { data, isLoading, isError }
-// }
+
 export const useGetMatchesByRound = (round) => {
     const { data, isLoading, isError } = useQuery({
         queryKey: ['matches', round],

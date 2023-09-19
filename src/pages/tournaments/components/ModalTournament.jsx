@@ -2,6 +2,7 @@ import React from 'react'
 import { Modal, Form, Button, FormControl } from 'react-bootstrap'
 import { useFormik } from 'formik'
 import { useGetSeasons } from '../../../features/seasons.features'
+import { useGetBookies } from '../../../features/bookies.features'
 
 const ModalTournament = ({
     tournament,
@@ -12,6 +13,7 @@ const ModalTournament = ({
     setUpdate,
 }) => {
     const { data: seasons } = useGetSeasons()
+    const { data: bookies } = useGetBookies()
 
     const formik = useFormik({
         enableReinitialize: true,
@@ -19,6 +21,9 @@ const ModalTournament = ({
             season: tournament?.season?._id || '',
             status: tournament?.status || '',
             minimum: tournament?.minimum || '',
+            bookie: tournament?.bookie || '',
+            votes: tournament?.votes || '',
+            success: tournament?.success || '',
         },
         validate: false,
         validateOnBlur: false,
@@ -80,7 +85,6 @@ const ModalTournament = ({
                                 name="status"
                                 {...formik.getFieldProps('status')}
                             >
-                                <option>Selecciona el estatus</option>
                                 <option value={true}>Activo</option>
                                 <option value={false}>Inactivo</option>
                             </Form.Select>
@@ -94,6 +98,37 @@ const ModalTournament = ({
                                 name="minimum"
                             ></FormControl>
                         </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Bookie</Form.Label>
+                            <Form.Select
+                                id="bookie"
+                                name="bookie"
+                                {...formik.getFieldProps('bookie')}
+                            >
+                                <option>Selecciona al ganador</option>
+                                {bookies?.map?.((user) => (
+                                    <option key={user?._id} value={user?._id}>
+                                        {user?.username}
+                                    </option>
+                                ))}
+                            </Form.Select>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Votos</Form.Label>
+                            <FormControl
+                                {...formik.getFieldProps('votes')}
+                                type="number"
+                                id="votes"
+                                name="votes"
+                            ></FormControl>
+                        </Form.Group>
+                        <Form.Label>Aciertos</Form.Label>
+                        <FormControl
+                            {...formik.getFieldProps('success')}
+                            type="number"
+                            id="success"
+                            name="success"
+                        ></FormControl>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="dark" onClick={handleCloseUpdate}>
